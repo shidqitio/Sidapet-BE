@@ -1,15 +1,15 @@
 {
-  "name": "expenditure-v2",
+  "name": "si-ppan",
   "version": "1.0.0",
-  "description": "",
+  "description": "proMISe SI-PPAN",
   "main": "app.js",
   "scripts": {
-    "start": "ts-node -r tsconfig-paths/register src/app.ts",
-    "dev": "ts-node -r tsconfig-paths/register src/app.ts",
+    "start": "nodemon -r tsconfig-paths/register src/app.ts",
+    "dev": "nodemon -r tsconfig-paths/register src/app.ts",
     "build": "tsc"
   },
   "keywords": [],
-  "author": "",
+  "author": "Universitas Terbuka",
   "license": "MIT",
   "dependencies": {
     "axios": "^1.5.1",
@@ -23,9 +23,10 @@
     "express-rate-limit": "^7.1.1",
     "helmet": "^7.0.0",
     "log4js": "^6.9.1",
+    "moment": "^2.30.1",
     "moment-timezone": "^0.5.43",
     "multer": "^1.4.5-lts.1",
-    "mysql2": "^3.6.1",
+    "postgres": "^3.4.3",
     "puppeteer": "^21.3.7",
     "sequelize": "^6.33.0",
     "socket.io": "^4.7.2",

@@ -12,15 +12,15 @@ import apiRoutes from "@routes/api";
 import webRoutes from "@routes/web";
 import mobileRoutes from "@routes/mobile";
 
-import db from "@config/database";
-import license from "@utils/sippp";
+// import db from "@config/database";
+import license from "@utils/promise";
 import getConfig from "@config/dotenv";
 import { initSocketIO } from "@config/socket";
 import limiter from "@middleware/rate-limit";
 import logger, { errorLogger } from "@config/logger";
-import authorization from "@middleware/authorization";
 import { notFound } from "@middleware/error-notfound";
 import { errorhandler } from "@middleware/error-handler";
+import authorization from "@middleware/authorization";
 
 const app: Application = express();
 log4js.configure(logger);
@@ -28,10 +28,10 @@ log4js.configure(logger);
 /**
  * certificate keys
  */
-var key = fs.readFileSync("src/certificate/ut.key", "utf-8");
-var cert = fs.readFileSync("src/certificate/full-bundle.crt", "utf-8");
+const key = fs.readFileSync("src/certificate/ut.key", "utf-8");
+const cert = fs.readFileSync("src/certificate/full-bundle.crt", "utf-8");
 
-var options = { key: key, cert: cert };
+const options = { key: key, cert: cert };
 
 /**
  * body parser
@@ -70,9 +70,10 @@ app.use(
 /**
  * routes
  */
-app.use("/expenditure/api", apiRoutes);
-app.use("/expenditure/web", authorization, webRoutes);
-app.use("/expenditure/mobile", authorization, mobileRoutes);
+app.use("/si-ppan/api-auth/v1/", authorization, apiRoutes);
+app.use("/si-ppan/api-noauth/v1/", apiRoutes);
+app.use("/si-ppan/web/", authorization, webRoutes);
+app.use("/si-ppan/mobile/", authorization, mobileRoutes);
 
 /**
  * not found
@@ -87,22 +88,38 @@ app.use(errorhandler);
 /**
  * sync database
  */
-db.sync()
-  .then(() => {
-    const server = https.createServer(options, app);
-    server.listen(getConfig("PORT_SERVER"), () => {
-      console.log(license);
-      console.log(
-        `${String.fromCodePoint(
-          0x1f525
-        )} SERVER EXPENDITURE ON PORT : ${getConfig(
-          "PORT_SERVER"
-        )} ${String.fromCodePoint(0x1f525)}`
-      );
-      initSocketIO(server);
-    });
-  })
-  .catch((error) => {
-    errorLogger.error(`SERVER ERROR: ${error}`);
-  });
+// db.sync()
+//   .then(() => {
+//     const server = https.createServer(options, app);
+//     server.listen(getConfig("PORT_SERVER"), () => {
+//       console.log(license);
+//       console.log(
+//         `${String.fromCodePoint(
+//           0x1f525
+//         )} SERVER SI-PPAN ON PORT : ${getConfig(
+//           "PORT_SERVER"
+//         )} ${String.fromCodePoint(0x1f525)}`
+//       );
+//       initSocketIO(server);
+//     });
+//   })
+//   .catch((error) => {
+//     errorLogger.error(`SERVER ERROR: ${error}`);
+//   });
 
+try {
+  const server = https.createServer(options, app);
+  server.listen(getConfig("PORT_SERVER"), () => {
+    console.log(license);
+    console.log(
+      `${String.fromCodePoint(
+        0x1f525
+      )} SERVER SI-PPAN ON PORT : ${getConfig(
+        "PORT_SERVER"
+      )} ${String.fromCodePoint(0x1f525)}`
+    );
+    initSocketIO(server);
+  });
+} catch (error) {
+  errorLogger.error(`SERVER ERROR: ${error}`);
+}

@@ -1,23 +1,5 @@
 import crypto from "crypto";
 
-const generateCode = (word: string): string => {
-  const key = "sippp2023unitpmo";
-  const result = encryptWithKey(word, key);
-  return result;
-};
-
-const generateSptd = (reff: string): string => {
-  const key = "sippp2023unitpmo";
-  const dec = decryptWithKey(reff, key);
-  return dec;
-};
-
-const generateCodeSippp = (reffSippp: string): string => {
-  const key = "sippp2023unitpmo";
-  const result = encryptWithKey(reffSippp, key);
-  return result;
-};
-
 const encryptWithKey = (word: string, secret: string) => {
   let key = Buffer.from(secret, "utf-8");
   let secret_msg = Buffer.from(word, "utf-8");
@@ -41,4 +23,4 @@ const decryptWithKey = (word: any, secret: string) => {
   return decryptData;
 };
 
-export { generateCode, generateCodeSippp, generateSptd };
+export { encryptWithKey, decryptWithKey};
