@@ -1,30 +1,29 @@
-@renwidjaya - 2024
-
 ==============================================
 
 LIBRARY
 
 ==============================================
 
-- axios: version 1.5.1,
-- body-parse:  version 1.20.2,
-- bwip-js: version 4.1.1,
-- compression":  version 1.7.4,
-- cors: version 2.8.5,
-- crypto-js: version 4.1.1,
-- dotenv: version 16.3.1,
-- express: version 4.18.2,
-- express-rate-limit: version 7.1.1,
-- helmet: version7.0.0,
-- og4js: version 6.9.1,
-- moment-timezone: version 0.5.43,
-- multer: version 1.4.5-lts.1,
-- mysql2: version 3.6.1, // posgress version xxx
-- puppeteer: version 21.3.7,
-- sequelize: version 6.33.0,
-- socket.io: version 4.7.2,
-- tsconfig-paths: version 4.2.0,
-- zod: version 3.22.4
+    "axios": "^1.5.1",
+    "body-parser": "^1.20.2",
+    "bwip-js": "^4.1.1",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.1",
+    "helmet": "^7.0.0",
+    "log4js": "^6.9.1",
+    "moment": "^2.30.1",
+    "moment-timezone": "^0.5.43",
+    "multer": "^1.4.5-lts.1",
+    "postgres": "^3.4.3",
+    "puppeteer": "^21.3.7",
+    "sequelize": "^6.33.0",
+    "socket.io": "^4.7.2",
+    "tsconfig-paths": "^4.2.0",
+    "zod": "^3.22.4"
 
 ===============================================
 
@@ -45,16 +44,15 @@ my-app/
 │   ├── middleware/
 │   ├── models/
 │   ├── routes/
+│   │   ├── api/
+│   │   ├── web/
+│   │   └── mobile/
 │   ├── schema/
 │   └── services/
 │       ├── api/
-│       ├── hrd/
+│       ├── mobile/
 │       ├── web/
-│       ├── pevita/
-│       ├── siakun/
 │       ├── usman/
-│       ├── panutan/
-│       ├── ebudgeting/
 │   └── utils/
 └── package.json
 ```
@@ -81,13 +79,9 @@ The project structure is organized as follows:
 * **schema/** : Contains database schemas or other schema-related files.
 * **services/** : The business logic of the application is organized into service modules. Subdirectories represent different modules or components of the application.
   * **api/** : Services related to API functionality.
-  * **hrd/** : Services specific to the Human Resources Department.
+  * **mobile/** : Services for mobile functionality.
   * **web/** : Services for web-related functionality.
-  * **pevita/** : Services related to the "pevita" module.
-  * **siakun/** : Services specific to the "siakun" module.
   * **usman/** : Services for the "usman" module.
-  * **panutan/** : Services related to the "panutan" module.
-  * **ebudgeting/** : Services for the "ebudgeting" module.
 * **utils/** : Utility functions or helper modules are stored here.
 * **package.json** : The package.json file contains metadata about the project and its dependencies.
 
@@ -97,8 +91,8 @@ The project structure is organized as follows:
 2. Navigate to the project directory: `cd my-app`
 3. Create file `.env`
 4. Install dependencies: `npm install`
-5. Start the application: `npm start`
+5. Start the application: `npm run dev`
 
 ## Acknowledgments
 
-Happy coding by renwidjaya
+Happy coding
