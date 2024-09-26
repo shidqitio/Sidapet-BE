@@ -12,12 +12,12 @@ export interface IErrorResponse {
 export default class CustomError extends Error implements IErrorResponse {
   readonly status: string;
 
-  constructor(public code: number, public message: string) {
+  constructor(public code: number, status : string, public message: string) {
     super(message);
 
     this.code = code;
 
-    this.status = "error";
+    this.status = status;
 
     this.message = message;
   }
@@ -34,7 +34,7 @@ export const errorhandler = async (
   if (error instanceof CustomError) {
     return res.status(error.code).json({
       code: error.code,
-      status: "error",
+      status: error.status,
       message: error.message,
     });
   } else if (

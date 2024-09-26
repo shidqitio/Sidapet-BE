@@ -8,7 +8,8 @@ import bodyParser from "body-parser";
 import compression from "compression";
 import express, { Application } from "express";
 
-import apiRoutes from "@routes/api";
+import apiAuthRoutes from "@routes/api/auth";
+import apiNoAuthRoutes from "@routes/api/noauth";
 import webRoutes from "@routes/web";
 import mobileRoutes from "@routes/mobile";
 
@@ -20,106 +21,122 @@ import limiter from "@middleware/rate-limit";
 import logger, { errorLogger } from "@config/logger";
 import { notFound } from "@middleware/error-notfound";
 import { errorhandler } from "@middleware/error-handler";
-import authorization from "@middleware/authorization";
-
-const app: Application = express();
+import cluster from "cluster";
 log4js.configure(logger);
 
-/**
- * certificate keys
- */
-const key = fs.readFileSync("src/certificate/ut.key", "utf-8");
-const cert = fs.readFileSync("src/certificate/full-bundle.crt", "utf-8");
+if (cluster.isPrimary) {
+  const numCPUs = 2
+  console.log(`Primary ${process.pid} is running`);
 
-const options = { key: key, cert: cert };
 
-/**
- * body parser
- */
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+  console.log("cpu", numCPUs);
 
-/**
- * helmet
- */
-app.use(helmet());
-
-/**
- * cors
- */
-app.use(cors());
-
-/**
- * compression
- */
-app.use(compression());
-
-/**
- * limiter
- */
-app.use(limiter);
-
-/**
- * dokumen path
- */
-app.use(
-  "/public/dokumen",
-  express.static(path.resolve(__dirname, "../public/dokumen"))
-);
-
-/**
- * routes
- */
-app.use("/si-bela/api-auth/v1/", authorization, apiRoutes);
-app.use("/si-bela/api-noauth/v1/", apiRoutes);
-app.use("/si-bela/web/", authorization, webRoutes);
-app.use("/si-bela/mobile/", authorization, mobileRoutes);
-
-/**
- * not found
- */
-app.use(notFound);
-
-/**
- * error handler
- */
-app.use(errorhandler);
-
-/**
- * sync database
- */
-// db.sync()
-//   .then(() => {
-//     const server = https.createServer(options, app);
-//     server.listen(getConfig("PORT_SERVER"), () => {
-//       console.log(license);
-//       console.log(
-//         `${String.fromCodePoint(
-//           0x1f525
-//         )} SERVER SI-PPAN ON PORT : ${getConfig(
-//           "PORT_SERVER"
-//         )} ${String.fromCodePoint(0x1f525)}`
-//       );
-//       initSocketIO(server);
-//     });
-//   })
-//   .catch((error) => {
-//     errorLogger.error(`SERVER ERROR: ${error}`);
-//   });
-
-try {
-  const server = https.createServer(options, app);
-  server.listen(getConfig("PORT_SERVER"), () => {
-    console.log(license);
-    console.log(
-      `${String.fromCodePoint(
-        0x1f525
-      )} SERVER SI-BELA ON PORT : ${getConfig(
-        "PORT_SERVER"
-      )} ${String.fromCodePoint(0x1f525)}`
-    );
-    initSocketIO(server);
-  });
-} catch (error) {
-  errorLogger.error(`SERVER ERROR: ${error}`);
+  for (let i = 0; i < numCPUs; i++) {
+    cluster.fork()
+  }
+  cluster.on("exit", (worker, code, signal) => {
+    console.log(`Worker ${worker.process.pid} died`);
+  })
+} else {
+  const app: Application = express();
+  /**
+   * certificate keys
+   */
+  const key = fs.readFileSync("src/certificate/ut.key", "utf-8");
+  const cert = fs.readFileSync("src/certificate/full-bundle.crt", "utf-8");
+  
+  const options = { key: key, cert: cert };
+  
+  app.set('trust proxy', 1);
+  
+  /**
+   * body parser
+   */
+  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(bodyParser.json());
+  
+  /**
+   * helmet
+   */
+  app.use(helmet());
+  
+  /**
+   * cors
+   */
+  app.use(cors());
+  
+  /**
+   * compression
+   */
+  app.use(compression());
+  
+  /**
+   * limiter
+   */
+  app.use(limiter);
+  
+  /**
+   * dokumen path
+   */
+  app.use(
+    "/sidapet/public/image/foto-ktp/",
+    express.static(path.join(getConfig('ENCRYPT_SAVE_FOTO')))
+  )
+  
+  /**
+   * routes
+   */
+  app.use("/si-dapet/api-auth/v1/", apiAuthRoutes);
+  app.use("/si-dapet/api-noauth/v1/", apiNoAuthRoutes);
+  app.use("/si-dapet/web/", webRoutes);
+  app.use("/si-dapet/mobile/", mobileRoutes);
+  
+  /**
+   * not found
+   */
+  app.use(notFound);
+  
+  /**
+   * error handler
+   */
+  app.use(errorhandler);
+  
+  /**
+   * sync database
+   */
+  // db.sync()
+  //   .then(() => {
+  //     const server = https.createServer(options, app);
+  //     server.listen(getConfig("PORT_SERVER"), () => {
+  //       console.log(license);
+  //       console.log(
+  //         `${String.fromCodePoint(
+  //           0x1f525
+  //         )} SERVER SI-PPAN ON PORT : ${getConfig(
+  //           "PORT_SERVER"
+  //         )} ${String.fromCodePoint(0x1f525)}`
+  //       );
+  //       initSocketIO(server);
+  //     });
+  //   })
+  //   .catch((error) => {
+  //     errorLogger.error(`SERVER ERROR: ${error}`);
+  //   });
+  
+  try {
+    const server = https.createServer(options, app);
+    server.listen(getConfig("PORT_SERVER"), () => {
+      console.log(license);
+      console.log(
+        `${String.fromCodePoint(
+          0x1f525
+        )} SERVER SI-DAPET ON PORT : ${getConfig(
+          "PORT_SERVER"
+        )} ${String.fromCodePoint(0x1f525)}`
+      );
+      initSocketIO(server);
+    });
+  } catch (error) {
+    errorLogger.error(`SERVER ERROR: ${error}`);
+  }
 }

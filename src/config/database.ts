@@ -2,22 +2,26 @@ import { Sequelize } from "sequelize";
 import getConfig from "@config/dotenv";
 
 const db: Sequelize = new Sequelize(
-  getConfig("DB_NAME") as string,
-  getConfig("DB_USERNAME") as string,
-  getConfig("DB_PASSWORD") as string,
+  dialect: "postgres",
+  logging: false,
+  replication : {
+  read: [
+    {
+      host: getConfig("DB_HOST"), username: getConfig("DB_USERNAME"), password: getConfig("DB_PASSWORD"), database: getConfig("DB_NAME")
+    }
+  ],
+  write:
   {
-    host: getConfig("DB_HOST") as string,
-    port: parseInt(getConfig("DB_PORT") as string, 10),
-    dialect: "postgres",
-    logging: false,
-    schema: "public",
-    pool: {
-      max: 100,
-      min: 10,
-      acquire: 5000,
-      idle: 60000,
-    },
+    host: getConfig("DB_HOST"), username: getConfig("DB_USERNAME"), password: getConfig("DB_PASSWORD"), database: getConfig("DB_NAME")
   }
+},
+  schema : "public",
+  pool: {
+  max: 100,
+  min: 10,
+  acquire: 5000,
+  idle: 60000,
+}
 );
 
 export default db;

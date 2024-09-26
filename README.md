@@ -4,22 +4,32 @@ LIBRARY
 
 ==============================================
 
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/moment": "^2.13.0",
     "axios": "^1.5.1",
+    "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
     "bwip-js": "^4.1.1",
+    "cluster": "^0.7.7",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "crypto-js": "^4.1.1",
-    "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-rate-limit": "^7.1.1",
     "helmet": "^7.0.0",
+    "ip": "^2.0.1",
+    "jsonwebtoken": "^9.0.2",
     "log4js": "^6.9.1",
     "moment": "^2.30.1",
     "moment-timezone": "^0.5.43",
     "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.6.1",
+    "nodemailer": "^6.9.14",
+    "os": "^0.1.2",
+    "pg": "^8.11.3",
     "postgres": "^3.4.3",
     "puppeteer": "^21.3.7",
+    "python-shell": "^5.0.0",
     "sequelize": "^6.33.0",
     "socket.io": "^4.7.2",
     "tsconfig-paths": "^4.2.0",
@@ -34,7 +44,6 @@ STRUKTURE
 ```
 my-app/
 ├── logs/
-├── public/
 ├── src/
 │   ├── certificate/
 │   ├── controllers/
@@ -42,6 +51,7 @@ my-app/
 │   │   ├── web/
 │   │   └── mobile/
 │   ├── middleware/
+│   ├── public/
 │   ├── models/
 │   ├── routes/
 │   │   ├── api/
