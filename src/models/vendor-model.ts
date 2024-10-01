@@ -42,7 +42,7 @@ Vendor.init(
         kode_vendor : {
             type : DataTypes.STRING, 
             allowNull : false,
-            autoIncrement : true,
+            // autoIncrement : true,
             primaryKey : true
         },
         kode_jenis_vendor : {
@@ -87,15 +87,7 @@ JenisVendor.hasMany(Vendor, {
     as : "Vendor"
 })
 
-Vendor.belongsTo(RegisterVendor, {
-    foreignKey : "kode_vendor",
-    as : "RegisVendor"
-})
 
-RegisterVendor.hasOne(Vendor, {
-    foreignKey : "kode_vendor",
-    as : "Vendor"
-})
 
 
 export default Vendor;

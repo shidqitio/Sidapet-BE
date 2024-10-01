@@ -23,3 +23,399 @@
   code: 404,
   status: 'success'
 }
+[2024-10-01T10:06:04.451] [ERROR] error - Testing Error External To Usman Error: Internal server error.
+[2024-10-01T10:06:04.452] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:486:19
+    at Generator.throw (<anonymous>)
+    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:29:65)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2024-10-01T10:08:11.629] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:08:11.630] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:482:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:08:47.410] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:08:47.410] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:482:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:08:48.492] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:08:48.493] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:482:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:08:49.177] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:08:49.177] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:482:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:09:55.089] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:09:55.090] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:09:59.541] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:09:59.541] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:10:03.610] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:10:03.610] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:10:04.435] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:10:04.435] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:10:30.781] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:10:30.781] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:10:31.564] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:10:31.565] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:10:32.063] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:10:32.063] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:10:32.577] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:10:32.578] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:10:32.984] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:10:32.985] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:12:31.245] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:12:31.246] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:13:21.720] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:13:21.721] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:17:21.848] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:17:21.849] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:17:23.949] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:17:23.950] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:18:33.464] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:18:33.465] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:22:18.167] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:22:18.168] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:23:29.554] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:23:29.555] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:23:32.137] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:23:32.138] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:23:33.793] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:23:33.793] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:24:15.699] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:24:15.699] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:24:19.690] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:24:19.690] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:24:53.843] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:24:53.844] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:24:54.813] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:24:54.814] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:24:55.489] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:24:55.489] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:24:56.035] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:24:56.035] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:24:56.625] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:24:56.626] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:24:57.119] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:24:57.120] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:24:57.589] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:24:57.589] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:24:58.010] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:24:58.010] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:26:42.060] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:26:42.061] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:28:52.527] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:28:52.528] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:29:00.609] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:29:00.610] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:480:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:29:43.800] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:29:43.801] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:482:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:30:23.258] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:30:23.259] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:482:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:31:03.490] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:31:03.491] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:482:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:32:39.003] [ERROR] error - Testing Error External To Usman Error: Request failed with status code 500
+[2024-10-01T10:32:39.004] [ERROR] error - Error: Request failed with status code 500
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:482:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 503,
+  status: 'error'
+}
+[2024-10-01T10:33:08.496] [ERROR] error - Testing Error External To Usman Error: Request failed with status code 500
+[2024-10-01T10:33:08.497] [ERROR] error - Error: Request failed with status code 500
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:478:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 503,
+  status: 'error'
+}
+[2024-10-01T10:33:57.539] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:33:57.540] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:478:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:34:29.148] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:34:29.149] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:478:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}
+[2024-10-01T10:34:43.439] [ERROR] error - Testing Error External To Usman Error: Vendor Tidak Terdaftar
+[2024-10-01T10:34:43.439] [ERROR] error - Error: Vendor Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:478:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'success'
+}

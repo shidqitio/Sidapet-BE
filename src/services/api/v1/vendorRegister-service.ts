@@ -273,8 +273,6 @@ const getRegisterVendorDetail = async (id:ParameterSchema["params"]["id"]) => {
 
         return vendorRegisterResult
 
-        
-
 
     } catch (error) {
         if(error instanceof CustomError) {
@@ -421,22 +419,21 @@ const insertExternaltoUsman = async (
             attributes : [
                 "kode_vendor",
                 "nama_perusahaan",
-                [literal(`"RegisVendor"."email"`), "email"],
-                [literal(`"RegisVendor","password`), "password"]
+                [literal(`"RegisterVendor"."email"`), "email"],
+                [literal(`"RegisterVendor","password"`), "password"]
             ],
-            where : {
-                kode_vendor : id,
-            },
             include : [
                 {
                     model : RegisterVendor, 
-                    as : "RegisVendor",
+                    as : "RegisterVendor",
                     where : {
-                        status_register : StatusRegister.terima
+                        status_register : StatusRegister.terima,
+                        kode_register : id
                     },
                     attributes : []
                 }
             ],
+            raw : true
         })
 
         if(!exVendor){
@@ -451,9 +448,11 @@ const insertExternaltoUsman = async (
             statusPengguna = "perorangan"
         }
 
+
         const [exEmail, errorCheckEmail] : [any, string] = await checkEmail(exVendor.email)
         
         if(errorCheckEmail) {
+
             throw new CustomError(httpCode.serviceUnavailable,"error", errorCheckEmail)
         }
 
@@ -464,7 +463,7 @@ const insertExternaltoUsman = async (
         const [regisExternal, errorRegisterExternal] : [any, string] = await registerExternal({
             id : exVendor.id,
             email : exVendor.email,
-            username : exVendor.nama,
+            username : exVendor.nama_perusahaan,
             password : exVendor.password,
             statusPengguna : statusPengguna
         })

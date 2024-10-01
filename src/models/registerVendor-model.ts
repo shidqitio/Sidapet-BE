@@ -1,6 +1,7 @@
 import db from "@config/database";
 import { DataTypes, Optional, Model } from "sequelize";
 import JenisVendor from "./jenisVendor-model";
+import Vendor from "./vendor-model";
 
 export enum StatusRegister {
     proses = "proses",
@@ -75,6 +76,7 @@ class RegisterVendor
 
 RegisterVendor.init(
     {
+
         kode_register : {
             type : DataTypes.STRING,
             allowNull : false,
@@ -170,6 +172,15 @@ JenisVendor.hasMany(RegisterVendor, {
     as : "RegisVendor"
 })
 
+RegisterVendor.belongsTo(Vendor, {
+    foreignKey : "kode_vendor",
+    as : "Vendor"
+})
+
+Vendor.hasOne(RegisterVendor, {
+    foreignKey : "kode_vendor",
+    as : "RegisterVendor"
+})
 
 export default RegisterVendor; 
 

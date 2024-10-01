@@ -3,7 +3,7 @@ import getConfig from "@config/dotenv";
 
 const db: Sequelize = new Sequelize({
     dialect: "postgres",
-    logging: false,
+    logging: console.log,
     replication : {
       read : [
         {
