@@ -1,0 +1,57 @@
+[2024-09-30T09:09:14.678] [DEBUG] default - Error: ENOENT: no such file or directory, unlink 'D:/Dev SIPPP/PMO/public/sidapet/images/foto-ktp/userphoto-1727421189521.png'
+    at Object.unlinkSync (node:fs:1808:3)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:338:20
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  errno: -4058,
+  syscall: 'unlink',
+  code: 'ENOENT',
+  path: 'D:/Dev SIPPP/PMO/public/sidapet/images/foto-ktp/userphoto-1727421189521.png'
+}
+[2024-09-30T09:10:17.808] [DEBUG] default - Error: ModuleNotFoundError: No module named 'face_recognition'
+    at PythonShell.parseError (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:376:21)
+    at terminateIfNeeded (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:239:32)
+    at ChildProcess.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:230:13)
+    at ChildProcess.emit (node:events:513:28)
+    at ChildProcess.emit (node:domain:489:12)
+    at Process.ChildProcess._handle.onexit (node:internal/child_process:291:12)
+    ----- Python Traceback -----
+    File "D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\python\facerecognitionpersonalid.py", line 1, in <module>
+      import face_recognition {
+  traceback: 'Traceback (most recent call last):\r\n' +
+    '  File "D:\\Dev SIPPP\\PMO\\sidapet-be-reb\\rebuild-sidapet-be\\src\\python\\facerecognitionpersonalid.py", line 1, in <module>\r\n' +
+    '    import face_recognition\r\n' +
+    "ModuleNotFoundError: No module named 'face_recognition'\r\n",
+  executable: 'python',
+  options: null,
+  script: 'src\\python\\facerecognitionpersonalid.py',
+  args: [
+    'D:\\Dev SIPPP\\PMO\\public\\sidapet\\images\\foto-ktp\\userphoto-1727662215906.png'
+  ],
+  exitCode: 1,
+  logs: []
+}
+[2024-09-30T09:22:36.052] [DEBUG] default - Error: ModuleNotFoundError: No module named 'face_recognition'
+    at PythonShell.parseError (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:376:21)
+    at terminateIfNeeded (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:239:32)
+    at ChildProcess.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:230:13)
+    at ChildProcess.emit (node:events:513:28)
+    at ChildProcess.emit (node:domain:489:12)
+    at Process.ChildProcess._handle.onexit (node:internal/child_process:291:12)
+    ----- Python Traceback -----
+    File "D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\python\facerecognitionpersonalid.py", line 1, in <module>
+      import face_recognition {
+  traceback: 'Traceback (most recent call last):\r\n' +
+    '  File "D:\\Dev SIPPP\\PMO\\sidapet-be-reb\\rebuild-sidapet-be\\src\\python\\facerecognitionpersonalid.py", line 1, in <module>\r\n' +
+    '    import face_recognition\r\n' +
+    "ModuleNotFoundError: No module named 'face_recognition'\r\n",
+  executable: 'python',
+  options: null,
+  script: 'src\\python\\facerecognitionpersonalid.py',
+  args: [
+    'D:\\Dev SIPPP\\PMO\\public\\sidapet\\images\\foto-ktp\\userphoto-1727662954958.png'
+  ],
+  exitCode: 1,
+  logs: []
+}

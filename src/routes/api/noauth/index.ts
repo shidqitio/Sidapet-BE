@@ -8,6 +8,8 @@ const level = {
     vendor : "5"
 }
 
-
+//PUBLIC
+import vendorRegisterRoute from "./vendorRegister-route"
+routes.use( "/vendor",  vendorRegisterRoute)
 
 export default routes;

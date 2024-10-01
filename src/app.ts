@@ -86,7 +86,7 @@ if (cluster.isPrimary) {
   /**
    * routes
    */
-  app.use("/si-dapet/api-auth/v1/", apiAuthRoutes);
+  app.use("/si-dapet/api-auth/v1", apiAuthRoutes);
   app.use("/si-dapet/api-noauth/v1/", apiNoAuthRoutes);
   app.use("/si-dapet/web/", webRoutes);
   app.use("/si-dapet/mobile/", mobileRoutes);

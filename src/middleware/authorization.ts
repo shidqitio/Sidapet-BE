@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { IncomingHttpHeaders } from "http";
 import CustomError from "@middleware/error-handler";
-import { httpCode } from "@utils/prefix";
+import { httpCode, responseStatus } from "@utils/prefix";
 import { TokenPromiseuser, checkTokenPromiseuser, userProfile } from "@services/usman";
 
 interface HeaderAuth extends IncomingHttpHeaders {
@@ -58,10 +58,9 @@ const authorization = async (
     const { id_user, kode_group, token, api_token }: HeaderAuth =
       req.headers;
 
-    
 
     if (!id_user || !kode_group || !token || !api_token) {
-      throw new CustomError(httpCode.unauthorized, "Unauthorized[1]");
+      throw new CustomError(httpCode.unauthorized, responseStatus.error, "Unauthorized[1]");
     }
 
     let id : number | undefined
@@ -77,7 +76,7 @@ const authorization = async (
       typeof token === "string" &&
       token.split(" ")[0] === "Bearer"
     ) {
-      throw new CustomError(httpCode.unauthorized, "Unauthorized[2]");
+      throw new CustomError(httpCode.unauthorized, responseStatus.error, "Unauthorized[2]");
     }
 
         const route = req.baseUrl;
@@ -104,8 +103,7 @@ const authorization = async (
     
 
     if(errorSipuser) {
-      console.log("Tes");
-      throw new CustomError(httpCode.unauthorized, errorSipuser)
+      throw new CustomError(httpCode.unauthorized, responseStatus.error,  errorSipuser)
     }
 
 
@@ -114,7 +112,7 @@ const authorization = async (
     
 
     if(errorUserProfile){
-      throw new CustomError(httpCode.unauthorized, errorUserProfile)
+      throw new CustomError(httpCode.unauthorized, responseStatus.error, errorUserProfile)
     }
 
     const userData : UserData = {
@@ -130,10 +128,10 @@ const authorization = async (
 
     req.user = userData;
 
+
+
     next();
   } catch (err) {
-
-    
     next(err);
   }
 };

@@ -1,6 +1,6 @@
-import getConfig from "@configs/dotenv"
+import getConfig from "@config/dotenv"
 import { Request, Response, NextFunction } from "express"
-import { debugLogger } from "@configs/logger"
+import { debugLogger } from "@config/logger"
 import axios from "axios"
 import CustomError from "./error-handler"
 import { httpCode } from "@utils/prefix"

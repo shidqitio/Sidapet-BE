@@ -1,9 +1,9 @@
 import multer, { FileFilterCallback, Multer } from "multer";
 import fs from "fs/promises";
-import CustomError from "@middlewares/error-handler";
+import CustomError from "@middleware/error-handler";
 import { Request } from "express";
 import { httpCode } from "@utils/prefix";
-import getConfig from "@configs/dotenv";
+import getConfig from "@config/dotenv";
 
 // jenis file
 enum FileType {
