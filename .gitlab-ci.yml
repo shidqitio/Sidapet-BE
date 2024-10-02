@@ -6,7 +6,7 @@ variables:
    SSH_HOST: "203.217.140.52"
    SSH_PORT: "22"
    SSH_USER: "root"
-   REMOTE_DIR: "/home/BE/si-dapet-be"
+   REMOTE_DIR: "/home/BE/si-dapet-rebuild-be"
  
 before_script:
    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
@@ -23,6 +23,6 @@ pull:
      - echo "Deploying the project to server... sssssss ffff"
      - ssh -p $SSH_PORT $SSH_USER@$SSH_HOST "mkdir -p $REMOTE_DIR"
      - scp -P $SSH_PORT -r * $SSH_USER@$SSH_HOST:$REMOTE_DIR
-     - echo "berhasil melakukan deploy ke server sidapet"
+     - echo "berhasil melakukan deploy ke server sidapet reborn"
    only:
      - main
