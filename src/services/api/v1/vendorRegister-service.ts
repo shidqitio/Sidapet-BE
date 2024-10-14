@@ -319,29 +319,20 @@ const updateStatusVendor = async (
                 user_verif : uch
             }
             
-
             const createRegisterHistory  = await RegisterVendorHistory.create(req_input, {
                 transaction : t
             })
             
 
             if(!createRegisterHistory) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error,"Data History Gagal Diinput")    
-
         if(status_register === StatusRegister.tolak) {
-
-
             if(exRegisterVendor.swafoto) {
                 fs.unlinkSync(`${getConfig('SIDAPET_SAVED_FOTO')}/${exRegisterVendor.swafoto}`)
 
                 fs.unlinkSync(`${getConfig('ENCRYPT_SAVE_FOTO')}/${exRegisterVendor.swafoto}`)
             }
 
-            
-
-
             await sendMail(exRegisterVendor.email as string, "Pemberitahuan Registrasi", "Aktivasi Akun Anda Ditolak, Silahkan Melakukan Registrasi Ulang, alasan : " + alasan)
-
-
 
             const deleteVendor : number = await RegisterVendor.destroy({
                 where : {
@@ -363,13 +354,19 @@ const updateStatusVendor = async (
             return resultDitolak
         }
 
+        console.log("TES 1");
+        
+
         const createVendor : Vendor = await Vendor.create({
             kode_jenis_vendor : exRegisterVendor.kode_jenis_vendor,
             nama_perusahaan : exRegisterVendor.nama_perusahaan,
             is_tetap : false
         },{transaction : t})
 
-        if(!createVendor) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Create Vendor")
+        if(!createVendor) {
+            console.log(createVendor)
+            throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Create Vendor")
+        }
 
         const [updatedRows,[updatedData]] : [number,RegisterVendor[]] = await RegisterVendor.update({
             status_register : status_register,
@@ -384,6 +381,7 @@ const updateStatusVendor = async (
             transaction : t
 
         })
+
 
         if(updatedRows === 0){
             throw new CustomError(httpCode.unprocessableEntity,"error", "Update Gagal")
@@ -486,7 +484,6 @@ const insertExternaltoUsman = async (
 }
 
 
-//TESTIN CI/CD
 
 
 

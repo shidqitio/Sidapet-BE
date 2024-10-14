@@ -100,7 +100,6 @@ const updateStatusVendor = async (
         const id : ParameterSchema["params"]["id"] = req.params.id
         const status_register : UpdateStatusRegisterSchema["body"]["status_register"] = req.body.status_register
         const alasan = req.body.alasan
-        console.log("TES : ", req.user);
         
         const uch = req.user ? req.user.email : null
 
