@@ -332,7 +332,7 @@ const updateStatusVendor = async (
                 fs.unlinkSync(`${getConfig('ENCRYPT_SAVE_FOTO')}/${exRegisterVendor.swafoto}`)
             }
 
-            // await sendMail(exRegisterVendor.email as string, "Pemberitahuan Registrasi", "Aktivasi Akun Anda Ditolak, Silahkan Melakukan Registrasi Ulang, alasan : " + alasan)
+            await sendMail(exRegisterVendor.email as string, "Pemberitahuan Registrasi", "Aktivasi Akun Anda Ditolak, Silahkan Melakukan Registrasi Ulang, alasan : " + alasan)
 
             const deleteVendor : number = await RegisterVendor.destroy({
                 where : {
@@ -389,7 +389,7 @@ const updateStatusVendor = async (
 
        
 
-        // await sendMail(exRegisterVendor.email as string, "Pemberitahuan Registrasi", `Registrasi Akun Anda Berhasil Silahkan klink link berikut : https://dinovalley.ut.ac.id/verifikasi-akun?id=${createVendor.kode_vendor}`)
+        await sendMail(exRegisterVendor.email as string, "Pemberitahuan Registrasi", `Registrasi Akun Anda Berhasil Silahkan klink link berikut : https://dinovalley.ut.ac.id/verifikasi-akun?id=${createVendor.kode_vendor}`)
 
         
         await t.commit()
