@@ -42,7 +42,7 @@ Vendor.init(
         kode_vendor : {
             type : DataTypes.STRING, 
             allowNull : false,
-            // autoIncrement : true,
+            autoIncrement : true,
             primaryKey : true
         },
         kode_jenis_vendor : {

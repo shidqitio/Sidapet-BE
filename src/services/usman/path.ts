@@ -21,5 +21,5 @@ export const PROMISEUSER_PATH = {
     TOKEN: "/akses/check-token",
     USER_PROFILE: "/users/user-profile",
     Email: "/users/search/email",
-    REGISTER_EXTERNAL : "/akses/register-external"
+    REGISTER_EXTERNAL : "/akses/register-eksternal"
 }
