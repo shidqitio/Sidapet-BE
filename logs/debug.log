@@ -77,3 +77,31 @@
   sql: `INSERT INTO "public"."trx_jawab_profil" ("kode_jawab_profil","kode_vendor","kode_item","isian") VALUES (NULL,19,52,'Tes Usaha'),(NULL,19,54,'Jl. Legoso') RETURNING "kode_jawab_profil","kode_vendor","kode_item","isian";`,
   parameters: {}
 }
+[2024-10-16T15:25:40.554] [DEBUG] default - TypeError: Cannot read properties of undefined (reading 'path')
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:166:56
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2024-10-16T15:25:59.813] [DEBUG] default - Error: ModuleNotFoundError: No module named 'face_recognition'
+    at PythonShell.parseError (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:376:21)
+    at terminateIfNeeded (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:239:32)
+    at ChildProcess.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:230:13)
+    at ChildProcess.emit (node:events:513:28)
+    at ChildProcess.emit (node:domain:489:12)
+    at Process.ChildProcess._handle.onexit (node:internal/child_process:291:12)
+    ----- Python Traceback -----
+    File "D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\python\facerecognitionpersonalid.py", line 1, in <module>
+      import face_recognition {
+  traceback: 'Traceback (most recent call last):\r\n' +
+    '  File "D:\\Dev SIPPP\\PMO\\sidapet-be-reb\\rebuild-sidapet-be\\src\\python\\facerecognitionpersonalid.py", line 1, in <module>\r\n' +
+    '    import face_recognition\r\n' +
+    "ModuleNotFoundError: No module named 'face_recognition'\r\n",
+  executable: 'python',
+  options: null,
+  script: 'src\\python\\facerecognitionpersonalid.py',
+  args: [
+    'D:\\Dev SIPPP\\PMO\\public\\sidapet\\images\\foto-ktp\\userphoto-1729067157898.png'
+  ],
+  exitCode: 1,
+  logs: []
+}
