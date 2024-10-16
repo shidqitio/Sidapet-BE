@@ -1,5 +1,23 @@
 import {z, object} from "zod"
 
+const storeProfilVendor = {
+    body : z.object({
+        profil : z.array(z.object({
+            kode_vendor : z.number({
+                required_error : "Kode Vendor Harus Diisi",
+                invalid_type_error : "Kode Vendor Harus Integer"
+            }),
+            kode_item : z.number({
+                required_error : "Kode Item Harus Diisi",
+                invalid_type_error : "Kode Item Harus Integer"
+            }), 
+            isian : z.string({
+                invalid_type_error : "Isian Harus String"
+            }).optional()
+        }))
+    })
+}
+
 
 //Reusable
 const query = {
@@ -25,7 +43,9 @@ const parameter = {
 }
 
 
-
+export const storeProfilVendorSchema = object({
+    ...storeProfilVendor
+})
 
 //Reusable
 export const querySchema = object({
@@ -35,6 +55,9 @@ export const querySchema = object({
 export const parameterSchema = object({
     ...parameter
 })
+
+
+export type StoreProfilVendorSchema = z.TypeOf<typeof storeProfilVendorSchema>
 
 //Reusable
 export type QuerySchema = z.TypeOf<typeof querySchema>

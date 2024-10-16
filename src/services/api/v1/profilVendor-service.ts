@@ -8,13 +8,20 @@ import db from "@config/database";
 import JenisVendor from "@models/jenisVendor-model";
 import KatDokumenVendor from "@models/katDokumenVendor-model";
 import KatItemTanya from "@models/katItemTanya-model";
+import ItemTanya from "@models/itemTanya-model";
+import Domisili from "@models/domisili-model";
 
 //Import Schema
 import {
     ParameterSchema, 
-    QuerySchema
+    QuerySchema,
+    StoreProfilVendorSchema
 } from "@schema/api/profilVendor-schema"
+import { QueryTypes, Sequelize } from "sequelize";
+import sequelize from "sequelize";
+import TrxJawabProfil from "@models/trxJawabProfil-model";
 
+//GET MENU 
 const getMenuAll = async (id : ParameterSchema["params"]["id"]) : Promise <KatDokumenVendor[]> => {
     try {
         const getMenu : KatDokumenVendor[] = await KatDokumenVendor.findAll({
@@ -38,6 +45,7 @@ const getMenuAll = async (id : ParameterSchema["params"]["id"]) : Promise <KatDo
     }
 }
 
+//GET SUB MENU
 const getSubMenu = async (id:ParameterSchema["params"]["id"]) : Promise<KatDokumenVendor[]> => {
     try {
         const getMenuSub : KatDokumenVendor[] = await KatDokumenVendor.findAll({
@@ -59,6 +67,7 @@ const getSubMenu = async (id:ParameterSchema["params"]["id"]) : Promise<KatDokum
     }
 }
 
+//GET KATEGORI ITEM TANYA
 const katItemTanya = async (id:ParameterSchema["params"]["id"]) : Promise<KatDokumenVendor> => {
     try {
         const getKategoriItem : KatDokumenVendor | null = await KatDokumenVendor.findOne({
@@ -87,8 +96,164 @@ const katItemTanya = async (id:ParameterSchema["params"]["id"]) : Promise<KatDok
     }
 }
 
+const listPertanyaanPerorangan = async (
+    id:ParameterSchema["params"]["id"]) : Promise<KatDokumenVendor | null> => {
+    try {
+        const listPertanyaan : KatDokumenVendor | null = await KatDokumenVendor.findOne({
+            attributes : ["kode_kat_dokumen_vendor", "kode_jenis_vendor", "nama_kategori"],
+            where : {
+                kode_jenis_vendor : 2, 
+                kode_kat_dokumen_vendor : id,
+            }, 
+            include : [
+                {
+                    attributes : ["kode_kat_item_tanya", "kode_kat_dokumen_vendor", "kategori_item"],
+                    model : KatItemTanya, 
+                    as : "KatItemTanya", 
+                    include : [
+                        {
+                            attributes : ["kode_item", "kode_kat_item_tanya", "urutan", "nama_item"],
+                            model : ItemTanya, 
+                            as : "ItemTanya",
+                            where : {
+                                jenis_item : "default"
+                            }
+                        }
+                    ]
+                }
+            ],
+            order : [
+            [{ model: KatItemTanya, as: "KatItemTanya" }, { model: ItemTanya, as: "ItemTanya" }, "urutan", "ASC"]   
+            ]
+        })
+
+        if(!listPertanyaan) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tidak Ada")
+
+        return listPertanyaan
+    } catch (error) {
+        console.log(error);
+        
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const storeProfilVendor = async (request:StoreProfilVendorSchema["body"]) : Promise<any> => {
+    try {
+        const profil : StoreProfilVendorSchema["body"]["profil"] = request.profil
+
+        const arrGagal : any[] = []
+
+        const arrBerhasil : any[] = []
+
+        await Promise.all(profil.map(async(item : any) => {
+            const exProfil = await TrxJawabProfil.findOne({
+                where : {
+                    kode_item : item.kode_item,
+                    kode_vendor : item.kode_vendor,
+                }
+            })
+            if(exProfil) {
+                arrGagal.push({
+                    kode_vendor : exProfil.kode_vendor,
+                    kode_item : exProfil.kode_item,
+                    isian : exProfil.isian
+                })
+            }
+            if(!exProfil) {
+                arrBerhasil.push({
+                    kode_vendor : item.kode_vendor,
+                    kode_item : item.kode_item,
+                    isian : item.isian
+                })
+            }
+        }) 
+    )
+        
+        const storeProfil = await TrxJawabProfil.bulkCreate(arrBerhasil)
+
+        if(arrBerhasil.length === 0) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Store ke Profil Vendor")
+
+        return storeProfil
+        
+        
+    } catch (error) {
+        console.log(error)
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+
+
+
+const tesDomisili = async (id:ParameterSchema["params"]["id"]) => {
+    try {
+        const queryJawabItem = await db.query(`
+            SELECT c.kode_vendor, c.nama_perusahaan, b.kode_item, b.nama_item, b.tipe_input, a.isian 
+                FROM trx_jawab_profil a JOIN 
+                ref_item_tanya b ON a.kode_item = b.kode_item
+                JOIN ref_vendor c
+                ON a.kode_vendor = c.kode_vendor
+                WHERE c.kode_vendor = :id
+            `, {
+                replacements : {id : id},
+                type : QueryTypes.SELECT
+            })
+   
+        // console.log(queryJawabItem)
+
+        const domisiliQuery = await Domisili.findAll({
+            raw : true
+        })
+
+        queryJawabItem.forEach((item: any) => {
+            if (item.tipe_input === "select") {
+              const matchingDomisili = domisiliQuery.find(
+                (dom: any) => dom.kode_domisili === parseInt(item.isian)
+              );
+              
+              item.domisili = matchingDomisili 
+                ? {
+                    kode_domisili: matchingDomisili.kode_domisili,
+                    nama_domisili: matchingDomisili.nama_domisili
+                  }
+                : null;
+            }
+          });         
+
+        return queryJawabItem
+        
+
+    } catch (error) {
+        console.log(error);
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+
+
 export default {
     getMenuAll,
     getSubMenu,
-    katItemTanya
+    katItemTanya,
+    listPertanyaanPerorangan,
+    storeProfilVendor,
+    tesDomisili
 }

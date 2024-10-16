@@ -9,7 +9,7 @@ export type TokenPromiseuser = {
 
 export type RegisterExternal = {
   id : number; 
-  email : string;
+  email : string ; 
   username : string | null | undefined;
   password : string;
   statusPengguna : string;
