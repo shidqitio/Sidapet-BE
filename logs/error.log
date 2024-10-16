@@ -173,3 +173,12 @@
     at Generator.next (<anonymous>)
     at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\vendorRegister-controller.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2024-10-16T19:32:48.751] [ERROR] error - Testing Error Get All By Status Vendor Error: Internal server error.
+[2024-10-16T19:32:48.752] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:765:19
+    at Generator.throw (<anonymous>)
+    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:29:65)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}

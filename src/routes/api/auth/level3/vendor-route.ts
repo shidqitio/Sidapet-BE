@@ -26,5 +26,7 @@ router.get("/get-vendor/:id", vendorRegisterController.getRegisterVendorDetail)
 
 router.get("/vendor-status/:id",validate(paramaterStatusVendorSchema), vendorRegisterController.getVendorbyStatusVerifikasi)
 
+router.post("/vendor-search/:id", validate(paramaterStatusVendorSchema), vendorRegisterController.getVendorbyStatusVerifikasiSearch)
+
 export default router
 
