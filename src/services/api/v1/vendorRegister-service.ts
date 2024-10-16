@@ -230,7 +230,22 @@ const getRegisterVendorDetail = async (id:ParameterSchema["params"]["id"]) => {
         })
 
         const vendorRegisterDetailView  : RegisterVendor | null= await RegisterVendor.findOne({
-            attributes : {exclude : ["ucr","uch","udcr","udch", "password","user_verif", "alasan_ditolak", "swafoto"]},
+             attributes : [
+                "kode_register",
+                "kode_vendor",
+                "kode_jenis_vendor",
+                "nama_perusahaan",
+                "email",
+                "nomor_handphone",
+                "status_register",
+                "alasan_ditolak",
+                "message",
+                "user_verif",
+                "similarity",
+                "distance_percentage",
+                "distance_point",
+                "keypass",
+            ],
             where : {
                  kode_register: id
             },
@@ -241,7 +256,8 @@ const getRegisterVendorDetail = async (id:ParameterSchema["params"]["id"]) => {
                     attributes : ["kode_jenis_vendor", "jenis_vendor"]
                 }
             ],
-            raw : true
+            raw : true,
+            nest : true
         })
 
 
@@ -254,11 +270,10 @@ const getRegisterVendorDetail = async (id:ParameterSchema["params"]["id"]) => {
         if(vendorRegisterDetail.swafoto) {
                 let path : string = `${getConfig('ENCRYPT_SAVE_FOTO')}/${vendorRegisterDetail.swafoto}`
 
-                console.log(path);
                 
                 
-                const decrypt = await decryptImage(path, vendorRegisterDetailView.keypass)                    
-    
+                const decrypt = await decryptImage(path, vendorRegisterDetailView.keypass)      
+                    
                 let combinedObject = {...vendorRegisterDetailView, ...decrypt}
 
                 return combinedObject
@@ -289,7 +304,6 @@ const getRegisterVendorDetail = async (id:ParameterSchema["params"]["id"]) => {
                 {
                     model : JenisVendor, 
                     as : "JenisVendor",
-                    attributes : []
                 }
             ]
         })
