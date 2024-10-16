@@ -1,482 +1,18 @@
-[2024-10-04T15:16:37.067] [DEBUG] default - TypeError: Cannot read properties of undefined (reading 'path')
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:166:56
+[2024-10-16T14:06:39.670] [DEBUG] default - TypeError: this.build(...).save is not a function
+    at Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2311:8)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:169:50
     at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5)
-[2024-10-04T15:17:01.824] [DEBUG] default - Error: ModuleNotFoundError: No module named 'face_recognition'
-    at PythonShell.parseError (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:376:21)
-    at terminateIfNeeded (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:239:32)
-    at ChildProcess.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:230:13)
-    at ChildProcess.emit (node:events:513:28)
-    at ChildProcess.emit (node:domain:489:12)
-    at Process.ChildProcess._handle.onexit (node:internal/child_process:291:12)
-    ----- Python Traceback -----
-    File "D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\python\facerecognitionpersonalid.py", line 1, in <module>
-      import face_recognition {
-  traceback: 'Traceback (most recent call last):\r\n' +
-    '  File "D:\\Dev SIPPP\\PMO\\sidapet-be-reb\\rebuild-sidapet-be\\src\\python\\facerecognitionpersonalid.py", line 1, in <module>\r\n' +
-    '    import face_recognition\r\n' +
-    "ModuleNotFoundError: No module named 'face_recognition'\r\n",
-  executable: 'python',
-  options: null,
-  script: 'src\\python\\facerecognitionpersonalid.py',
-  args: [
-    'D:\\Dev SIPPP\\PMO\\public\\sidapet\\images\\foto-ktp\\userphoto-1728029820198.png'
-  ],
-  exitCode: 1,
-  logs: []
-}
-[2024-10-04T15:34:31.034] [DEBUG] default - Error [SequelizeValidationError]: notNull Violation: Vendor.kode_vendor cannot be null
-    at InstanceValidator._validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:78:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async InstanceValidator._validateAndRunHooks (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:111:7)
-    at async InstanceValidator.validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:93:12)
-    at async Vendor.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4076:7)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
-  errors: [
-    {
-      message: 'Vendor.kode_vendor cannot be null',
-      type: 'notNull Violation',
-      path: 'kode_vendor',
-      value: null,
-      origin: 'CORE',
-      instance: [Object],
-      validatorKey: 'is_null',
-      validatorName: null,
-      validatorArgs: []
-    }
-  ]
-}
-[2024-10-04T15:34:37.149] [DEBUG] default - Error [SequelizeValidationError]: notNull Violation: Vendor.kode_vendor cannot be null
-    at InstanceValidator._validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:78:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async InstanceValidator._validateAndRunHooks (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:111:7)
-    at async InstanceValidator.validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:93:12)
-    at async Vendor.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4076:7)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
-  errors: [
-    {
-      message: 'Vendor.kode_vendor cannot be null',
-      type: 'notNull Violation',
-      path: 'kode_vendor',
-      value: null,
-      origin: 'CORE',
-      instance: [Object],
-      validatorKey: 'is_null',
-      validatorName: null,
-      validatorArgs: []
-    }
-  ]
-}
-[2024-10-04T15:35:12.207] [DEBUG] default - Error [SequelizeValidationError]: notNull Violation: Vendor.kode_vendor cannot be null
-    at InstanceValidator._validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:78:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async InstanceValidator._validateAndRunHooks (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:111:7)
-    at async InstanceValidator.validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:93:12)
-    at async Vendor.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4076:7)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
-  errors: [
-    {
-      message: 'Vendor.kode_vendor cannot be null',
-      type: 'notNull Violation',
-      path: 'kode_vendor',
-      value: null,
-      origin: 'CORE',
-      instance: [Object],
-      validatorKey: 'is_null',
-      validatorName: null,
-      validatorArgs: []
-    }
-  ]
-}
-[2024-10-04T15:35:28.103] [DEBUG] default - Error [SequelizeValidationError]: notNull Violation: Vendor.kode_vendor cannot be null
-    at InstanceValidator._validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:78:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async InstanceValidator._validateAndRunHooks (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:111:7)
-    at async InstanceValidator.validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:93:12)
-    at async Vendor.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4076:7)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
-  errors: [
-    {
-      message: 'Vendor.kode_vendor cannot be null',
-      type: 'notNull Violation',
-      path: 'kode_vendor',
-      value: null,
-      origin: 'CORE',
-      instance: [Object],
-      validatorKey: 'is_null',
-      validatorName: null,
-      validatorArgs: []
-    }
-  ]
-}
-[2024-10-04T15:37:17.358] [DEBUG] default - Error [SequelizeValidationError]: notNull Violation: Vendor.kode_vendor cannot be null
-    at InstanceValidator._validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:78:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async InstanceValidator._validateAndRunHooks (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:111:7)
-    at async InstanceValidator.validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:93:12)
-    at async Vendor.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4076:7)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
-  errors: [
-    {
-      message: 'Vendor.kode_vendor cannot be null',
-      type: 'notNull Violation',
-      path: 'kode_vendor',
-      value: null,
-      origin: 'CORE',
-      instance: [Object],
-      validatorKey: 'is_null',
-      validatorName: null,
-      validatorArgs: []
-    }
-  ]
-}
-[2024-10-04T15:37:49.698] [DEBUG] default - Error [SequelizeValidationError]: notNull Violation: Vendor.kode_vendor cannot be null
-    at InstanceValidator._validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:78:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async InstanceValidator._validateAndRunHooks (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:111:7)
-    at async InstanceValidator.validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:93:12)
-    at async Vendor.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4076:7)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
-  errors: [
-    {
-      message: 'Vendor.kode_vendor cannot be null',
-      type: 'notNull Violation',
-      path: 'kode_vendor',
-      value: null,
-      origin: 'CORE',
-      instance: [Object],
-      validatorKey: 'is_null',
-      validatorName: null,
-      validatorArgs: []
-    }
-  ]
-}
-[2024-10-04T15:42:39.306] [DEBUG] default - Error [SequelizeValidationError]: notNull Violation: Vendor.kode_vendor cannot be null
-    at InstanceValidator._validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:78:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async InstanceValidator._validateAndRunHooks (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:111:7)
-    at async InstanceValidator.validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:93:12)
-    at async Vendor.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4076:7)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
-  errors: [
-    {
-      message: 'Vendor.kode_vendor cannot be null',
-      type: 'notNull Violation',
-      path: 'kode_vendor',
-      value: null,
-      origin: 'CORE',
-      instance: [Object],
-      validatorKey: 'is_null',
-      validatorName: null,
-      validatorArgs: []
-    }
-  ]
-}
-[2024-10-04T15:46:49.235] [DEBUG] default - Error [SequelizeValidationError]: notNull Violation: Vendor.kode_vendor cannot be null
-    at InstanceValidator._validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:78:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async InstanceValidator._validateAndRunHooks (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:111:7)
-    at async InstanceValidator.validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:93:12)
-    at async Vendor.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4076:7)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
-  errors: [
-    {
-      message: 'Vendor.kode_vendor cannot be null',
-      type: 'notNull Violation',
-      path: 'kode_vendor',
-      value: null,
-      origin: 'CORE',
-      instance: [Object],
-      validatorKey: 'is_null',
-      validatorName: null,
-      validatorArgs: []
-    }
-  ]
-}
-[2024-10-04T15:48:58.590] [DEBUG] default - Error [SequelizeValidationError]: notNull Violation: Vendor.kode_vendor cannot be null
-    at InstanceValidator._validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:78:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async InstanceValidator._validateAndRunHooks (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:111:7)
-    at async InstanceValidator.validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:93:12)
-    at async Vendor.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4076:7)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
-  errors: [
-    {
-      message: 'Vendor.kode_vendor cannot be null',
-      type: 'notNull Violation',
-      path: 'kode_vendor',
-      value: null,
-      origin: 'CORE',
-      instance: [Object],
-      validatorKey: 'is_null',
-      validatorName: null,
-      validatorArgs: []
-    }
-  ]
-}
-[2024-10-04T15:50:30.897] [DEBUG] default - Error [SequelizeValidationError]: notNull Violation: Vendor.kode_vendor cannot be null
-    at InstanceValidator._validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:78:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async InstanceValidator._validateAndRunHooks (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:111:7)
-    at async InstanceValidator.validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:93:12)
-    at async Vendor.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4076:7)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
-  errors: [
-    {
-      message: 'Vendor.kode_vendor cannot be null',
-      type: 'notNull Violation',
-      path: 'kode_vendor',
-      value: null,
-      origin: 'CORE',
-      instance: [Object],
-      validatorKey: 'is_null',
-      validatorName: null,
-      validatorArgs: []
-    }
-  ]
-}
-[2024-10-04T15:53:21.599] [DEBUG] default - Error [SequelizeValidationError]: notNull Violation: Vendor.kode_vendor cannot be null
-    at InstanceValidator._validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:78:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async InstanceValidator._validateAndRunHooks (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:111:7)
-    at async InstanceValidator.validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:93:12)
-    at async Vendor.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4076:7)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
-  errors: [
-    {
-      message: 'Vendor.kode_vendor cannot be null',
-      type: 'notNull Violation',
-      path: 'kode_vendor',
-      value: null,
-      origin: 'CORE',
-      instance: [Object],
-      validatorKey: 'is_null',
-      validatorName: null,
-      validatorArgs: []
-    }
-  ]
-}
-[2024-10-04T15:56:49.053] [DEBUG] default - Error [SequelizeValidationError]: notNull Violation: Vendor.kode_vendor cannot be null
-    at InstanceValidator._validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:78:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async InstanceValidator._validateAndRunHooks (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:111:7)
-    at async InstanceValidator.validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:93:12)
-    at async Vendor.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4076:7)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
-  errors: [
-    {
-      message: 'Vendor.kode_vendor cannot be null',
-      type: 'notNull Violation',
-      path: 'kode_vendor',
-      value: null,
-      origin: 'CORE',
-      instance: [Object],
-      validatorKey: 'is_null',
-      validatorName: null,
-      validatorArgs: []
-    }
-  ]
-}
-[2024-10-04T15:59:07.486] [DEBUG] default - Error [SequelizeValidationError]: notNull Violation: Vendor.kode_vendor cannot be null
-    at InstanceValidator._validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:78:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async InstanceValidator._validateAndRunHooks (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:111:7)
-    at async InstanceValidator.validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:93:12)
-    at async Vendor.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4076:7)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
-  errors: [
-    {
-      message: 'Vendor.kode_vendor cannot be null',
-      type: 'notNull Violation',
-      path: 'kode_vendor',
-      value: null,
-      origin: 'CORE',
-      instance: [Object],
-      validatorKey: 'is_null',
-      validatorName: null,
-      validatorArgs: []
-    }
-  ]
-}
-[2024-10-04T16:00:43.606] [DEBUG] default - Error [SequelizeValidationError]: notNull Violation: Vendor.kode_vendor cannot be null
-    at InstanceValidator._validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:78:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async InstanceValidator._validateAndRunHooks (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:111:7)
-    at async InstanceValidator.validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:93:12)
-    at async Vendor.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4076:7)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
-  errors: [
-    {
-      message: 'Vendor.kode_vendor cannot be null',
-      type: 'notNull Violation',
-      path: 'kode_vendor',
-      value: null,
-      origin: 'CORE',
-      instance: [Object],
-      validatorKey: 'is_null',
-      validatorName: null,
-      validatorArgs: []
-    }
-  ]
-}
-[2024-10-04T16:02:08.520] [DEBUG] default - Error [SequelizeValidationError]: notNull Violation: Vendor.kode_vendor cannot be null
-    at InstanceValidator._validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:78:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async InstanceValidator._validateAndRunHooks (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:111:7)
-    at async InstanceValidator.validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:93:12)
-    at async Vendor.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4076:7)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
-  errors: [
-    {
-      message: 'Vendor.kode_vendor cannot be null',
-      type: 'notNull Violation',
-      path: 'kode_vendor',
-      value: null,
-      origin: 'CORE',
-      instance: [Object],
-      validatorKey: 'is_null',
-      validatorName: null,
-      validatorArgs: []
-    }
-  ]
-}
-[2024-10-04T16:03:08.109] [DEBUG] default - Error [SequelizeValidationError]: notNull Violation: Vendor.kode_vendor cannot be null
-    at InstanceValidator._validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:78:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async InstanceValidator._validateAndRunHooks (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:111:7)
-    at async InstanceValidator.validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:93:12)
-    at async Vendor.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4076:7)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
-  errors: [
-    {
-      message: 'Vendor.kode_vendor cannot be null',
-      type: 'notNull Violation',
-      path: 'kode_vendor',
-      value: null,
-      origin: 'CORE',
-      instance: [Object],
-      validatorKey: 'is_null',
-      validatorName: null,
-      validatorArgs: []
-    }
-  ]
-}
-[2024-10-04T16:04:10.363] [DEBUG] default - Error: ModuleNotFoundError: No module named 'face_recognition'
-    at PythonShell.parseError (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:376:21)
-    at terminateIfNeeded (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:239:32)
-    at ChildProcess.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:230:13)
-    at ChildProcess.emit (node:events:513:28)
-    at ChildProcess.emit (node:domain:489:12)
-    at Process.ChildProcess._handle.onexit (node:internal/child_process:291:12)
-    ----- Python Traceback -----
-    File "D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\python\facerecognitionpersonalid.py", line 1, in <module>
-      import face_recognition {
-  traceback: 'Traceback (most recent call last):\r\n' +
-    '  File "D:\\Dev SIPPP\\PMO\\sidapet-be-reb\\rebuild-sidapet-be\\src\\python\\facerecognitionpersonalid.py", line 1, in <module>\r\n' +
-    '    import face_recognition\r\n' +
-    "ModuleNotFoundError: No module named 'face_recognition'\r\n",
-  executable: 'python',
-  options: null,
-  script: 'src\\python\\facerecognitionpersonalid.py',
-  args: [
-    'D:\\Dev SIPPP\\PMO\\public\\sidapet\\images\\foto-ktp\\userphoto-1728032649264.png'
-  ],
-  exitCode: 1,
-  logs: []
-}
-[2024-10-04T16:04:27.007] [DEBUG] default - Error [SequelizeValidationError]: notNull Violation: Vendor.kode_vendor cannot be null
-    at InstanceValidator._validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:78:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async InstanceValidator._validateAndRunHooks (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:111:7)
-    at async InstanceValidator.validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:93:12)
-    at async Vendor.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4076:7)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
-  errors: [
-    {
-      message: 'Vendor.kode_vendor cannot be null',
-      type: 'notNull Violation',
-      path: 'kode_vendor',
-      value: null,
-      origin: 'CORE',
-      instance: [Object],
-      validatorKey: 'is_null',
-      validatorName: null,
-      validatorArgs: []
-    }
-  ]
-}
-[2024-10-04T16:11:23.204] [DEBUG] default - Error [SequelizeValidationError]: notNull Violation: Vendor.kode_vendor cannot be null
-    at InstanceValidator._validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:78:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async InstanceValidator._validateAndRunHooks (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:111:7)
-    at async InstanceValidator.validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:93:12)
-    at async Vendor.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4076:7)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
-  errors: [
-    {
-      message: 'Vendor.kode_vendor cannot be null',
-      type: 'notNull Violation',
-      path: 'kode_vendor',
-      value: null,
-      origin: 'CORE',
-      instance: [Object],
-      validatorKey: 'is_null',
-      validatorName: null,
-      validatorArgs: []
-    }
-  ]
-}
-[2024-10-04T16:11:48.633] [DEBUG] default - Error [SequelizeValidationError]: notNull Violation: Vendor.kode_vendor cannot be null
-    at InstanceValidator._validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:78:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async InstanceValidator._validateAndRunHooks (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:111:7)
-    at async InstanceValidator.validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:93:12)
-    at async Vendor.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4076:7)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
-  errors: [
-    {
-      message: 'Vendor.kode_vendor cannot be null',
-      type: 'notNull Violation',
-      path: 'kode_vendor',
-      value: null,
-      origin: 'CORE',
-      instance: [Object],
-      validatorKey: 'is_null',
-      validatorName: null,
-      validatorArgs: []
-    }
-  ]
-}
-[2024-10-04T16:13:20.875] [DEBUG] default - Error [SequelizeValidationError]: notNull Violation: Vendor.kode_vendor cannot be null
-    at InstanceValidator._validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:78:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async InstanceValidator._validateAndRunHooks (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:111:7)
-    at async InstanceValidator.validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:93:12)
-    at async Vendor.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4076:7)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
-  errors: [
-    {
-      message: 'Vendor.kode_vendor cannot be null',
-      type: 'notNull Violation',
-      path: 'kode_vendor',
-      value: null,
-      origin: 'CORE',
-      instance: [Object],
-      validatorKey: 'is_null',
-      validatorName: null,
-      validatorArgs: []
-    }
-  ]
-}
-[2024-10-04T16:20:39.319] [DEBUG] default - Error
+[2024-10-16T14:07:54.846] [DEBUG] default - Error
     at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
     at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
     at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1001:12)
-    at async Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:21) {
+    at async PostgresQueryInterface.bulkInsert (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:881:21)
+    at async recursiveBulkCreate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2850:25)
+    at async Function.bulkCreate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2976:12) {
   name: 'SequelizeDatabaseError',
-  parent: error: sintaks masukan tidak valid untuk tipe smallint : « :id »
+  parent: error: null value in column "kode_jawab_profil" of relation "trx_jawab_profil" violates not-null constraint
       at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
       at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
       at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
@@ -487,27 +23,27 @@
       at readableAddChunk (node:internal/streams/readable:297:9)
       at Socket.Readable.push (node:internal/streams/readable:234:10)
       at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
-    length: 129,
+    length: 254,
     severity: 'ERROR',
-    code: '22P02',
-    detail: undefined,
+    code: '23502',
+    detail: 'Baris gagal berisi (null, 19, 52, Tes Usaha)',
     hint: undefined,
-    position: '267',
+    position: undefined,
     internalPosition: undefined,
     internalQuery: undefined,
     where: undefined,
-    schema: undefined,
-    table: undefined,
-    column: undefined,
+    schema: 'public',
+    table: 'trx_jawab_profil',
+    column: 'kode_jawab_profil',
     dataType: undefined,
     constraint: undefined,
-    file: 'numutils.c',
-    line: '358',
-    routine: 'pg_strtoint16_safe',
-    sql: `SELECT "kode_kat_dokumen_vendor", "kode_jenis_vendor", "urutan", "is_main", "is_has_sub", "main_kat", "nama_kategori" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" WHERE "KatDokumenVendor"."is_main" = true AND "KatDokumenVendor"."kode_jenis_vendor" = ':id';`,
+    file: 'execMain.c',
+    line: '2009',
+    routine: 'ExecConstraints',
+    sql: `INSERT INTO "public"."trx_jawab_profil" ("kode_jawab_profil","kode_vendor","kode_item","isian") VALUES (NULL,19,52,'Tes Usaha'),(NULL,19,54,'Jl. Legoso') RETURNING "kode_jawab_profil","kode_vendor","kode_item","isian";`,
     parameters: undefined
   },
-  original: error: sintaks masukan tidak valid untuk tipe smallint : « :id »
+  original: error: null value in column "kode_jawab_profil" of relation "trx_jawab_profil" violates not-null constraint
       at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
       at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
       at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
@@ -518,26 +54,26 @@
       at readableAddChunk (node:internal/streams/readable:297:9)
       at Socket.Readable.push (node:internal/streams/readable:234:10)
       at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
-    length: 129,
+    length: 254,
     severity: 'ERROR',
-    code: '22P02',
-    detail: undefined,
+    code: '23502',
+    detail: 'Baris gagal berisi (null, 19, 52, Tes Usaha)',
     hint: undefined,
-    position: '267',
+    position: undefined,
     internalPosition: undefined,
     internalQuery: undefined,
     where: undefined,
-    schema: undefined,
-    table: undefined,
-    column: undefined,
+    schema: 'public',
+    table: 'trx_jawab_profil',
+    column: 'kode_jawab_profil',
     dataType: undefined,
     constraint: undefined,
-    file: 'numutils.c',
-    line: '358',
-    routine: 'pg_strtoint16_safe',
-    sql: `SELECT "kode_kat_dokumen_vendor", "kode_jenis_vendor", "urutan", "is_main", "is_has_sub", "main_kat", "nama_kategori" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" WHERE "KatDokumenVendor"."is_main" = true AND "KatDokumenVendor"."kode_jenis_vendor" = ':id';`,
+    file: 'execMain.c',
+    line: '2009',
+    routine: 'ExecConstraints',
+    sql: `INSERT INTO "public"."trx_jawab_profil" ("kode_jawab_profil","kode_vendor","kode_item","isian") VALUES (NULL,19,52,'Tes Usaha'),(NULL,19,54,'Jl. Legoso') RETURNING "kode_jawab_profil","kode_vendor","kode_item","isian";`,
     parameters: undefined
   },
-  sql: `SELECT "kode_kat_dokumen_vendor", "kode_jenis_vendor", "urutan", "is_main", "is_has_sub", "main_kat", "nama_kategori" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" WHERE "KatDokumenVendor"."is_main" = true AND "KatDokumenVendor"."kode_jenis_vendor" = ':id';`,
+  sql: `INSERT INTO "public"."trx_jawab_profil" ("kode_jawab_profil","kode_vendor","kode_item","isian") VALUES (NULL,19,52,'Tes Usaha'),(NULL,19,54,'Jl. Legoso') RETURNING "kode_jawab_profil","kode_vendor","kode_item","isian";`,
   parameters: {}
 }

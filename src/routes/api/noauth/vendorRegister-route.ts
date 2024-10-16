@@ -19,6 +19,8 @@ const router = express.Router();
 router.post("/register", uploadImage.single("file"), validate(payloadRegisterSchema), vendorRegisterController.registerVendor)
 router.get("/register-usman/:id", validate(parameterSchema), vendorRegisterController.insertExternaltoUsman)
 
+router.post("/migrasi-usman", vendorRegisterController.migrasiUserUsman)
+
 
 
 export default router

@@ -129,6 +129,19 @@ const insertExternaltoUsman = async (
     }
 }
 
+const migrasiUserUsman = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const response = await vendorRegisterService.migrasiUserUsman()
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Migrasi Data Usman", response)
+    } catch (error) {
+        errorLogger.error(`Testing Error Migrasi Usman ${error}`)
+        next(error)
+    }
+}
 
 export default {
     getAllVendor, 
@@ -136,5 +149,6 @@ export default {
     getVendorbyStatusVerifikasi,
     updateStatusVendor,
     insertExternaltoUsman,
-    registerVendor
+    registerVendor,
+    migrasiUserUsman
 }

@@ -37,7 +37,8 @@ TrxJawabProfil.init(
         kode_jawab_profil : {
             type : DataTypes.INTEGER(),
             allowNull : false,
-            primaryKey : true
+            primaryKey : true,
+            autoIncrement : true
         },
         kode_vendor : {
             type : DataTypes.INTEGER(),

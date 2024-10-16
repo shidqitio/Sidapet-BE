@@ -222,7 +222,7 @@ const registerVendor = async (request:PayloadRegisterSchema["body"], file : Expr
 const getRegisterVendorDetail = async (id:ParameterSchema["params"]["id"]) => {
     try {
         const vendorRegisterDetail : RegisterVendor | null = await RegisterVendor.findOne({
-            attributes : {exclude : ["ucr","uch","udcr","udch", "password", "nomor_handphone", "user_verif", "alasan_ditolak"]},
+            attributes : {exclude : ["ucr","uch","udcr","udch", "password", "user_verif", "alasan_ditolak"]},
             where : {
                 kode_register : id
             },
@@ -230,12 +230,20 @@ const getRegisterVendorDetail = async (id:ParameterSchema["params"]["id"]) => {
         })
 
         const vendorRegisterDetailView  : RegisterVendor | null= await RegisterVendor.findOne({
-            attributes : {exclude : ["ucr","uch","udcr","udch", "password", "nomor_handphone", "user_verif", "alasan_ditolak", "swafoto"]},
+            attributes : {exclude : ["ucr","uch","udcr","udch", "password","user_verif", "alasan_ditolak", "swafoto"]},
             where : {
                  kode_register: id
             },
+            include : [
+                {
+                    model : JenisVendor,
+                    as : "JenisVendor",
+                    attributes : ["kode_jenis_vendor", "jenis_vendor"]
+                }
+            ],
             raw : true
         })
+
 
 
         if(!vendorRegisterDetail) throw new CustomError(httpCode.notFound, responseStatus.success, "Vendor Detail Tidak Ada")
@@ -257,7 +265,23 @@ const getRegisterVendorDetail = async (id:ParameterSchema["params"]["id"]) => {
         }
 
         const vendorRegisterResult : RegisterVendor | null = await RegisterVendor.findOne({
-            attributes : {exclude : ["ucr","uch","udcr","udch","password", "swafoto"]},
+            attributes : [
+                "kode_register",
+                "kode_vendor",
+                "kode_jenis_vendor",
+                [literal(`"JenisVendor","jenis_vendor"`), "jenis_vendor"],
+                "nama_perusahaan",
+                "email",
+                "nomor_handphone",
+                "status_register",
+                "alasan_ditolak",
+                "message",
+                "user_verif",
+                "similarity",
+                "distance_percentage",
+                "distance_point",
+                "keypass",
+            ],
             where : {
                 kode_register : id
             }, 
@@ -265,6 +289,7 @@ const getRegisterVendorDetail = async (id:ParameterSchema["params"]["id"]) => {
                 {
                     model : JenisVendor, 
                     as : "JenisVendor",
+                    attributes : []
                 }
             ]
         })
@@ -485,6 +510,74 @@ const insertExternaltoUsman = async (
 
 
 
+//MIGRASI USER 
+const migrasiUserUsman = async () : Promise<RegisterVendor[]> => {
+    try {
+        const vendorRegis : RegisterVendor[] = await RegisterVendor.findAll({
+            attributes : {exclude : ["ucr","uch","udcr", "udch"]},
+            limit : 5
+        })
+
+        if(vendorRegis.length === 0) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tidak Ada")
+
+        const arr : any= []
+
+        for(let x in vendorRegis) {
+            let statusPengguna
+            if(vendorRegis[x].kode_jenis_vendor === 1) {
+                statusPengguna = "perusahaan"
+            } else {
+                statusPengguna = "perorangan"
+            }
+
+            if(!vendorRegis[x].email) {
+                console.warn("Email Tidak Ditemukan", vendorRegis[x]);
+                continue;
+            }
+
+            const [exEmail, errorCheckEmail] : [any, string] = await checkEmail(vendorRegis[x].email as string)
+        
+            if(errorCheckEmail) {
+                console.warn("Error Check Email", vendorRegis[x].email)
+                continue;
+            }
+
+            if(exEmail.length > 0   ){
+                console.warn("Email Sudah Terdaftar", vendorRegis[x].email)
+                continue;
+            } 
+            
+            const [regisExternal, errorRegisterExternal] : [any, string] = await registerExternal({
+                id : vendorRegis[x].kode_register,
+                email : vendorRegis[x].email as string,
+                username : vendorRegis[x].nama_perusahaan,
+                password : vendorRegis[x].password,
+                statusPengguna : statusPengguna
+            })
+    
+            if(errorRegisterExternal) {
+                console.warn("Email Gagal Dibuat Usman", vendorRegis[x].email)
+                continue;
+            }
+
+            arr.push[regisExternal]
+        }
+
+        return arr
+
+    } catch (error) {
+        console.log(error)
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code, error.status,error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500,"error", "Internal server error.")
+        }
+    }
+}
+
+
 
 
 export default {
@@ -493,7 +586,8 @@ export default {
     getVendorbyStatusVerifikasi,
     updateStatusVendor,
     insertExternaltoUsman,
-    registerVendor
+    registerVendor,
+    migrasiUserUsman
 }
 
 
