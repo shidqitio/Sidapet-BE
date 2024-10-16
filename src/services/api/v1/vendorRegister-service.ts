@@ -14,6 +14,7 @@ import decryptImage from "@utils/decryptimage"
 import {checkEmail, registerExternal} from "@services/usman"
 import logger, { errorLogger, debugLogger } from "@config/logger";
 
+
 import { httpCode, responseStatus } from "@utils/prefix";
 
 import fs from "fs"
@@ -82,7 +83,8 @@ const getVendorbyStatusVerifikasi = async (
 
         const {rows , count} = await RegisterVendor.findAndCountAll({
             where : {
-                status_register : id
+                status_register : id,
+
             },
             attributes : {exclude : ["password", "udcr", "udch", "ucr", "uch","keypass" ]},
             include : [
@@ -284,7 +286,6 @@ const getRegisterVendorDetail = async (id:ParameterSchema["params"]["id"]) => {
                 "kode_register",
                 "kode_vendor",
                 "kode_jenis_vendor",
-                [literal(`"JenisVendor","jenis_vendor"`), "jenis_vendor"],
                 "nama_perusahaan",
                 "email",
                 "nomor_handphone",
@@ -591,6 +592,185 @@ const migrasiUserUsman = async () : Promise<RegisterVendor[]> => {
     }
 }
 
+//Get All Vendor By Status Verif
+const getVendorbyStatusVerifikasiSearch = async (
+    page:QuerySchema["query"]["page"],
+    limit:QuerySchema["query"]["limit"], id : ParamaterStatusVendorSchema["params"]["id"], search_input : string, jenis_vendor : string) : Promise<RegisterVendor | any> => {
+    try {
+        let pages: number = parseInt(page);
+        let limits: number = parseInt(limit);
+        let offset = 0;
+    
+        if (pages > 1) {
+          offset = (pages - 1) * limits;
+        }
+
+        let findFilter
+
+        //CEK JIKA ADA JENIS VENDOR 
+        if(jenis_vendor !== "0" ) { 
+                //CEK Status Register
+                if(id === "proses") {
+                    findFilter = await RegisterVendor.findAndCountAll({
+                        where : {
+                            status_register : id,
+                            kode_jenis_vendor : jenis_vendor,
+                            [Op.or] : {
+                                nama_perusahaan : {
+                                    [Op.like] : `%${search_input}%`
+                                },
+                                email : {
+                                    [Op.like] : `%${search_input}%`
+                                },
+                                nomor_handphone : {
+                                    [Op.like] : `%${search_input}%`
+                                }
+                            }
+                        },
+                        attributes : {exclude : ["password", "udcr", "udch", "ucr", "uch","keypass" ]},
+                        include : [
+                            {
+                                model : JenisVendor,
+                                as : "JenisVendor",
+                            }
+                        ],
+                        limit : limits,
+                        offset : offset
+                    })
+                } 
+                else {
+                    findFilter = await RegisterVendorHistory.findAndCountAll({
+                        where : {
+                            status_register : id,
+                            kode_jenis_vendor : jenis_vendor,
+                            [Op.or] : {
+                                nama_perusahaan : {
+                                    [Op.like] : `%${search_input}%`
+                                },
+                                email : {
+                                    [Op.like] : `%${search_input}%`
+                                },
+                                nomor_handphone : {
+                                    [Op.like] : `%${search_input}%`
+                                }
+                            }
+                        },
+                        attributes : {exclude : ["password", "udcr", "udch", "ucr", "uch","keypass" ]},
+                        include : [
+                            {
+                                model : JenisVendor,
+                                as : "JenisVendor",
+                            }
+                        ],
+                        limit : limits,
+                        offset : offset
+                    })
+                }
+            }
+            else {
+                 //CEK Status Register
+                if(id === "proses") {
+                    findFilter = await RegisterVendor.findAndCountAll({
+                        where : {
+                            status_register : id,
+                            [Op.or] : {
+                                nama_perusahaan : {
+                                    [Op.like] : `%${search_input}%`
+                                },
+                                email : {
+                                    [Op.like] : `%${search_input}%`
+                                },
+                                nomor_handphone : {
+                                    [Op.like] : `%${search_input}%`
+                                }
+                            }
+                        },
+                        attributes : {exclude : ["password", "udcr", "udch", "ucr", "uch","keypass" ]},
+                        include : [
+                            {
+                                model : JenisVendor,
+                                as : "JenisVendor",
+                            }
+                        ],
+                        limit : limits,
+                        offset : offset
+                    })
+                }
+                else {
+                    findFilter = await RegisterVendorHistory.findAndCountAll({
+                        where : {
+                            status_register : id,
+                            [Op.or] : {
+                                nama_perusahaan : {
+                                    [Op.like] : `%${search_input}%`
+                                },
+                                email : {
+                                    [Op.like] : `%${search_input}%`
+                                },
+                                nomor_handphone : {
+                                    [Op.like] : `%${search_input}%`
+                                }
+                            }
+                        },
+                        attributes : {exclude : ["password", "udcr", "udch", "ucr", "uch","keypass" ]},
+                        include : [
+                            {
+                                model : JenisVendor,
+                                as : "JenisVendor",
+                            }
+                        ],
+                        limit : limits,
+                        offset : offset
+                    })
+                }
+            }
+
+
+            const countDataProses = await RegisterVendor.count({
+                where : {
+                    status_register : "proses"
+                }
+            })
+
+            const countDataTerima = await RegisterVendorHistory.count({
+                where : {
+                    status_register : "terima" 
+                }
+            })
+            
+            const countDataTolak = await RegisterVendorHistory.count({
+                where : {
+                    status_register : "tolak"
+                }
+            })
+
+            const {rows, count} = findFilter
+
+           
+            const resultData = {
+                data_vendor : findFilter.rows,
+                count_proses : countDataProses,
+                count_terima : countDataTerima,
+                count_tolak : countDataTolak,
+                count_data_show : count
+            }
+
+            const arr_data = []
+
+            arr_data.push(resultData)
+
+            return arr_data  
+    } 
+    catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
 
 
 
@@ -601,7 +781,8 @@ export default {
     updateStatusVendor,
     insertExternaltoUsman,
     registerVendor,
-    migrasiUserUsman
+    migrasiUserUsman,
+    getVendorbyStatusVerifikasiSearch
 }
 
 

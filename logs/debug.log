@@ -105,3 +105,14 @@
   exitCode: 1,
   logs: []
 }
+[2024-10-16T19:32:48.693] [DEBUG] default - Error: WHERE parameter "kode_jenis_vendor" has invalid "undefined" value
+    at PostgresQueryGenerator.whereItemQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2445:13)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2434:25
+    at Array.forEach (<anonymous>)
+    at PostgresQueryGenerator.whereItemsQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2432:35)
+    at PostgresQueryGenerator.getWhereConditions (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2860:19)
+    at PostgresQueryGenerator.selectQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:1460:28)
+    at PostgresQueryInterface.rawSelect (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1037:37)
+    at Function.aggregate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2067:45)
+    at Function.count (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2124:31)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)

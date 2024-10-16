@@ -1,5 +1,5 @@
 import { httpCode, responseStatus } from "@utils/prefix";
-import { responseSuccess } from "@utils/response-success";
+import { responseSuccess, responseSuccessCount } from "@utils/response-success";
 import { Request, Response, NextFunction } from "express";
 import { errorLogger, debugLogger } from "@config/logger";
 import {
@@ -143,6 +143,31 @@ const migrasiUserUsman = async (
     }
 }
 
+//Get All Vendor By Status Verif Search
+const getVendorbyStatusVerifikasiSearch = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const page : QuerySchema["query"]["page"] = req.query.page as string
+        const limit : QuerySchema["query"]["limit"] = req.query.limit as string
+
+
+        const id : ParamaterStatusVendorSchema["params"]["id"] = req.params.id as any
+
+        const {search_input, jenis_vendor} = req.body
+
+        const response = await vendorRegisterService.getVendorbyStatusVerifikasiSearch(page, limit, id, search_input, jenis_vendor)
+
+
+        responseSuccessCount(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response, page, limit, response[0].count_data_show)
+    
+    } catch (error) {
+        errorLogger.error(`Testing Error Get All By Status Vendor ${error}`)
+        next(error)
+    }
+}
+
 export default {
     getAllVendor, 
     getRegisterVendorDetail,
@@ -150,5 +175,6 @@ export default {
     updateStatusVendor,
     insertExternaltoUsman,
     registerVendor,
-    migrasiUserUsman
+    migrasiUserUsman,
+    getVendorbyStatusVerifikasiSearch
 }
