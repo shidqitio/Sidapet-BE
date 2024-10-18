@@ -1,12 +1,4 @@
-[2024-10-16T09:15:50.812] [ERROR] error - Error: connect ECONNREFUSED ::1:6000
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:115:13
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 401,
-  status: 'error'
-}
-[2024-10-16T13:47:34.928] [ERROR] error - Error: [2] Token Unauthorized
+[2024-10-18T10:56:18.267] [ERROR] error - Error: Token Not Match
     at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:106:13
     at Generator.next (<anonymous>)
     at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:5:58)
@@ -14,43 +6,7 @@
   code: 401,
   status: 'error'
 }
-[2024-10-16T14:06:39.671] [ERROR] error - Testing Error Store Profil Vendor Error: Internal server error.
-[2024-10-16T14:06:39.672] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:183:19
-    at Generator.throw (<anonymous>)
-    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:6:65)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
-  status: 'error'
-}
-[2024-10-16T14:07:54.847] [ERROR] error - Testing Error Store Profil Vendor Error: Internal server error.
-[2024-10-16T14:07:54.847] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:183:19
-    at Generator.throw (<anonymous>)
-    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:6:65)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
-  status: 'error'
-}
-[2024-10-16T14:21:20.126] [ERROR] error - Testing Error Store Profil Vendor Error: Gagal Store ke Profil Vendor
-[2024-10-16T14:21:20.128] [ERROR] error - Error: Gagal Store ke Profil Vendor
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:194:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 422,
-  status: 'error'
-}
-[2024-10-16T14:22:20.123] [ERROR] error - Testing Error Store Profil Vendor Error: Gagal Store ke Profil Vendor
-[2024-10-16T14:22:20.124] [ERROR] error - Error: Gagal Store ke Profil Vendor
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:194:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 422,
-  status: 'error'
-}
-[2024-10-16T15:06:40.927] [ERROR] error - Error: User Not Authenticate
+[2024-10-18T10:59:33.027] [ERROR] error - Error: Token Not Match
     at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:106:13
     at Generator.next (<anonymous>)
     at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:5:58)
@@ -58,127 +14,11 @@
   code: 401,
   status: 'error'
 }
-[2024-10-16T15:07:33.246] [ERROR] error - Error: User Not Authenticate
+[2024-10-18T11:02:32.112] [ERROR] error - Error: Token Not Match
     at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:106:13
     at Generator.next (<anonymous>)
     at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
   code: 401,
-  status: 'error'
-}
-[2024-10-16T15:14:57.405] [ERROR] error - Error: Token Not Match
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:106:13
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 401,
-  status: 'error'
-}
-[2024-10-16T15:24:56.181] [ERROR] error - Testing Error Register Vendor Error: Email Sudah Terdaftar
-[2024-10-16T15:24:56.182] [ERROR] error - Error: Email Sudah Terdaftar
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:210:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 409,
-  status: 'success'
-}
-[2024-10-16T15:25:40.556] [ERROR] error - Testing Error Register Vendor Error: Internal server error.
-[2024-10-16T15:25:40.557] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:215:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
-  status: 'error'
-}
-[2024-10-16T15:25:59.813] [ERROR] error - Testing Error Register Vendor Error: Internal server error.
-[2024-10-16T15:25:59.814] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:215:19
-    at Generator.throw (<anonymous>)
-    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:29:65)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
-  status: 'error'
-}
-[2024-10-16T15:27:00.831] [ERROR] error - Testing Error Register Vendor TypeError: Converting circular structure to JSON
-    --> starting at object with constructor 'Array'
-    |     index 0 -> object with constructor 'Object'
-    |     property 'parent' -> object with constructor 'Object'
-    --- property 'include' closes the circle
-[2024-10-16T15:27:00.832] [ERROR] error - TypeError: Converting circular structure to JSON
-    --> starting at object with constructor 'Array'
-    |     index 0 -> object with constructor 'Object'
-    |     property 'parent' -> object with constructor 'Object'
-    --- property 'include' closes the circle
-    at JSON.stringify (<anonymous>)
-    at stringify (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\express\lib\response.js:1150:12)
-    at ServerResponse.json (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\express\lib\response.js:271:14)
-    at responseSuccess (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\utils\response-success.ts:29:14)
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\vendorRegister-controller.ts:87:24
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\vendorRegister-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-[2024-10-16T15:27:19.153] [ERROR] error - Testing Error Register Vendor TypeError: Converting circular structure to JSON
-    --> starting at object with constructor 'Array'
-    |     index 0 -> object with constructor 'Object'
-    |     property 'parent' -> object with constructor 'Object'
-    --- property 'include' closes the circle
-[2024-10-16T15:27:19.153] [ERROR] error - TypeError: Converting circular structure to JSON
-    --> starting at object with constructor 'Array'
-    |     index 0 -> object with constructor 'Object'
-    |     property 'parent' -> object with constructor 'Object'
-    --- property 'include' closes the circle
-    at JSON.stringify (<anonymous>)
-    at stringify (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\express\lib\response.js:1150:12)
-    at ServerResponse.json (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\express\lib\response.js:271:14)
-    at responseSuccess (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\utils\response-success.ts:29:14)
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\vendorRegister-controller.ts:87:24
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\vendorRegister-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-[2024-10-16T15:27:55.071] [ERROR] error - Testing Error Register Vendor TypeError: Converting circular structure to JSON
-    --> starting at object with constructor 'Array'
-    |     index 0 -> object with constructor 'Object'
-    |     property 'parent' -> object with constructor 'Object'
-    --- property 'include' closes the circle
-[2024-10-16T15:27:55.071] [ERROR] error - TypeError: Converting circular structure to JSON
-    --> starting at object with constructor 'Array'
-    |     index 0 -> object with constructor 'Object'
-    |     property 'parent' -> object with constructor 'Object'
-    --- property 'include' closes the circle
-    at JSON.stringify (<anonymous>)
-    at stringify (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\express\lib\response.js:1150:12)
-    at ServerResponse.json (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\express\lib\response.js:271:14)
-    at responseSuccess (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\utils\response-success.ts:29:14)
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\vendorRegister-controller.ts:87:24
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\vendorRegister-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-[2024-10-16T15:28:27.084] [ERROR] error - Testing Error Register Vendor TypeError: Converting circular structure to JSON
-    --> starting at object with constructor 'Array'
-    |     index 0 -> object with constructor 'Object'
-    |     property 'parent' -> object with constructor 'Object'
-    --- property 'include' closes the circle
-[2024-10-16T15:28:27.085] [ERROR] error - TypeError: Converting circular structure to JSON
-    --> starting at object with constructor 'Array'
-    |     index 0 -> object with constructor 'Object'
-    |     property 'parent' -> object with constructor 'Object'
-    --- property 'include' closes the circle
-    at JSON.stringify (<anonymous>)
-    at stringify (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\express\lib\response.js:1150:12)
-    at ServerResponse.json (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\express\lib\response.js:271:14)
-    at responseSuccess (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\utils\response-success.ts:29:14)
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\vendorRegister-controller.ts:87:24
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\vendorRegister-controller.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-[2024-10-16T19:32:48.751] [ERROR] error - Testing Error Get All By Status Vendor Error: Internal server error.
-[2024-10-16T19:32:48.752] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:765:19
-    at Generator.throw (<anonymous>)
-    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:29:65)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
   status: 'error'
 }

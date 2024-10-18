@@ -159,8 +159,9 @@ const getVendorbyStatusVerifikasiSearch = async (
 
         const response = await vendorRegisterService.getVendorbyStatusVerifikasiSearch(page, limit, id, search_input, jenis_vendor)
 
+        console.log(response[0].count_data_show)
 
-        responseSuccessCount(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response, page, limit, response.count_data_show)
+        responseSuccessCount(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response, page, limit, response[0].count_data_show)
     
     } catch (error) {
         errorLogger.error(`Testing Error Get All By Status Vendor ${error}`)
