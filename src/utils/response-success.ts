@@ -32,8 +32,10 @@ const responseSuccess = (res: Response, code: number, status: string, message: s
 const responseSuccessCount = (res: Response, code: number, status: string, message: string, data?: any, metaPage?: any, metaLimit?: any, count?: number) => {
 
   const limit = (!metaLimit) ? 10 : parseInt(metaLimit)
-  const countData = !count ? ((!data || !data.length) ? 0 : data.length ) : count
+  const countData = count
   const pageData = (!metaPage) ? (((!data) ? 0 : ((!data.length) ? 0 : data.length)) / limit) : parseInt(metaPage)
+
+  console.log(count)
   
 
   const response: IResponseSuccess = {
