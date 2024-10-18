@@ -463,7 +463,7 @@ const updateStatusVendor = async (
 
        
 
-        await sendMail(exRegisterVendor.email as string, "Pemberitahuan Registrasi", `Registrasi Akun Anda Berhasil Silahkan klink link berikut : https://dinovalley.ut.ac.id/verifikasi-akun?id=${createVendor.kode_vendor}`)
+        await sendMail(exRegisterVendor.email as string, "Pemberitahuan Registrasi", `Registrasi Akun Anda Berhasil Silahkan klink link berikut : https://dinovalley.ut.ac.id/verifikasi-akun?id=${exRegisterVendor.kode_register}`)
 
         
         await t.commit()
