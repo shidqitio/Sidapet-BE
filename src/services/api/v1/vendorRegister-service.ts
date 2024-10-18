@@ -71,7 +71,7 @@ const getAllVendor = async (
 //Get All Vendor By Status Verif
 const getVendorbyStatusVerifikasi = async (
     page:QuerySchema["query"]["page"],
-    limit:QuerySchema["query"]["limit"], id : ParamaterStatusVendorSchema["params"]["id"]) : Promise<{rows : RegisterVendorOutput[], count : number}> => {
+    limit:QuerySchema["query"]["limit"], id : ParamaterStatusVendorSchema["params"]["id"]) : Promise<any> => {
     try {
         let pages: number = parseInt(page);
         let limits: number = parseInt(limit);
@@ -96,6 +96,40 @@ const getVendorbyStatusVerifikasi = async (
             limit : limits,
             offset : offset
         })
+
+        const countDataProses = await RegisterVendor.count({
+            where : {
+                status_register : "proses"
+            }
+        })
+
+        const countDataTerima = await RegisterVendorHistory.count({
+            where : {
+                status_register : "terima" 
+            }
+        })
+        
+        const countDataTolak = await RegisterVendorHistory.count({
+            where : {
+                status_register : "tolak"
+            }
+        })
+
+        const resultData = {
+            data_vendor : rows,
+            count_proses : countDataProses,
+            count_terima : countDataTerima,
+            count_tolak : countDataTolak,
+            count_data_show : count
+        }
+
+        const arr_data = []
+
+        arr_data.push(resultData)
+
+        return arr_data  
+
+
 
         return {rows, count}
     } catch (error) {
@@ -429,7 +463,7 @@ const updateStatusVendor = async (
 
        
 
-        await sendMail(exRegisterVendor.email as string, "Pemberitahuan Registrasi", `Registrasi Akun Anda Berhasil Silahkan klink link berikut : https://dinovalley.ut.ac.id/verifikasi-akun?id=${createVendor.kode_vendor}`)
+        await sendMail(exRegisterVendor.email as string, "Pemberitahuan Registrasi", `Registrasi Akun Anda Berhasil Silahkan klink link berikut : https://dinovalley.ut.ac.id/verifikasi-akun?id=${exRegisterVendor.kode_register}`)
 
         
         await t.commit()
@@ -746,6 +780,7 @@ const getVendorbyStatusVerifikasiSearch = async (
 
             const {rows, count} = findFilter
 
+            console.log(findFilter.rows)
            
             const resultData = {
                 data_vendor : findFilter.rows,
@@ -771,6 +806,7 @@ const getVendorbyStatusVerifikasiSearch = async (
         }
     }
 }
+
 
 
 

@@ -96,6 +96,7 @@ const katItemTanya = async (id:ParameterSchema["params"]["id"]) : Promise<KatDok
     }
 }
 
+//List Pertanyaan Dinasi Perorangan
 const listPertanyaanPerorangan = async (
     id:ParameterSchema["params"]["id"]) : Promise<KatDokumenVendor | null> => {
     try {
@@ -193,6 +194,7 @@ const storeProfilVendor = async (request:StoreProfilVendorSchema["body"]) : Prom
         }
     }
 }
+
 
 
 
