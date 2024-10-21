@@ -11,6 +11,7 @@ interface ITrxJawabProfil {
 	kode_vendor : number;
 	kode_item : number;
 	isian : string | null | undefined;
+    encrypt_key : string | null | undefined
 }
 
 export type TrxJawabProfilOutput = Required<ITrxJawabProfil>
@@ -19,7 +20,8 @@ export type TrxJawabProfilInput = Optional<
 ITrxJawabProfil, 
 "kode_jawab_profil" | 
 "kode_vendor" | 
-"kode_item" 
+"kode_item"  | 
+"encrypt_key"
 >
 
 class TrxJawabProfil 
@@ -29,7 +31,8 @@ class TrxJawabProfil
     declare kode_jawab_profil : number;
     declare kode_vendor : number;
     declare kode_item : number;
-    declare isian : string;
+    declare isian : string | null | undefined;
+    declare encrypt_key: string | null | undefined; 
 }
 
 TrxJawabProfil.init(
@@ -52,6 +55,10 @@ TrxJawabProfil.init(
             type : DataTypes.STRING(),
             allowNull : true,
         },
+        encrypt_key : {
+            type : DataTypes.STRING(), 
+            allowNull : true
+        }
     },
     {
         sequelize : db, 

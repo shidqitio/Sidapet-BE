@@ -3,6 +3,7 @@ import CustomError from "@middleware/error-handler";
 import logger, { errorLogger, debugLogger } from "@config/logger";
 import { httpCode, responseStatus } from "@utils/prefix";
 import db from "@config/database";
+import {uploadPdf} from "@services/pdf_upload"
 
 //Import Model
 import JenisVendor from "@models/jenisVendor-model";
@@ -15,11 +16,16 @@ import Domisili from "@models/domisili-model";
 import {
     ParameterSchema, 
     QuerySchema,
-    StoreProfilVendorSchema
+    StoreProfilVendorSchema,
+    StoreUploadVendorSchema
 } from "@schema/api/profilVendor-schema"
 import { QueryTypes, Sequelize } from "sequelize";
 import sequelize from "sequelize";
 import TrxJawabProfil from "@models/trxJawabProfil-model";
+
+import FormData from "form-data"
+
+import fs from "fs"
 
 //GET MENU 
 const getMenuAll = async (id : ParameterSchema["params"]["id"]) : Promise <KatDokumenVendor[]> => {
@@ -196,6 +202,70 @@ const storeProfilVendor = async (request:StoreProfilVendorSchema["body"]) : Prom
 }
 
 
+const storeUpload = async (request:StoreUploadVendorSchema["body"], file : Express.Multer.File) : Promise<any> => {
+    try {
+        console.log(request.kode_item);
+        
+
+        const exProfil = await TrxJawabProfil.findOne({
+            where : {
+                kode_item : request.kode_item,
+                kode_vendor : request.kode_vendor
+            }
+        })
+
+        if (exProfil) throw new CustomError(httpCode.conflict, responseStatus.success, "Data Sudah Terdaftar")
+
+        console.log("TES PERTAMA : ", file.path)
+
+        const formData = new FormData()
+
+        formData.append('nama_aplikasi','SI-DaPeT')
+        formData.append('file', fs.createReadStream(file.path))
+
+
+        const upload = await uploadPdf(formData)
+
+
+        if(upload[1] !== null || !upload[0]){
+            fs.unlinkSync(file.path)
+            throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
+        }
+            
+
+        console.log(upload[0])
+
+        const create = await TrxJawabProfil.create({
+            kode_item : parseInt(request.kode_item),
+            kode_vendor : parseInt(request.kode_vendor),
+            isian : upload[0].file_name,
+            encrypt_key : upload[0].keypass
+        })    
+
+        if(!create) {
+            fs.unlinkSync(file.path)
+            throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Upload File")
+        }
+           
+
+        if(create) {
+            console.log("TESS DATA KESINI : ", file.path)
+            fs.unlinkSync(file.path)
+        }
+
+        return create
+    } catch (error) {
+        console.log(error);
+        
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
 
 
 
@@ -257,5 +327,6 @@ export default {
     katItemTanya,
     listPertanyaanPerorangan,
     storeProfilVendor,
+    storeUpload,
     tesDomisili
 }

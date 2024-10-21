@@ -12,7 +12,8 @@ enum FileType {
   Invoice = "invoice",
   PdfProfil = 'pdfprofil',
   Pengumuman = "pengumuman",
-  Multiupload = "multiupload"
+  Multiupload = "multiupload",
+  Temporary = "temporary"
 }
 
 // path file
@@ -22,7 +23,8 @@ const destinationMap: Record<FileType, string> = {
   [FileType.UserPhoto] : getConfig('SIDAPET_SAVED_FOTO'),
   [FileType.PdfProfil] : getConfig('SIDAPET_SAVE_PDF'),
   [FileType.Pengumuman] : getConfig('CUSTOM_SAVE_FILE'),
-  [FileType.Multiupload] : getConfig("PDF_MULTI_UPLOAD")
+  [FileType.Multiupload] : getConfig("PDF_MULTI_UPLOAD"),
+  [FileType.Temporary] : getConfig("SIDAPET_TEMPO_FILE")
 };
 
 const allowedMimeTypesImage = ["image/jpeg", "image/png", "image/jpg"];
@@ -31,19 +33,19 @@ const allowMimeTypesCustom = ["application/pdf", "image/jpeg", "image/png", "ima
 
 const storage = multer.diskStorage({
   destination: async (req , file, callback) => {
-    const type: FileType = req.body.type;
+    let type: FileType = req.body.type;
     if (!type) {
-      return callback(new Error("Type harus di isi."), "");
+      type = FileType.Temporary
     }
 
-    if (!(type in destinationMap)) {
-      return callback(
-        new Error(
-          `Type file harus salah satu dari ${Object.values(FileType).join("|")}`
-        ),
-        ""
-      );
-    }
+    // if (!(type in destinationMap)) {
+    //   return callback(
+    //     new Error(
+    //       `Type file harus salah satu dari ${Object.values(FileType).join("|")}`
+    //     ),
+    //     ""
+    //   );
+    // }
 
     const folderPath = destinationMap[type];
 

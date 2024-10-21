@@ -1,118 +1,19 @@
-[2024-10-16T14:06:39.670] [DEBUG] default - TypeError: this.build(...).save is not a function
-    at Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2311:8)
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:169:50
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-[2024-10-16T14:07:54.846] [DEBUG] default - Error
-    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async PostgresQueryInterface.bulkInsert (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:881:21)
-    at async recursiveBulkCreate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2850:25)
-    at async Function.bulkCreate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2976:12) {
-  name: 'SequelizeDatabaseError',
-  parent: error: null value in column "kode_jawab_profil" of relation "trx_jawab_profil" violates not-null constraint
-      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
-      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
-      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
-      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
-      at Socket.emit (node:events:513:28)
-      at Socket.emit (node:domain:489:12)
-      at addChunk (node:internal/streams/readable:324:12)
-      at readableAddChunk (node:internal/streams/readable:297:9)
-      at Socket.Readable.push (node:internal/streams/readable:234:10)
-      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
-    length: 254,
-    severity: 'ERROR',
-    code: '23502',
-    detail: 'Baris gagal berisi (null, 19, 52, Tes Usaha)',
-    hint: undefined,
-    position: undefined,
-    internalPosition: undefined,
-    internalQuery: undefined,
-    where: undefined,
-    schema: 'public',
-    table: 'trx_jawab_profil',
-    column: 'kode_jawab_profil',
-    dataType: undefined,
-    constraint: undefined,
-    file: 'execMain.c',
-    line: '2009',
-    routine: 'ExecConstraints',
-    sql: `INSERT INTO "public"."trx_jawab_profil" ("kode_jawab_profil","kode_vendor","kode_item","isian") VALUES (NULL,19,52,'Tes Usaha'),(NULL,19,54,'Jl. Legoso') RETURNING "kode_jawab_profil","kode_vendor","kode_item","isian";`,
-    parameters: undefined
-  },
-  original: error: null value in column "kode_jawab_profil" of relation "trx_jawab_profil" violates not-null constraint
-      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
-      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
-      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
-      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
-      at Socket.emit (node:events:513:28)
-      at Socket.emit (node:domain:489:12)
-      at addChunk (node:internal/streams/readable:324:12)
-      at readableAddChunk (node:internal/streams/readable:297:9)
-      at Socket.Readable.push (node:internal/streams/readable:234:10)
-      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
-    length: 254,
-    severity: 'ERROR',
-    code: '23502',
-    detail: 'Baris gagal berisi (null, 19, 52, Tes Usaha)',
-    hint: undefined,
-    position: undefined,
-    internalPosition: undefined,
-    internalQuery: undefined,
-    where: undefined,
-    schema: 'public',
-    table: 'trx_jawab_profil',
-    column: 'kode_jawab_profil',
-    dataType: undefined,
-    constraint: undefined,
-    file: 'execMain.c',
-    line: '2009',
-    routine: 'ExecConstraints',
-    sql: `INSERT INTO "public"."trx_jawab_profil" ("kode_jawab_profil","kode_vendor","kode_item","isian") VALUES (NULL,19,52,'Tes Usaha'),(NULL,19,54,'Jl. Legoso') RETURNING "kode_jawab_profil","kode_vendor","kode_item","isian";`,
-    parameters: undefined
-  },
-  sql: `INSERT INTO "public"."trx_jawab_profil" ("kode_jawab_profil","kode_vendor","kode_item","isian") VALUES (NULL,19,52,'Tes Usaha'),(NULL,19,54,'Jl. Legoso') RETURNING "kode_jawab_profil","kode_vendor","kode_item","isian";`,
-  parameters: {}
-}
-[2024-10-16T15:25:40.554] [DEBUG] default - TypeError: Cannot read properties of undefined (reading 'path')
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:166:56
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-[2024-10-16T15:25:59.813] [DEBUG] default - Error: ModuleNotFoundError: No module named 'face_recognition'
-    at PythonShell.parseError (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:376:21)
-    at terminateIfNeeded (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:239:32)
-    at ChildProcess.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:230:13)
-    at ChildProcess.emit (node:events:513:28)
-    at ChildProcess.emit (node:domain:489:12)
-    at Process.ChildProcess._handle.onexit (node:internal/child_process:291:12)
-    ----- Python Traceback -----
-    File "D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\python\facerecognitionpersonalid.py", line 1, in <module>
-      import face_recognition {
-  traceback: 'Traceback (most recent call last):\r\n' +
-    '  File "D:\\Dev SIPPP\\PMO\\sidapet-be-reb\\rebuild-sidapet-be\\src\\python\\facerecognitionpersonalid.py", line 1, in <module>\r\n' +
-    '    import face_recognition\r\n' +
-    "ModuleNotFoundError: No module named 'face_recognition'\r\n",
-  executable: 'python',
-  options: null,
-  script: 'src\\python\\facerecognitionpersonalid.py',
-  args: [
-    'D:\\Dev SIPPP\\PMO\\public\\sidapet\\images\\foto-ktp\\userphoto-1729067157898.png'
-  ],
-  exitCode: 1,
-  logs: []
-}
-[2024-10-16T19:32:48.693] [DEBUG] default - Error: WHERE parameter "kode_jenis_vendor" has invalid "undefined" value
+[2024-10-21T09:39:23.054] [DEBUG] default - Error: WHERE parameter "kode_item" has invalid "undefined" value
     at PostgresQueryGenerator.whereItemQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2445:13)
     at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2434:25
     at Array.forEach (<anonymous>)
     at PostgresQueryGenerator.whereItemsQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2432:35)
     at PostgresQueryGenerator.getWhereConditions (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2860:19)
     at PostgresQueryGenerator.selectQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:1460:28)
-    at PostgresQueryInterface.rawSelect (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1037:37)
-    at Function.aggregate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2067:45)
-    at Function.count (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2124:31)
+    at PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1002:27)
+    at Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:47)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Function.findOne (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1998:12)
+[2024-10-21T09:59:32.953] [DEBUG] default - TypeError: source.on is not a function
+    at Function.DelayedStream.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\delayed-stream\lib\delayed_stream.js:33:10)
+    at FormData.CombinedStream.append (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\combined-stream\lib\combined_stream.js:45:37)
+    at FormData.append (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\form-data\lib\form_data.js:75:3)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:220:18
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5)

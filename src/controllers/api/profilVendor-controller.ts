@@ -5,7 +5,8 @@ import { errorLogger, debugLogger } from "@config/logger";
 import {
 StoreProfilVendorSchema,
 ParameterSchema,
-QuerySchema
+QuerySchema,
+StoreUploadVendorSchema
 } from "@schema/api/profilVendor-schema"
 
 import profilVendorService from "@services/api/v1/profilVendor-service";
@@ -97,6 +98,22 @@ const storeProfilVendor = async (
     }
 }
 
+const storeUpload = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const request : StoreUploadVendorSchema["body"] = req.body
+
+        const response = await profilVendorService.storeUpload(request, req.file as Express.Multer.File)
+
+        responseSuccess(res,httpCode.created, responseStatus.success, "Berhasil Menampilkan Data", response)
+    } catch (error) {
+        errorLogger.error(`Testing Error Store Upload Vendor ${error}`)
+        next(error)
+    }
+}
+
 const tesDomisili = async (
     req:Request, 
     res:Response,
@@ -119,5 +136,6 @@ export default{
     katItemTanya,
     listPertanyaanPerorangan,
     storeProfilVendor,
+    storeUpload,
     tesDomisili
 }
