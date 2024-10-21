@@ -2,9 +2,11 @@ import express from "express"
 import profilVendorController from "@controllers/api/profilVendor-controller"
 import {
     storeProfilVendorSchema,
-    parameterSchema
+    parameterSchema,
+    storeUploadVendorSchema
 } from "@schema/api/profilVendor-schema"
 import validate from "@schema/validate"
+import { uploadPdf } from "@middleware/upload"
 
 const router = express.Router()
 
@@ -15,5 +17,6 @@ router.get("/tanya-perorangan/:id", validate(parameterSchema), profilVendorContr
 router.get("/tes-domisili/:id", validate(parameterSchema), profilVendorController.tesDomisili)
 
 router.post("/store-profil", validate(storeProfilVendorSchema), profilVendorController.storeProfilVendor)
+router.post("/upload", uploadPdf.single("isian"), profilVendorController.storeUpload)
 
 export default router

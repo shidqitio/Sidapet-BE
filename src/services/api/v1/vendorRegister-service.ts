@@ -491,6 +491,7 @@ const insertExternaltoUsman = async (
             attributes : [
                 "kode_vendor",
                 "nama_perusahaan",
+                "kode_jenis_vendor",
                 [literal(`"RegisterVendor"."email"`), "email"],
                 [literal(`"RegisterVendor","password"`), "password"]
             ],
