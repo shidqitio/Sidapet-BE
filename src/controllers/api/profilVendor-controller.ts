@@ -235,7 +235,7 @@ const hapusSertifikat = async (
 
 
     } catch (error) {
-        errorLogger.error(`Testing Error Store Upload Pengalaman Orang ${error}`)
+        errorLogger.error(`Testing Error Hapus Sertifikat Orang ${error}`)
         next(error)
     }
 }
@@ -253,7 +253,23 @@ const hapusPengalaman = async (
 
 
     } catch (error) {
-        errorLogger.error(`Testing Error Store Upload Pengalaman Orang ${error}`)
+        errorLogger.error(`Testing Error Hapus Pengalaman Orang ${error}`)
+        next(error)
+    }
+}
+
+const hapusProfilUpload = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const id : ParameterSchema["params"]["id"] = req.params.id
+
+        const response = await profilVendorService.hapusUploadProfil(id)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Data Profil Berhasil Dihapus", response)
+    } catch (error) {
+        errorLogger.error(`Testing Error Hapus Profil Upload ${error}`)
         next(error)
     }
 }
@@ -286,5 +302,6 @@ export default{
     storeUploadPengalamanOrang,
     hapusSertifikat,
     hapusPengalaman,
-    getMenuStatus
+    getMenuStatus,
+    hapusProfilUpload
 }

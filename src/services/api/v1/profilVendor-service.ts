@@ -27,7 +27,7 @@ import {
 } from "@schema/api/profilVendor-schema"
 import { QueryTypes, Sequelize } from "sequelize";
 import sequelize from "sequelize";
-import TrxJawabProfil from "@models/trxJawabProfil-model";
+import TrxJawabProfil, { TrxJawabProfilOutput } from "@models/trxJawabProfil-model";
 
 import FormData from "form-data"
 
@@ -194,7 +194,7 @@ const listPertanyaanPerorangan = async (
                     as : "KatItemTanya", 
                     include : [
                         {
-                            attributes : ["kode_item", "kode_kat_item_tanya", "urutan", "nama_item"],
+                            attributes : ["kode_item", "kode_kat_item_tanya", "urutan", "nama_item", "tipe_input"],
                             model : ItemTanya, 
                             as : "ItemTanya",
                             where : {
@@ -652,6 +652,45 @@ const hapusPengalaman = async (id:ParameterSchema["params"]["id"]) : Promise<Pen
 //     }
 // }
 
+const hapusUploadProfil = async (id:ParameterSchema["params"]["id"]) : Promise<any> => {
+    try {
+        const exProfil = await TrxJawabProfil.findOne({
+            where : {
+                kode_jawab_profil : id
+            }
+        })
+
+        if(!exProfil) throw new CustomError(httpCode.notFound, responseStatus.success, "Data Profil Tidak Ada")
+            
+
+        const hapusFile = await deleteFile(exProfil.isian as string)
+
+        console.log(hapusFile)
+
+        // if(hapusFile[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File")
+
+        const hapusData = await TrxJawabProfil.destroy({
+            where : {
+                kode_jawab_profil : id
+            }
+        })
+
+        if(hapusData === 0 ) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus Data")
+
+        console.log(hapusFile);
+
+        return TrxJawabProfil
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
 
 //################# PERORANGAN ########################################
 
@@ -687,5 +726,6 @@ export default {
     uploadPengalamanOrang,
     getMenuStatus,
     hapusSertifikat,
-    hapusPengalaman
+    hapusPengalaman,
+    hapusUploadProfil
 }

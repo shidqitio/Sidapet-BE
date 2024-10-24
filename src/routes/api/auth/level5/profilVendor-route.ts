@@ -29,5 +29,6 @@ router.post("/upload/pengalaman", uploadPdf.single("file"), validate(storeUpload
 
 router.delete("/hapus/sertifikat/:id", validate(parameterSchema), profilVendorController.hapusSertifikat)
 router.delete("/hapus/pengalaman/:id", validate(parameterSchema), profilVendorController.hapusPengalaman)
+router.delete("/hapus/profil/:id", validate(parameterSchema), profilVendorController.hapusProfilUpload)
 
 export default router
