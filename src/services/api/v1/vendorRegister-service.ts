@@ -427,8 +427,6 @@ const updateStatusVendor = async (
 
             return resultDitolak
         }
-
-        console.log("TES 1");
         
 
         const createVendor : Vendor = await Vendor.create({

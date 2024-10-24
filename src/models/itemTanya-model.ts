@@ -21,6 +21,7 @@ interface IItemTanya {
     kode_item : number
 	kode_jenis_vendor : number | undefined | null
 	kode_kat_item_tanya : number | undefined | null
+    kode_kat_dokumen_vendor : number | undefined | null
 	urutan : number | undefined | null
 	nama_item : string | undefined | null
 	keterangan : string | undefined | null
@@ -39,6 +40,7 @@ export type ItemTanyaInput = Optional<
 IItemTanya, 
 "kode_item" |
 "kode_jenis_vendor" |
+"kode_kat_dokumen_vendor"|
 "kode_kat_item_tanya" | 
 "urutan" |
 "tipe_input" |
@@ -56,6 +58,7 @@ class ItemTanya
     declare kode_item : number ;
     declare kode_jenis_vendor : number | undefined | null ;
     declare kode_kat_item_tanya : number | undefined | null ;
+    declare kode_kat_dokumen_vendor : number | undefined | null;
     declare urutan : number | undefined | null ;
     declare nama_item : string | undefined | null ;
     declare keterangan : string | undefined | null ;
@@ -83,6 +86,10 @@ ItemTanya.init(
         kode_kat_item_tanya : {
             type : DataTypes.INTEGER, 
             allowNull : false
+        },
+        kode_kat_dokumen_vendor : {
+            type : DataTypes.INTEGER,
+            allowNull : true
         },
         urutan : {
             type : DataTypes.INTEGER, 

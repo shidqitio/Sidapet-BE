@@ -3,6 +3,7 @@ import { IncomingHttpHeaders } from "http";
 import CustomError from "@middleware/error-handler";
 import { httpCode, responseStatus } from "@utils/prefix";
 import { TokenPromiseuser, checkTokenPromiseuser, userProfile } from "@services/usman";
+import RegisterVendor from "@models/registerVendor-model";
 
 interface HeaderAuth extends IncomingHttpHeaders {
   id_user?: string;
@@ -39,6 +40,7 @@ export type UserData = {
   username : string; 
   email : string;
   status_user : string | null | undefined;
+  kode_vendor : number | null | undefined;
 };
 
 declare global {
@@ -115,6 +117,24 @@ const authorization = async (
       throw new CustomError(httpCode.unauthorized, responseStatus.error, errorUserProfile)
     }
 
+    let exRegisterVendor = await RegisterVendor.findOne({
+      attributes : ["kode_vendor"],
+      where : {
+        email : userProf.email
+      }
+    })
+
+    let idVendor
+
+    if(!exRegisterVendor) {
+      idVendor = null
+    } 
+    else {
+      idVendor = exRegisterVendor.kode_vendor
+    }
+
+    
+
     const userData : UserData = {
       token: token,
       id: user.id,
@@ -123,7 +143,8 @@ const authorization = async (
       is_login: user.is_login,
       username : userProf ? userProf.username : "",
       email : userProf ? userProf.email : "",
-      status_user : userProf ? userProf.status_user : ""
+      status_user : userProf ? userProf.status_user : "",
+      kode_vendor : idVendor
       };
 
     req.user = userData;

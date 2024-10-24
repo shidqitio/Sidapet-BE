@@ -1,19 +1,171 @@
-[2024-10-21T09:39:23.054] [DEBUG] default - Error: WHERE parameter "kode_item" has invalid "undefined" value
-    at PostgresQueryGenerator.whereItemQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2445:13)
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2434:25
-    at Array.forEach (<anonymous>)
-    at PostgresQueryGenerator.whereItemsQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2432:35)
-    at PostgresQueryGenerator.getWhereConditions (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2860:19)
-    at PostgresQueryGenerator.selectQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:1460:28)
-    at PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1002:27)
-    at Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:47)
+[2024-10-24T09:27:51.555] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
     at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async Function.findOne (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1998:12)
-[2024-10-21T09:59:32.953] [DEBUG] default - TypeError: source.on is not a function
-    at Function.DelayedStream.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\delayed-stream\lib\delayed_stream.js:33:10)
-    at FormData.CombinedStream.append (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\combined-stream\lib\combined_stream.js:45:37)
-    at FormData.append (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\form-data\lib\form_data.js:75:3)
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:220:18
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at async PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1001:12)
+    at async Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:21) {
+  name: 'SequelizeDatabaseError',
+  parent: error: 'sintaks error' pada atau didekat « AS »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 106,
+    severity: 'ERROR',
+    code: '42601',
+    detail: undefined,
+    hint: undefined,
+    position: '403',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'scan.l',
+    line: '1245',
+    routine: 'scanner_yyerror',
+    sql: 'SELECT "KatDokumenVendor"."kode_kat_dokumen_vendor", "KatDokumenVendor"."kode_jenis_vendor", "KatDokumenVendor"."urutan", "KatDokumenVendor"."is_main", "KatDokumenVendor"."is_has_sub", "KatDokumenVendor"."main_kat", "KatDokumenVendor"."nama_kategori", Case \n' +
+      '                    WHEN TrxKatDokKomplit.is_komplit = true \n' +
+      '                    THEN true\n' +
+      '                    ELSE false \n' +
+      '                     AS "status_komplit", "TrxKatDokKomplit"."is_komplit" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" LEFT OUTER JOIN "public"."trx_kat_dok_komplit" AS "TrxKatDokKomplit" ON "KatDokumenVendor"."kode_kat_dokumen_vendor" = "TrxKatDokKomplit"."kode_kat_dokumen_vendor" AND "TrxKatDokKomplit"."kode_vendor" = 4 WHERE "KatDokumenVendor"."is_main" = true AND "KatDokumenVendor"."kode_jenis_vendor" = 4;',
+    parameters: undefined
+  },
+  original: error: 'sintaks error' pada atau didekat « AS »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 106,
+    severity: 'ERROR',
+    code: '42601',
+    detail: undefined,
+    hint: undefined,
+    position: '403',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'scan.l',
+    line: '1245',
+    routine: 'scanner_yyerror',
+    sql: 'SELECT "KatDokumenVendor"."kode_kat_dokumen_vendor", "KatDokumenVendor"."kode_jenis_vendor", "KatDokumenVendor"."urutan", "KatDokumenVendor"."is_main", "KatDokumenVendor"."is_has_sub", "KatDokumenVendor"."main_kat", "KatDokumenVendor"."nama_kategori", Case \n' +
+      '                    WHEN TrxKatDokKomplit.is_komplit = true \n' +
+      '                    THEN true\n' +
+      '                    ELSE false \n' +
+      '                     AS "status_komplit", "TrxKatDokKomplit"."is_komplit" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" LEFT OUTER JOIN "public"."trx_kat_dok_komplit" AS "TrxKatDokKomplit" ON "KatDokumenVendor"."kode_kat_dokumen_vendor" = "TrxKatDokKomplit"."kode_kat_dokumen_vendor" AND "TrxKatDokKomplit"."kode_vendor" = 4 WHERE "KatDokumenVendor"."is_main" = true AND "KatDokumenVendor"."kode_jenis_vendor" = 4;',
+    parameters: undefined
+  },
+  sql: 'SELECT "KatDokumenVendor"."kode_kat_dokumen_vendor", "KatDokumenVendor"."kode_jenis_vendor", "KatDokumenVendor"."urutan", "KatDokumenVendor"."is_main", "KatDokumenVendor"."is_has_sub", "KatDokumenVendor"."main_kat", "KatDokumenVendor"."nama_kategori", Case \n' +
+    '                    WHEN TrxKatDokKomplit.is_komplit = true \n' +
+    '                    THEN true\n' +
+    '                    ELSE false \n' +
+    '                     AS "status_komplit", "TrxKatDokKomplit"."is_komplit" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" LEFT OUTER JOIN "public"."trx_kat_dok_komplit" AS "TrxKatDokKomplit" ON "KatDokumenVendor"."kode_kat_dokumen_vendor" = "TrxKatDokKomplit"."kode_kat_dokumen_vendor" AND "TrxKatDokKomplit"."kode_vendor" = 4 WHERE "KatDokumenVendor"."is_main" = true AND "KatDokumenVendor"."kode_jenis_vendor" = 4;',
+  parameters: {}
+}
+[2024-10-24T09:30:43.191] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
     at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1001:12)
+    at async Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:21) {
+  name: 'SequelizeDatabaseError',
+  parent: error: entri klausa FROM hilang untuk table « trxkatdokkomplit »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 133,
+    severity: 'ERROR',
+    code: '42P01',
+    detail: undefined,
+    hint: undefined,
+    position: '284',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3652',
+    routine: 'errorMissingRTE',
+    sql: 'SELECT "KatDokumenVendor"."kode_kat_dokumen_vendor", "KatDokumenVendor"."kode_jenis_vendor", "KatDokumenVendor"."urutan", "KatDokumenVendor"."is_main", "KatDokumenVendor"."is_has_sub", "KatDokumenVendor"."main_kat", "KatDokumenVendor"."nama_kategori", Case \n' +
+      '                    WHEN TrxKatDokKomplit.is_komplit = true \n' +
+      '                    THEN true\n' +
+      '                    ELSE false \n' +
+      '                    END\n' +
+      '                     AS "status_komplit", "TrxKatDokKomplit"."is_komplit" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" LEFT OUTER JOIN "public"."trx_kat_dok_komplit" AS "TrxKatDokKomplit" ON "KatDokumenVendor"."kode_kat_dokumen_vendor" = "TrxKatDokKomplit"."kode_kat_dokumen_vendor" AND "TrxKatDokKomplit"."kode_vendor" = 4 WHERE "KatDokumenVendor"."is_main" = true AND "KatDokumenVendor"."kode_jenis_vendor" = 4;',
+    parameters: undefined
+  },
+  original: error: entri klausa FROM hilang untuk table « trxkatdokkomplit »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 133,
+    severity: 'ERROR',
+    code: '42P01',
+    detail: undefined,
+    hint: undefined,
+    position: '284',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3652',
+    routine: 'errorMissingRTE',
+    sql: 'SELECT "KatDokumenVendor"."kode_kat_dokumen_vendor", "KatDokumenVendor"."kode_jenis_vendor", "KatDokumenVendor"."urutan", "KatDokumenVendor"."is_main", "KatDokumenVendor"."is_has_sub", "KatDokumenVendor"."main_kat", "KatDokumenVendor"."nama_kategori", Case \n' +
+      '                    WHEN TrxKatDokKomplit.is_komplit = true \n' +
+      '                    THEN true\n' +
+      '                    ELSE false \n' +
+      '                    END\n' +
+      '                     AS "status_komplit", "TrxKatDokKomplit"."is_komplit" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" LEFT OUTER JOIN "public"."trx_kat_dok_komplit" AS "TrxKatDokKomplit" ON "KatDokumenVendor"."kode_kat_dokumen_vendor" = "TrxKatDokKomplit"."kode_kat_dokumen_vendor" AND "TrxKatDokKomplit"."kode_vendor" = 4 WHERE "KatDokumenVendor"."is_main" = true AND "KatDokumenVendor"."kode_jenis_vendor" = 4;',
+    parameters: undefined
+  },
+  sql: 'SELECT "KatDokumenVendor"."kode_kat_dokumen_vendor", "KatDokumenVendor"."kode_jenis_vendor", "KatDokumenVendor"."urutan", "KatDokumenVendor"."is_main", "KatDokumenVendor"."is_has_sub", "KatDokumenVendor"."main_kat", "KatDokumenVendor"."nama_kategori", Case \n' +
+    '                    WHEN TrxKatDokKomplit.is_komplit = true \n' +
+    '                    THEN true\n' +
+    '                    ELSE false \n' +
+    '                    END\n' +
+    '                     AS "status_komplit", "TrxKatDokKomplit"."is_komplit" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" LEFT OUTER JOIN "public"."trx_kat_dok_komplit" AS "TrxKatDokKomplit" ON "KatDokumenVendor"."kode_kat_dokumen_vendor" = "TrxKatDokKomplit"."kode_kat_dokumen_vendor" AND "TrxKatDokKomplit"."kode_vendor" = 4 WHERE "KatDokumenVendor"."is_main" = true AND "KatDokumenVendor"."kode_jenis_vendor" = 4;',
+  parameters: {}
+}

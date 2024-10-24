@@ -1,125 +1,129 @@
-[2024-10-21T09:38:57.141] [ERROR] error - Error: [2] Token Unauthorized
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:106:13
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 401,
-  status: 'error'
-}
-[2024-10-21T09:39:23.054] [ERROR] error - Testing Error Store Upload Vendor Error: Internal server error.
-[2024-10-21T09:39:23.058] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:253:19
+[2024-10-24T09:27:51.560] [ERROR] error - Testing Error Get All SubKatDokumenVendor Error: Internal server error.
+[2024-10-24T09:27:51.561] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:122:19
     at Generator.throw (<anonymous>)
     at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:6:65)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
   code: 500,
   status: 'error'
 }
-[2024-10-21T09:59:32.953] [ERROR] error - Testing Error Store Upload Vendor Error: Internal server error.
-[2024-10-21T09:59:32.954] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:246:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+[2024-10-24T09:30:43.198] [ERROR] error - Testing Error Get All SubKatDokumenVendor Error: Internal server error.
+[2024-10-24T09:30:43.200] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:123:19
+    at Generator.throw (<anonymous>)
+    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:6:65)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
   code: 500,
   status: 'error'
 }
-[2024-10-21T10:07:02.605] [ERROR] error - Testing Error Store Upload Vendor Error: Upload Gagal
-[2024-10-21T10:07:02.606] [ERROR] error - Error: Upload Gagal
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:244:19
+[2024-10-24T09:51:16.232] [ERROR] error - Testing Error Store Upload Vendor Error: File Tidak Terkirim
+[2024-10-24T09:51:16.234] [ERROR] error - Error: File Tidak Terkirim
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:371:19
+    at Generator.next (<anonymous>)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4:12)
+    at Object.storeUpload (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:311:129)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\profilVendor-controller.ts:138:52
+    at Generator.next (<anonymous>)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\profilVendor-controller.ts:8:71
+    at new Promise (<anonymous>) {
+  code: 422,
+  status: 'error'
+}
+[2024-10-24T09:52:16.115] [ERROR] error - Error: Format file harus berupa image/jpeg | image/png | image/jpg
+    at fileFilterPdf (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\upload.ts:105:7)
+    at wrappedFileFilter (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\multer\index.js:44:7)
+    at Multipart.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\multer\lib\make-middleware.js:107:7)
+    at Multipart.emit (node:events:513:28)
+    at Multipart.emit (node:domain:489:12)
+    at HeaderParser.cb (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\streamsearch\lib\sbmh.js:200:10)
+    at SBMH.push (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\streamsearch\lib\sbmh.js:104:16) {
+  code: 415,
+  status: 'error',
+  storageErrors: []
+}
+[2024-10-24T09:52:27.967] [ERROR] error - Testing Error Store Upload Vendor Error: Data Sudah Terdaftar
+[2024-10-24T09:52:27.967] [ERROR] error - Error: Data Sudah Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:371:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 409,
+  status: 'success'
+}
+[2024-10-24T09:53:57.723] [ERROR] error - Testing Error Store Profil Vendor Error: Gagal Store ke Profil Vendor
+[2024-10-24T09:53:57.724] [ERROR] error - Error: Gagal Store ke Profil Vendor
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:301:19
     at Generator.next (<anonymous>)
     at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
   code: 422,
   status: 'error'
 }
-[2024-10-21T10:14:25.321] [ERROR] error - Testing Error Store Upload Vendor Error: Upload Gagal
-[2024-10-21T10:14:25.323] [ERROR] error - Error: Upload Gagal
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:246:19
+[2024-10-24T09:54:03.879] [ERROR] error - Testing Error Store Profil Vendor Error: Gagal Store ke Profil Vendor
+[2024-10-24T09:54:03.879] [ERROR] error - Error: Gagal Store ke Profil Vendor
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:301:19
     at Generator.next (<anonymous>)
     at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
   code: 422,
   status: 'error'
 }
-[2024-10-21T10:16:30.151] [ERROR] error - Testing Error Store Upload Vendor Error: Upload Gagal
-[2024-10-21T10:16:30.152] [ERROR] error - Error: Upload Gagal
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:246:19
+[2024-10-24T09:54:46.489] [ERROR] error - Testing Error Store Profil Vendor Error: Gagal Store ke Profil Vendor / Profil Sudah Pernah Terisi
+[2024-10-24T09:54:46.490] [ERROR] error - Error: Gagal Store ke Profil Vendor / Profil Sudah Pernah Terisi
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:301:19
     at Generator.next (<anonymous>)
     at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
   code: 422,
   status: 'error'
 }
-[2024-10-21T10:16:48.889] [ERROR] error - Testing Error Store Upload Vendor Error: Upload Gagal
-[2024-10-21T10:16:48.890] [ERROR] error - Error: Upload Gagal
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:246:19
+[2024-10-24T09:55:34.296] [ERROR] error - Testing Error Store Profil Vendor Error: Gagal Store ke Profil Vendor / Profil Sudah Pernah Terisi
+[2024-10-24T09:55:34.297] [ERROR] error - Error: Gagal Store ke Profil Vendor / Profil Sudah Pernah Terisi
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:301:19
     at Generator.next (<anonymous>)
     at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
   code: 422,
   status: 'error'
 }
-[2024-10-21T10:23:44.426] [ERROR] error - Testing Error Store Upload Vendor Error: Data Sudah Terdaftar
-[2024-10-21T10:23:44.427] [ERROR] error - Error: Data Sudah Terdaftar
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:249:19
+[2024-10-24T10:10:37.671] [ERROR] error - Testing Error Store Upload Pengalaman Orang Error: Gagal Hapus File
+[2024-10-24T10:10:37.672] [ERROR] error - Error: Gagal Hapus File
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:592:19
     at Generator.next (<anonymous>)
     at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 409,
-  status: 'success'
+  code: 422,
+  status: 'error'
 }
-[2024-10-21T10:24:44.752] [ERROR] error - Testing Error Store Upload Vendor Error: Data Sudah Terdaftar
-[2024-10-21T10:24:44.753] [ERROR] error - Error: Data Sudah Terdaftar
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:249:19
+[2024-10-24T10:11:45.747] [ERROR] error - Testing Error Store Upload Pengalaman Orang Error: Gagal Hapus File
+[2024-10-24T10:11:45.748] [ERROR] error - Error: Gagal Hapus File
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:592:19
     at Generator.next (<anonymous>)
     at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 409,
-  status: 'success'
+  code: 422,
+  status: 'error'
 }
-[2024-10-21T10:27:54.367] [ERROR] error - Testing Error Store Upload Vendor Error: Data Sudah Terdaftar
-[2024-10-21T10:27:54.368] [ERROR] error - Error: Data Sudah Terdaftar
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:249:19
+[2024-10-24T10:11:48.086] [ERROR] error - Testing Error Store Upload Pengalaman Orang Error: Gagal Hapus File
+[2024-10-24T10:11:48.087] [ERROR] error - Error: Gagal Hapus File
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:592:19
     at Generator.next (<anonymous>)
     at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 409,
-  status: 'success'
+  code: 422,
+  status: 'error'
 }
-[2024-10-21T10:32:35.179] [ERROR] error - Testing Error Store Upload Vendor Error: Data Sudah Terdaftar
-[2024-10-21T10:32:35.181] [ERROR] error - Error: Data Sudah Terdaftar
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:257:19
+[2024-10-24T10:12:41.760] [ERROR] error - Testing Error Store Upload Pengalaman Orang Error: Gagal Hapus File
+[2024-10-24T10:12:41.762] [ERROR] error - Error: Gagal Hapus File
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:594:19
     at Generator.next (<anonymous>)
     at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 409,
-  status: 'success'
-}
-[2024-10-21T10:33:53.123] [ERROR] error - Testing Error Store Upload Vendor Error: Data Sudah Terdaftar
-[2024-10-21T10:33:53.124] [ERROR] error - Error: Data Sudah Terdaftar
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:257:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 409,
-  status: 'success'
-}
-[2024-10-21T10:38:25.643] [ERROR] error - Testing Error Store Upload Vendor Error: Data Sudah Terdaftar
-[2024-10-21T10:38:25.644] [ERROR] error - Error: Data Sudah Terdaftar
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:259:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 409,
-  status: 'success'
-}
-[2024-10-21T10:41:48.640] [ERROR] error - Testing Error Store Upload Vendor Error: Data Sudah Terdaftar
-[2024-10-21T10:41:48.641] [ERROR] error - Error: Data Sudah Terdaftar
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:261:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 409,
-  status: 'success'
+  code: 422,
+  status: 'error'
 }

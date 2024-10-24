@@ -17,5 +17,7 @@ const pdfUpload : AxiosInstance = axios.create({
 export default pdfUpload
 
 export const PDF_UPLOAD_SERVICE_PATH = {
-    UPLOAD : "/uploads/pdf"
+    UPLOAD : "/uploads/pdf",
+    SHOW : "/shows-doc/pdf",
+    DELETE_UPLOAD : "/remove-file"
 }
