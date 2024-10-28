@@ -1,11 +1,9 @@
-[2024-10-24T09:27:51.555] [DEBUG] default - Error
+[2024-10-25T14:33:43.533] [DEBUG] default - Error
     at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
     at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1001:12)
-    at async Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:21) {
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
   name: 'SequelizeDatabaseError',
-  parent: error: 'sintaks error' pada atau didekat « AS »
+  parent: error: kolom « kode_vendor » tidak ada
       at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
       at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
       at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
@@ -16,12 +14,12 @@
       at readableAddChunk (node:internal/streams/readable:297:9)
       at Socket.Readable.push (node:internal/streams/readable:234:10)
       at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
-    length: 106,
+    length: 109,
     severity: 'ERROR',
-    code: '42601',
+    code: '42703',
     detail: undefined,
     hint: undefined,
-    position: '403',
+    position: '34',
     internalPosition: undefined,
     internalQuery: undefined,
     where: undefined,
@@ -30,17 +28,13 @@
     column: undefined,
     dataType: undefined,
     constraint: undefined,
-    file: 'scan.l',
-    line: '1245',
-    routine: 'scanner_yyerror',
-    sql: 'SELECT "KatDokumenVendor"."kode_kat_dokumen_vendor", "KatDokumenVendor"."kode_jenis_vendor", "KatDokumenVendor"."urutan", "KatDokumenVendor"."is_main", "KatDokumenVendor"."is_has_sub", "KatDokumenVendor"."main_kat", "KatDokumenVendor"."nama_kategori", Case \n' +
-      '                    WHEN TrxKatDokKomplit.is_komplit = true \n' +
-      '                    THEN true\n' +
-      '                    ELSE false \n' +
-      '                     AS "status_komplit", "TrxKatDokKomplit"."is_komplit" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" LEFT OUTER JOIN "public"."trx_kat_dok_komplit" AS "TrxKatDokKomplit" ON "KatDokumenVendor"."kode_kat_dokumen_vendor" = "TrxKatDokKomplit"."kode_kat_dokumen_vendor" AND "TrxKatDokKomplit"."kode_vendor" = 4 WHERE "KatDokumenVendor"."is_main" = true AND "KatDokumenVendor"."kode_jenis_vendor" = 4;',
+    file: 'parse_relation.c',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: 'SELECT * FROM ref_domisili WHERE kode_vendor = 4',
     parameters: undefined
   },
-  original: error: 'sintaks error' pada atau didekat « AS »
+  original: error: kolom « kode_vendor » tidak ada
       at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
       at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
       at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
@@ -51,12 +45,12 @@
       at readableAddChunk (node:internal/streams/readable:297:9)
       at Socket.Readable.push (node:internal/streams/readable:234:10)
       at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
-    length: 106,
+    length: 109,
     severity: 'ERROR',
-    code: '42601',
+    code: '42703',
     detail: undefined,
     hint: undefined,
-    position: '403',
+    position: '34',
     internalPosition: undefined,
     internalQuery: undefined,
     where: undefined,
@@ -65,31 +59,21 @@
     column: undefined,
     dataType: undefined,
     constraint: undefined,
-    file: 'scan.l',
-    line: '1245',
-    routine: 'scanner_yyerror',
-    sql: 'SELECT "KatDokumenVendor"."kode_kat_dokumen_vendor", "KatDokumenVendor"."kode_jenis_vendor", "KatDokumenVendor"."urutan", "KatDokumenVendor"."is_main", "KatDokumenVendor"."is_has_sub", "KatDokumenVendor"."main_kat", "KatDokumenVendor"."nama_kategori", Case \n' +
-      '                    WHEN TrxKatDokKomplit.is_komplit = true \n' +
-      '                    THEN true\n' +
-      '                    ELSE false \n' +
-      '                     AS "status_komplit", "TrxKatDokKomplit"."is_komplit" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" LEFT OUTER JOIN "public"."trx_kat_dok_komplit" AS "TrxKatDokKomplit" ON "KatDokumenVendor"."kode_kat_dokumen_vendor" = "TrxKatDokKomplit"."kode_kat_dokumen_vendor" AND "TrxKatDokKomplit"."kode_vendor" = 4 WHERE "KatDokumenVendor"."is_main" = true AND "KatDokumenVendor"."kode_jenis_vendor" = 4;',
+    file: 'parse_relation.c',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: 'SELECT * FROM ref_domisili WHERE kode_vendor = 4',
     parameters: undefined
   },
-  sql: 'SELECT "KatDokumenVendor"."kode_kat_dokumen_vendor", "KatDokumenVendor"."kode_jenis_vendor", "KatDokumenVendor"."urutan", "KatDokumenVendor"."is_main", "KatDokumenVendor"."is_has_sub", "KatDokumenVendor"."main_kat", "KatDokumenVendor"."nama_kategori", Case \n' +
-    '                    WHEN TrxKatDokKomplit.is_komplit = true \n' +
-    '                    THEN true\n' +
-    '                    ELSE false \n' +
-    '                     AS "status_komplit", "TrxKatDokKomplit"."is_komplit" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" LEFT OUTER JOIN "public"."trx_kat_dok_komplit" AS "TrxKatDokKomplit" ON "KatDokumenVendor"."kode_kat_dokumen_vendor" = "TrxKatDokKomplit"."kode_kat_dokumen_vendor" AND "TrxKatDokKomplit"."kode_vendor" = 4 WHERE "KatDokumenVendor"."is_main" = true AND "KatDokumenVendor"."kode_jenis_vendor" = 4;',
+  sql: 'SELECT * FROM ref_domisili WHERE kode_vendor = 4',
   parameters: {}
 }
-[2024-10-24T09:30:43.191] [DEBUG] default - Error
+[2024-10-25T14:33:51.431] [DEBUG] default - Error
     at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
     at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1001:12)
-    at async Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:21) {
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
   name: 'SequelizeDatabaseError',
-  parent: error: entri klausa FROM hilang untuk table « trxkatdokkomplit »
+  parent: error: kolom « kode_vendor » tidak ada
       at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
       at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
       at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
@@ -100,12 +84,12 @@
       at readableAddChunk (node:internal/streams/readable:297:9)
       at Socket.Readable.push (node:internal/streams/readable:234:10)
       at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
-    length: 133,
+    length: 109,
     severity: 'ERROR',
-    code: '42P01',
+    code: '42703',
     detail: undefined,
     hint: undefined,
-    position: '284',
+    position: '34',
     internalPosition: undefined,
     internalQuery: undefined,
     where: undefined,
@@ -115,17 +99,12 @@
     dataType: undefined,
     constraint: undefined,
     file: 'parse_relation.c',
-    line: '3652',
-    routine: 'errorMissingRTE',
-    sql: 'SELECT "KatDokumenVendor"."kode_kat_dokumen_vendor", "KatDokumenVendor"."kode_jenis_vendor", "KatDokumenVendor"."urutan", "KatDokumenVendor"."is_main", "KatDokumenVendor"."is_has_sub", "KatDokumenVendor"."main_kat", "KatDokumenVendor"."nama_kategori", Case \n' +
-      '                    WHEN TrxKatDokKomplit.is_komplit = true \n' +
-      '                    THEN true\n' +
-      '                    ELSE false \n' +
-      '                    END\n' +
-      '                     AS "status_komplit", "TrxKatDokKomplit"."is_komplit" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" LEFT OUTER JOIN "public"."trx_kat_dok_komplit" AS "TrxKatDokKomplit" ON "KatDokumenVendor"."kode_kat_dokumen_vendor" = "TrxKatDokKomplit"."kode_kat_dokumen_vendor" AND "TrxKatDokKomplit"."kode_vendor" = 4 WHERE "KatDokumenVendor"."is_main" = true AND "KatDokumenVendor"."kode_jenis_vendor" = 4;',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: 'SELECT * FROM ref_domisili WHERE kode_vendor = 4',
     parameters: undefined
   },
-  original: error: entri klausa FROM hilang untuk table « trxkatdokkomplit »
+  original: error: kolom « kode_vendor » tidak ada
       at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
       at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
       at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
@@ -136,12 +115,12 @@
       at readableAddChunk (node:internal/streams/readable:297:9)
       at Socket.Readable.push (node:internal/streams/readable:234:10)
       at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
-    length: 133,
+    length: 109,
     severity: 'ERROR',
-    code: '42P01',
+    code: '42703',
     detail: undefined,
     hint: undefined,
-    position: '284',
+    position: '34',
     internalPosition: undefined,
     internalQuery: undefined,
     where: undefined,
@@ -151,21 +130,361 @@
     dataType: undefined,
     constraint: undefined,
     file: 'parse_relation.c',
-    line: '3652',
-    routine: 'errorMissingRTE',
-    sql: 'SELECT "KatDokumenVendor"."kode_kat_dokumen_vendor", "KatDokumenVendor"."kode_jenis_vendor", "KatDokumenVendor"."urutan", "KatDokumenVendor"."is_main", "KatDokumenVendor"."is_has_sub", "KatDokumenVendor"."main_kat", "KatDokumenVendor"."nama_kategori", Case \n' +
-      '                    WHEN TrxKatDokKomplit.is_komplit = true \n' +
-      '                    THEN true\n' +
-      '                    ELSE false \n' +
-      '                    END\n' +
-      '                     AS "status_komplit", "TrxKatDokKomplit"."is_komplit" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" LEFT OUTER JOIN "public"."trx_kat_dok_komplit" AS "TrxKatDokKomplit" ON "KatDokumenVendor"."kode_kat_dokumen_vendor" = "TrxKatDokKomplit"."kode_kat_dokumen_vendor" AND "TrxKatDokKomplit"."kode_vendor" = 4 WHERE "KatDokumenVendor"."is_main" = true AND "KatDokumenVendor"."kode_jenis_vendor" = 4;',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: 'SELECT * FROM ref_domisili WHERE kode_vendor = 4',
     parameters: undefined
   },
-  sql: 'SELECT "KatDokumenVendor"."kode_kat_dokumen_vendor", "KatDokumenVendor"."kode_jenis_vendor", "KatDokumenVendor"."urutan", "KatDokumenVendor"."is_main", "KatDokumenVendor"."is_has_sub", "KatDokumenVendor"."main_kat", "KatDokumenVendor"."nama_kategori", Case \n' +
-    '                    WHEN TrxKatDokKomplit.is_komplit = true \n' +
-    '                    THEN true\n' +
-    '                    ELSE false \n' +
-    '                    END\n' +
-    '                     AS "status_komplit", "TrxKatDokKomplit"."is_komplit" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" LEFT OUTER JOIN "public"."trx_kat_dok_komplit" AS "TrxKatDokKomplit" ON "KatDokumenVendor"."kode_kat_dokumen_vendor" = "TrxKatDokKomplit"."kode_kat_dokumen_vendor" AND "TrxKatDokKomplit"."kode_vendor" = 4 WHERE "KatDokumenVendor"."is_main" = true AND "KatDokumenVendor"."kode_jenis_vendor" = 4;',
+  sql: 'SELECT * FROM ref_domisili WHERE kode_vendor = 4',
+  parameters: {}
+}
+[2024-10-25T14:34:33.331] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  name: 'SequelizeDatabaseError',
+  parent: error: kolom « kode_vendor » tidak ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 109,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: undefined,
+    position: '34',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: 'SELECT * FROM ref_domisili WHERE kode_vendor = 4',
+    parameters: undefined
+  },
+  original: error: kolom « kode_vendor » tidak ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 109,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: undefined,
+    position: '34',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: 'SELECT * FROM ref_domisili WHERE kode_vendor = 4',
+    parameters: undefined
+  },
+  sql: 'SELECT * FROM ref_domisili WHERE kode_vendor = 4',
+  parameters: {}
+}
+[2024-10-25T14:35:11.063] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  name: 'SequelizeDatabaseError',
+  parent: error: kolom « kode_vendor » tidak ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 109,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: undefined,
+    position: '34',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: 'SELECT * FROM ref_domisili WHERE kode_vendor = 4',
+    parameters: undefined
+  },
+  original: error: kolom « kode_vendor » tidak ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 109,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: undefined,
+    position: '34',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: 'SELECT * FROM ref_domisili WHERE kode_vendor = 4',
+    parameters: undefined
+  },
+  sql: 'SELECT * FROM ref_domisili WHERE kode_vendor = 4',
+  parameters: {}
+}
+[2024-10-25T14:35:34.972] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  name: 'SequelizeDatabaseError',
+  parent: error: kolom « kode_vendor » tidak ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 109,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: undefined,
+    position: '34',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: 'SELECT * FROM ref_domisili WHERE kode_vendor = 4',
+    parameters: undefined
+  },
+  original: error: kolom « kode_vendor » tidak ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 109,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: undefined,
+    position: '34',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: 'SELECT * FROM ref_domisili WHERE kode_vendor = 4',
+    parameters: undefined
+  },
+  sql: 'SELECT * FROM ref_domisili WHERE kode_vendor = 4',
+  parameters: {}
+}
+[2024-10-25T14:39:25.854] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  name: 'SequelizeDatabaseError',
+  parent: error: kolom « kode_vendor » tidak ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 109,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: undefined,
+    position: '34',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: 'SELECT * FROM ref_domisili WHERE kode_vendor = 4',
+    parameters: undefined
+  },
+  original: error: kolom « kode_vendor » tidak ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 109,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: undefined,
+    position: '34',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: 'SELECT * FROM ref_domisili WHERE kode_vendor = 4',
+    parameters: undefined
+  },
+  sql: 'SELECT * FROM ref_domisili WHERE kode_vendor = 4',
+  parameters: {}
+}
+[2024-10-25T14:40:32.643] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  name: 'SequelizeDatabaseError',
+  parent: error: kolom « kode_vendor » tidak ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 109,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: undefined,
+    position: '34',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: 'SELECT * FROM ref_domisili WHERE kode_vendor = 4',
+    parameters: undefined
+  },
+  original: error: kolom « kode_vendor » tidak ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 109,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: undefined,
+    position: '34',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: 'SELECT * FROM ref_domisili WHERE kode_vendor = 4',
+    parameters: undefined
+  },
+  sql: 'SELECT * FROM ref_domisili WHERE kode_vendor = 4',
   parameters: {}
 }

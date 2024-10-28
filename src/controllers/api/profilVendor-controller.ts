@@ -222,6 +222,41 @@ const storeUploadPengalamanOrang = async (
     }
 }
 
+const getSertifikat = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode_vendor = req.user.kode_vendor
+
+        if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
+
+        const response = await profilVendorService.getSertifikat(kode_vendor)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response)
+    } catch (error) {
+        errorLogger.error(`Testing Error Get Sertifikat  ${error}`)
+        next(error)
+    }
+}
+const getPengalamanVendor = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode_vendor = req.user.kode_vendor
+
+        if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
+
+        const response = await profilVendorService.getPengalamanVendor(kode_vendor)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response)
+    } catch (error) {
+        errorLogger.error(`Testing Error Get Pengalaman Vendor ${error}`)
+        next(error)
+    }
+}
+
 const hapusSertifikat = async (
     req:Request,
     res:Response,
@@ -303,5 +338,7 @@ export default{
     hapusSertifikat,
     hapusPengalaman,
     getMenuStatus,
-    hapusProfilUpload
+    hapusProfilUpload,
+    getSertifikat,
+    getPengalamanVendor
 }

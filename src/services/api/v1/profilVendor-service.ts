@@ -431,7 +431,7 @@ const tesDomisili = async (id:ParameterSchema["params"]["id"]) => {
 //Get Profil Perorangan
 const getProfilVendor = async (request:GetJawabProfilVendorSchema["body"], kode_vendor : number) : Promise<any> => {
     try {
-        const queryJawabItem = await db.query(`
+        const queryJawabItem : any = await db.query(`
             SELECT c.kode_vendor, c.nama_perusahaan, b.kode_item, b.nama_item, b.tipe_input, a.isian 
                 FROM trx_jawab_profil a JOIN 
                 ref_item_tanya b ON a.kode_item = b.kode_item
@@ -446,8 +446,50 @@ const getProfilVendor = async (request:GetJawabProfilVendorSchema["body"], kode_
                 },
                 type : QueryTypes.SELECT
             })
-            
+
+            // queryJawabItem.forEach((item : any) => {
+            //     if(item.tipe_input === 'table'){
+            //         const callNamaTabel : any = await db.query(`
+            //             SELECT metadata->>'nama_tabel' AS tabel FROM ref_item_tanya WHERE kode_item = ${item.kode_item}
+            //             `, {
+            //                 type : QueryTypes.SELECT
+            //             })
+            //     }
+            // })
+
+            for(const item of queryJawabItem) {
+                if(item.tipe_input === "table"){
+                    const callNamaTabel : any = await db.query(`
+                    SELECT metadata->>'nama_tabel' AS tabel FROM ref_item_tanya WHERE kode_item = ${item.kode_item}
+                    `, {
+                        type : QueryTypes.SELECT
+                    })
+
+                    console.log("COBA DATA ", callNamaTabel[0].tabel)
+
+                    const cekDataquery : any = await db.query(`
+                        SELECT * FROM ${callNamaTabel[0].tabel} WHERE kode_vendor = :kode_vendor
+                        `, {
+                            replacements : {
+                                kode_vendor : kode_vendor
+                            },
+                            type : QueryTypes.SELECT
+                    })
+                    
+                    let showData
+
+                    if(cekDataquery.length !== 0) {
+                        showData = cekDataquery
+                    } 
+                    else {
+                        showData = []
+                    }
+
+                    item.isian = cekDataquery;
+                }
+            }
    
+
             return queryJawabItem
 
     } catch (error) {
@@ -511,6 +553,49 @@ const storeUploadSertifikat = async (request:StoreUploadSertifikatSchema["body"]
     }
 }
 
+//Get Sertifikat 
+const getSertifikat = async ( kode_vendor : number) : Promise<SertifPerorangan[]> => {
+    try {
+        const getSertifikat  : SertifPerorangan[]= await SertifPerorangan.findAll({
+            where : {
+                kode_vendor : kode_vendor
+            },
+            attributes : {exclude : ["custom", "encrypt_key", "kode_pengalaman"]}
+        })
+
+        return getSertifikat
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+//Get Pengalaman 
+const getPengalamanVendor = async (kode_vendor : number) : Promise<PengalamanPerorangan[]> => {
+    try {
+        const getPengalaman  : PengalamanPerorangan[]= await PengalamanPerorangan.findAll({
+            where : {
+                kode_vendor : kode_vendor
+            },
+            attributes : {exclude : ["custom", "encrypt_key", "kode_pengalaman"]}
+        })
+
+        return getPengalaman
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
 
 //Upload Pengalaman Perorangan
 const uploadPengalamanOrang = async (
@@ -643,14 +728,16 @@ const hapusPengalaman = async (id:ParameterSchema["params"]["id"]) : Promise<Pen
     }
 }
 
-// //GET PDF 
-// const getPdfUpload = async (kode_vendor:number) : Promise<any> => {
-//     try {
-//         const getPdf = await 
-//     } catch (error) {
+//GET PDF 
+const getPdfUpload = async (kode_vendor:number) : Promise<any> => {
+    try {
         
-//     }
-// }
+    } catch (error) {
+        
+    }
+}
+
+
 
 const hapusUploadProfil = async (id:ParameterSchema["params"]["id"]) : Promise<any> => {
     try {
@@ -727,5 +814,7 @@ export default {
     getMenuStatus,
     hapusSertifikat,
     hapusPengalaman,
-    hapusUploadProfil
+    hapusUploadProfil,
+    getPengalamanVendor,
+    getSertifikat
 }
