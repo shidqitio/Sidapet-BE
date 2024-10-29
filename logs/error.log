@@ -184,3 +184,21 @@
   code: 404,
   status: 'error'
 }
+[2024-10-29T12:01:26.135] [ERROR] error - Testing Error Store Profil Vendor Error: Gagal Store ke Profil Vendor / Profil Sudah Pernah Terisi
+[2024-10-29T12:01:26.136] [ERROR] error - Error: Gagal Store ke Profil Vendor / Profil Sudah Pernah Terisi
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:378:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 422,
+  status: 'error'
+}
+[2024-10-29T12:03:26.218] [ERROR] error - Testing Error Store Profil Vendor Error: Gagal Store ke Profil Vendor / Profil Sudah Pernah Terisi
+[2024-10-29T12:03:26.219] [ERROR] error - Error: Gagal Store ke Profil Vendor / Profil Sudah Pernah Terisi
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:378:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 422,
+  status: 'error'
+}

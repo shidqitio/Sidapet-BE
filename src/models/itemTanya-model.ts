@@ -27,7 +27,8 @@ interface IItemTanya {
 	keterangan : string | undefined | null
 	tipe_input : tipe_input
 	metadata : string | undefined | null
-	jenis_item : jenis_item
+	jenis_item : jenis_item,
+    is_required : boolean,
 	ucr : string | undefined | null
 	uch : string | undefined | null
 	udcr : Date | undefined
@@ -45,6 +46,7 @@ IItemTanya,
 "urutan" |
 "tipe_input" |
 "jenis_item" |
+"is_required"|
 "ucr" |
 "uch" |
 "udcr" |
@@ -65,6 +67,7 @@ class ItemTanya
     declare tipe_input : tipe_input ;
     declare metadata : string | undefined | null ;
     declare jenis_item : jenis_item ;
+    declare is_required: boolean;
     declare ucr : string | undefined | null ;
     declare uch : string | undefined | null ;
     declare udcr : Date | undefined ;
@@ -113,6 +116,10 @@ ItemTanya.init(
         },
         jenis_item : {
             type : DataTypes.ENUM("default", "custom"), 
+            allowNull : true
+        },
+        is_required : {
+            type : DataTypes.BOOLEAN,
             allowNull : true
         },
         ucr : {
