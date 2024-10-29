@@ -336,7 +336,10 @@ const getPdfUpload = async (
 
         const response = await profilVendorService.getPdfUpload(id, kode_vendor)
 
-        res.send(response)
+        res.setHeader("Content-Type", "application/pdf");
+        res.setHeader("Content-Disposition", "inline; filename=document.pdf"); // or "attachment" for download
+
+        response.pipe(res)
     } catch (error) {
         errorLogger.error(`Testing Error Get PDF Upload  ${error}`)
         next(error)

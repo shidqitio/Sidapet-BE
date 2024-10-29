@@ -202,3 +202,111 @@
   code: 422,
   status: 'error'
 }
+[2024-10-29T13:32:16.729] [ERROR] error - Error: [3] Unauthorized
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:108:13
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 401,
+  status: 'error'
+}
+[2024-10-29T13:32:20.964] [ERROR] error - Testing Error Get PDF Upload  TypeError: path must be absolute or specify root to res.sendFile
+[2024-10-29T13:32:20.965] [ERROR] error - TypeError: path must be absolute or specify root to res.sendFile
+    at ServerResponse.sendFile (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\express\lib\response.js:441:11)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\profilVendor-controller.ts:339:13
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\profilVendor-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2024-10-29T13:35:38.588] [ERROR] error - Testing Error Get PDF Upload  TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'TLSSocket'
+    |     property 'parser' -> object with constructor 'HTTPParser'
+    --- property 'socket' closes the circle
+[2024-10-29T13:35:38.590] [ERROR] error - TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'TLSSocket'
+    |     property 'parser' -> object with constructor 'HTTPParser'
+    --- property 'socket' closes the circle
+    at JSON.stringify (<anonymous>)
+    at stringify (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\express\lib\response.js:1150:12)
+    at ServerResponse.json (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\express\lib\response.js:271:14)
+    at ServerResponse.send (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\express\lib\response.js:162:21)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\profilVendor-controller.ts:342:13
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\profilVendor-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2024-10-29T13:36:27.087] [ERROR] error - Testing Error Get PDF Upload  TypeError: path must be a string to res.sendFile
+[2024-10-29T13:36:27.089] [ERROR] error - TypeError: path must be a string to res.sendFile
+    at ServerResponse.sendFile (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\express\lib\response.js:431:11)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\profilVendor-controller.ts:342:13
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\profilVendor-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2024-10-29T13:36:45.446] [ERROR] error - Testing Error Get PDF Upload  TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'TLSSocket'
+    |     property 'parser' -> object with constructor 'HTTPParser'
+    --- property 'socket' closes the circle
+[2024-10-29T13:36:45.449] [ERROR] error - TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'TLSSocket'
+    |     property 'parser' -> object with constructor 'HTTPParser'
+    --- property 'socket' closes the circle
+    at JSON.stringify (<anonymous>)
+    at stringify (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\express\lib\response.js:1150:12)
+    at ServerResponse.json (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\express\lib\response.js:271:14)
+    at ServerResponse.send (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\express\lib\response.js:162:21)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\profilVendor-controller.ts:342:13
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\profilVendor-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2024-10-29T13:40:07.712] [ERROR] error - Testing Error Get PDF Upload  TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'TLSSocket'
+    |     property 'parser' -> object with constructor 'HTTPParser'
+    --- property 'socket' closes the circle
+[2024-10-29T13:40:07.714] [ERROR] error - TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'TLSSocket'
+    |     property 'parser' -> object with constructor 'HTTPParser'
+    --- property 'socket' closes the circle
+    at JSON.stringify (<anonymous>)
+    at stringify (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\express\lib\response.js:1150:12)
+    at ServerResponse.json (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\express\lib\response.js:271:14)
+    at ServerResponse.send (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\express\lib\response.js:162:21)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\profilVendor-controller.ts:345:13
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\profilVendor-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2024-10-29T13:40:26.199] [ERROR] error - Testing Error Get PDF Upload  TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'TLSSocket'
+    |     property 'parser' -> object with constructor 'HTTPParser'
+    --- property 'socket' closes the circle
+[2024-10-29T13:40:26.201] [ERROR] error - TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'TLSSocket'
+    |     property 'parser' -> object with constructor 'HTTPParser'
+    --- property 'socket' closes the circle
+    at JSON.stringify (<anonymous>)
+    at stringify (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\express\lib\response.js:1150:12)
+    at ServerResponse.json (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\express\lib\response.js:271:14)
+    at ServerResponse.send (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\express\lib\response.js:162:21)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\profilVendor-controller.ts:345:13
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\profilVendor-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2024-10-29T13:42:29.152] [ERROR] error - Testing Error Get PDF Upload  TypeError: Cannot read properties of undefined (reading 'pipe')
+[2024-10-29T13:42:29.154] [ERROR] error - TypeError: Cannot read properties of undefined (reading 'pipe')
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\profilVendor-controller.ts:343:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\profilVendor-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2024-10-29T13:43:46.034] [ERROR] error - Testing Error Get PDF Upload  TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'TLSSocket'
+    |     property 'parser' -> object with constructor 'HTTPParser'
+    --- property 'socket' closes the circle
+[2024-10-29T13:43:46.036] [ERROR] error - TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'TLSSocket'
+    |     property 'parser' -> object with constructor 'HTTPParser'
+    --- property 'socket' closes the circle
+    at JSON.stringify (<anonymous>)
+    at stringify (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\express\lib\response.js:1150:12)
+    at ServerResponse.json (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\express\lib\response.js:271:14)
+    at ServerResponse.send (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\express\lib\response.js:162:21)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\profilVendor-controller.ts:345:13
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\profilVendor-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
