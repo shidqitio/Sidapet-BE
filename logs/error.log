@@ -310,3 +310,98 @@
     at Generator.next (<anonymous>)
     at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\profilVendor-controller.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2024-10-29T14:46:25.385] [ERROR] error - Error: [3] Unauthorized
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:108:13
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 401,
+  status: 'error'
+}
+[2024-10-29T15:19:46.225] [ERROR] error - Testing Error Get Profil Vendor Error: Internal server error.
+[2024-10-29T15:19:46.226] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:684:19
+    at Generator.throw (<anonymous>)
+    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:6:65)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2024-10-29T15:20:32.260] [ERROR] error - Testing Error Get Profil Vendor Error: Internal server error.
+[2024-10-29T15:20:32.261] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:684:19
+    at Generator.throw (<anonymous>)
+    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:6:65)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2024-10-29T15:27:16.486] [ERROR] error - Testing Error Get PDF Upload  Error: Data Bukan Format PDF
+[2024-10-29T15:27:16.487] [ERROR] error - Error: Data Bukan Format PDF
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:970:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'error'
+}
+[2024-10-29T15:27:21.709] [ERROR] error - Testing Error Get PDF Upload  Error: Data Bukan Format PDF
+[2024-10-29T15:27:21.710] [ERROR] error - Error: Data Bukan Format PDF
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:970:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'error'
+}
+[2024-10-29T15:27:37.800] [ERROR] error - Testing Error Get PDF Upload  Error: Data Bukan Format PDF
+[2024-10-29T15:27:37.800] [ERROR] error - Error: Data Bukan Format PDF
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:970:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'error'
+}
+[2024-10-29T15:28:41.649] [ERROR] error - Testing Error Get PDF Upload  Error: Data Bukan Format PDF
+[2024-10-29T15:28:41.651] [ERROR] error - Error: Data Bukan Format PDF
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:970:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'error'
+}
+[2024-10-29T15:29:18.447] [ERROR] error - Testing Error Get PDF Upload  Error: Data Bukan Format PDF
+[2024-10-29T15:29:18.448] [ERROR] error - Error: Data Bukan Format PDF
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:970:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'error'
+}
+[2024-10-29T15:49:01.646] [ERROR] error - Testing Error Store Upload Pengalaman Orang TypeError: Cannot read properties of undefined (reading 'path')
+[2024-10-29T15:49:01.647] [ERROR] error - TypeError: Cannot read properties of undefined (reading 'path')
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:830:28
+    at Generator.next (<anonymous>)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4:12)
+    at Object.uploadPengalamanOrang (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:793:117)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\profilVendor-controller.ts:216:52
+    at Generator.next (<anonymous>)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\profilVendor-controller.ts:8:71
+    at new Promise (<anonymous>)
+[2024-10-29T15:51:19.853] [ERROR] error - Testing Error Store Upload Sertifikat TypeError: Cannot read properties of undefined (reading 'path')
+[2024-10-29T15:51:19.854] [ERROR] error - TypeError: Cannot read properties of undefined (reading 'path')
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:742:28
+    at Generator.next (<anonymous>)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4:12)
+    at Object.storeUploadSertifikat (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:696:150)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\profilVendor-controller.ts:195:52
+    at Generator.next (<anonymous>)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\profilVendor-controller.ts:8:71
+    at new Promise (<anonymous>)

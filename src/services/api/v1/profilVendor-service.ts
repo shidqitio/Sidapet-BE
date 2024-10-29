@@ -259,6 +259,7 @@ const storeProfilVendor = async (request:StoreProfilVendorSchema["body"], kode_v
     )
         
         const storeProfil = await TrxJawabProfil.bulkCreate(arrBerhasil, {
+            returning : ["kode_jawab_profil", "kode_item","kode_vendor","isian"],
             transaction : t
         })
 
@@ -426,7 +427,19 @@ const storeUpload = async (request:StoreUploadVendorSchema["body"], file : Expre
             kode_vendor : user,
             isian : upload[0].file_name,
             encrypt_key : upload[0].keypass
-        },{transaction : t})    
+        },
+        {
+            transaction : t,
+            returning : ["kode_jawab_profil","kode_item","kode_vendor", "isian"],
+           
+        },
+        )    
+
+        const result = {
+            kode_item : create.kode_item,
+            kode_vendor : user,
+            isian : create.isian
+        }
 
         if(!create) {
             await deleteFile(upload[0].file_name)
@@ -538,12 +551,11 @@ const storeUpload = async (request:StoreUploadVendorSchema["body"], file : Expre
 
         await t.commit()
 
-        return create
+        return result
     } catch (error) {
         console.log(error);
         console.log("TES : ", file.path)
         fs.unlinkSync(file.path)
-
         
         await t.rollback()
         
@@ -646,17 +658,22 @@ const getProfilVendor = async (request:GetJawabProfilVendorSchema["body"], kode_
                             },
                             type : QueryTypes.SELECT
                     })
+
+                    await cekDataquery.forEach((row : any) => {
+                        delete row.encrypt_key;
+                    });
                     
                     let showData
 
                     if(cekDataquery.length !== 0) {
+                        console.log(cekDataquery)
                         showData = cekDataquery
                     } 
                     else {
                         showData = []
                     }
 
-                    item.isian = cekDataquery;
+                    item.isian = showData;
                 }
             }
    
@@ -675,7 +692,7 @@ const getProfilVendor = async (request:GetJawabProfilVendorSchema["body"], kode_
     }
 }
 
-//Store Upload Perorangan
+//Upload Sertifikat
 const storeUploadSertifikat = async (request:StoreUploadSertifikatSchema["body"], file : Express.Multer.File, kode_vendor : number) : Promise<any> => {
     try {
          
@@ -697,7 +714,16 @@ const storeUploadSertifikat = async (request:StoreUploadSertifikatSchema["body"]
             nm_sertif_orang : request.nm_sertif_orang,
             path_sertif : upload[0].file_name,
             encrypt_key : upload[0].keypass
+        },
+        {
+            returning : ["kode_vendor", "nm_sertif_orang", "path_sertif","kode_sertif"]
         })
+
+        const result = {
+            kode_vendor : kode_vendor,
+            nm_sertif_orang : create.nm_sertif_orang,
+            path_sertif : create.path_sertif
+        }
 
 
         if(!create) {
@@ -709,7 +735,7 @@ const storeUploadSertifikat = async (request:StoreUploadSertifikatSchema["body"]
             fs.unlinkSync(file.path)
         }
 
-        return create
+        return result
         
     } catch (error) {
         console.log(error)
@@ -731,7 +757,7 @@ const getSertifikat = async ( kode_vendor : number) : Promise<SertifPerorangan[]
             where : {
                 kode_vendor : kode_vendor
             },
-            attributes : {exclude : ["custom", "encrypt_key", "kode_pengalaman"]}
+            attributes : {exclude : ["custom", "encrypt_key"]}
         })
 
         return getSertifikat
@@ -753,7 +779,7 @@ const getPengalamanVendor = async (kode_vendor : number) : Promise<PengalamanPer
             where : {
                 kode_vendor : kode_vendor
             },
-            attributes : {exclude : ["custom", "encrypt_key", "kode_pengalaman"]}
+            attributes : {exclude : ["custom", "encrypt_key"]}
         })
 
         return getPengalaman
@@ -789,7 +815,16 @@ const uploadPengalamanOrang = async (
             nm_pnglmn_org : request.nm_pnglmn_org,
             path_pnglmn : upload[0].file_name,
             encrypt_key : upload[0].keypass
+        }, 
+        {
+            returning : ["kode_vendor", "nm_pnglmn_org","path_pnglmn","kode_pengalaman"]
         })
+
+        const result = {
+            kode_vendor : kode_vendor, 
+            nm_pengalaman_org : create.nm_pnglmn_org,
+            path_pnglmn : create.path_pnglmn, 
+        }
 
 
         if(!create) {
@@ -801,7 +836,7 @@ const uploadPengalamanOrang = async (
             fs.unlinkSync(file.path)
         }
 
-        return create
+        return result
     } catch (error) {
         console.log(error)
         fs.unlinkSync(file.path)
@@ -914,7 +949,7 @@ const getPdfUpload = async (id:ParameterSchema["params"]["id"], kode_vendor:numb
 
         
 
-        if(!exTrxProfil) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Bukan Format Gambar")
+        if(!exTrxProfil) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Bukan Format PDF}")
 
         const data = {
             nama_file : exTrxProfil.isian as string, 
@@ -925,6 +960,79 @@ const getPdfUpload = async (id:ParameterSchema["params"]["id"], kode_vendor:numb
         const tampilGambar = await showFile(data)
 
         return tampilGambar[0]
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+//Get PDF SERTIFIKAT
+const getPdfUploadSertifikat = async (id:ParameterSchema["params"]["id"], kode_vendor:number) : Promise<any> => {
+    try {
+        const getSertifikat = await SertifPerorangan.findOne({
+            where : {
+                kode_vendor : kode_vendor,
+                kode_sertif : id,
+                encrypt_key : {
+                    [Op.not] : null
+                }
+            }
+        })
+
+        if(!getSertifikat) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tidak Tersedia / Data Bukan Format PDF")
+
+        const data = {
+            nama_file : getSertifikat.path_sertif as string, 
+            keypass : getSertifikat.encrypt_key as string
+        }
+
+
+        const tampilGambar = await showFile(data)
+
+        return tampilGambar[0]
+
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+
+//Get PDF SERTIFIKAT
+const getPdfUploadPengalamanPerorangan = async (id:ParameterSchema["params"]["id"], kode_vendor:number) : Promise<any> => {
+    try {
+        const getPengalaman = await PengalamanPerorangan.findOne({
+            where : {
+                kode_vendor : kode_vendor,
+                kode_pengalaman : id,
+                encrypt_key : {
+                    [Op.not] : null
+                }
+            }
+        })        
+
+        if(!getPengalaman) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tidak Tersedia / Data Bukan Format PDF")
+
+        const data = {
+            nama_file : getPengalaman.path_pnglmn as string, 
+            keypass : getPengalaman.encrypt_key as string
+        }
+
+
+        const tampilGambar = await showFile(data)
+
+        return tampilGambar[0]
+
     } catch (error) {
         if(error instanceof CustomError) {
             throw new CustomError(error.code,error.status, error.message)
@@ -1016,5 +1124,7 @@ export default {
     hapusUploadProfil,
     getPengalamanVendor,
     getSertifikat,
-    getPdfUpload
+    getPdfUpload,
+    getPdfUploadSertifikat,
+    getPdfUploadPengalamanPerorangan
 }
