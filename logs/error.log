@@ -1,8 +1,186 @@
-[2024-10-28T10:41:44.930] [ERROR] error - Error: [2] Token Unauthorized
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:108:13
+[2024-10-29T09:32:37.535] [ERROR] error - Testing Error Store Upload Vendor Error: Upload Gagal
+[2024-10-29T09:32:37.537] [ERROR] error - Error: Upload Gagal
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:371:19
     at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:5:58)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 401,
+  code: 422,
+  status: 'error'
+}
+[2024-10-29T09:33:31.891] [ERROR] error - Testing Error Store Upload Vendor Error: Internal server error.
+[2024-10-29T09:33:31.892] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:375:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2024-10-29T09:34:01.624] [ERROR] error - Testing Error Store Upload Vendor Error: Internal server error.
+[2024-10-29T09:34:01.624] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:375:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2024-10-29T09:34:39.008] [ERROR] error - Testing Error Store Upload Vendor Error: Internal server error.
+[2024-10-29T09:34:39.008] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:375:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2024-10-29T09:35:52.581] [ERROR] error - Testing Error Store Upload Vendor Error: Internal server error.
+[2024-10-29T09:35:52.581] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:375:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2024-10-29T09:37:05.845] [ERROR] error - Testing Error Store Upload Vendor Error: Internal server error.
+[2024-10-29T09:37:05.846] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:376:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2024-10-29T09:39:16.156] [ERROR] error - Testing Error Store Upload Vendor Error: Internal server error.
+[2024-10-29T09:39:16.157] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:376:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2024-10-29T09:39:23.705] [ERROR] error - Testing Error Store Upload Vendor Error: Internal server error.
+[2024-10-29T09:39:23.705] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:376:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2024-10-29T09:41:03.193] [ERROR] error - Testing Error Store Upload Vendor Error: Upload Gagal ada kesalahan service : connect ECONNREFUSED ::1:4444
+[2024-10-29T09:41:03.194] [ERROR] error - Error: Upload Gagal ada kesalahan service : connect ECONNREFUSED ::1:4444
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:369:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 422,
+  status: 'error'
+}
+[2024-10-29T09:41:19.642] [ERROR] error - Testing Error Store Upload Vendor Error: Upload Gagal ada kesalahan service : connect ECONNREFUSED ::1:4444
+[2024-10-29T09:41:19.643] [ERROR] error - Error: Upload Gagal ada kesalahan service : connect ECONNREFUSED ::1:4444
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:370:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 422,
+  status: 'error'
+}
+[2024-10-29T09:41:36.798] [ERROR] error - Testing Error Store Upload Vendor Error: Upload Gagal ada kesalahan service : connect ECONNREFUSED ::1:4444
+[2024-10-29T09:41:36.799] [ERROR] error - Error: Upload Gagal ada kesalahan service : connect ECONNREFUSED ::1:4444
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:370:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 422,
+  status: 'error'
+}
+[2024-10-29T09:42:08.720] [ERROR] error - Testing Error Store Upload Vendor Error: Upload Gagal ada kesalahan service : connect ECONNREFUSED ::1:4444
+[2024-10-29T09:42:08.721] [ERROR] error - Error: Upload Gagal ada kesalahan service : connect ECONNREFUSED ::1:4444
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:369:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 422,
+  status: 'error'
+}
+[2024-10-29T09:42:16.273] [ERROR] error - Testing Error Store Upload Vendor Error: EPERM: operation not permitted, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1730169736263.pdf'
+[2024-10-29T09:42:16.274] [ERROR] error - Error: EPERM: operation not permitted, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1730169736263.pdf'
+    at Object.unlinkSync (node:fs:1808:3)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:366:12
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  errno: -4048,
+  syscall: 'unlink',
+  code: 'EPERM',
+  path: 'D:\\Dev SIPPP\\PMO\\public\\sidapet\\temporary\\undefined-1730169736263.pdf'
+}
+[2024-10-29T09:42:29.168] [ERROR] error - Testing Error Store Upload Vendor Error: EPERM: operation not permitted, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1730169749155.pdf'
+[2024-10-29T09:42:29.169] [ERROR] error - Error: EPERM: operation not permitted, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1730169749155.pdf'
+    at Object.unlinkSync (node:fs:1808:3)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:366:12
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  errno: -4048,
+  syscall: 'unlink',
+  code: 'EPERM',
+  path: 'D:\\Dev SIPPP\\PMO\\public\\sidapet\\temporary\\undefined-1730169749155.pdf'
+}
+[2024-10-29T09:42:41.224] [ERROR] error - Testing Error Store Upload Vendor Error: Upload Gagal ada kesalahan service : connect ECONNREFUSED ::1:4444
+[2024-10-29T09:42:41.224] [ERROR] error - Error: Upload Gagal ada kesalahan service : connect ECONNREFUSED ::1:4444
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:369:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 422,
+  status: 'error'
+}
+[2024-10-29T09:42:50.283] [ERROR] error - Testing Error Store Upload Vendor Error: Upload Gagal ada kesalahan service : connect ECONNREFUSED ::1:4444
+[2024-10-29T09:42:50.284] [ERROR] error - Error: Upload Gagal ada kesalahan service : connect ECONNREFUSED ::1:4444
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:369:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 422,
+  status: 'error'
+}
+[2024-10-29T09:43:23.809] [ERROR] error - Testing Error Store Upload Vendor Error: Upload Gagal ada kesalahan service : connect ECONNREFUSED ::1:4444
+[2024-10-29T09:43:23.810] [ERROR] error - Error: Upload Gagal ada kesalahan service : connect ECONNREFUSED ::1:4444
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:369:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 422,
+  status: 'error'
+}
+[2024-10-29T10:24:31.436] [ERROR] error - Testing Error Get PDF Upload  Error: Data Bukan Format Gambar
+[2024-10-29T10:24:31.437] [ERROR] error - Error: Data Bukan Format Gambar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:742:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'error'
+}
+[2024-10-29T10:25:48.718] [ERROR] error - Testing Error Get PDF Upload  Error: Data Bukan Format Gambar
+[2024-10-29T10:25:48.720] [ERROR] error - Error: Data Bukan Format Gambar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:742:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'error'
+}
+[2024-10-29T10:26:33.297] [ERROR] error - Testing Error Get PDF Upload  Error: Data Bukan Format Gambar
+[2024-10-29T10:26:33.299] [ERROR] error - Error: Data Bukan Format Gambar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:745:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
   status: 'error'
 }

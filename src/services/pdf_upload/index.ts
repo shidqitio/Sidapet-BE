@@ -47,7 +47,9 @@ const uploadPdf = async (
 
 const showFile = async (data:ShowPdf) : Promise<[any | null, any | null]> => {
     try {
-        const response = await pdfUpload.get(`${PDF_UPLOAD_SERVICE_PATH.DELETE_UPLOAD}/${data.nama_file}/${data.keypass}`)
+        const response = await pdfUpload.get(`${PDF_UPLOAD_SERVICE_PATH.SHOW}/${data.nama_file}/${data.keypass}`)
+
+        console.log("TES index: ", response)
 
         const result = response.data
 

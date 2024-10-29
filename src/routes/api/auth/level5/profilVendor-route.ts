@@ -23,6 +23,7 @@ router.get("/domisili", profilVendorController.domisili)
 
 router.get("/get-pengalaman", profilVendorController.getPengalamanVendor)
 router.get("/get-sertifikat", profilVendorController.getSertifikat)
+router.get("/show/profil-upload/:id", profilVendorController.getPdfUpload);
 
 router.post("/store-profil", validate(storeProfilVendorSchema), profilVendorController.storeProfilVendor)
 router.post("/upload", uploadPdf.single("isian"), profilVendorController.storeUpload)
