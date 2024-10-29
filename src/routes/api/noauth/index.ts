@@ -12,4 +12,7 @@ const level = {
 import vendorRegisterRoute from "./vendorRegister-route"
 routes.use( "/vendor",  vendorRegisterRoute)
 
+import selecInputRoute from "./selectInput-route"
+routes.use("/select-input", selecInputRoute)
+
 export default routes;

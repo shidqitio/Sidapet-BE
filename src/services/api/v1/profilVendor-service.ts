@@ -4,6 +4,7 @@ import logger, { errorLogger, debugLogger } from "@config/logger";
 import { httpCode, responseStatus } from "@utils/prefix";
 import db from "@config/database";
 import {uploadPdf, deleteFile} from "@services/pdf_upload"
+import { showFile } from "@services/pdf_show";
 
 //Import Model
 import JenisVendor from "@models/jenisVendor-model";
@@ -28,7 +29,7 @@ import {
 import { QueryTypes, Sequelize } from "sequelize";
 import sequelize from "sequelize";
 import TrxJawabProfil, { TrxJawabProfilOutput } from "@models/trxJawabProfil-model";
-
+import { Op } from "sequelize";
 import FormData from "form-data"
 
 import fs from "fs"
@@ -70,11 +71,6 @@ const getMenuStatus = async (kode_vendor:number) : Promise<KatDokumenVendor[]> =
             },
             raw : true
         })
-
-        console.log("TES");
-        
-
-        console.log("TES DISINI " , getJenisVndor?.kode_vendor);
         
 
         const getMenu : KatDokumenVendor[] = await KatDokumenVendor.findAll({
@@ -333,15 +329,12 @@ const storeUpload = async (request:StoreUploadVendorSchema["body"], file : Expre
         formData.append('nama_aplikasi','SI-DaPeT')
         formData.append('file', fs.createReadStream(file.path))
 
-        console.log("TES 1 :", file.path)
-
 
         const upload = await uploadPdf(formData)
 
 
         if(upload[1] !== null || !upload[0]){
-            fs.unlinkSync(file.path)
-            throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
+            throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, `Upload Gagal ada kesalahan service : ${upload[1]}`)
         }
             
 
@@ -353,9 +346,8 @@ const storeUpload = async (request:StoreUploadVendorSchema["body"], file : Expre
         })    
 
         if(!create) {
-            fs.unlinkSync(file.path)
             await deleteFile(upload[0].file_name)
-            throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Upload File")
+            throw new CustomError(httpCode.serviceUnavailable, responseStatus.error, "Gagal Upload File")
         }
            
 
@@ -366,6 +358,8 @@ const storeUpload = async (request:StoreUploadVendorSchema["body"], file : Expre
         return create
     } catch (error) {
         console.log(error);
+        console.log("TES : ", file.path)
+        fs.unlinkSync(file.path)
         
         if(error instanceof CustomError) {
             throw new CustomError(error.code,error.status, error.message)
@@ -431,7 +425,7 @@ const tesDomisili = async (id:ParameterSchema["params"]["id"]) => {
 //Get Profil Perorangan
 const getProfilVendor = async (request:GetJawabProfilVendorSchema["body"], kode_vendor : number) : Promise<any> => {
     try {
-        const queryJawabItem = await db.query(`
+        const queryJawabItem : any = await db.query(`
             SELECT c.kode_vendor, c.nama_perusahaan, b.kode_item, b.nama_item, b.tipe_input, a.isian 
                 FROM trx_jawab_profil a JOIN 
                 ref_item_tanya b ON a.kode_item = b.kode_item
@@ -446,8 +440,41 @@ const getProfilVendor = async (request:GetJawabProfilVendorSchema["body"], kode_
                 },
                 type : QueryTypes.SELECT
             })
-            
+
+
+            for(const item of queryJawabItem) {
+                if(item.tipe_input === "table"){
+                    const callNamaTabel : any = await db.query(`
+                    SELECT metadata->>'nama_tabel' AS tabel FROM ref_item_tanya WHERE kode_item = ${item.kode_item}
+                    `, {
+                        type : QueryTypes.SELECT
+                    })
+
+                    console.log("COBA DATA ", callNamaTabel[0].tabel)
+
+                    const cekDataquery : any = await db.query(`
+                        SELECT * FROM ${callNamaTabel[0].tabel} WHERE kode_vendor = :kode_vendor
+                        `, {
+                            replacements : {
+                                kode_vendor : kode_vendor
+                            },
+                            type : QueryTypes.SELECT
+                    })
+                    
+                    let showData
+
+                    if(cekDataquery.length !== 0) {
+                        showData = cekDataquery
+                    } 
+                    else {
+                        showData = []
+                    }
+
+                    item.isian = cekDataquery;
+                }
+            }
    
+
             return queryJawabItem
 
     } catch (error) {
@@ -511,6 +538,49 @@ const storeUploadSertifikat = async (request:StoreUploadSertifikatSchema["body"]
     }
 }
 
+//Get Sertifikat 
+const getSertifikat = async ( kode_vendor : number) : Promise<SertifPerorangan[]> => {
+    try {
+        const getSertifikat  : SertifPerorangan[]= await SertifPerorangan.findAll({
+            where : {
+                kode_vendor : kode_vendor
+            },
+            attributes : {exclude : ["custom", "encrypt_key", "kode_pengalaman"]}
+        })
+
+        return getSertifikat
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+//Get Pengalaman 
+const getPengalamanVendor = async (kode_vendor : number) : Promise<PengalamanPerorangan[]> => {
+    try {
+        const getPengalaman  : PengalamanPerorangan[]= await PengalamanPerorangan.findAll({
+            where : {
+                kode_vendor : kode_vendor
+            },
+            attributes : {exclude : ["custom", "encrypt_key", "kode_pengalaman"]}
+        })
+
+        return getPengalaman
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
 
 //Upload Pengalaman Perorangan
 const uploadPengalamanOrang = async (
@@ -643,14 +713,44 @@ const hapusPengalaman = async (id:ParameterSchema["params"]["id"]) : Promise<Pen
     }
 }
 
-// //GET PDF 
-// const getPdfUpload = async (kode_vendor:number) : Promise<any> => {
-//     try {
-//         const getPdf = await 
-//     } catch (error) {
+//GET PDF 
+const getPdfUpload = async (id:ParameterSchema["params"]["id"], kode_vendor:number) : Promise<any> => {
+    try {
+        const exTrxProfil = await TrxJawabProfil.findOne({
+            where : {
+                kode_vendor : kode_vendor,
+                kode_jawab_profil : id,
+                encrypt_key : {
+                    [Op.not] : null
+                }
+            }
+        })
+
         
-//     }
-// }
+
+        if(!exTrxProfil) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Bukan Format Gambar")
+
+        const data = {
+            nama_file : exTrxProfil.isian as string, 
+            keypass : exTrxProfil.encrypt_key as string
+        }
+
+
+        const tampilGambar = await showFile(data)
+
+        return tampilGambar[0]
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+
 
 const hapusUploadProfil = async (id:ParameterSchema["params"]["id"]) : Promise<any> => {
     try {
@@ -727,5 +827,8 @@ export default {
     getMenuStatus,
     hapusSertifikat,
     hapusPengalaman,
-    hapusUploadProfil
+    hapusUploadProfil,
+    getPengalamanVendor,
+    getSertifikat,
+    getPdfUpload
 }
