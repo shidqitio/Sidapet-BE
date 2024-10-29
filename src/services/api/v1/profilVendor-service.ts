@@ -277,11 +277,92 @@ const storeProfilVendor = async (request:StoreProfilVendorSchema["body"], kode_v
 
         if(!getKatDokumen) throw new CustomError(httpCode.notFound, responseStatus.error, "Kat Dokumen Vendor Tidak Ada")
 
-        const storeStatus = await TrxKatDokKomplit.create({
-            kode_kat_dokumen_vendor : getKatDokumen?.kode_kat_dokumen_vendor,
-            kode_vendor : arrBerhasil[0].kode_vendor,
-            is_komplit : true
-        }, {transaction : t})
+        const getItemTanya = await ItemTanya.findAll({
+            where : {
+                kode_kat_dokumen_vendor : getKatDokumen.kode_kat_dokumen_vendor,
+                is_required : true
+            },
+            raw : true,
+            transaction : t
+        })
+
+        const jawabProfil = await TrxJawabProfil.findAll({
+            where : {
+                kode_vendor : kode_vendor
+            },
+            raw : true,
+            transaction : t
+        })
+
+        const unsansweredItems = getItemTanya.filter(tanya => !jawabProfil.some(jawab => jawab.kode_item === tanya.kode_item))
+
+        console.log(unsansweredItems);
+        
+
+        const status = unsansweredItems.length === 0 ? "finish" : "not_finish"
+
+        let storeStatus
+
+        if(status === "finish") {
+            let checkStatus = await TrxKatDokKomplit.findOne({
+                where : {
+                    kode_vendor : kode_vendor,
+                    kode_kat_dokumen_vendor : getKatDokumen?.kode_kat_dokumen_vendor,
+                },
+                transaction : t
+            })
+
+            if(!checkStatus) {
+                storeStatus = await TrxKatDokKomplit.create({
+                    kode_kat_dokumen_vendor : getKatDokumen?.kode_kat_dokumen_vendor,
+                    kode_vendor : kode_vendor,
+                    is_komplit : true
+                }, {transaction : t})
+            }
+
+            else {
+                storeStatus = await TrxKatDokKomplit.update({
+                    is_komplit : true
+                }, {
+                    where : {
+                        kode_kat_dokumen_vendor : getKatDokumen?.kode_kat_dokumen_vendor,
+                        kode_vendor : kode_vendor,
+                    },
+                    transaction : t
+                })
+            }
+
+        }
+        else {
+           let checkStatus = await TrxKatDokKomplit.findOne({
+                where : {
+                    kode_vendor : kode_vendor,
+                    kode_kat_dokumen_vendor : getKatDokumen?.kode_kat_dokumen_vendor,
+                },
+                transaction : t
+            })
+
+            if(!checkStatus) {
+                storeStatus = await TrxKatDokKomplit.create({
+                    kode_kat_dokumen_vendor : getKatDokumen?.kode_kat_dokumen_vendor,
+                    kode_vendor : kode_vendor,
+                    is_komplit : false
+                }, {transaction : t})
+            }
+
+            else {
+                storeStatus = await TrxKatDokKomplit.update({
+                    is_komplit : false
+                }, {
+                    where : {
+                        kode_kat_dokumen_vendor : getKatDokumen?.kode_kat_dokumen_vendor,
+                        kode_vendor : kode_vendor,
+                    },
+                    transaction : t
+                })
+            }
+        }
+ 
 
         if(!storeStatus) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Merubah Status Profil")
 
@@ -305,6 +386,7 @@ const storeProfilVendor = async (request:StoreProfilVendorSchema["body"], kode_v
 
 //Store Upload Profil
 const storeUpload = async (request:StoreUploadVendorSchema["body"], file : Express.Multer.File, user : number) : Promise<any> => {
+    const t = await db.transaction()
     try {        
 
 
@@ -316,7 +398,8 @@ const storeUpload = async (request:StoreUploadVendorSchema["body"], file : Expre
             where : {
                 kode_item : request.kode_item,
                 kode_vendor : user
-            }
+            },
+            transaction : t
         })
         
      
@@ -343,7 +426,7 @@ const storeUpload = async (request:StoreUploadVendorSchema["body"], file : Expre
             kode_vendor : user,
             isian : upload[0].file_name,
             encrypt_key : upload[0].keypass
-        })    
+        },{transaction : t})    
 
         if(!create) {
             await deleteFile(upload[0].file_name)
@@ -355,11 +438,114 @@ const storeUpload = async (request:StoreUploadVendorSchema["body"], file : Expre
             fs.unlinkSync(file.path)
         }
 
+        const getKatDokumen : ItemTanya | null = await ItemTanya.findOne({
+            where : {
+                kode_item : parseInt(request.kode_item)
+            },
+            attributes : [
+                "kode_item",
+                "kode_kat_dokumen_vendor"
+            ],
+            transaction : t
+        })
+
+        if(!getKatDokumen) throw new CustomError(httpCode.notFound, responseStatus.error, "Kat Dokumen Vendor Tidak Ada")
+
+
+        const getItemTanya = await ItemTanya.findAll({
+            where : {
+                kode_kat_dokumen_vendor : getKatDokumen.kode_kat_dokumen_vendor,
+                is_required : true
+            },
+            raw : true,
+            transaction : t
+        })
+
+        const jawabProfil = await TrxJawabProfil.findAll({
+            where : {
+                kode_vendor : user
+            },
+            raw : true,
+            transaction : t
+        })
+
+        const unsansweredItems = getItemTanya.filter(tanya => !jawabProfil.some(jawab => jawab.kode_item === tanya.kode_item))
+
+        const status = unsansweredItems.length === 0 ? "finish" : "not_finish"
+
+        let storeStatus
+
+        if(status === "finish") {
+            let checkStatus = await TrxKatDokKomplit.findOne({
+                where : {
+                    kode_vendor : user,
+                    kode_kat_dokumen_vendor : getKatDokumen?.kode_kat_dokumen_vendor,
+                },
+                transaction : t
+            })
+
+            if(!checkStatus) {
+                storeStatus = await TrxKatDokKomplit.create({
+                    kode_kat_dokumen_vendor : getKatDokumen?.kode_kat_dokumen_vendor,
+                    kode_vendor : user,
+                    is_komplit : true
+                }, {transaction : t})
+            }
+
+            else {
+                storeStatus = await TrxKatDokKomplit.update({
+                    is_komplit : true
+                }, {
+                    where : {
+                        kode_kat_dokumen_vendor : getKatDokumen?.kode_kat_dokumen_vendor,
+                        kode_vendor : user,
+                    },
+                    transaction : t
+                })
+            }
+        }
+        else {
+            let checkStatus = await TrxKatDokKomplit.findOne({
+                where : {
+                    kode_vendor : user,
+                    kode_kat_dokumen_vendor : getKatDokumen?.kode_kat_dokumen_vendor,
+                }
+            })
+
+            if(!checkStatus) {
+                storeStatus = await TrxKatDokKomplit.create({
+                    kode_kat_dokumen_vendor : getKatDokumen?.kode_kat_dokumen_vendor,
+                    kode_vendor : user,
+                    is_komplit : false
+                }, {transaction : t})
+            }
+
+            else {
+                storeStatus = await TrxKatDokKomplit.update({
+                    is_komplit : false
+                }, {
+                    where : {
+                        kode_kat_dokumen_vendor : getKatDokumen?.kode_kat_dokumen_vendor,
+                        kode_vendor : user,
+                    },
+                    transaction : t
+                })
+            }
+        }
+ 
+
+        if(!storeStatus) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Merubah Status Profil")
+
+        await t.commit()
+
         return create
     } catch (error) {
         console.log(error);
         console.log("TES : ", file.path)
         fs.unlinkSync(file.path)
+
+        
+        await t.rollback()
         
         if(error instanceof CustomError) {
             throw new CustomError(error.code,error.status, error.message)
