@@ -144,6 +144,22 @@ const storeUpload = async (
     }
 }
 
+const hapusProfil = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const id : ParameterSchema["params"]["id"] = req.params.id
+
+        const response = await profilVendorService.hapusProfil(id)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Hapus Data Berhasil", response)
+    } catch (error) {
+        errorLogger.error(`Testing Error Hapus Profil ${error}`)
+        next(error)
+    }
+}
+
 const tesDomisili = async (
     req:Request, 
     res:Response,
@@ -400,6 +416,7 @@ export default{
     storeProfilVendor,
     storeUpload,
     getProfilVendor,
+    hapusProfil,
     tesDomisili,
     domisili,
     storeUploadSertifikat,

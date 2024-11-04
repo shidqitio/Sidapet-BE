@@ -66,6 +66,27 @@ const getJawabProfilVendor = {
 }
 
 
+const storeUploadKomisaris = {
+    body : z.object({
+        nm_komisaris : z.string({
+            required_error : "nm_komisaris Tidak Boleh Kosong",
+            invalid_type_error : "nm_komisaris Harus String"
+        }),
+        jbtn_komisaris : z.string({
+            required_error : "jbtn_komisaris Tidak Boleh Kosong",
+            invalid_type_error : "jbtn_komisaris Harus String"
+        }),
+        hp_komisaris : z.string({
+            required_error : "hp_komisaris Tidak Boleh Kosong",
+            invalid_type_error : "hp_komisaris Harus String"
+        }),
+        no_ktp_komisaris : z.string({
+            required_error : "no_ktp_komisaris Tidak Boleh Kosong",
+            invalid_type_error : "no_ktp_komisaris Harus String"
+        }),
+    })
+}
+
 //Reusable
 const query = {
     query : z.object({
@@ -110,6 +131,15 @@ export const storeUploadPengalamanSchema = object({
     ...storeUploadPengalamanOrang
 })
 
+export const storeUploadKomisarisSchema = object({
+    ...storeUploadKomisaris
+})
+
+export const updateKomisarisSchema = object({
+    ...parameter,
+    ...storeUploadKomisaris
+})
+
 //Reusable
 export const querySchema = object({
     ...query
@@ -125,6 +155,9 @@ export type StoreUploadVendorSchema = z.TypeOf<typeof storeUploadVendorSchema>
 export type GetJawabProfilVendorSchema = z.TypeOf<typeof getJawabProfilVendorSchema>
 export type StoreUploadSertifikatSchema = z.TypeOf<typeof storeUploadSertifikatSchema>
 export type StoreUploadPengalamanSchema = z.TypeOf<typeof storeUploadPengalamanSchema>
+export type StoreUploadKomisarisSchema = z.TypeOf<typeof storeUploadKomisarisSchema>
+
+export type UpdateKomisarisSchema = z.TypeOf<typeof updateKomisarisSchema>
 
 //Reusable
 export type QuerySchema = z.TypeOf<typeof querySchema>
