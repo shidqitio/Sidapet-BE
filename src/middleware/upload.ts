@@ -105,7 +105,7 @@ const fileFilterPdf = (
       new CustomError(
         httpCode.unsupportedMediaType,
         "error",
-        `Format file harus berupa ${allowedMimeTypesImage.join(" | ")}`
+        `Format file harus berupa ${allowedMimeTypesPdf.join(" | ")}`
       )
     );
   }

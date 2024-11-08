@@ -5,17 +5,18 @@ import Vendor from "./vendor-model";
 
 
 interface IIjinUsahaPerusahaanAttributes {
-	kode_ijin_usaha : number,
-	kode_vendor : number,
-	nama_izin : string | undefined | null,
-	no_izin : string | undefined | null,
-	masa_izin : string | undefined | null,
-	pemberi_izin : string | undefined | null,
-	kualifikasi_usaha : string | undefined | null,
-	klasifikasi_usaha : string | undefined | null,
-	tdp : string | undefined | null,
-	path_izin : string | undefined | null,
-	custom : string | undefined | null,
+ kode_ijin_usaha  : number,
+ kode_vendor      : number,
+ nama_izin        : string | undefined | null,
+ no_izin          : string | undefined | null,
+ masa_izin        : string | undefined | null,
+ pemberi_izin     : string | undefined | null,
+ kualifikasi_usaha: string | undefined | null,
+ klasifikasi_usaha: string | undefined | null,
+ tdp              : string | undefined | null,
+ path_izin        : string | undefined | null,
+ custom           : string | undefined | null,
+ encrypt_key      : string | undefined | null
 }
 
 export type  IjinUsahaPerusahaanOutput= Required<IIjinUsahaPerusahaanAttributes>
@@ -32,24 +33,26 @@ IIjinUsahaPerusahaanAttributes,
 "klasifikasi_usaha" |
 "tdp" |
 "path_izin" |
-"custom" 
+"custom" | 
+"encrypt_key"
 >
 
 class IjinUsahaPerusahaan 
     extends Model<IIjinUsahaPerusahaanAttributes, IjinUsahaPerusahaanInput>
     implements IIjinUsahaPerusahaanAttributes
 {
-	declare kode_ijin_usaha : number ;
-	declare kode_vendor : number ;
-	declare nama_izin : string | undefined | null ;
-	declare no_izin : string | undefined | null ;
-	declare masa_izin : string | undefined | null ;
-	declare pemberi_izin : string | undefined | null ;
-	declare kualifikasi_usaha : string | undefined | null ;
-	declare klasifikasi_usaha : string | undefined | null ;
-	declare tdp : string | undefined | null ;
-	declare path_izin : string | undefined | null ;
-	declare custom : string | undefined | null ;
+ declare kode_ijin_usaha  : number ;
+ declare kode_vendor      : number ;
+ declare nama_izin        : string | undefined | null ;
+ declare no_izin          : string | undefined | null ;
+ declare masa_izin        : string | undefined | null ;
+ declare pemberi_izin     : string | undefined | null ;
+ declare kualifikasi_usaha: string | undefined | null ;
+ declare klasifikasi_usaha: string | undefined | null ;
+ declare tdp              : string | undefined | null ;
+ declare path_izin        : string | undefined | null ;
+ declare custom           : string | undefined | null ;
+ declare encrypt_key      : string | null | undefined;
 }
 
 IjinUsahaPerusahaan.init(
@@ -100,6 +103,10 @@ IjinUsahaPerusahaan.init(
             type : DataTypes.STRING,
             allowNull : true
         },
+        encrypt_key : {
+            type : DataTypes.STRING,
+            allowNull : true
+        }
     },
     {
         sequelize : db, 

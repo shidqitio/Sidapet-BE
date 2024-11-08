@@ -20,6 +20,7 @@ interface IPengalamanAttributes {
 	ba_pnglmn : string | undefined | null,
 	path_pnglmn : string | undefined | null,
 	custom : string | undefined | null,
+    encrypt_key : string | undefined | null
 }
 
 export type  PengalamanOutput= Required<IPengalamanAttributes>
@@ -40,7 +41,8 @@ IPengalamanAttributes,
 "tgl_selesai_pnglmn" |
 "ba_pnglmn" |
 "path_pnglmn" |
-"custom" 
+"custom" |
+"encrypt_key"
 >
 
 class Pengalaman 
@@ -62,6 +64,7 @@ class Pengalaman
 	declare ba_pnglmn : string | undefined | null;
 	declare path_pnglmn : string | undefined | null;
 	declare custom : string | undefined | null;
+    declare encrypt_key: string | null | undefined;
 }
 
 Pengalaman.init(
@@ -128,6 +131,10 @@ Pengalaman.init(
             type : DataTypes.STRING,
             allowNull : true
         },
+        encrypt_key : {
+            type : DataTypes.STRING,
+            allowNull : true
+        }
     },
     {
         sequelize : db, 

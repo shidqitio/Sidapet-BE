@@ -73,7 +73,7 @@ const deleteFile = async (data:Delete["nama_file"]) : Promise<[any | null, any |
         const result = response.data
 
         if(result.status === "success"){
-            return [result.data[0],null]
+            return [result.message,null]
         }
         return [null,result.message]
 

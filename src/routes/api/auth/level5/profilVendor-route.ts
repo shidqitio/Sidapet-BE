@@ -6,7 +6,23 @@ import {
     storeUploadVendorSchema,
     getJawabProfilVendorSchema,
     storeUploadSertifikatSchema,
-    storeUploadPengalamanSchema
+    storeUploadPengalamanSchema,
+    storeUploadKomisarisSchema,
+    updateKomisarisSchema,
+    payloadDireksiSchema,
+    payloadUploadDireksiSchema,
+    payloadIjinUsahaSchema,
+    payloadIjinUsahaUpdateSchema,
+    payloadSahamPerusahaanSchema,
+    payloadSahamPerusahaanUpdateSchema,
+    payloadPersonaliaSchema,
+    payloadPersonaliaUpdateSchema,
+    payloadFasilitasSchema,
+    payloadFasilitasUpdateSchema,
+    payloadPengalamanSchema,
+    payloadPengalamanUpdateSchema,
+    payloadPengalamanSekarangSchema,
+    payloadPengalamanSekarangUpdateSchema
 } from "@schema/api/profilVendor-schema"
 import validate from "@schema/validate"
 import { uploadPdf } from "@middleware/upload"
@@ -37,5 +53,66 @@ router.delete("/hapus/sertifikat/:id", validate(parameterSchema), profilVendorCo
 router.delete("/hapus/pengalaman/:id", validate(parameterSchema), profilVendorController.hapusPengalaman)
 router.delete("/hapus/profil/:id", validate(parameterSchema), profilVendorController.hapusProfilUpload)
 router.delete("/hapus/profil-vendor/:id", validate(parameterSchema), profilVendorController.hapusProfil)
+
+
+//Badan Usaha
+router.get("/badan-usaha/tanya/:id", validate(parameterSchema), profilVendorController.listPertanyaanBadanUsaha)
+
+//Komisaris
+router.get("/badan-usaha/komisaris", profilVendorController.getKomisarisVendor)
+router.get("/badan-usaha/komisaris/get-upload/:id", validate(parameterSchema), profilVendorController.getPdfUploadKomisaris)
+router.post("/badan-usaha/komisaris", uploadPdf.single("file"), validate(storeUploadKomisarisSchema), profilVendorController.storeUploadKomisaris)
+router.delete("/badan-usaha/komisaris/delete/:id", validate(parameterSchema), profilVendorController.hapusKomisaris)
+router.put("/badan-usaha/komisaris/update/:id", uploadPdf.single("file"), validate(updateKomisarisSchema), profilVendorController.updateKomisaris)
+
+//Direksi 
+router.get("/badan-usaha/direksi", profilVendorController.getDireksiVendor)
+router.get("/badan-usaha/direksi/get-upload/:id", validate(parameterSchema), profilVendorController.getPdfUploadDireksi)
+router.post("/badan-usaha/direksi", uploadPdf.single("file"), validate(payloadDireksiSchema), profilVendorController.storeUploadDireksi)
+router.delete("/badan-usaha/direksi/delete/:id", validate(parameterSchema), profilVendorController.hapusDireksi)
+router.put("/badan-usaha/direksi/update/:id", uploadPdf.single("file"), validate(payloadUploadDireksiSchema), profilVendorController.updateDireksi)
+
+//Ijin Usaha 
+router.get("/badan-usaha/ijin-usaha", profilVendorController.getIjinUsaha)
+router.get("/badan-usaha/ijin-usaha/get-upload/:id", validate(parameterSchema), profilVendorController.getPdfUploadIjinUsaha)
+router.post("/badan-usaha/ijin-usaha", uploadPdf.single("file"), validate(payloadIjinUsahaSchema), profilVendorController.storeIjinUsaha)
+router.delete("/badan-usaha/ijin-usaha/delete/:id", validate(parameterSchema), profilVendorController.hapusIjinUsaha)
+router.put("/badan-usaha/ijin-usaha/update/:id", uploadPdf.single("file"), validate(payloadIjinUsahaUpdateSchema), profilVendorController.updateIjinUsaha)
+
+//Saham Perusahaan 
+router.get("/badan-usaha/saham", profilVendorController.getSahamPerusahaan)
+router.get("/badan-usaha/saham/get-upload/:id", validate(parameterSchema), profilVendorController.getPdfUploadSahamPerusahaan)
+router.post("/badan-usaha/saham", uploadPdf.single("file"), validate(payloadSahamPerusahaanSchema), profilVendorController.storeSahamPerusahaan)
+router.delete("/badan-usaha/saham/delete/:id", validate(parameterSchema), profilVendorController.hapusSahamPerusahaan)
+router.put("/badan-usaha/saham/update/:id", uploadPdf.single("file"), validate(payloadSahamPerusahaanUpdateSchema), profilVendorController.updateSahamPerusahaan)
+
+//Personalia 
+router.get("/badan-usaha/personalia", profilVendorController.getPersonalia)
+router.get("/badan-usaha/personalia/get-upload/:id", validate(parameterSchema), profilVendorController.getPdfUploadPersonalia)
+router.post("/badan-usaha/personalia", uploadPdf.single("file"), validate(payloadPersonaliaSchema), profilVendorController.storePersonalia)
+router.delete("/badan-usaha/personalia/delete/:id", validate(parameterSchema), profilVendorController.hapusPersonalia)
+router.put("/badan-usaha/personalia/update/:id", uploadPdf.single("file"), validate(payloadPersonaliaUpdateSchema), profilVendorController.updatePersonalia)
+
+
+//Fasilitas
+router.get("/badan-usaha/fasilitas", profilVendorController.getFasilitas)
+router.get("/badan-usaha/fasilitas/get-upload/:id", validate(parameterSchema), profilVendorController.getPdfUploadFasilitas)
+router.post("/badan-usaha/fasilitas", uploadPdf.single("file"), validate(payloadFasilitasSchema), profilVendorController.storeFasilitas)
+router.delete("/badan-usaha/fasilitas/delete/:id", validate(parameterSchema), profilVendorController.hapusFasilitas)
+router.put("/badan-usaha/fasilitas/update/:id", uploadPdf.single("file"), validate(payloadFasilitasUpdateSchema), profilVendorController.updateFasilitas)
+
+//Pengalaman
+router.get("/badan-usaha/pengalaman", profilVendorController.getPengalaman)
+router.get("/badan-usaha/pengalaman/get-upload/:id", validate(parameterSchema), profilVendorController.getPdfUploadPengalaman)
+router.post("/badan-usaha/pengalaman", uploadPdf.single("file"), validate(payloadPengalamanSchema), profilVendorController.storePengalaman)
+router.delete("/badan-usaha/pengalaman/delete/:id", validate(parameterSchema), profilVendorController.hapusPengalamanBadanUsaha)
+router.put("/badan-usaha/pengalaman/update/:id", uploadPdf.single("file"), validate(payloadPengalamanUpdateSchema), profilVendorController.updatePengalaman)
+
+//PengalamanSekarang
+router.get("/badan-usaha/pengalaman-sekarang", profilVendorController.getPengalamanSekarang)
+router.get("/badan-usaha/pengalaman-sekarang/get-upload/:id", validate(parameterSchema), profilVendorController.getPdfUploadPengalamanSekarang)
+router.post("/badan-usaha/pengalaman-sekarang", uploadPdf.single("file"), validate(payloadPengalamanSekarangSchema), profilVendorController.storePengalamanSekarang)
+router.delete("/badan-usaha/pengalaman-sekarang/delete/:id", validate(parameterSchema), profilVendorController.hapusPengalamanSekarangBadanUsaha)
+router.put("/badan-usaha/pengalaman-sekarang/update/:id", uploadPdf.single("file"), validate(payloadPengalamanSekarangUpdateSchema), profilVendorController.updatePengalamanSekarang)
 
 export default router

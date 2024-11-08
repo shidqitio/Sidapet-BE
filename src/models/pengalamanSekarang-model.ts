@@ -20,6 +20,7 @@ interface IPengalamanSekarangAttributes {
 	prestasi_pnglmn_sekarang : string | undefined | null,
 	path_pnglmn_skrg : string | undefined | null,
 	custom : string | undefined | null,
+    encrypt_key : string | undefined | null
 }
 
 export type  PengalamanSekarangOutput= Required<IPengalamanSekarangAttributes>
@@ -40,7 +41,8 @@ IPengalamanSekarangAttributes,
 "kontrak_pnglmn_sekarang" |
 "prestasi_pnglmn_sekarang" |
 "path_pnglmn_skrg" |
-"custom" 
+"custom"  |
+"encrypt_key"
 >
 
 class PengalamanSekarang 
@@ -62,6 +64,7 @@ class PengalamanSekarang
 	declare prestasi_pnglmn_sekarang : string | undefined | null;
 	declare path_pnglmn_skrg : string | undefined | null;
 	declare custom : string | undefined | null;
+    declare encrypt_key: string | null | undefined;
 }
 
 PengalamanSekarang.init(
@@ -128,6 +131,10 @@ PengalamanSekarang.init(
             type : DataTypes.STRING, 
             allowNull : true
         },
+        encrypt_key : {
+            type : DataTypes.STRING,
+            allowNull : true
+        }
     },
     {
         sequelize : db, 
