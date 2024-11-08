@@ -16,6 +16,7 @@ interface IFasilitasPerusahaanAttributes {
 	lokasi_fasilitas : string | null | undefined,
 	path_fasilitas : string | null | undefined,
 	custom : string | null | undefined,
+    encrypt_key : string | null | undefined
 }
 
 export type  FasilitasPerusahaanOutput= Required<IFasilitasPerusahaanAttributes>
@@ -32,7 +33,8 @@ IFasilitasPerusahaanAttributes,
 "kondisi_fasilitas" | 
 "lokasi_fasilitas" | 
 "path_fasilitas" | 
-"custom" 
+"custom"  |
+"encrypt_key"
 >
 
 class FasilitasPerusahaan 
@@ -50,6 +52,7 @@ class FasilitasPerusahaan
 	declare lokasi_fasilitas : string | null | undefined;
 	declare path_fasilitas : string | null | undefined;
 	declare custom : string | null | undefined;
+    declare encrypt_key: string | null | undefined;
 }
 
 FasilitasPerusahaan.init(
@@ -100,6 +103,10 @@ FasilitasPerusahaan.init(
             type : DataTypes.STRING,
             allowNull : true
         },
+        encrypt_key : {
+            type : DataTypes.STRING,
+            allowNull : true
+        }
     },
     {
         sequelize : db, 

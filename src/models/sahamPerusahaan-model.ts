@@ -13,6 +13,7 @@ interface ISahamPerusahaanAttributes {
 	persentase_saham : string | undefined | null,
 	path_saham : string | undefined | null,
 	custom : string | undefined | null,
+    encrypt_key : string | undefined | null
 }
 
 export type  SahamPerusahaanOutput= Required<ISahamPerusahaanAttributes>
@@ -26,7 +27,8 @@ ISahamPerusahaanAttributes,
 "alamat_saham" |
 "persentase_saham" |
 "path_saham" |
-"custom" 
+"custom" | 
+"encrypt_key"
 >
 
 class SahamPerusahaan 
@@ -41,6 +43,7 @@ class SahamPerusahaan
     declare persentase_saham : string | undefined | null ;
     declare path_saham : string | undefined | null ;
     declare custom : string | undefined | null ;
+    declare encrypt_key: string | null | undefined;
 }
 
 SahamPerusahaan.init(
@@ -79,6 +82,10 @@ SahamPerusahaan.init(
             type : DataTypes.STRING,
             allowNull : true,
         },
+        encrypt_key : {
+            type : DataTypes.STRING,
+            allowNull : true
+        }
     },
     {
         sequelize : db, 

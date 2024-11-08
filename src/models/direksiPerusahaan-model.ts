@@ -14,6 +14,7 @@ interface IDireksiPerusahaanAttributes {
 	path_ktp_direksi : string | undefined | null,
 	status_direksi_perusahaan : string | undefined | null,
 	custom : string | undefined | null,
+    encrypt_key : string | undefined | null
 }
 
 export type  DireksiPerusahaanOutput= Required<IDireksiPerusahaanAttributes>
@@ -28,7 +29,8 @@ IDireksiPerusahaanAttributes,
 "no_ktp_direksi" |
 "path_ktp_direksi" |
 "status_direksi_perusahaan" |
-"custom" 
+"custom" |
+"encrypt_key"
 >
 
 class DireksiPerusahaan 
@@ -44,6 +46,7 @@ class DireksiPerusahaan
 	declare path_ktp_direksi : string | undefined | null ;
 	declare status_direksi_perusahaan : string | undefined | null ;
 	declare custom : string | undefined | null ;
+    declare encrypt_key: string | null | undefined; 
 }
 
 DireksiPerusahaan.init(
@@ -86,6 +89,10 @@ DireksiPerusahaan.init(
             type : DataTypes.STRING, 
             allowNull : true
         },
+        encrypt_key : {
+            type : DataTypes.STRING,
+            allowNull : true
+        }
     },
     {
         sequelize : db, 

@@ -16,6 +16,7 @@ interface IPersonaliaPerusahaanAttributes {
 	sertif_personal : string | undefined | null,
 	path_personal : string | undefined | null,
 	custom : string | undefined | null,
+    encrypt_key : string | undefined | null
 }
 
 export type  PersonaliaPerusahaanOutput= Required<IPersonaliaPerusahaanAttributes>
@@ -32,7 +33,8 @@ IPersonaliaPerusahaanAttributes,
 "keahlian_personal" |
 "sertif_personal" |
 "path_personal" |
-"custom" 
+"custom" | 
+"encrypt_key"
 >
 
 class PersonaliaPerusahaan 
@@ -50,6 +52,7 @@ class PersonaliaPerusahaan
 	declare sertif_personal : string | undefined | null;
 	declare path_personal : string | undefined | null;
 	declare custom : string | undefined | null;
+    declare encrypt_key: string | null | undefined;
 }
 
 PersonaliaPerusahaan.init(
@@ -100,6 +103,10 @@ PersonaliaPerusahaan.init(
             type : DataTypes.STRING(),
             allowNull : true
         },
+        encrypt_key : {
+            type : DataTypes.STRING(),
+            allowNull : true
+        }
     },
     {
         sequelize : db, 
