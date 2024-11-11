@@ -26,6 +26,7 @@ interface IRegisterVendorAttributes {
     distance_percentage: number |  null | undefined;
     distance_point     : number |  null | undefined;
     keypass            : any;
+    status_email : boolean ;
     udcr               : Date | undefined;
     udch               : Date | undefined;
 }
@@ -47,7 +48,8 @@ IRegisterVendorAttributes,
 | "udcr"
 | "swafoto"
 | "message"
-|"status_register"
+|"status_register" 
+|"status_email"
 >
 
 class RegisterVendor 
@@ -70,6 +72,7 @@ class RegisterVendor
     declare distance_percentage: number |  null | undefined;
     declare distance_point     : number |  null | undefined;
     declare keypass            : any;
+    declare status_email: boolean;
     declare udcr               : Date | undefined;
     declare udch               : Date | undefined;
 }
@@ -143,6 +146,11 @@ RegisterVendor.init(
         keypass : {
             type : DataTypes.STRING,
             allowNull : true
+        },
+        status_email : {
+            type : DataTypes.BOOLEAN, 
+            allowNull : true,
+            defaultValue : false
         },
         udcr : {
             type : DataTypes.DATE,

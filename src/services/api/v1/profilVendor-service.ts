@@ -136,46 +136,68 @@ const katItemTanya = async (id:ParameterSchema["params"]["id"]) : Promise<KatDok
     }
 }
 
-//################# PERORANGAN ########################################
-
-//List Pertanyaan Perorangan
-const listPertanyaanPerorangan = async (
-    id:ParameterSchema["params"]["id"]) : Promise<KatDokumenVendor | null> => {
+//Get Profil Perorangan
+const getProfilVendor = async (request:GetJawabProfilVendorSchema["body"], kode_vendor : number) : Promise<any> => {
     try {
-        const listPertanyaan : KatDokumenVendor | null = await KatDokumenVendor.findOne({
-            attributes : ["kode_kat_dokumen_vendor", "kode_jenis_vendor", "nama_kategori"],
-            where : {
-                kode_jenis_vendor : 2, 
-                kode_kat_dokumen_vendor : id,
-            }, 
-            include : [
-                {
-                    attributes : ["kode_kat_item_tanya", "kode_kat_dokumen_vendor", "kategori_item"],
-                    model : KatItemTanya, 
-                    as : "KatItemTanya", 
-                    include : [
-                        {
-                            attributes : ["kode_item", "kode_kat_item_tanya", "urutan", "nama_item", "tipe_input", "keterangan", "nama_unik", "jenis_item", "is_required"],
-                            model : ItemTanya, 
-                            as : "ItemTanya",
-                            where : {
-                                jenis_item : "default"
-                            }
-                        }
-                    ]
+        const queryJawabItem : any = await db.query(`
+            SELECT a.kode_jawab_profil, c.kode_vendor, c.nama_perusahaan, b.kode_item, b.nama_item, b.tipe_input, a.isian 
+                FROM trx_jawab_profil a JOIN 
+                ref_item_tanya b ON a.kode_item = b.kode_item
+                JOIN ref_vendor c
+                ON a.kode_vendor = c.kode_vendor
+                WHERE c.kode_vendor = :kode_vendor
+                AND b.kode_kat_dokumen_vendor = :kode_kat_dokumen_vendor
+            `, {
+                replacements : {
+                    kode_vendor : kode_vendor,
+                    kode_kat_dokumen_vendor : request.kode_kat_dokumen_vendor
+                },
+                type : QueryTypes.SELECT
+            })
+
+
+            for(const item of queryJawabItem) {
+                if(item.tipe_input === "table"){
+                    const callNamaTabel : any = await db.query(`
+                    SELECT metadata->>'nama_tabel' AS tabel FROM ref_item_tanya WHERE kode_item = ${item.kode_item}
+                    `, {
+                        type : QueryTypes.SELECT
+                    })
+
+                    console.log("COBA DATA ", callNamaTabel[0].tabel)
+
+                    const cekDataquery : any = await db.query(`
+                        SELECT * FROM ${callNamaTabel[0].tabel} WHERE kode_vendor = :kode_vendor
+                        `, {
+                            replacements : {
+                                kode_vendor : kode_vendor
+                            },
+                            type : QueryTypes.SELECT
+                    })
+
+                    await cekDataquery.forEach((row : any) => {
+                        delete row.encrypt_key;
+                    });
+                    
+                    let showData
+
+                    if(cekDataquery.length !== 0) {
+                        console.log(cekDataquery)
+                        showData = cekDataquery
+                    } 
+                    else {
+                        showData = []
+                    }
+
+                    item.isian = showData;
                 }
-            ],
-            order : [
-            [{ model: KatItemTanya, as: "KatItemTanya" }, { model: ItemTanya, as: "ItemTanya" }, "urutan", "ASC"]   
-            ]
-        })
+            }
+   
 
-        if(!listPertanyaan) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tidak Ada")
+            return queryJawabItem
 
-        return listPertanyaan
     } catch (error) {
         console.log(error);
-        
         if(error instanceof CustomError) {
             throw new CustomError(error.code,error.status, error.message)
         } 
@@ -185,146 +207,6 @@ const listPertanyaanPerorangan = async (
         }
     }
 }
-
-//Get Menu With Status By User
-const getMenuStatus = async (kode_vendor:number) : Promise<KatDokumenVendor[]> => {
-    try {
-        console.log(kode_vendor)
-        
-        const getJenisVndor = await RegisterVendor.findOne({
-            attributes : ["kode_jenis_vendor", "kode_vendor"],
-            where : {
-                kode_vendor : kode_vendor
-            },
-            raw : true
-        })
-        
-
-        const getMenu : KatDokumenVendor[] = await KatDokumenVendor.findAll({
-            attributes : [
-                "kode_kat_dokumen_vendor",
-                "kode_jenis_vendor",
-                "urutan",
-                "is_main",
-                "is_has_sub",
-                "main_kat",
-                "nama_kategori",
-                [sequelize.literal(`Case 
-                    WHEN "TrxKatDokKomplit"."is_komplit" = TRUE 
-                    THEN TRUE
-                    ELSE FALSE 
-                    END
-                    `), 'status_komplit']
-            ],
-            where : {
-                is_main : true,
-                kode_jenis_vendor : getJenisVndor?.kode_jenis_vendor
-            },
-            include : [
-                {
-                    model : TrxKatDokKomplit,
-                    as : "TrxKatDokKomplit",
-                    attributes : [],
-                    required : false,
-                    where : {
-                        kode_vendor : kode_vendor
-                    }
-                }
-            ],
-            raw : true, 
-            nest : true
-        })
-
-        const sub = await KatDokumenVendor.findAll({
-            where : {
-                kode_jenis_vendor : 1
-            },
-            attributes: [
-                "kode_kat_dokumen_vendor",
-                "kode_jenis_vendor",
-                "urutan",
-                "main_kat",
-                "nama_kategori",
-                [sequelize.literal(`Case 
-                    WHEN "TrxKatDokKomplit"."is_komplit" = TRUE 
-                    THEN TRUE
-                    ELSE FALSE 
-                    END
-                    `), 'status_komplit']
-            ],
-            include : [
-                {
-                    model : TrxKatDokKomplit,
-                    as : "TrxKatDokKomplit",
-                    attributes : [],
-                    required : false,
-                    where : {
-                        kode_vendor : kode_vendor
-                    }
-                }
-            ],
-            raw : true
-        })
-
-        console.log(sub)
-
-        // getMenu.forEach((item : any) => {
-        //     if(item.is_has_sub === true) {
-        //         const matchingMain = sub.filter(
-        //             (sub : any) => sub.main_kat === item.kode_kat_dokumen_vendor
-        //         );
-
-        //         item.subMenu = matchingMain.length > 0 ? matchingMain.map((subItem: any) => ({
-        //             kode_kat_dokumen_vendor: subItem.kode_kat_dokumen_vendor,
-        //             nama_kategori: subItem.nama_kategori
-        //         })) : null;
-        //     }
-        // }) 
-
-        getMenu.forEach((item: any) => {
-            if (item.is_has_sub === true) {
-                // Filter sub-items where main_kat matches the kode_kat_dokumen_vendor
-                const matchingMain = sub.filter(
-                    (subItem: any) => subItem.main_kat === item.kode_kat_dokumen_vendor
-                );
-        
-                // If there are matching sub-items, map them to the desired format; otherwise, set subMenu to null
-                item.subMenu = matchingMain.length > 0 
-                    ? matchingMain.map((subItem: any) => ({
-                        kode_kat_dokumen_vendor: subItem.kode_kat_dokumen_vendor,
-                        nama_kategori: subItem.nama_kategori,
-                        urutan : subItem.urutan,
-                        status_komplit : subItem.status_komplit
-                    }))
-                    : null;
-
-                     // Set getMenu's status_komplit based on all subMenu items
-                        if (item.subMenu && item.subMenu.length > 0) {
-                            item.status_komplit = item.subMenu.every((subItem: any) => subItem.status_komplit === true);
-                        } else {
-                            item.status_komplit = false;
-                        }
-            } else {
-                // If item.is_has_sub is false, ensure subMenu is null
-                item.subMenu = null;
-            }
-        });
-        
-
-        console.log("TESDATA : ", getMenu)
-
-        return getMenu
-    } catch (error) {
-        if(error instanceof CustomError) {
-            throw new CustomError(error.code,error.status, error.message)
-        } 
-        else {
-            debugLogger.debug(error)
-            throw new CustomError(500, responseStatus.error, "Internal server error.")
-        }
-    }
-}
-
 
 //Store Profil Vendor
 const storeProfilVendor = async (request:StoreProfilVendorSchema["body"], kode_vendor : number) : Promise<any> => {
@@ -579,6 +461,8 @@ const storeUpload = async (request:StoreUploadVendorSchema["body"], file : Expre
             transaction : t
         })
 
+        
+
         const jawabProfil = await TrxJawabProfil.findAll({
             where : {
                 kode_vendor : user
@@ -588,6 +472,8 @@ const storeUpload = async (request:StoreUploadVendorSchema["body"], file : Expre
         })
 
         const unsansweredItems = getItemTanya.filter(tanya => !jawabProfil.some(jawab => jawab.kode_item === tanya.kode_item))
+
+        console.log(unsansweredItems)
 
         const status = unsansweredItems.length === 0 ? "finish" : "not_finish"
 
@@ -674,6 +560,19 @@ const storeUpload = async (request:StoreUploadVendorSchema["body"], file : Expre
     }
 }
 
+
+//UPDATE PROFIL
+const updateProfil = async (request:StoreProfilVendorSchema["body"]) => {
+    const profil : StoreProfilVendorSchema["body"]["profil"] = request.profil
+
+    const arrGagal : any[] = []
+
+    const arrBerhasil : any[] = []
+
+
+
+}
+
 //Hapus Profil 
 const hapusProfil = async (id:ParameterSchema["params"]["id"]) : Promise<TrxJawabProfil>=> {
     try {
@@ -692,6 +591,196 @@ const hapusProfil = async (id:ParameterSchema["params"]["id"]) : Promise<TrxJawa
         if(deleteProfil === 0) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus Data")
 
         return exProfil
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+
+//################# PERORANGAN ########################################
+
+//List Pertanyaan Perorangan
+const listPertanyaanPerorangan = async (
+    id:ParameterSchema["params"]["id"]) : Promise<KatDokumenVendor | null> => {
+    try {
+        const listPertanyaan : KatDokumenVendor | null = await KatDokumenVendor.findOne({
+            attributes : ["kode_kat_dokumen_vendor", "kode_jenis_vendor", "nama_kategori"],
+            where : {
+                kode_jenis_vendor : 2, 
+                kode_kat_dokumen_vendor : id,
+            }, 
+            include : [
+                {
+                    attributes : ["kode_kat_item_tanya", "kode_kat_dokumen_vendor", "kategori_item"],
+                    model : KatItemTanya, 
+                    as : "KatItemTanya", 
+                    include : [
+                        {
+                            attributes : ["kode_item", "kode_kat_item_tanya", "urutan", "nama_item", "tipe_input", "keterangan", "nama_unik", "jenis_item", "is_required"],
+                            model : ItemTanya, 
+                            as : "ItemTanya",
+                            where : {
+                                jenis_item : "default"
+                            }
+                        }
+                    ]
+                }
+            ],
+            order : [
+            [{ model: KatItemTanya, as: "KatItemTanya" }, { model: ItemTanya, as: "ItemTanya" }, "urutan", "ASC"]   
+            ]
+        })
+
+        if(!listPertanyaan) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tidak Ada")
+
+        return listPertanyaan
+    } catch (error) {
+        console.log(error);
+        
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+//Get Menu With Status By User
+const getMenuStatus = async (kode_vendor:number) : Promise<KatDokumenVendor[]> => {
+    try {
+        console.log(kode_vendor)
+        
+        const getJenisVndor = await RegisterVendor.findOne({
+            attributes : ["kode_jenis_vendor", "kode_vendor"],
+            where : {
+                kode_vendor : kode_vendor
+            },
+            raw : true
+        })
+        
+
+        const getMenu : KatDokumenVendor[] = await KatDokumenVendor.findAll({
+            attributes : [
+                "kode_kat_dokumen_vendor",
+                "kode_jenis_vendor",
+                "urutan",
+                "is_main",
+                "is_has_sub",
+                "main_kat",
+                "nama_kategori",
+                [sequelize.literal(`Case 
+                    WHEN "TrxKatDokKomplit"."is_komplit" = TRUE 
+                    THEN TRUE
+                    ELSE FALSE 
+                    END
+                    `), 'status_komplit']
+            ],
+            where : {
+                is_main : true,
+                kode_jenis_vendor : getJenisVndor?.kode_jenis_vendor
+            },
+            include : [
+                {
+                    model : TrxKatDokKomplit,
+                    as : "TrxKatDokKomplit",
+                    attributes : [],
+                    required : false,
+                    where : {
+                        kode_vendor : kode_vendor
+                    }
+                }
+            ],
+            raw : true, 
+            nest : true
+        })
+
+        const sub = await KatDokumenVendor.findAll({
+            where : {
+                kode_jenis_vendor : 1
+            },
+            attributes: [
+                "kode_kat_dokumen_vendor",
+                "kode_jenis_vendor",
+                "urutan",
+                "main_kat",
+                "nama_kategori",
+                [sequelize.literal(`Case 
+                    WHEN "TrxKatDokKomplit"."is_komplit" = TRUE 
+                    THEN TRUE
+                    ELSE FALSE 
+                    END
+                    `), 'status_komplit']
+            ],
+            include : [
+                {
+                    model : TrxKatDokKomplit,
+                    as : "TrxKatDokKomplit",
+                    attributes : [],
+                    required : false,
+                    where : {
+                        kode_vendor : kode_vendor
+                    }
+                }
+            ],
+            raw : true
+        })
+
+        console.log(sub)
+
+        // getMenu.forEach((item : any) => {
+        //     if(item.is_has_sub === true) {
+        //         const matchingMain = sub.filter(
+        //             (sub : any) => sub.main_kat === item.kode_kat_dokumen_vendor
+        //         );
+
+        //         item.subMenu = matchingMain.length > 0 ? matchingMain.map((subItem: any) => ({
+        //             kode_kat_dokumen_vendor: subItem.kode_kat_dokumen_vendor,
+        //             nama_kategori: subItem.nama_kategori
+        //         })) : null;
+        //     }
+        // }) 
+
+        getMenu.forEach((item: any) => {
+            if (item.is_has_sub === true) {
+                // Filter sub-items where main_kat matches the kode_kat_dokumen_vendor
+                const matchingMain = sub.filter(
+                    (subItem: any) => subItem.main_kat === item.kode_kat_dokumen_vendor
+                );
+        
+                // If there are matching sub-items, map them to the desired format; otherwise, set subMenu to null
+                item.subMenu = matchingMain.length > 0 
+                    ? matchingMain.map((subItem: any) => ({
+                        kode_kat_dokumen_vendor: subItem.kode_kat_dokumen_vendor,
+                        nama_kategori: subItem.nama_kategori,
+                        urutan : subItem.urutan,
+                        status_komplit : subItem.status_komplit
+                    }))
+                    : null;
+
+                     // Set getMenu's status_komplit based on all subMenu items
+                        if (item.subMenu && item.subMenu.length > 0) {
+                            item.status_komplit = item.subMenu.every((subItem: any) => subItem.status_komplit === true);
+                        } else {
+                            item.status_komplit = false;
+                        }
+            } else {
+                // If item.is_has_sub is false, ensure subMenu is null
+                item.subMenu = null;
+            }
+        });
+        
+
+        console.log("TESDATA : ", getMenu)
+
+        return getMenu
     } catch (error) {
         if(error instanceof CustomError) {
             throw new CustomError(error.code,error.status, error.message)
@@ -741,78 +830,6 @@ const tesDomisili = async (id:ParameterSchema["params"]["id"]) => {
 
         return queryJawabItem
         
-
-    } catch (error) {
-        console.log(error);
-        if(error instanceof CustomError) {
-            throw new CustomError(error.code,error.status, error.message)
-        } 
-        else {
-            debugLogger.debug(error)
-            throw new CustomError(500, responseStatus.error, "Internal server error.")
-        }
-    }
-}
-
-//Get Profil Perorangan
-const getProfilVendor = async (request:GetJawabProfilVendorSchema["body"], kode_vendor : number) : Promise<any> => {
-    try {
-        const queryJawabItem : any = await db.query(`
-            SELECT a.kode_jawab_profil, c.kode_vendor, c.nama_perusahaan, b.kode_item, b.nama_item, b.tipe_input, a.isian 
-                FROM trx_jawab_profil a JOIN 
-                ref_item_tanya b ON a.kode_item = b.kode_item
-                JOIN ref_vendor c
-                ON a.kode_vendor = c.kode_vendor
-                WHERE c.kode_vendor = :kode_vendor
-                AND b.kode_kat_dokumen_vendor = :kode_kat_dokumen_vendor
-            `, {
-                replacements : {
-                    kode_vendor : kode_vendor,
-                    kode_kat_dokumen_vendor : request.kode_kat_dokumen_vendor
-                },
-                type : QueryTypes.SELECT
-            })
-
-
-            for(const item of queryJawabItem) {
-                if(item.tipe_input === "table"){
-                    const callNamaTabel : any = await db.query(`
-                    SELECT metadata->>'nama_tabel' AS tabel FROM ref_item_tanya WHERE kode_item = ${item.kode_item}
-                    `, {
-                        type : QueryTypes.SELECT
-                    })
-
-                    console.log("COBA DATA ", callNamaTabel[0].tabel)
-
-                    const cekDataquery : any = await db.query(`
-                        SELECT * FROM ${callNamaTabel[0].tabel} WHERE kode_vendor = :kode_vendor
-                        `, {
-                            replacements : {
-                                kode_vendor : kode_vendor
-                            },
-                            type : QueryTypes.SELECT
-                    })
-
-                    await cekDataquery.forEach((row : any) => {
-                        delete row.encrypt_key;
-                    });
-                    
-                    let showData
-
-                    if(cekDataquery.length !== 0) {
-                        console.log(cekDataquery)
-                        showData = cekDataquery
-                    } 
-                    else {
-                        showData = []
-                    }
-
-                    item.isian = showData;
-                }
-            }
-   
-
-            return queryJawabItem
 
     } catch (error) {
         console.log(error);

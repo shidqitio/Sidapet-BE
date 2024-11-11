@@ -13,6 +13,7 @@ import encryptImage from "@utils/encryptimage"
 import decryptImage from "@utils/decryptimage"
 import {checkEmail, registerExternal} from "@services/usman"
 import logger, { errorLogger, debugLogger } from "@config/logger";
+import CryptoJS from "crypto-js";
 
 
 import { httpCode, responseStatus } from "@utils/prefix";
@@ -29,6 +30,8 @@ import {
     ParameterSchema,
     ParamaterStatusVendorSchema
 } from "@schema/api/vendorRegister-schema"
+
+import template from "@public/template/template-email"
 
 
 //Get All Vendor 
@@ -216,6 +219,19 @@ const registerVendor = async (request:PayloadRegisterSchema["body"], file : Expr
                 throw new CustomError(httpCode.unprocessableEntity,responseStatus.error, "Terjadi Kegagalan Update ")
             }
         }
+
+        let idString = createVendor.kode_register.toString()
+
+        let cipherText = CryptoJS.AES.encrypt(idString, getConfig("SECRET_KEY")).toString();
+
+        let kirimEmail = template.templateHtmlEmailVerif(`${getConfig("SIDAPET_BASE_URL")}/api-noauth/v1/register/verifikasi/${cipherText}`)
+        
+
+        let sendEmail = await sendMail(createVendor.email as string, "Verifikasi Email Vendor",kirimEmail)
+
+        if(!sendEmail) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Kirim Email ke Vendor")
+
+
 
         await t.commit()
 
@@ -476,6 +492,49 @@ const updateStatusVendor = async (
         else {
             debugLogger.debug(error)
             throw new CustomError(500,"error", "Internal server error.")
+        }
+    }
+}
+
+//Update Verifikasi Email 
+const updateVerifEmail = async (kode_register:string) : Promise<any> => {
+    try {
+
+        // Decrypt
+        var bytes  = CryptoJS.AES.decrypt(kode_register, getConfig("SECRET_KEY"));
+        var kode = bytes.toString(CryptoJS.enc.Utf8);
+
+        const exEmail = await RegisterVendor.findOne({
+            where : {
+                kode_register : parseInt(kode),
+                status_email : false
+            }
+        })
+
+        if(!exEmail) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Email Tidak Ditemukan")
+
+        exEmail.status_email = true
+
+         const updateResponse = await exEmail.save()
+
+         let contentHtml
+
+        if(!updateResponse) {
+            contentHtml = template.validationEmail(false,"Gagal Verifikasi Email")
+        } else {
+            contentHtml = template.validationEmail(true, "Berhasil Verifikasi Email, Mohon Tunggu Verifikator memverifikasi Email")
+        }
+
+        return contentHtml
+
+            
+    } catch (error) {
+        console.log("error : ", error);
+        if (error instanceof CustomError) {
+            throw new CustomError(error.code, error.status, error.message)
+        } else {
+            debugLogger.debug(error)
+            throw new CustomError(500, "error", "Internal server error.")
         }
     }
 }
@@ -817,7 +876,8 @@ export default {
     insertExternaltoUsman,
     registerVendor,
     migrasiUserUsman,
-    getVendorbyStatusVerifikasiSearch
+    getVendorbyStatusVerifikasiSearch,
+    updateVerifEmail
 }
 
 

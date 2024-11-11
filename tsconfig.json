@@ -15,7 +15,7 @@
       "@middleware/*": ["src/middleware/*"],
       "@controllers/*": ["src/controllers/*"],
       "@certificate/*": ["src/certificate/*"],
-      "@public/*": ["src/certificate/*"]
+      "@public/*": ["src/public/*"]
     } /* Specify a set of entries that re-map imports to additional lookup locations. */,
     "outDir": "./build" /* Specify an output folder for all emitted files. */,
     "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,

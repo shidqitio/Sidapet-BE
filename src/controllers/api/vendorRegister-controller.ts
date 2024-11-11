@@ -72,6 +72,29 @@ const registerVendor = async (
     }
 }
 
+//Verifikasi Akun Email 
+const updateVerifEmail = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode_register = req.params.kode_register
+
+        const response = await vendorRegisterService.updateVerifEmail(kode_register)
+
+        // res.setHeader(
+        //     'Content-Security-Policy',
+        //     `script-src 'self'`
+        // );
+        
+
+        res.send(response)
+    } catch (error) {
+        errorLogger.error(`Testing Error Register Vendor Verif Email ${error}`)
+        next(error)
+    }
+}
+
 
 //Get Detail Vendor
 const getRegisterVendorDetail = async (
@@ -177,5 +200,6 @@ export default {
     insertExternaltoUsman,
     registerVendor,
     migrasiUserUsman,
+    updateVerifEmail,
     getVendorbyStatusVerifikasiSearch
 }

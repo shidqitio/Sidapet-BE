@@ -19,7 +19,10 @@ const router = express.Router();
 router.post("/register", uploadImage.single("file"), validate(payloadRegisterSchema), vendorRegisterController.registerVendor)
 router.get("/register-usman/:id", validate(parameterSchema), vendorRegisterController.insertExternaltoUsman)
 
+router.get("/register/verifikasi/:kode_register", vendorRegisterController.updateVerifEmail)
+
 router.post("/migrasi-usman", vendorRegisterController.migrasiUserUsman)
+
 
 
 
