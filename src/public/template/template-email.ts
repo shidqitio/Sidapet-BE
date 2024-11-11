@@ -19,15 +19,15 @@ const templateHtmlEmailVerif = (
 
         <div style="font-family: 'Public Sans', sans-serif; font-optical-sizing: auto; font-weight: normal; font-style: normal; font-size: 14px;">
             <p>Silahkan klik tombol di bawah ini:</p>
-            <a href="${val.link_path}" style="background-color: #212B36; border-radius: 8px; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; font-weight: bold; margin: 4px 2px; cursor: pointer;">
+            <a href="${val}" style="background-color: #212B36; border-radius: 8px; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; font-weight: bold; margin: 4px 2px; cursor: pointer;">
                 Verifikasi
             </a>
 
             <br><br><br>
 
             <p>Atau copy link di bawah:</p>
-            <a href="${val.link_path}" style="text-decoration: none; color: #007bff; font-weight: bold;">
-                ${val.link_path}
+            <a href="${val}" style="text-decoration: none; color: #007bff; font-weight: bold;">
+                ${val}
             </a>
 
             <br><br><br>
