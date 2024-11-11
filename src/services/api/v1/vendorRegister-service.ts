@@ -33,6 +33,8 @@ import {
 
 import template from "@public/template/template-email"
 
+import {encryptWithKey, decryptWithKey} from "@utils/generate-encrypt-decrypt"
+
 
 //Get All Vendor 
 const getAllVendor = async (
@@ -220,11 +222,11 @@ const registerVendor = async (request:PayloadRegisterSchema["body"], file : Expr
             }
         }
 
-        let idString = createVendor.kode_register.toString()
+        let idString = String(createVendor.kode_register)
 
-        let cipherText = CryptoJS.AES.encrypt(idString, getConfig("SECRET_KEY")).toString();
+        let cipherText = encryptWithKey(idString, getConfig("SECRET_KEY"))
 
-        let kirimEmail = template.templateHtmlEmailVerif(`${getConfig("SIDAPET_BASE_URL")}/api-noauth/v1/register/verifikasi/${cipherText}`)
+        let kirimEmail = template.templateHtmlEmailVerif(`${getConfig("SIDAPET_BASE_URL")}/api-noauth/v1/vendor/register/verifikasi/${cipherText}`)
         
 
         let sendEmail = await sendMail(createVendor.email as string, "Verifikasi Email Vendor",kirimEmail)
@@ -500,9 +502,9 @@ const updateStatusVendor = async (
 const updateVerifEmail = async (kode_register:string) : Promise<any> => {
     try {
 
-        // Decrypt
-        var bytes  = CryptoJS.AES.decrypt(kode_register, getConfig("SECRET_KEY"));
-        var kode = bytes.toString(CryptoJS.enc.Utf8);
+        
+ // Decrypt
+ const kode = decryptWithKey(kode_register, getConfig("SECRET_KEY"))
 
         const exEmail = await RegisterVendor.findOne({
             where : {
