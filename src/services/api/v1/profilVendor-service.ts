@@ -216,9 +216,11 @@ const storeProfilVendor = async (request:StoreProfilVendorSchema["body"], kode_v
 
         const profil : StoreProfilVendorSchema["body"]["profil"] = request.profil
 
-        const arrGagal : any[] = []
+        const arrExist : any[] = []
 
-        const arrBerhasil : any[] = []
+        let arrBerhasil : any[] = []
+
+        const arrGagal : any[] = []
 
         await Promise.all(profil.map(async(item : any) => {
             const exProfil = await TrxJawabProfil.findOne({
@@ -229,10 +231,52 @@ const storeProfilVendor = async (request:StoreProfilVendorSchema["body"], kode_v
                 transaction : t
             })
             if(exProfil) {
-                arrGagal.push({
-                    kode_vendor : exProfil.kode_vendor,
-                    kode_item : exProfil.kode_item,
-                    isian : exProfil.isian
+                // arrExist.push({
+                //     kode_vendor : exProfil.kode_vendor,
+                //     kode_item : exProfil.kode_item,
+                //     isian : exProfil.isian
+                // })
+                // let delExist = await TrxJawabProfil.destroy({
+                //     where : {
+                //         kode_vendor : kode_vendor,
+                //         kode_item : exProfil.kode_item
+                //     },
+                //     transaction : t
+                // })
+
+                // if(delExist === 0) {
+                //     arrGagal.push({
+                //         kode_vendor : exProfil.kode_vendor,
+                //         kode_item : exProfil.kode_item,
+                //         isian : exProfil.isian
+                //     })
+                // }
+                
+                const UpdateExist = await TrxJawabProfil.update({
+                    isian : item.isian
+                }, {
+                    where : {
+                        kode_vendor : kode_vendor,
+                        kode_item : exProfil.kode_item,
+                    },
+                    returning : true,
+                    transaction : t
+                })
+
+                
+
+                if(UpdateExist[0] === 0) {
+                    arrGagal.push({
+                        kode_vendor : exProfil.kode_vendor,
+                        kode_item : exProfil.kode_item,
+                        isian : exProfil.isian
+                    })
+                }
+                arrExist.push({
+                    kode_jawab_profil : exProfil.kode_jawab_profil,
+                    kode_vendor : UpdateExist[1][0].kode_vendor,
+                    kode_item : UpdateExist[1][0].kode_item,
+                    isian : UpdateExist[1][0].isian
                 })
             }
             if(!exProfil) {
@@ -244,11 +288,17 @@ const storeProfilVendor = async (request:StoreProfilVendorSchema["body"], kode_v
             }
         }) 
     )
-        
+
         const storeProfil = await TrxJawabProfil.bulkCreate(arrBerhasil, {
             returning : ["kode_jawab_profil", "kode_item","kode_vendor","isian"],
             transaction : t
         })
+
+        arrBerhasil = arrBerhasil.concat(arrExist)
+
+        console.log("TES ARRAY :", arrBerhasil);
+        
+
 
         if(arrBerhasil.length === 0) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Store ke Profil Vendor / Profil Sudah Pernah Terisi")
 
@@ -284,7 +334,6 @@ const storeProfilVendor = async (request:StoreProfilVendorSchema["body"], kode_v
 
         const unsansweredItems = getItemTanya.filter(tanya => !jawabProfil.some(jawab => jawab.kode_item === tanya.kode_item))
 
-        console.log(unsansweredItems);
         
 
         const status = unsansweredItems.length === 0 ? "finish" : "not_finish"
@@ -356,7 +405,7 @@ const storeProfilVendor = async (request:StoreProfilVendorSchema["body"], kode_v
 
         await t.commit()
 
-        return storeProfil
+        return arrBerhasil
         
         
     } catch (error) {
