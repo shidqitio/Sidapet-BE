@@ -11,7 +11,7 @@ export const sendMail=async(to:string,subject:string,bodymail:string)=>{
      from: "hallo.pmo.ut@gmail.com", // Ganti dengan alamat email Anda
      to: to, // Ganti dengan alamat email penerima
      subject: subject,
-     html: bodymail,
+     text: bodymail,
    };
    const res = await transporter.sendMail(mailOptions);
    return res;

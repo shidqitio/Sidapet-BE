@@ -222,16 +222,16 @@ const registerVendor = async (request:PayloadRegisterSchema["body"], file : Expr
             }
         }
 
-        let idString = String(createVendor.kode_register)
+        // let idString = String(createVendor.kode_register)
 
-        let cipherText = encryptWithKey(idString, getConfig("SECRET_KEY"))
+        // let cipherText = encryptWithKey(idString, getConfig("SECRET_KEY"))
 
-        let kirimEmail = template.templateHtmlEmailVerif(`${getConfig("SIDAPET_BASE_URL")}/api-noauth/v1/vendor/register/verifikasi/${cipherText}`)
+        // let kirimEmail = template.templateHtmlEmailVerif(`${getConfig("SIDAPET_BASE_URL")}/api-noauth/v1/vendor/register/verifikasi/${cipherText}`)
         
 
-        let sendEmail = await sendMail(createVendor.email as string, "Verifikasi Email Vendor",kirimEmail)
+        // let sendEmail = await sendMail(createVendor.email as string, "Verifikasi Email Vendor",kirimEmail)
 
-        if(!sendEmail) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Kirim Email ke Vendor")
+        // if(!sendEmail) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Kirim Email ke Vendor")
 
 
 
