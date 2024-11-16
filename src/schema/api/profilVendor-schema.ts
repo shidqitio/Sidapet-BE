@@ -67,6 +67,7 @@ const getJawabProfilVendor = {
     })
 }
 
+
 //Komisaris
 const storeUploadKomisaris = {
     body : z.object({
@@ -135,7 +136,7 @@ const payloadIjinUsaha = {
         klasifikasi_usaha : z.string({
             required_error : "klasifikasi_usaha Harus Diisi",
             invalid_type_error : "klasifikasi_usaha Harus String"
-        }),
+        }).optional(),
         tdp : z.string({
             required_error : "tdp Harus Diisi",
             invalid_type_error : "tdp Harus String"
