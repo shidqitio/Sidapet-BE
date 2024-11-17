@@ -211,7 +211,7 @@ const payloadFasilitas = {
         fasilitas_now : z.string({
             required_error : "fasilitas_now Harus Diisi",
             invalid_type_error : "fasilitas_now Harus String"
-        }),
+        }).optional(),
         merk_fasilitas : z.string({
             required_error : "merk_fasilitas Harus Diisi",
             invalid_type_error : "merk_fasilitas Harus String"
