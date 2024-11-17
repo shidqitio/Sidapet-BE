@@ -3195,9 +3195,9 @@ const hapusPengalamanSekarangBadanUsaha = async (id:ParameterSchema["params"]["i
 
         if(hapusFile[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File")
 
-        const hapusData = await Pengalaman.destroy({
+        const hapusData = await PengalamanSekarang.destroy({
             where : {
-                kode_pengalaman : id
+                kode_pengalaman_sekarang : id
             }
         })
 
