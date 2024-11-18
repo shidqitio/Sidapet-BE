@@ -1,11 +1,11 @@
-[2024-11-08T13:53:07.014] [DEBUG] default - Error
+[2024-11-18T10:47:42.012] [DEBUG] default - Error
     at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
     at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
     at processTicksAndRejections (node:internal/process/task_queues:95:5)
     at async PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1001:12)
     at async Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:21) {
   name: 'SequelizeDatabaseError',
-  parent: error: entri klausa FROM hilang untuk table « TrxKatDokKomplit »
+  parent: error: kolom KatDokumenVendor.ASC belum ada
       at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
       at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
       at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
@@ -16,12 +16,12 @@
       at readableAddChunk (node:internal/streams/readable:297:9)
       at Socket.Readable.push (node:internal/streams/readable:234:10)
       at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
-    length: 133,
+    length: 113,
     severity: 'ERROR',
-    code: '42P01',
+    code: '42703',
     detail: undefined,
     hint: undefined,
-    position: '151',
+    position: '845',
     internalPosition: undefined,
     internalQuery: undefined,
     where: undefined,
@@ -31,17 +31,17 @@
     dataType: undefined,
     constraint: undefined,
     file: 'parse_relation.c',
-    line: '3652',
-    routine: 'errorMissingRTE',
-    sql: 'SELECT "kode_kat_dokumen_vendor", "kode_jenis_vendor", "urutan", "is_main", "is_has_sub", "main_kat", "nama_kategori", Case \n' +
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: 'SELECT "KatDokumenVendor"."kode_kat_dokumen_vendor", "KatDokumenVendor"."kode_jenis_vendor", "KatDokumenVendor"."urutan", "KatDokumenVendor"."is_main", "KatDokumenVendor"."is_has_sub", "KatDokumenVendor"."main_kat", "KatDokumenVendor"."nama_kategori", Case \n' +
       '                    WHEN "TrxKatDokKomplit"."is_komplit" = TRUE \n' +
       '                    THEN TRUE\n' +
       '                    ELSE FALSE \n' +
       '                    END\n' +
-      '                     AS "status_komplit" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" WHERE "KatDokumenVendor"."kode_jenis_vendor" = 1;',
+      '                     AS "status_komplit" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" LEFT OUTER JOIN "public"."trx_kat_dok_komplit" AS "TrxKatDokKomplit" ON "KatDokumenVendor"."kode_kat_dokumen_vendor" = "TrxKatDokKomplit"."kode_kat_dokumen_vendor" AND "TrxKatDokKomplit"."kode_vendor" = 20 WHERE "KatDokumenVendor"."is_main" = true AND "KatDokumenVendor"."kode_jenis_vendor" = 1 ORDER BY "KatDokumenVendor"."urutan", "KatDokumenVendor"."ASC";',
     parameters: undefined
   },
-  original: error: entri klausa FROM hilang untuk table « TrxKatDokKomplit »
+  original: error: kolom KatDokumenVendor.ASC belum ada
       at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
       at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
       at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
@@ -52,12 +52,12 @@
       at readableAddChunk (node:internal/streams/readable:297:9)
       at Socket.Readable.push (node:internal/streams/readable:234:10)
       at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
-    length: 133,
+    length: 113,
     severity: 'ERROR',
-    code: '42P01',
+    code: '42703',
     detail: undefined,
     hint: undefined,
-    position: '151',
+    position: '845',
     internalPosition: undefined,
     internalQuery: undefined,
     where: undefined,
@@ -67,33 +67,32 @@
     dataType: undefined,
     constraint: undefined,
     file: 'parse_relation.c',
-    line: '3652',
-    routine: 'errorMissingRTE',
-    sql: 'SELECT "kode_kat_dokumen_vendor", "kode_jenis_vendor", "urutan", "is_main", "is_has_sub", "main_kat", "nama_kategori", Case \n' +
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: 'SELECT "KatDokumenVendor"."kode_kat_dokumen_vendor", "KatDokumenVendor"."kode_jenis_vendor", "KatDokumenVendor"."urutan", "KatDokumenVendor"."is_main", "KatDokumenVendor"."is_has_sub", "KatDokumenVendor"."main_kat", "KatDokumenVendor"."nama_kategori", Case \n' +
       '                    WHEN "TrxKatDokKomplit"."is_komplit" = TRUE \n' +
       '                    THEN TRUE\n' +
       '                    ELSE FALSE \n' +
       '                    END\n' +
-      '                     AS "status_komplit" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" WHERE "KatDokumenVendor"."kode_jenis_vendor" = 1;',
+      '                     AS "status_komplit" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" LEFT OUTER JOIN "public"."trx_kat_dok_komplit" AS "TrxKatDokKomplit" ON "KatDokumenVendor"."kode_kat_dokumen_vendor" = "TrxKatDokKomplit"."kode_kat_dokumen_vendor" AND "TrxKatDokKomplit"."kode_vendor" = 20 WHERE "KatDokumenVendor"."is_main" = true AND "KatDokumenVendor"."kode_jenis_vendor" = 1 ORDER BY "KatDokumenVendor"."urutan", "KatDokumenVendor"."ASC";',
     parameters: undefined
   },
-  sql: 'SELECT "kode_kat_dokumen_vendor", "kode_jenis_vendor", "urutan", "is_main", "is_has_sub", "main_kat", "nama_kategori", Case \n' +
+  sql: 'SELECT "KatDokumenVendor"."kode_kat_dokumen_vendor", "KatDokumenVendor"."kode_jenis_vendor", "KatDokumenVendor"."urutan", "KatDokumenVendor"."is_main", "KatDokumenVendor"."is_has_sub", "KatDokumenVendor"."main_kat", "KatDokumenVendor"."nama_kategori", Case \n' +
     '                    WHEN "TrxKatDokKomplit"."is_komplit" = TRUE \n' +
     '                    THEN TRUE\n' +
     '                    ELSE FALSE \n' +
     '                    END\n' +
-    '                     AS "status_komplit" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" WHERE "KatDokumenVendor"."kode_jenis_vendor" = 1;',
+    '                     AS "status_komplit" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" LEFT OUTER JOIN "public"."trx_kat_dok_komplit" AS "TrxKatDokKomplit" ON "KatDokumenVendor"."kode_kat_dokumen_vendor" = "TrxKatDokKomplit"."kode_kat_dokumen_vendor" AND "TrxKatDokKomplit"."kode_vendor" = 20 WHERE "KatDokumenVendor"."is_main" = true AND "KatDokumenVendor"."kode_jenis_vendor" = 1 ORDER BY "KatDokumenVendor"."urutan", "KatDokumenVendor"."ASC";',
   parameters: {}
 }
-[2024-11-08T14:44:23.780] [DEBUG] default - Error
+[2024-11-18T10:47:53.602] [DEBUG] default - Error
     at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
     at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
     at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async PostgresQueryInterface.insert (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:795:21)
-    at async PersonaliaPerusahaan.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4153:35)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
+    at async PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1001:12)
+    at async Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:21) {
   name: 'SequelizeDatabaseError',
-  parent: error: null value in column "kode_personalia" of relation "ref_personalia_perusahaan" violates not-null constraint
+  parent: error: kolom KatDokumenVendor.ASC belum ada
       at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
       at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
       at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
@@ -104,38 +103,32 @@
       at readableAddChunk (node:internal/streams/readable:297:9)
       at Socket.Readable.push (node:internal/streams/readable:234:10)
       at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
-    length: 400,
+    length: 113,
     severity: 'ERROR',
-    code: '23502',
-    detail: 'Baris gagal berisi (null, 20, Chandra, 05-01-1985, SD, Direktur, Ultraman, Bertarung dengan Godzilla, Sertif Penjaga Bumi, SI-DaPeT_1731051862830-646481725.pdf, null, 18539122)',
+    code: '42703',
+    detail: undefined,
     hint: undefined,
-    position: undefined,
+    position: '845',
     internalPosition: undefined,
     internalQuery: undefined,
     where: undefined,
-    schema: 'public',
-    table: 'ref_personalia_perusahaan',
-    column: 'kode_personalia',
+    schema: undefined,
+    table: undefined,
+    column: undefined,
     dataType: undefined,
     constraint: undefined,
-    file: 'execMain.c',
-    line: '2009',
-    routine: 'ExecConstraints',
-    sql: 'INSERT INTO "public"."ref_personalia_perusahaan" ("kode_personalia","kode_vendor","nm_personal","tgl_personal","pendidikan_personal","jbtn_personal","pengalaman_personal","keahlian_personal","sertif_personal","path_personal","encrypt_key") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING "kode_personalia","kode_vendor","nm_personal","tgl_personal","pendidikan_personal","jbtn_personal","pengalaman_personal","keahlian_personal","sertif_personal","path_personal","custom","encrypt_key";',
-    parameters: [
-      20,
-      'Chandra',
-      '05-01-1985',
-      'SD',
-      'Direktur',
-      'Ultraman',
-      'Bertarung dengan Godzilla',
-      'Sertif Penjaga Bumi',
-      'SI-DaPeT_1731051862830-646481725.pdf',
-      '18539122'
-    ]
+    file: 'parse_relation.c',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: 'SELECT "KatDokumenVendor"."kode_kat_dokumen_vendor", "KatDokumenVendor"."kode_jenis_vendor", "KatDokumenVendor"."urutan", "KatDokumenVendor"."is_main", "KatDokumenVendor"."is_has_sub", "KatDokumenVendor"."main_kat", "KatDokumenVendor"."nama_kategori", Case \n' +
+      '                    WHEN "TrxKatDokKomplit"."is_komplit" = TRUE \n' +
+      '                    THEN TRUE\n' +
+      '                    ELSE FALSE \n' +
+      '                    END\n' +
+      '                     AS "status_komplit" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" LEFT OUTER JOIN "public"."trx_kat_dok_komplit" AS "TrxKatDokKomplit" ON "KatDokumenVendor"."kode_kat_dokumen_vendor" = "TrxKatDokKomplit"."kode_kat_dokumen_vendor" AND "TrxKatDokKomplit"."kode_vendor" = 20 WHERE "KatDokumenVendor"."is_main" = true AND "KatDokumenVendor"."kode_jenis_vendor" = 1 ORDER BY "KatDokumenVendor"."urutan", "KatDokumenVendor"."ASC";',
+    parameters: undefined
   },
-  original: error: null value in column "kode_personalia" of relation "ref_personalia_perusahaan" violates not-null constraint
+  original: error: kolom KatDokumenVendor.ASC belum ada
       at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
       at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
       at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
@@ -146,60 +139,47 @@
       at readableAddChunk (node:internal/streams/readable:297:9)
       at Socket.Readable.push (node:internal/streams/readable:234:10)
       at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
-    length: 400,
+    length: 113,
     severity: 'ERROR',
-    code: '23502',
-    detail: 'Baris gagal berisi (null, 20, Chandra, 05-01-1985, SD, Direktur, Ultraman, Bertarung dengan Godzilla, Sertif Penjaga Bumi, SI-DaPeT_1731051862830-646481725.pdf, null, 18539122)',
+    code: '42703',
+    detail: undefined,
     hint: undefined,
-    position: undefined,
+    position: '845',
     internalPosition: undefined,
     internalQuery: undefined,
     where: undefined,
-    schema: 'public',
-    table: 'ref_personalia_perusahaan',
-    column: 'kode_personalia',
+    schema: undefined,
+    table: undefined,
+    column: undefined,
     dataType: undefined,
     constraint: undefined,
-    file: 'execMain.c',
-    line: '2009',
-    routine: 'ExecConstraints',
-    sql: 'INSERT INTO "public"."ref_personalia_perusahaan" ("kode_personalia","kode_vendor","nm_personal","tgl_personal","pendidikan_personal","jbtn_personal","pengalaman_personal","keahlian_personal","sertif_personal","path_personal","encrypt_key") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING "kode_personalia","kode_vendor","nm_personal","tgl_personal","pendidikan_personal","jbtn_personal","pengalaman_personal","keahlian_personal","sertif_personal","path_personal","custom","encrypt_key";',
-    parameters: [
-      20,
-      'Chandra',
-      '05-01-1985',
-      'SD',
-      'Direktur',
-      'Ultraman',
-      'Bertarung dengan Godzilla',
-      'Sertif Penjaga Bumi',
-      'SI-DaPeT_1731051862830-646481725.pdf',
-      '18539122'
-    ]
+    file: 'parse_relation.c',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: 'SELECT "KatDokumenVendor"."kode_kat_dokumen_vendor", "KatDokumenVendor"."kode_jenis_vendor", "KatDokumenVendor"."urutan", "KatDokumenVendor"."is_main", "KatDokumenVendor"."is_has_sub", "KatDokumenVendor"."main_kat", "KatDokumenVendor"."nama_kategori", Case \n' +
+      '                    WHEN "TrxKatDokKomplit"."is_komplit" = TRUE \n' +
+      '                    THEN TRUE\n' +
+      '                    ELSE FALSE \n' +
+      '                    END\n' +
+      '                     AS "status_komplit" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" LEFT OUTER JOIN "public"."trx_kat_dok_komplit" AS "TrxKatDokKomplit" ON "KatDokumenVendor"."kode_kat_dokumen_vendor" = "TrxKatDokKomplit"."kode_kat_dokumen_vendor" AND "TrxKatDokKomplit"."kode_vendor" = 20 WHERE "KatDokumenVendor"."is_main" = true AND "KatDokumenVendor"."kode_jenis_vendor" = 1 ORDER BY "KatDokumenVendor"."urutan", "KatDokumenVendor"."ASC";',
+    parameters: undefined
   },
-  sql: 'INSERT INTO "public"."ref_personalia_perusahaan" ("kode_personalia","kode_vendor","nm_personal","tgl_personal","pendidikan_personal","jbtn_personal","pengalaman_personal","keahlian_personal","sertif_personal","path_personal","encrypt_key") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING "kode_personalia","kode_vendor","nm_personal","tgl_personal","pendidikan_personal","jbtn_personal","pengalaman_personal","keahlian_personal","sertif_personal","path_personal","custom","encrypt_key";',
-  parameters: [
-    20,
-    'Chandra',
-    '05-01-1985',
-    'SD',
-    'Direktur',
-    'Ultraman',
-    'Bertarung dengan Godzilla',
-    'Sertif Penjaga Bumi',
-    'SI-DaPeT_1731051862830-646481725.pdf',
-    '18539122'
-  ]
+  sql: 'SELECT "KatDokumenVendor"."kode_kat_dokumen_vendor", "KatDokumenVendor"."kode_jenis_vendor", "KatDokumenVendor"."urutan", "KatDokumenVendor"."is_main", "KatDokumenVendor"."is_has_sub", "KatDokumenVendor"."main_kat", "KatDokumenVendor"."nama_kategori", Case \n' +
+    '                    WHEN "TrxKatDokKomplit"."is_komplit" = TRUE \n' +
+    '                    THEN TRUE\n' +
+    '                    ELSE FALSE \n' +
+    '                    END\n' +
+    '                     AS "status_komplit" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" LEFT OUTER JOIN "public"."trx_kat_dok_komplit" AS "TrxKatDokKomplit" ON "KatDokumenVendor"."kode_kat_dokumen_vendor" = "TrxKatDokKomplit"."kode_kat_dokumen_vendor" AND "TrxKatDokKomplit"."kode_vendor" = 20 WHERE "KatDokumenVendor"."is_main" = true AND "KatDokumenVendor"."kode_jenis_vendor" = 1 ORDER BY "KatDokumenVendor"."urutan", "KatDokumenVendor"."ASC";',
+  parameters: {}
 }
-[2024-11-08T16:27:04.908] [DEBUG] default - Error
+[2024-11-18T10:49:02.627] [DEBUG] default - Error
     at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
     at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
     at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async PostgresQueryInterface.insert (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:795:21)
-    at async PengalamanSekarang.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4153:35)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
+    at async PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1001:12)
+    at async Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:21) {
   name: 'SequelizeDatabaseError',
-  parent: error: null value in column "kode_pengalaman_sekarang" of relation "ref_pengalaman_sekarang" violates not-null constraint
+  parent: error: kolom KatDokumenVendor.urutan ASC belum ada
       at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
       at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
       at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
@@ -210,42 +190,32 @@
       at readableAddChunk (node:internal/streams/readable:297:9)
       at Socket.Readable.push (node:internal/streams/readable:234:10)
       at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
-    length: 441,
+    length: 120,
     severity: 'ERROR',
-    code: '23502',
-    detail: 'Baris gagal berisi (null, 20, Tidak Ada, Tidak Ada, Tidak Ada, Tidak Ada, Tidak Ada, Tidak Ada, Tidak Ada, Tidak Ada, Tidak Ada, Tidak Ada, Tidak Ada, SI-DaPeT_1731058024097-88417117.pdf, null, 09700749)',
+    code: '42703',
+    detail: undefined,
     hint: undefined,
-    position: undefined,
+    position: '816',
     internalPosition: undefined,
     internalQuery: undefined,
     where: undefined,
-    schema: 'public',
-    table: 'ref_pengalaman_sekarang',
-    column: 'kode_pengalaman_sekarang',
+    schema: undefined,
+    table: undefined,
+    column: undefined,
     dataType: undefined,
     constraint: undefined,
-    file: 'execMain.c',
-    line: '2009',
-    routine: 'ExecConstraints',
-    sql: 'INSERT INTO "public"."ref_pengalaman_sekarang" ("kode_pengalaman_sekarang","kode_vendor","nm_pnglmn_sekarang","div_pnglmn_sekarang","ringkas_pnglmn_sekarang","lok_pnglmn_sekarang","pemberi_pnglmn_sekarang","alamat_pnglmn_sekarang","tgl_pnglmn_sekarang","nilai_pnglmn_sekarang","status_pnglmn_sekarang","kontrak_pnglmn_sekarang","prestasi_pnglmn_sekarang","path_pnglmn_skrg","encrypt_key") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14) RETURNING "kode_pengalaman_sekarang","kode_vendor","nm_pnglmn_sekarang","div_pnglmn_sekarang","ringkas_pnglmn_sekarang","lok_pnglmn_sekarang","pemberi_pnglmn_sekarang","alamat_pnglmn_sekarang","tgl_pnglmn_sekarang","nilai_pnglmn_sekarang","status_pnglmn_sekarang","kontrak_pnglmn_sekarang","prestasi_pnglmn_sekarang","path_pnglmn_skrg","custom","encrypt_key";',
-    parameters: [
-      20,
-      'Tidak Ada',
-      'Tidak Ada',
-      'Tidak Ada',
-      'Tidak Ada',
-      'Tidak Ada',
-      'Tidak Ada',
-      'Tidak Ada',
-      'Tidak Ada',
-      'Tidak Ada',
-      'Tidak Ada',
-      'Tidak Ada',
-      'SI-DaPeT_1731058024097-88417117.pdf',
-      '09700749'
-    ]
+    file: 'parse_relation.c',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: 'SELECT "KatDokumenVendor"."kode_kat_dokumen_vendor", "KatDokumenVendor"."kode_jenis_vendor", "KatDokumenVendor"."urutan", "KatDokumenVendor"."is_main", "KatDokumenVendor"."is_has_sub", "KatDokumenVendor"."main_kat", "KatDokumenVendor"."nama_kategori", Case \n' +
+      '                    WHEN "TrxKatDokKomplit"."is_komplit" = TRUE \n' +
+      '                    THEN TRUE\n' +
+      '                    ELSE FALSE \n' +
+      '                    END\n' +
+      '                     AS "status_komplit" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" LEFT OUTER JOIN "public"."trx_kat_dok_komplit" AS "TrxKatDokKomplit" ON "KatDokumenVendor"."kode_kat_dokumen_vendor" = "TrxKatDokKomplit"."kode_kat_dokumen_vendor" AND "TrxKatDokKomplit"."kode_vendor" = 20 WHERE "KatDokumenVendor"."is_main" = true AND "KatDokumenVendor"."kode_jenis_vendor" = 1 ORDER BY "KatDokumenVendor"."urutan ASC";',
+    parameters: undefined
   },
-  original: error: null value in column "kode_pengalaman_sekarang" of relation "ref_pengalaman_sekarang" violates not-null constraint
+  original: error: kolom KatDokumenVendor.urutan ASC belum ada
       at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
       at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
       at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
@@ -256,56 +226,36 @@
       at readableAddChunk (node:internal/streams/readable:297:9)
       at Socket.Readable.push (node:internal/streams/readable:234:10)
       at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
-    length: 441,
+    length: 120,
     severity: 'ERROR',
-    code: '23502',
-    detail: 'Baris gagal berisi (null, 20, Tidak Ada, Tidak Ada, Tidak Ada, Tidak Ada, Tidak Ada, Tidak Ada, Tidak Ada, Tidak Ada, Tidak Ada, Tidak Ada, Tidak Ada, SI-DaPeT_1731058024097-88417117.pdf, null, 09700749)',
+    code: '42703',
+    detail: undefined,
     hint: undefined,
-    position: undefined,
+    position: '816',
     internalPosition: undefined,
     internalQuery: undefined,
     where: undefined,
-    schema: 'public',
-    table: 'ref_pengalaman_sekarang',
-    column: 'kode_pengalaman_sekarang',
+    schema: undefined,
+    table: undefined,
+    column: undefined,
     dataType: undefined,
     constraint: undefined,
-    file: 'execMain.c',
-    line: '2009',
-    routine: 'ExecConstraints',
-    sql: 'INSERT INTO "public"."ref_pengalaman_sekarang" ("kode_pengalaman_sekarang","kode_vendor","nm_pnglmn_sekarang","div_pnglmn_sekarang","ringkas_pnglmn_sekarang","lok_pnglmn_sekarang","pemberi_pnglmn_sekarang","alamat_pnglmn_sekarang","tgl_pnglmn_sekarang","nilai_pnglmn_sekarang","status_pnglmn_sekarang","kontrak_pnglmn_sekarang","prestasi_pnglmn_sekarang","path_pnglmn_skrg","encrypt_key") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14) RETURNING "kode_pengalaman_sekarang","kode_vendor","nm_pnglmn_sekarang","div_pnglmn_sekarang","ringkas_pnglmn_sekarang","lok_pnglmn_sekarang","pemberi_pnglmn_sekarang","alamat_pnglmn_sekarang","tgl_pnglmn_sekarang","nilai_pnglmn_sekarang","status_pnglmn_sekarang","kontrak_pnglmn_sekarang","prestasi_pnglmn_sekarang","path_pnglmn_skrg","custom","encrypt_key";',
-    parameters: [
-      20,
-      'Tidak Ada',
-      'Tidak Ada',
-      'Tidak Ada',
-      'Tidak Ada',
-      'Tidak Ada',
-      'Tidak Ada',
-      'Tidak Ada',
-      'Tidak Ada',
-      'Tidak Ada',
-      'Tidak Ada',
-      'Tidak Ada',
-      'SI-DaPeT_1731058024097-88417117.pdf',
-      '09700749'
-    ]
+    file: 'parse_relation.c',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: 'SELECT "KatDokumenVendor"."kode_kat_dokumen_vendor", "KatDokumenVendor"."kode_jenis_vendor", "KatDokumenVendor"."urutan", "KatDokumenVendor"."is_main", "KatDokumenVendor"."is_has_sub", "KatDokumenVendor"."main_kat", "KatDokumenVendor"."nama_kategori", Case \n' +
+      '                    WHEN "TrxKatDokKomplit"."is_komplit" = TRUE \n' +
+      '                    THEN TRUE\n' +
+      '                    ELSE FALSE \n' +
+      '                    END\n' +
+      '                     AS "status_komplit" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" LEFT OUTER JOIN "public"."trx_kat_dok_komplit" AS "TrxKatDokKomplit" ON "KatDokumenVendor"."kode_kat_dokumen_vendor" = "TrxKatDokKomplit"."kode_kat_dokumen_vendor" AND "TrxKatDokKomplit"."kode_vendor" = 20 WHERE "KatDokumenVendor"."is_main" = true AND "KatDokumenVendor"."kode_jenis_vendor" = 1 ORDER BY "KatDokumenVendor"."urutan ASC";',
+    parameters: undefined
   },
-  sql: 'INSERT INTO "public"."ref_pengalaman_sekarang" ("kode_pengalaman_sekarang","kode_vendor","nm_pnglmn_sekarang","div_pnglmn_sekarang","ringkas_pnglmn_sekarang","lok_pnglmn_sekarang","pemberi_pnglmn_sekarang","alamat_pnglmn_sekarang","tgl_pnglmn_sekarang","nilai_pnglmn_sekarang","status_pnglmn_sekarang","kontrak_pnglmn_sekarang","prestasi_pnglmn_sekarang","path_pnglmn_skrg","encrypt_key") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14) RETURNING "kode_pengalaman_sekarang","kode_vendor","nm_pnglmn_sekarang","div_pnglmn_sekarang","ringkas_pnglmn_sekarang","lok_pnglmn_sekarang","pemberi_pnglmn_sekarang","alamat_pnglmn_sekarang","tgl_pnglmn_sekarang","nilai_pnglmn_sekarang","status_pnglmn_sekarang","kontrak_pnglmn_sekarang","prestasi_pnglmn_sekarang","path_pnglmn_skrg","custom","encrypt_key";',
-  parameters: [
-    20,
-    'Tidak Ada',
-    'Tidak Ada',
-    'Tidak Ada',
-    'Tidak Ada',
-    'Tidak Ada',
-    'Tidak Ada',
-    'Tidak Ada',
-    'Tidak Ada',
-    'Tidak Ada',
-    'Tidak Ada',
-    'Tidak Ada',
-    'SI-DaPeT_1731058024097-88417117.pdf',
-    '09700749'
-  ]
+  sql: 'SELECT "KatDokumenVendor"."kode_kat_dokumen_vendor", "KatDokumenVendor"."kode_jenis_vendor", "KatDokumenVendor"."urutan", "KatDokumenVendor"."is_main", "KatDokumenVendor"."is_has_sub", "KatDokumenVendor"."main_kat", "KatDokumenVendor"."nama_kategori", Case \n' +
+    '                    WHEN "TrxKatDokKomplit"."is_komplit" = TRUE \n' +
+    '                    THEN TRUE\n' +
+    '                    ELSE FALSE \n' +
+    '                    END\n' +
+    '                     AS "status_komplit" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" LEFT OUTER JOIN "public"."trx_kat_dok_komplit" AS "TrxKatDokKomplit" ON "KatDokumenVendor"."kode_kat_dokumen_vendor" = "TrxKatDokKomplit"."kode_kat_dokumen_vendor" AND "TrxKatDokKomplit"."kode_vendor" = 20 WHERE "KatDokumenVendor"."is_main" = true AND "KatDokumenVendor"."kode_jenis_vendor" = 1 ORDER BY "KatDokumenVendor"."urutan ASC";',
+  parameters: {}
 }
