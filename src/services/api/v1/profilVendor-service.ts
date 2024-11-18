@@ -748,7 +748,12 @@ const getMenuStatus = async (kode_vendor:number) : Promise<KatDokumenVendor[]> =
                 }
             ],
             raw : true, 
-            nest : true
+            nest : true,
+            order :[
+                ["urutan", "ASC"]
+            ]
+            
+            
         })
 
         const sub = await KatDokumenVendor.findAll({
@@ -779,7 +784,10 @@ const getMenuStatus = async (kode_vendor:number) : Promise<KatDokumenVendor[]> =
                     }
                 }
             ],
-            raw : true
+            raw : true,
+            order : [
+                ["urutan", "ASC"]
+            ]
         })
 
         console.log(sub)
@@ -1317,6 +1325,7 @@ const listPertanyaanBadanUsaha = async (
                 }
             ],
             order : [
+            [{model : KatItemTanya, as : "KatItemTanya"}, "kode_kat_item_tanya", "ASC"],
             [{ model: KatItemTanya, as: "KatItemTanya" }, { model: ItemTanya, as: "ItemTanya" }, "urutan", "ASC"]   
             ]
         })
