@@ -424,7 +424,9 @@ const updateStatusVendor = async (
                 fs.unlinkSync(`${getConfig('ENCRYPT_SAVE_FOTO')}/${exRegisterVendor.swafoto}`)
             }
 
-            await sendMail(exRegisterVendor.email as string, "Pemberitahuan Registrasi", "Aktivasi Akun Anda Ditolak, Silahkan Melakukan Registrasi Ulang, alasan : " + alasan)
+            let kirimEmail = template.templateHtmlEmailFailed(alasan)
+
+            await sendMail(exRegisterVendor.email as string, "Pemberitahuan Registrasi",kirimEmail)
 
             const deleteVendor : number = await RegisterVendor.destroy({
                 where : {
