@@ -481,10 +481,9 @@ const updateStatusVendor = async (
 
         let cipherText = encryptWithKey(idString, getConfig("SECRET_KEY"))
 
-        // let kirimEmail = template.templateHtmlEmailVerif(`${getConfig("SIDAPET_BASE_URL")}/api-noauth/v1/vendor/register/verifikasi/${cipherText}`)
-
-        let kirimEmail = template.templateHtmlEmailVerif(`${getConfig("SIDAPET_BASE_URL")}/verifikasi-akun?id=${cipherText}`)
+        let kirimEmail = template.templateHtmlEmailVerif(`https://dinovalley.ut.ac.id/verifikasi-akun?id=${cipherText}`)
         
+        //  `Registrasi Akun Anda Berhasil Silahkan klink link berikut : https://dinovalley.ut.ac.id/verifikasi-akun?id=${exRegisterVendor.kode_register}`
 
         await sendMail(exRegisterVendor.email as string, "Pemberitahuan Registrasi", kirimEmail)
 
@@ -553,8 +552,8 @@ const updateVerifEmail = async (kode_register:string) : Promise<any> => {
 const insertExternaltoUsman = async (
     id:ParameterSchema["params"]["id"]) : Promise<VendorOutput> => {
     try {
-        const kode = decryptWithKey(id, getConfig("SECRET_KEY"))
 
+        const kode = decryptWithKey(id, getConfig("SECRET_KEY"))
 
         const exVendor : any = await Vendor.findOne({
             attributes : [
