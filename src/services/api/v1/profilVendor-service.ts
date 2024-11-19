@@ -1314,7 +1314,7 @@ const listPertanyaanBadanUsaha = async (
                     as : "KatItemTanya", 
                     include : [
                         {
-                            attributes : ["kode_item", "kode_kat_item_tanya", "urutan", "nama_item", "tipe_input", "keterangan", "nama_unik", "jenis_item"],
+                            attributes : ["kode_item", "kode_kat_item_tanya", "urutan", "nama_item", "tipe_input", "keterangan", "nama_unik", "jenis_item", "is_required"],
                             model : ItemTanya, 
                             as : "ItemTanya",
                             where : {
