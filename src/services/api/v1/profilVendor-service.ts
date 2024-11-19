@@ -682,6 +682,7 @@ const listPertanyaanPerorangan = async (
                 }
             ],
             order : [
+            [{ model: KatItemTanya, as: "KatItemTanya" },"kode_kat_item_tanya", "ASC"],
             [{ model: KatItemTanya, as: "KatItemTanya" }, { model: ItemTanya, as: "ItemTanya" }, "urutan", "ASC"]   
             ]
         })
@@ -839,6 +840,7 @@ const getMenuStatus = async (kode_vendor:number) : Promise<KatDokumenVendor[]> =
 
         return getMenu
     } catch (error) {
+        console.log(error)
         if(error instanceof CustomError) {
             throw new CustomError(error.code,error.status, error.message)
         } 
