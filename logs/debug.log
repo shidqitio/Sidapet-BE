@@ -1,73 +1,58 @@
-[2024-11-19T13:13:21.014] [DEBUG] default - Error
-    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+[2024-11-20T17:27:46.352] [DEBUG] default - Error: WHERE parameter "kode_kat_dokumen_vendor" has invalid "undefined" value
+    at PostgresQueryGenerator.whereItemQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2445:13)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2434:25
+    at Array.forEach (<anonymous>)
+    at PostgresQueryGenerator.whereItemsQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2432:35)
+    at PostgresQueryGenerator.getWhereConditions (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2860:19)
+    at PostgresQueryGenerator.selectQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:1460:28)
+    at PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1002:27)
+    at Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:47)
     at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1001:12)
-    at async Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:21)
-    at async Function.findOne (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1998:12) {
-  name: 'SequelizeDatabaseError',
-  parent: error: kolom KatDokumenVendor.kode_kat_item_tanya belum ada
-      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
-      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
-      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
-      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
-      at Socket.emit (node:events:513:28)
-      at Socket.emit (node:domain:489:12)
-      at addChunk (node:internal/streams/readable:324:12)
-      at readableAddChunk (node:internal/streams/readable:297:9)
-      at Socket.Readable.push (node:internal/streams/readable:234:10)
-      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
-    length: 130,
-    severity: 'ERROR',
-    code: '42703',
-    detail: undefined,
-    hint: undefined,
-    position: '1615',
-    internalPosition: undefined,
-    internalQuery: undefined,
-    where: undefined,
-    schema: undefined,
-    table: undefined,
-    column: undefined,
-    dataType: undefined,
-    constraint: undefined,
-    file: 'parse_relation.c',
-    line: '3718',
-    routine: 'errorMissingColumn',
-    sql: `SELECT "KatDokumenVendor"."kode_kat_dokumen_vendor", "KatDokumenVendor"."kode_jenis_vendor", "KatDokumenVendor"."nama_kategori", "KatItemTanya"."kode_kat_item_tanya" AS "KatItemTanya.kode_kat_item_tanya", "KatItemTanya"."kode_kat_dokumen_vendor" AS "KatItemTanya.kode_kat_dokumen_vendor", "KatItemTanya"."kategori_item" AS "KatItemTanya.kategori_item", "KatItemTanya->ItemTanya"."kode_item" AS "KatItemTanya.ItemTanya.kode_item", "KatItemTanya->ItemTanya"."kode_kat_item_tanya" AS "KatItemTanya.ItemTanya.kode_kat_item_tanya", "KatItemTanya->ItemTanya"."urutan" AS "KatItemTanya.ItemTanya.urutan", "KatItemTanya->ItemTanya"."nama_item" AS "KatItemTanya.ItemTanya.nama_item", "KatItemTanya->ItemTanya"."tipe_input" AS "KatItemTanya.ItemTanya.tipe_input", "KatItemTanya->ItemTanya"."keterangan" AS "KatItemTanya.ItemTanya.keterangan", "KatItemTanya->ItemTanya"."nama_unik" AS "KatItemTanya.ItemTanya.nama_unik", "KatItemTanya->ItemTanya"."jenis_item" AS "KatItemTanya.ItemTanya.jenis_item", "KatItemTanya->ItemTanya"."is_required" AS "KatItemTanya.ItemTanya.is_required" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" LEFT OUTER JOIN ( "public"."ref_kat_item_tanya" AS "KatItemTanya" INNER JOIN "public"."ref_item_tanya" AS "KatItemTanya->ItemTanya" ON "KatItemTanya"."kode_kat_item_tanya" = "KatItemTanya->ItemTanya"."kode_kat_item_tanya" AND "KatItemTanya->ItemTanya"."jenis_item" = 'default' ) ON "KatDokumenVendor"."kode_kat_dokumen_vendor" = "KatItemTanya"."kode_kat_dokumen_vendor" WHERE "KatDokumenVendor"."kode_jenis_vendor" = 2 AND "KatDokumenVendor"."kode_kat_dokumen_vendor" = '16' ORDER BY "KatDokumenVendor"."kode_kat_item_tanya" ASC, "KatItemTanya->ItemTanya"."urutan" ASC;`,
-    parameters: undefined
-  },
-  original: error: kolom KatDokumenVendor.kode_kat_item_tanya belum ada
-      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
-      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
-      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
-      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
-      at Socket.emit (node:events:513:28)
-      at Socket.emit (node:domain:489:12)
-      at addChunk (node:internal/streams/readable:324:12)
-      at readableAddChunk (node:internal/streams/readable:297:9)
-      at Socket.Readable.push (node:internal/streams/readable:234:10)
-      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
-    length: 130,
-    severity: 'ERROR',
-    code: '42703',
-    detail: undefined,
-    hint: undefined,
-    position: '1615',
-    internalPosition: undefined,
-    internalQuery: undefined,
-    where: undefined,
-    schema: undefined,
-    table: undefined,
-    column: undefined,
-    dataType: undefined,
-    constraint: undefined,
-    file: 'parse_relation.c',
-    line: '3718',
-    routine: 'errorMissingColumn',
-    sql: `SELECT "KatDokumenVendor"."kode_kat_dokumen_vendor", "KatDokumenVendor"."kode_jenis_vendor", "KatDokumenVendor"."nama_kategori", "KatItemTanya"."kode_kat_item_tanya" AS "KatItemTanya.kode_kat_item_tanya", "KatItemTanya"."kode_kat_dokumen_vendor" AS "KatItemTanya.kode_kat_dokumen_vendor", "KatItemTanya"."kategori_item" AS "KatItemTanya.kategori_item", "KatItemTanya->ItemTanya"."kode_item" AS "KatItemTanya.ItemTanya.kode_item", "KatItemTanya->ItemTanya"."kode_kat_item_tanya" AS "KatItemTanya.ItemTanya.kode_kat_item_tanya", "KatItemTanya->ItemTanya"."urutan" AS "KatItemTanya.ItemTanya.urutan", "KatItemTanya->ItemTanya"."nama_item" AS "KatItemTanya.ItemTanya.nama_item", "KatItemTanya->ItemTanya"."tipe_input" AS "KatItemTanya.ItemTanya.tipe_input", "KatItemTanya->ItemTanya"."keterangan" AS "KatItemTanya.ItemTanya.keterangan", "KatItemTanya->ItemTanya"."nama_unik" AS "KatItemTanya.ItemTanya.nama_unik", "KatItemTanya->ItemTanya"."jenis_item" AS "KatItemTanya.ItemTanya.jenis_item", "KatItemTanya->ItemTanya"."is_required" AS "KatItemTanya.ItemTanya.is_required" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" LEFT OUTER JOIN ( "public"."ref_kat_item_tanya" AS "KatItemTanya" INNER JOIN "public"."ref_item_tanya" AS "KatItemTanya->ItemTanya" ON "KatItemTanya"."kode_kat_item_tanya" = "KatItemTanya->ItemTanya"."kode_kat_item_tanya" AND "KatItemTanya->ItemTanya"."jenis_item" = 'default' ) ON "KatDokumenVendor"."kode_kat_dokumen_vendor" = "KatItemTanya"."kode_kat_dokumen_vendor" WHERE "KatDokumenVendor"."kode_jenis_vendor" = 2 AND "KatDokumenVendor"."kode_kat_dokumen_vendor" = '16' ORDER BY "KatDokumenVendor"."kode_kat_item_tanya" ASC, "KatItemTanya->ItemTanya"."urutan" ASC;`,
-    parameters: undefined
-  },
-  sql: `SELECT "KatDokumenVendor"."kode_kat_dokumen_vendor", "KatDokumenVendor"."kode_jenis_vendor", "KatDokumenVendor"."nama_kategori", "KatItemTanya"."kode_kat_item_tanya" AS "KatItemTanya.kode_kat_item_tanya", "KatItemTanya"."kode_kat_dokumen_vendor" AS "KatItemTanya.kode_kat_dokumen_vendor", "KatItemTanya"."kategori_item" AS "KatItemTanya.kategori_item", "KatItemTanya->ItemTanya"."kode_item" AS "KatItemTanya.ItemTanya.kode_item", "KatItemTanya->ItemTanya"."kode_kat_item_tanya" AS "KatItemTanya.ItemTanya.kode_kat_item_tanya", "KatItemTanya->ItemTanya"."urutan" AS "KatItemTanya.ItemTanya.urutan", "KatItemTanya->ItemTanya"."nama_item" AS "KatItemTanya.ItemTanya.nama_item", "KatItemTanya->ItemTanya"."tipe_input" AS "KatItemTanya.ItemTanya.tipe_input", "KatItemTanya->ItemTanya"."keterangan" AS "KatItemTanya.ItemTanya.keterangan", "KatItemTanya->ItemTanya"."nama_unik" AS "KatItemTanya.ItemTanya.nama_unik", "KatItemTanya->ItemTanya"."jenis_item" AS "KatItemTanya.ItemTanya.jenis_item", "KatItemTanya->ItemTanya"."is_required" AS "KatItemTanya.ItemTanya.is_required" FROM "public"."ref_kat_dokumen_vendor" AS "KatDokumenVendor" LEFT OUTER JOIN ( "public"."ref_kat_item_tanya" AS "KatItemTanya" INNER JOIN "public"."ref_item_tanya" AS "KatItemTanya->ItemTanya" ON "KatItemTanya"."kode_kat_item_tanya" = "KatItemTanya->ItemTanya"."kode_kat_item_tanya" AND "KatItemTanya->ItemTanya"."jenis_item" = 'default' ) ON "KatDokumenVendor"."kode_kat_dokumen_vendor" = "KatItemTanya"."kode_kat_dokumen_vendor" WHERE "KatDokumenVendor"."kode_jenis_vendor" = 2 AND "KatDokumenVendor"."kode_kat_dokumen_vendor" = '16' ORDER BY "KatDokumenVendor"."kode_kat_item_tanya" ASC, "KatItemTanya->ItemTanya"."urutan" ASC;`,
-  parameters: {}
-}
+[2024-11-20T17:46:28.532] [DEBUG] default - Error: WHERE parameter "kode_kat_dokumen_vendor" has invalid "undefined" value
+    at PostgresQueryGenerator.whereItemQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2445:13)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2434:25
+    at Array.forEach (<anonymous>)
+    at PostgresQueryGenerator.whereItemsQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2432:35)
+    at PostgresQueryGenerator.getWhereConditions (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2860:19)
+    at PostgresQueryGenerator.selectQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:1460:28)
+    at PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1002:27)
+    at Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:47)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2024-11-20T17:47:44.672] [DEBUG] default - Error: WHERE parameter "kode_kat_dokumen_vendor" has invalid "undefined" value
+    at PostgresQueryGenerator.whereItemQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2445:13)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2434:25
+    at Array.forEach (<anonymous>)
+    at PostgresQueryGenerator.whereItemsQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2432:35)
+    at PostgresQueryGenerator.getWhereConditions (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2860:19)
+    at PostgresQueryGenerator.selectQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:1460:28)
+    at PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1002:27)
+    at Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:47)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2024-11-20T17:49:09.004] [DEBUG] default - Error: WHERE parameter "kode_kat_dokumen_vendor" has invalid "undefined" value
+    at PostgresQueryGenerator.whereItemQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2445:13)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2434:25
+    at Array.forEach (<anonymous>)
+    at PostgresQueryGenerator.whereItemsQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2432:35)
+    at PostgresQueryGenerator.getWhereConditions (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2860:19)
+    at PostgresQueryGenerator.selectQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:1460:28)
+    at PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1002:27)
+    at Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:47)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2024-11-20T17:49:53.178] [DEBUG] default - Error: WHERE parameter "kode_kat_dokumen_vendor" has invalid "undefined" value
+    at PostgresQueryGenerator.whereItemQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2445:13)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2434:25
+    at Array.forEach (<anonymous>)
+    at PostgresQueryGenerator.whereItemsQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2432:35)
+    at PostgresQueryGenerator.getWhereConditions (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2860:19)
+    at PostgresQueryGenerator.selectQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:1460:28)
+    at PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1002:27)
+    at Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:47)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2024-11-20T17:53:17.203] [DEBUG] default - Error [SequelizeEagerLoadingError]: KatDokumenVendor is not associated to ItemTanya!
+    at Function._getIncludedAssociation (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:742:13)
+    at Function._validateIncludedElement (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:646:53)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:542:37
+    at Array.map (<anonymous>)
+    at Function._validateIncludedElements (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:537:39)
+    at Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1794:12)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
