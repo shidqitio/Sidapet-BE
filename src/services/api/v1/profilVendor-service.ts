@@ -15,6 +15,15 @@ import Domisili from "@models/domisili-model";
 import TrxKatDokKomplit from "@models/trxKatDokKomplit-model";
 import SertifPerorangan from "@models/sertifPerorangan-model";
 import PengalamanPerorangan from "@models/pengalamanPerorangan-model";
+import RegisterVendor from "@models/registerVendor-model";
+import KomisarisPerusahaan from "@models/komisarisPerusahaan-model";
+import DireksiPerusahaan from "@models/direksiPerusahaan-model";
+import IjinUsahaPerusahaan from "@models/ijinUsahaPerusahaan-model";
+import SahamPerusahaan from "@models/sahamPerusahaan-model";
+import PersonaliaPerusahaan from "@models/personalianPerusahaan-model";
+import FasilitasPerusahaan from "@models/fasilitasPerusahaan-model";
+import Pengalaman from "@models/pengalaman-model";
+import PengalamanSekarang from "@models/pengalamanSekarang-model";
 
 //Import Schema
 import {
@@ -50,15 +59,7 @@ import { Op } from "sequelize";
 import FormData from "form-data"
 
 import fs from "fs"
-import RegisterVendor from "@models/registerVendor-model";
-import KomisarisPerusahaan from "@models/komisarisPerusahaan-model";
-import DireksiPerusahaan from "@models/direksiPerusahaan-model";
-import IjinUsahaPerusahaan from "@models/ijinUsahaPerusahaan-model";
-import SahamPerusahaan from "@models/sahamPerusahaan-model";
-import PersonaliaPerusahaan from "@models/personalianPerusahaan-model";
-import FasilitasPerusahaan from "@models/fasilitasPerusahaan-model";
-import Pengalaman from "@models/pengalaman-model";
-import PengalamanSekarang from "@models/pengalamanSekarang-model";
+
 
 //GET MENU 
 const getMenuAll = async (id : ParameterSchema["params"]["id"]) : Promise <KatDokumenVendor[]> => {
@@ -313,7 +314,7 @@ const storeProfilVendor = async (request:StoreProfilVendorSchema["body"], kode_v
             transaction : t
         })
 
-        if(!getKatDokumen) throw new CustomError(httpCode.notFound, responseStatus.error, "Kat Dokumen Vendor Tidak Ada")
+        if(!getKatDokumen) throw new CustomError(httpCode.notFound, responseStatus.success, "Kat Dokumen Vendor Tidak Ada")
 
         const getItemTanya = await ItemTanya.findAll({
             where : {
@@ -498,7 +499,7 @@ const storeUpload = async (request:StoreUploadVendorSchema["body"], file : Expre
             transaction : t
         })
 
-        if(!getKatDokumen) throw new CustomError(httpCode.notFound, responseStatus.error, "Kat Dokumen Vendor Tidak Ada")
+        if(!getKatDokumen) throw new CustomError(httpCode.notFound, responseStatus.success, "Kat Dokumen Vendor Tidak Ada")
 
 
         const getItemTanya = await ItemTanya.findAll({

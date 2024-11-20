@@ -3,11 +3,15 @@ import authorization from "@middleware/authorization";
 
 const routes = express.Router();
 const level = {
-    admin : "1",
+    admin : "/1",
     ppk : "2",
     verifikator : "/3",
     vendor : "/5"
 }
+
+//Level1 
+import itemTanyaRoute from "@routes/api/auth/level1/itemTanya-route"
+routes.use(level.admin + "/master", authorization, itemTanyaRoute)
 
 //Level3 
 import vendorRoute from "./level3/vendor-route"

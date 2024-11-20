@@ -2,15 +2,17 @@ import db from "@config/database";
 import { DataTypes, Optional, Model } from "sequelize";
 import JenisVendor from "./jenisVendor-model";
 import KatItemTanya from "./katItemTanya-model";
+import TipeInput from "./tipeInput-model";
+import KatDokumenVendor from "./katDokumenVendor-model";
 
-export enum tipe_input {
-    text = "text",
-    textarea = "textarea",
-    select = "select",
-    checkbox = "checkbox",
-    file = "file",
-    table = "table"
-}
+// export enum tipe_input {
+//     text = "text",
+//     textarea = "textarea",
+//     select = "select",
+//     checkbox = "checkbox",
+//     file = "file",
+//     table = "table"
+// }
 
 export enum jenis_item {
     default = "default",
@@ -25,7 +27,7 @@ interface IItemTanya {
 	urutan : number | undefined | null
 	nama_item : string | undefined | null
 	keterangan : string | undefined | null
-	tipe_input : tipe_input
+	tipe_input : string | undefined | null
 	metadata : string | undefined | null
 	jenis_item : jenis_item,
     is_required : boolean,
@@ -58,13 +60,13 @@ class ItemTanya
     implements IItemTanya
 {
     declare kode_item : number ;
-    declare kode_jenis_vendor : number | undefined | null ;
+    declare kode_jenis_vendor : number  | null ;
     declare kode_kat_item_tanya : number | undefined | null ;
     declare kode_kat_dokumen_vendor : number | undefined | null;
     declare urutan : number | undefined | null ;
     declare nama_item : string | undefined | null ;
     declare keterangan : string | undefined | null ;
-    declare tipe_input : tipe_input ;
+    declare tipe_input : string | undefined | null ;
     declare metadata : string | undefined | null ;
     declare jenis_item : jenis_item ;
     declare is_required: boolean;
@@ -107,8 +109,8 @@ ItemTanya.init(
             allowNull : true
         },
         tipe_input : {
-            type : DataTypes.ENUM("text", "textarea", "select", "checkbox", "file", "table"), 
-            allowNull : true
+            type : DataTypes.STRING, 
+            allowNull : false
         },
         metadata : {
             type : DataTypes.STRING, 
@@ -166,6 +168,26 @@ ItemTanya.belongsTo(KatItemTanya, {
 
 KatItemTanya.hasMany(ItemTanya, {
     foreignKey : "kode_kat_item_tanya",
+    as : "ItemTanya"
+})
+
+ItemTanya.belongsTo(TipeInput, {
+    foreignKey : 'tipe_input',
+    as : "TipeInput"
+})
+
+TipeInput.hasMany(ItemTanya, {
+    foreignKey : 'tipe_input',
+    as : "TipeInput"
+})
+
+ItemTanya.belongsTo(KatDokumenVendor, {
+    foreignKey : "kode_kat_dokumen_vendor",
+    as : "KatDokumenVendor"
+})
+
+KatDokumenVendor.hasMany(ItemTanya, {
+    foreignKey : "kode_kat_dokumen_vendor",
     as : "ItemTanya"
 })
 
