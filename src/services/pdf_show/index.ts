@@ -10,9 +10,7 @@ export type ShowPdf = {
 
 const showFile = async (data:ShowPdf) : Promise<[any | null, any | null]> => {
     try {
-        const response = await pdfUploadShow.get(`${PDF_UPLOAD_SERVICE_PATH.SHOW}/${data.nama_file}/${data.keypass}`,{
-            responseType : "stream"
-        })
+        const response = await pdfUploadShow.get(`${PDF_UPLOAD_SERVICE_PATH.SHOW}/${data.nama_file}/${data.keypass}`)
 
         const result = response.data
 

@@ -368,10 +368,7 @@ const getPdfUpload = async (
 
         const response = await profilVendorService.getPdfUpload(id, kode_vendor)
 
-        res.setHeader("Content-Type", "application/pdf");
-        res.setHeader("Content-Disposition", "inline; filename=document.pdf"); // or "attachment" for download
-
-        response.pipe(res)
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response.data)
     } catch (error) {
         errorLogger.error(`Testing Error Get PDF Upload  ${error}`)
         next(error)
@@ -391,10 +388,7 @@ const getPdfUploadSertifikat = async (
 
         const response = await profilVendorService.getPdfUploadSertifikat(id, kode_vendor)
 
-        res.setHeader("Content-Type", "application/pdf");
-        res.setHeader("Content-Disposition", "inline; filename=document.pdf"); // or "attachment" for download
-
-        response.pipe(res)
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response.data)
     } catch (error) {
         errorLogger.error(`Testing Error Get PDF Upload  ${error}`)
         next(error)
@@ -414,10 +408,7 @@ const getPdfUploadPengalamanPerorangan = async (
 
         const response = await profilVendorService.getPdfUploadPengalamanPerorangan(id, kode_vendor)
 
-        res.setHeader("Content-Type", "application/pdf");
-        res.setHeader("Content-Disposition", "inline; filename=document.pdf"); // or "attachment" for download
-
-        response.pipe(res)
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response.data)
     } catch (error) {
         errorLogger.error(`Testing Error Get PDF Upload  ${error}`)
         next(error)
@@ -519,10 +510,7 @@ const getPdfUploadKomisaris = async (
 
         const response = await profilVendorService.getPdfUploadKomisaris(id, kode_vendor)
 
-        res.setHeader("Content-Type", "application/pdf");
-        res.setHeader("Content-Disposition", "inline; filename=document.pdf"); // or "attachment" for download
-
-        response.pipe(res)
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response.data)
     } catch (error) {
         errorLogger.error(`Testing Error Get PDF Komisaris Upload  ${error}`)
         next(error)
@@ -623,10 +611,7 @@ const getPdfUploadDireksi = async (
 
         const response = await profilVendorService.getPdfUploadDireksi(id, kode_vendor)
 
-        res.setHeader("Content-Type", "application/pdf");
-        res.setHeader("Content-Disposition", "inline; filename=document.pdf"); // or "attachment" for download
-
-        response.pipe(res)
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response.data)
     } catch (error) {
         errorLogger.error(`Testing Error Get PDF Direksi Upload  ${error}`)
         next(error)
@@ -728,10 +713,7 @@ const getPdfUploadIjinUsaha = async (
 
         const response = await profilVendorService.getPdfUploadIjinUsaha(id, kode_vendor)
 
-        res.setHeader("Content-Type", "application/pdf");
-        res.setHeader("Content-Disposition", "inline; filename=document.pdf"); // or "attachment" for download
-
-        response.pipe(res)
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response.data)
     } catch (error) {
         errorLogger.error(`Testing Error Get PDF Ijin Usaha Upload  ${error}`)
         next(error)
@@ -833,10 +815,7 @@ const getPdfUploadSahamPerusahaan = async (
 
         const response = await profilVendorService.getPdfUploadSahamPerusahaan(id, kode_vendor)
 
-        res.setHeader("Content-Type", "application/pdf");
-        res.setHeader("Content-Disposition", "inline; filename=document.pdf"); // or "attachment" for download
-
-        response.pipe(res)
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response.data)
     } catch (error) {
         errorLogger.error(`Testing Error Get PDF Saham Perusahaan Upload  ${error}`)
         next(error)
@@ -937,10 +916,7 @@ const getPdfUploadPersonalia = async (
 
         const response = await profilVendorService.getPdfUploadPersonalia(id, kode_vendor)
 
-        res.setHeader("Content-Type", "application/pdf");
-        res.setHeader("Content-Disposition", "inline; filename=document.pdf"); // or "attachment" for download
-
-        response.pipe(res)
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response.data)
     } catch (error) {
         errorLogger.error(`Testing Error Get PDF Saham Perusahaan Upload  ${error}`)
         next(error)
@@ -1042,10 +1018,7 @@ const getPdfUploadFasilitas = async (
 
         const response = await profilVendorService.getPdfUploadFasilitas(id, kode_vendor)
 
-        res.setHeader("Content-Type", "application/pdf");
-        res.setHeader("Content-Disposition", "inline; filename=document.pdf"); // or "attachment" for download
-
-        response.pipe(res)
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response.data)
     } catch (error) {
         errorLogger.error(`Testing Error Get PDF Saham Perusahaan Upload  ${error}`)
         next(error)
@@ -1147,10 +1120,7 @@ const getPdfUploadPengalaman = async (
 
         const response = await profilVendorService.getPdfUploadPengalaman(id, kode_vendor)
 
-        res.setHeader("Content-Type", "application/pdf");
-        res.setHeader("Content-Disposition", "inline; filename=document.pdf"); // or "attachment" for download
-
-        response.pipe(res)
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response.data)
     } catch (error) {
         errorLogger.error(`Testing Error Get PDF Pengalaman Perusahaan Upload  ${error}`)
         next(error)
@@ -1252,10 +1222,7 @@ const getPdfUploadPengalamanSekarang = async (
 
         const response = await profilVendorService.getPdfUploadPengalamanSekarang(id, kode_vendor)
 
-        res.setHeader("Content-Type", "application/pdf");
-        res.setHeader("Content-Disposition", "inline; filename=document.pdf"); // or "attachment" for download
-
-        response.pipe(res)
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response.data)
     } catch (error) {
         errorLogger.error(`Testing Error Get PDF Pengalaman Sekarang Perusahaan Upload  ${error}`)
         next(error)
