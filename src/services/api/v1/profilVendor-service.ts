@@ -165,7 +165,6 @@ const getProfilVendor = async (request:GetJawabProfilVendorSchema["body"], kode_
                         type : QueryTypes.SELECT
                     })
 
-                    console.log("COBA DATA ", callNamaTabel[0].tabel)
 
                     const cekDataquery : any = await db.query(`
                         SELECT * FROM ${callNamaTabel[0].tabel} WHERE kode_vendor = :kode_vendor
@@ -183,7 +182,6 @@ const getProfilVendor = async (request:GetJawabProfilVendorSchema["body"], kode_
                     let showData
 
                     if(cekDataquery.length !== 0) {
-                        console.log(cekDataquery)
                         showData = cekDataquery
                     } 
                     else {
@@ -297,7 +295,6 @@ const storeProfilVendor = async (request:StoreProfilVendorSchema["body"], kode_v
 
         arrBerhasil = arrBerhasil.concat(arrExist)
 
-        console.log("TES ARRAY :", arrBerhasil);
         
 
 
@@ -523,7 +520,6 @@ const storeUpload = async (request:StoreUploadVendorSchema["body"], file : Expre
 
         const unsansweredItems = getItemTanya.filter(tanya => !jawabProfil.some(jawab => jawab.kode_item === tanya.kode_item))
 
-        console.log(unsansweredItems)
 
         const status = unsansweredItems.length === 0 ? "finish" : "not_finish"
 
@@ -594,8 +590,7 @@ const storeUpload = async (request:StoreUploadVendorSchema["body"], file : Expre
 
         return result
     } catch (error) {
-        console.log(error);
-        console.log("TES : ", file.path)
+
         fs.unlinkSync(file.path)
         
         await t.rollback()
@@ -707,7 +702,6 @@ const listPertanyaanPerorangan = async (
 //Get Menu With Status By User
 const getMenuStatus = async (kode_vendor:number) : Promise<KatDokumenVendor[]> => {
     try {
-        console.log(kode_vendor)
         
         const getJenisVndor = await RegisterVendor.findOne({
             attributes : ["kode_jenis_vendor", "kode_vendor"],
@@ -1167,6 +1161,8 @@ const getPdfUpload = async (id:ParameterSchema["params"]["id"], kode_vendor:numb
 
 
         const tampilGambar = await showFile(data)
+
+        console.log(tampilGambar)
 
         return tampilGambar[0]
     } catch (error) {
@@ -2764,7 +2760,6 @@ const updateFasilitas = async (id:PayloadFasilitasUpdateSchema["params"]["id"],
     
             const upload : any = await uploadPdf(formData)
     
-            console.log(upload)
 
             if(upload[1] !== null || !upload[0]){
                 throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
@@ -2787,7 +2782,6 @@ const updateFasilitas = async (id:PayloadFasilitasUpdateSchema["params"]["id"],
                 returning : true,
             })
 
-            console.log(fasilitasUpd)
 
             if(fasilitasUpd[0] === 0) throw new CustomError(httpCode.unprocessableEntity,responseStatus.error,"Gagal Update Fasilitas")
 
@@ -3035,7 +3029,6 @@ const updatePengalaman = async (id:PayloadPengalamanUpdateSchema["params"]["id"]
     
             const upload : any = await uploadPdf(formData)
     
-            console.log(upload)
 
             if(upload[1] !== null || !upload[0]){
                 throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
@@ -3313,7 +3306,6 @@ const updatePengalamanSekarang = async (id:PayloadPengalamanSekarangUpdateSchema
     
             const upload : any = await uploadPdf(formData)
     
-            console.log(upload)
 
             if(upload[1] !== null || !upload[0]){
                 throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
