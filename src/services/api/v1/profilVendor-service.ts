@@ -1380,7 +1380,8 @@ const storeUploadKomisaris = async (request:StoreUploadKomisarisSchema["body"], 
 
 
         if(upload[1] !== null || !upload[0]){
-            throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
+            console.log("CEK ERROR :", upload[1])
+            throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
         }
 
         const create = await KomisarisPerusahaan.create({
@@ -1538,7 +1539,7 @@ const updateKomisaris = async (id:UpdateKomisarisSchema["params"]["id"],
     
     
             if(upload[1] !== null || !upload[0]){
-                throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
+                throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
             }
 
             let komisarisUpd = await KomisarisPerusahaan.update({
@@ -1616,7 +1617,7 @@ const storeUploadDireksi = async (request:PayloadDireksiSchema["body"], kode_ven
 
 
         if(upload[1] !== null || !upload[0]){
-            throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
+            throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
         }
 
         const create = await DireksiPerusahaan.create({
@@ -1774,7 +1775,7 @@ const updateDireksi = async (id:PayloadUpdateDireksiSchema["params"]["id"],
             console.log(upload)
 
             if(upload[1] !== null || !upload[0]){
-                throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
+                throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
             }
 
             let direksiUpd = await DireksiPerusahaan.update({
@@ -1852,7 +1853,7 @@ const storeIjinUsaha = async (request:PayloadIjinUsaha["body"], kode_vendor : nu
 
 
         if(upload[1] !== null || !upload[0]){
-            throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
+            throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
         }
 
         const create = await IjinUsahaPerusahaan.create({
@@ -2022,7 +2023,7 @@ const updateIjinUsaha = async (id:PayloadUpdateDireksiSchema["params"]["id"],
             console.log(upload)
 
             if(upload[1] !== null || !upload[0]){
-                throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
+                throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
             }
 
             let ijinUsahaUpd = await IjinUsahaPerusahaan.update({
@@ -2106,7 +2107,7 @@ const storeSahamPerusahaan = async (request:PayloadSahamPerusahaanSchema["body"]
 
 
         if(upload[1] !== null || !upload[0]){
-            throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
+            throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
         }
 
         const create = await SahamPerusahaan.create({
@@ -2264,7 +2265,7 @@ const updateSahamPerusahaan = async (id:PayloadSahamPerusahaanUpdateSchema["para
             console.log(upload)
 
             if(upload[1] !== null || !upload[0]){
-                throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
+                throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
             }
 
             let sahamPerusahaanUpd = await SahamPerusahaan.update({
@@ -2341,7 +2342,7 @@ const storePersonalia = async (request:PayloadPersonaliaSchema["body"], kode_ven
 
 
         if(upload[1] !== null || !upload[0]){
-            throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
+            throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
         }
 
         const create = await PersonaliaPerusahaan.create({
@@ -2511,7 +2512,7 @@ const updatePersonalia = async (id:PayloadPersonaliaUpdateSchema["params"]["id"]
             console.log(upload)
 
             if(upload[1] !== null || !upload[0]){
-                throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
+                throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
             }
 
             let personaliaUpd = await PersonaliaPerusahaan.update({
@@ -2593,7 +2594,7 @@ const storeFasilitas = async (request:PayloadFasilitasSchema["body"], kode_vendo
 
 
         if(upload[1] !== null || !upload[0]){
-            throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
+            throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
         }
 
         const create = await FasilitasPerusahaan.create({
@@ -2762,7 +2763,7 @@ const updateFasilitas = async (id:PayloadFasilitasUpdateSchema["params"]["id"],
     
 
             if(upload[1] !== null || !upload[0]){
-                throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
+                throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
             }
 
             let fasilitasUpd = await FasilitasPerusahaan.update({
@@ -2846,7 +2847,7 @@ const storePengalaman = async (request:PayloadPengalamanSchema["body"], kode_ven
 
 
         if(upload[1] !== null || !upload[0]){
-            throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
+            throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
         }
 
         const create = await Pengalaman.create({
@@ -3031,7 +3032,7 @@ const updatePengalaman = async (id:PayloadPengalamanUpdateSchema["params"]["id"]
     
 
             if(upload[1] !== null || !upload[0]){
-                throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
+                throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
             }
 
             let pengalamanUpd = await Pengalaman.update({
@@ -3122,7 +3123,7 @@ const storePengalamanSekarang = async (request:PayloadPengalamanSekarangSchema["
 
 
         if(upload[1] !== null || !upload[0]){
-            throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
+            throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
         }
 
         const create = await PengalamanSekarang.create({
@@ -3308,7 +3309,7 @@ const updatePengalamanSekarang = async (id:PayloadPengalamanSekarangUpdateSchema
     
 
             if(upload[1] !== null || !upload[0]){
-                throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
+                throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
             }
 
             let pengalamanSekarangUpd = await PengalamanSekarang.update({

@@ -1,9 +1,57 @@
-[2024-11-25T11:40:18.288] [ERROR] error - Testing Error Store Upload Vendor Error: Data Sudah Terdaftar
-[2024-11-25T11:40:18.290] [ERROR] error - Error: Data Sudah Terdaftar
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:604:19
+[2024-12-04T11:44:10.342] [ERROR] error - Testing Error Get PDF Komisaris Upload  TypeError: Cannot read properties of null (reading 'data')
+[2024-12-04T11:44:10.345] [ERROR] error - TypeError: Cannot read properties of null (reading 'data')
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\profilVendor-controller.ts:513:105
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\profilVendor-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2024-12-04T11:44:24.621] [ERROR] error - Testing Error Get PDF Komisaris Upload  TypeError: Cannot read properties of null (reading 'data')
+[2024-12-04T11:44:24.623] [ERROR] error - TypeError: Cannot read properties of null (reading 'data')
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\profilVendor-controller.ts:513:105
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\profilVendor-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2024-12-04T11:45:02.050] [ERROR] error - Testing Error Store Komisaris  Error: Upload Gagal
+[2024-12-04T11:45:02.050] [ERROR] error - Error: Upload Gagal
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:1421:19
     at Generator.next (<anonymous>)
     at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 409,
-  status: 'success'
+  code: 422,
+  status: 'error'
+}
+[2024-12-04T11:46:23.434] [ERROR] error - Testing Error Store Komisaris  Error: Upload Gagal
+[2024-12-04T11:46:23.436] [ERROR] error - Error: Upload Gagal
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:1421:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 422,
+  status: 'error'
+}
+[2024-12-04T11:46:58.631] [ERROR] error - Testing Error Store Komisaris  Error: Upload Gagal
+[2024-12-04T11:46:58.633] [ERROR] error - Error: Upload Gagal
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:1421:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 422,
+  status: 'error'
+}
+[2024-12-04T11:47:58.580] [ERROR] error - Testing Error Store Komisaris  Error: Upload Gagal
+[2024-12-04T11:47:58.582] [ERROR] error - Error: Upload Gagal
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:1422:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 422,
+  status: 'error'
+}
+[2024-12-04T11:48:47.216] [ERROR] error - Testing Error Store Komisaris  Error: Upload Gagal
+[2024-12-04T11:48:47.218] [ERROR] error - Error: Upload Gagal
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:1422:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 422,
+  status: 'error'
 }

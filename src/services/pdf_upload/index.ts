@@ -38,6 +38,7 @@ const uploadPdf = async (
         }
         return [null,result.message]
     } catch (error) {
+        console.log(error)
         if (error instanceof Error) {
             return [null, error.message];
           }
@@ -67,7 +68,13 @@ const showFile = async (data:ShowPdf) : Promise<[any | null, any | null]> => {
 
 const deleteFile = async (data:Delete["nama_file"]) : Promise<[any | null, any | null]> => {
     try {
-        const response = await pdfUpload.delete(`${PDF_UPLOAD_SERVICE_PATH.DELETE_UPLOAD}/${data}`)
+        console.log("TES DATA : ", data);
+        
+        const response = await pdfUpload.post(`${PDF_UPLOAD_SERVICE_PATH.DELETE_UPLOAD}`, {
+            file_name : data
+        })
+
+        
 
         const result = response.data
 
