@@ -11,7 +11,10 @@ const level = {
 
 //Level1 
 import itemTanyaRoute from "@routes/api/auth/level1/itemTanya-route"
+import itemTanyaTplRoute from "@routes/api/auth/level1/itemTanyaTpl-route"
+
 routes.use(level.admin + "/master", authorization, itemTanyaRoute)
+routes.use(level.admin + "/master-tpl", authorization, itemTanyaTplRoute)
 
 //Level3 
 import vendorRoute from "./level3/vendor-route"
