@@ -18,6 +18,9 @@ router.get("/item/tipe-input", itemTanyaController.getTipeInput)
 //post 
 router.post("/item/post-item-tanya", validate(payloadItemTanyaSchema), itemTanyaController.storeItemTanya)
 
+//delete 
+router.delete("/item/delete-item-tanya/:id", validate(parameterSchema), itemTanyaController.deleteItemTanyaCustom)
+
 
 
 export default router

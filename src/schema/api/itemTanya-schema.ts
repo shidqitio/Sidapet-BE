@@ -14,13 +14,9 @@ const payloadItemTanya = {
             required_error : "kode kat item tanya Harus Diisi",
             invalid_type_error : "kode kat item tanya Harus Integer"
         }),
-        nama_item : z.string({
-            required_error : "Nama Item Harus Diisi",
-            invalid_type_error : "Nama Item Harus String"
-        }),
-        tipe_input : z.string({
-            required_error : "Tipe Input harus Diisi",
-            invalid_type_error : "Tipe Input Harus String"
+        kode_tpl : z.number({
+            required_error : "kode_tpl Harus Diisi",
+            invalid_type_error : "kode_tpl Harus Integer"
         }),
         is_required : z.boolean({
             required_error : "Is Required Harus Diisi",

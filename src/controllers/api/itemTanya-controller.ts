@@ -88,10 +88,27 @@ const storeItemTanya = async (
     }
 }
 
+const deleteItemTanyaCustom = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const id : ParameterSchema["params"]["id"] = req.params.id
+
+        const response = await itemTanyaService.deleteItemTanyaCustom(id)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menghapus Data", response)
+    } catch (error) {
+        errorLogger.error(`Testing Error Delete Item Tanya ${error}`)
+        next(error)
+    }
+}
+
 export default {
     getKatDokVendor,
     getKatItemTanya,
     getItemTanyaCustom,
     getTipeInput,
     storeItemTanya,
+    deleteItemTanyaCustom
 }

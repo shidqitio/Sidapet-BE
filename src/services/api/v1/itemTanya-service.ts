@@ -16,6 +16,7 @@ import {
     ParameterSchema
 } from "@schema/api/itemTanya-schema"
 import JenisVendor from "@models/jenisVendor-model";
+import ItemTanyaTpl from "@models/itemTanyaTpl-model";
 
 const getKatDokVendor = async (id : ParameterSchema["params"]["id"] ) : Promise<KatDokumenVendor[]> => {
     try {
@@ -79,6 +80,7 @@ const getItemTanyaCustom = async (id : ParameterSchema["params"]["id"]) : Promis
                 "kode_item",
                 "kode_jenis_vendor",
                 "nama_item",
+                "keterangan",
                 "tipe_input",
                 "is_required",
             ],
@@ -157,14 +159,19 @@ const storeItemTanya = async (
         else {
             urutanItem = urutan + 1 
         }
-        
 
+        let itemTanyaTpl = await ItemTanyaTpl.findByPk(request.kode_tpl)
+
+        if(!itemTanyaTpl) throw new CustomError(httpCode.badRequest, responseStatus.error, "Item Tanya TPL Tidak Tersedia")
+   
+        
         const storeItem = await ItemTanya.create({
             kode_jenis_vendor : request.kode_jenis_vendor,
             kode_kat_dokumen_vendor : request.kode_kat_dokumen_vendor,
             kode_kat_item_tanya : request.kode_kat_item_tanya,
-            nama_item : request.nama_item,
-            tipe_input : request.tipe_input,
+            nama_item : itemTanyaTpl.nama_item,
+            keterangan : itemTanyaTpl.keterangan,
+            tipe_input : itemTanyaTpl.tipe_input,
             is_required : request.is_required,
             jenis_item : jenis_item.custom,
             urutan : urutan
@@ -177,6 +184,7 @@ const storeItemTanya = async (
             kode_kat_dokumen_vendor : storeItem.kode_kat_dokumen_vendor,
             kode_kat_item_tanya : storeItem.kode_kat_item_tanya,
             nama_item : storeItem.nama_item,
+            keterangan : storeItem.keterangan,
             tipe_input : storeItem.tipe_input,
             is_required : storeItem.is_required,
             jenis_item : storeItem.jenis_item
@@ -197,6 +205,38 @@ const storeItemTanya = async (
     }
 }
 
+const deleteItemTanyaCustom = async (id:ParameterSchema["params"]["id"]) : Promise<ItemTanya> => {
+    try {
+        const exItemTanya = await ItemTanya.findOne({
+            where : {
+                kode_item : id,
+                jenis_item : jenis_item.custom
+            }
+        })
+
+        if(!exItemTanya) throw new CustomError(httpCode.badRequest, responseStatus.error, "Terjadi Kesalahan Parameter / Item Tanya Bukan Custom")
+
+        const deleteItem = await ItemTanya.destroy({
+            where : {
+                kode_item : id,
+                jenis_item : jenis_item.custom
+            }
+        })
+
+        if(deleteItem === 0) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Terjadi Kesalahan Pada Delete")
+
+        return exItemTanya
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
 
 
 export default {
@@ -204,5 +244,6 @@ export default {
     getKatItemTanya,
     getItemTanyaCustom,
     getTipeInput,
-    storeItemTanya
+    storeItemTanya,
+    deleteItemTanyaCustom
 }
