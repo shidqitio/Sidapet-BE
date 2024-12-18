@@ -172,6 +172,7 @@ const storeItemTanya = async (
             nama_item : itemTanyaTpl.nama_item,
             keterangan : itemTanyaTpl.keterangan,
             tipe_input : itemTanyaTpl.tipe_input,
+            kode_trx_kategori : request.kode_trx_kategori,
             is_required : request.is_required,
             jenis_item : jenis_item.custom,
             urutan : urutan
@@ -186,6 +187,7 @@ const storeItemTanya = async (
             nama_item : storeItem.nama_item,
             keterangan : storeItem.keterangan,
             tipe_input : storeItem.tipe_input,
+            kode_trx_kategori : storeItem.kode_trx_kategori,
             is_required : storeItem.is_required,
             jenis_item : storeItem.jenis_item
         }

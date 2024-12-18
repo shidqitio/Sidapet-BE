@@ -4,6 +4,7 @@ import JenisVendor from "./jenisVendor-model";
 import KatItemTanya from "./katItemTanya-model";
 import TipeInput from "./tipeInput-model";
 import KatDokumenVendor from "./katDokumenVendor-model";
+import TrxKategori from "./trxKategori-model";
 
 // export enum tipe_input {
 //     text = "text",
@@ -31,6 +32,7 @@ interface IItemTanya {
 	metadata : string | undefined | null
 	jenis_item : jenis_item,
     is_required : boolean,
+    kode_trx_kategori : number | null
 	ucr : string | undefined | null
 	uch : string | undefined | null
 	udcr : Date | undefined
@@ -49,6 +51,7 @@ IItemTanya,
 "tipe_input" |
 "jenis_item" |
 "is_required"|
+"kode_trx_kategori" |
 "ucr" |
 "uch" |
 "udcr" |
@@ -70,6 +73,7 @@ class ItemTanya
     declare metadata : string | undefined | null ;
     declare jenis_item : jenis_item ;
     declare is_required: boolean;
+    declare kode_trx_kategori: number | null;
     declare ucr : string | undefined | null ;
     declare uch : string | undefined | null ;
     declare udcr : Date | undefined ;
@@ -122,6 +126,10 @@ ItemTanya.init(
         },
         is_required : {
             type : DataTypes.BOOLEAN,
+            allowNull : true
+        },
+        kode_trx_kategori : {
+            type : DataTypes.INTEGER,
             allowNull : true
         },
         ucr : {
@@ -188,6 +196,16 @@ ItemTanya.belongsTo(KatDokumenVendor, {
 
 KatDokumenVendor.hasMany(ItemTanya, {
     foreignKey : "kode_kat_dokumen_vendor",
+    as : "ItemTanya"
+})
+
+ItemTanya.belongsTo(TrxKategori, {
+    foreignKey : "kode_trx_kategori",
+    as : "TrxKategori"
+})
+
+TrxKategori.hasMany(ItemTanya, {
+    foreignKey : "kode_trx_kategori",
     as : "ItemTanya"
 })
 

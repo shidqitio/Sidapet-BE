@@ -18,6 +18,10 @@ const payloadItemTanya = {
             required_error : "kode_tpl Harus Diisi",
             invalid_type_error : "kode_tpl Harus Integer"
         }),
+        kode_trx_kategori : z.number({
+            required_error : "kode_trx_kategori harus Diisi",
+            invalid_type_error : "kode_trx_kategori Harus Integer"
+        }),
         is_required : z.boolean({
             required_error : "Is Required Harus Diisi",
             invalid_type_error : "Is Required Boolean"
