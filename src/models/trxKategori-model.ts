@@ -1,6 +1,7 @@
 import db from "@config/database";
 import { DataTypes, Optional, Model } from "sequelize";
 import Kategori from "./kategori-model";
+import JenisPengadaan from "./jenisPengadaan-model";
 
 export enum status_pengajuan_kat {
     draft = "draft",
@@ -152,6 +153,16 @@ TrxKategori.belongsTo(Kategori, {
 
 Kategori.hasMany(TrxKategori, {
     foreignKey : "kode_kategori",
+    as : "TrxKategori"
+})
+
+TrxKategori.belongsTo(JenisPengadaan, {
+    foreignKey : "kode_jenis_pengadaan",
+    as : "JenisPengadaan"
+})
+
+JenisPengadaan.hasMany(TrxKategori, {
+    foreignKey : "kode_jenis_pengadaan",
     as : "TrxKategori"
 })
 

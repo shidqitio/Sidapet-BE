@@ -18,7 +18,10 @@ routes.use(level.admin + "/master-tpl", authorization, itemTanyaTplRoute)
 
 //Level 2
 import kategoriRoute2 from "./level2/kategori-route"
+import trxKategoriRoute from "./level2/trxKategori-route"
+
 routes.use(level.ppk + "/kategori", authorization, kategoriRoute2)
+routes.use(level.ppk + "/trx-kategori", authorization, trxKategoriRoute)
 
 //Level3 
 import vendorRoute from "./level3/vendor-route"
