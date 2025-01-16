@@ -30,7 +30,10 @@ const getListKategori = async (
         }
 
         const {rows, count} = await TrxKategori.findAndCountAll({
+            limit : limits,
+            offset : offset,
             attributes : [
+                "kode_trx_kategori",
                 "Kategori.nama_kategori",
                 "status_pengajuan_kat"
             ],
@@ -41,6 +44,8 @@ const getListKategori = async (
                     attributes : []
                 }, 
             ],
+            raw : true,
+            nest : true
         })
 
         return {rows, count}

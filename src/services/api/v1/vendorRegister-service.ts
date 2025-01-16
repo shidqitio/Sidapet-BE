@@ -35,6 +35,8 @@ import template from "@public/template/template-email"
 
 import {encryptWithKey, decryptWithKey} from "@utils/generate-encrypt-decrypt"
 
+import validate from "deep-email-validator";
+
 
 //Get All Vendor 
 const getAllVendor = async (
@@ -153,7 +155,16 @@ const registerVendor = async (request:PayloadRegisterSchema["body"], file : Expr
     const t = await db.transaction()
     try {
         
+        const {valid, reason, validators} = await validate(request.email)
 
+        console.log("TES VALID : ", valid)
+        console.log("REASON :" , reason)
+        console.log("VALIDATOR : ", validators)
+        
+        if(valid === false ) {
+        await t.rollback()
+        throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Email Tidak Valid")
+        }
         const [exEmail, errorCheckEmail] : [any, string] = await checkEmail(request.email)
 
         if(errorCheckEmail) {
@@ -260,6 +271,7 @@ const registerVendor = async (request:PayloadRegisterSchema["body"], file : Expr
         return createVendor
         
     } catch (error) {
+
         if(error instanceof CustomError) {
             throw new CustomError(error.code,error.status, error.message)
         } 

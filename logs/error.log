@@ -1,134 +1,52 @@
-[2024-12-19T15:02:49.267] [ERROR] error - Testing Error Get Kategori Error: Data Tidak Tersedia
-[2024-12-19T15:02:49.269] [ERROR] error - Error: Data Tidak Tersedia
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:141:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 404,
-  status: 'success'
-}
-[2024-12-19T15:02:59.666] [ERROR] error - Testing Error Get Kategori Error: Internal server error.
-[2024-12-19T15:02:59.667] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:145:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
-  status: 'error'
-}
-[2024-12-19T15:04:06.804] [ERROR] error - Testing Error Get Kategori Error: Internal server error.
-[2024-12-19T15:04:06.805] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:145:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
-  status: 'error'
-}
-[2024-12-19T15:05:56.465] [ERROR] error - Testing Error Get Kategori Error: Internal server error.
-[2024-12-19T15:05:56.467] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:143:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
-  status: 'error'
-}
-[2024-12-19T15:07:37.937] [ERROR] error - Testing Error Get Kategori Error: Internal server error.
-[2024-12-19T15:07:37.937] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:145:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
-  status: 'error'
-}
-[2024-12-19T15:09:47.577] [ERROR] error - Testing Error Get Kategori Error: Internal server error.
-[2024-12-19T15:09:47.577] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:145:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
-  status: 'error'
-}
-[2024-12-19T15:19:54.426] [ERROR] error - Testing Error Get Kategori Error: Internal server error.
-[2024-12-19T15:19:54.427] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:145:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
-  status: 'error'
-}
-[2024-12-19T15:20:23.229] [ERROR] error - Testing Error Get Kategori Error: Internal server error.
-[2024-12-19T15:20:23.230] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:145:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
-  status: 'error'
-}
-[2024-12-19T15:22:06.781] [ERROR] error - Testing Error Get Kategori Error: Internal server error.
-[2024-12-19T15:22:06.782] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:145:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
-  status: 'error'
-}
-[2024-12-19T15:23:27.104] [ERROR] error - Testing Error Get Kategori Error: Internal server error.
-[2024-12-19T15:23:27.105] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:145:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
-  status: 'error'
-}
-[2024-12-19T15:23:46.688] [ERROR] error - Testing Error Get Kategori Error: Internal server error.
-[2024-12-19T15:23:46.689] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:145:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
-  status: 'error'
-}
-[2024-12-19T15:25:27.491] [ERROR] error - Testing Error Get Kategori Error: Internal server error.
-[2024-12-19T15:25:27.492] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:147:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
-  status: 'error'
-}
-[2024-12-19T15:29:56.097] [ERROR] error - Testing Error Get Kategori Error: Internal server error.
-[2024-12-19T15:29:56.097] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:147:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
-  status: 'error'
-}
-[2024-12-19T15:34:58.202] [ERROR] error - Testing Error Get Kategori Error: Internal server error.
-[2024-12-19T15:34:58.202] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:59:23
+[2025-01-15T16:34:37.507] [ERROR] error - ERROR REMOVE FILE: Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\D:\Dev SIPPP\PMO\public\sidapet\images\foto-ktp\userphoto-1736933677497.png'
+[2025-01-15T16:34:53.077] [ERROR] error - Testing Error Register Vendor Error: Internal server error.
+[2025-01-15T16:34:53.077] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:277:19
     at Generator.throw (<anonymous>)
-    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:6:65)
+    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:29:65)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
   code: 500,
   status: 'error'
 }
-[2024-12-19T15:35:06.219] [ERROR] error - Testing Error Get Kategori Error: Internal server error.
-[2024-12-19T15:35:06.219] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:59:23
+[2025-01-15T16:38:12.610] [ERROR] error - Testing Error Register Vendor Error: Email Tidak Terdaftar
+[2025-01-15T16:38:12.611] [ERROR] error - Error: Email Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:275:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 422,
+  status: 'error'
+}
+[2025-01-15T16:39:21.852] [ERROR] error - Testing Error Register Vendor Error: Email Tidak Terdaftar
+[2025-01-15T16:39:21.853] [ERROR] error - Error: Email Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:275:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 422,
+  status: 'error'
+}
+[2025-01-15T16:39:44.808] [ERROR] error - Testing Error Register Vendor Error: Transaction cannot be rolled back because it has been finished with state: rollback
+[2025-01-15T16:39:44.809] [ERROR] error - Error: Transaction cannot be rolled back because it has been finished with state: rollback
+    at Transaction.rollback (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\transaction.js:82:13)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:273:13
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2025-01-15T16:40:58.321] [ERROR] error - Testing Error Register Vendor Error: Email Tidak Terdaftar
+[2025-01-15T16:40:58.323] [ERROR] error - Error: Email Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:276:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 422,
+  status: 'error'
+}
+[2025-01-15T16:41:53.116] [ERROR] error - Testing Error Register Vendor Error: Internal server error.
+[2025-01-15T16:41:53.118] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:281:19
     at Generator.throw (<anonymous>)
-    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxKategori-service.ts:6:65)
+    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:29:65)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
   code: 500,
   status: 'error'
