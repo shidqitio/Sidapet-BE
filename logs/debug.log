@@ -1,77 +1,46 @@
-[2024-12-10T11:14:50.579] [DEBUG] default - Error: WHERE parameter "tipe_input" has invalid "undefined" value
-    at PostgresQueryGenerator.whereItemQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2445:13)
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2434:25
-    at Array.forEach (<anonymous>)
-    at PostgresQueryGenerator.whereItemsQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2432:35)
-    at PostgresQueryGenerator.getWhereConditions (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2860:19)
-    at PostgresQueryGenerator.selectQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:1460:28)
-    at PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1002:27)
-    at Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:47)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async Function.findOne (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1998:12)
-[2024-12-10T11:16:19.432] [DEBUG] default - Error: WHERE parameter "tipe_input" has invalid "undefined" value
-    at PostgresQueryGenerator.whereItemQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2445:13)
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2434:25
-    at Array.forEach (<anonymous>)
-    at PostgresQueryGenerator.whereItemsQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2432:35)
-    at PostgresQueryGenerator.getWhereConditions (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2860:19)
-    at PostgresQueryGenerator.selectQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:1460:28)
-    at PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1002:27)
-    at Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:47)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async Function.findOne (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1998:12)
-[2024-12-10T11:27:17.257] [DEBUG] default - Error: WHERE parameter "tipe_input" has invalid "undefined" value
-    at PostgresQueryGenerator.whereItemQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2445:13)
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2434:25
-    at Array.forEach (<anonymous>)
-    at PostgresQueryGenerator.whereItemsQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2432:35)
-    at PostgresQueryGenerator.getWhereConditions (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2860:19)
-    at PostgresQueryGenerator.selectQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:1460:28)
-    at PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1002:27)
-    at Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:47)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async Function.findOne (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1998:12)
-[2024-12-10T11:27:55.435] [DEBUG] default - Error: WHERE parameter "tipe_input" has invalid "undefined" value
-    at PostgresQueryGenerator.whereItemQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2445:13)
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2434:25
-    at Array.forEach (<anonymous>)
-    at PostgresQueryGenerator.whereItemsQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2432:35)
-    at PostgresQueryGenerator.getWhereConditions (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2860:19)
-    at PostgresQueryGenerator.selectQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:1460:28)
-    at PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1002:27)
-    at Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:47)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async Function.findOne (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1998:12)
-[2024-12-10T11:28:02.974] [DEBUG] default - Error: WHERE parameter "tipe_input" has invalid "undefined" value
-    at PostgresQueryGenerator.whereItemQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2445:13)
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2434:25
-    at Array.forEach (<anonymous>)
-    at PostgresQueryGenerator.whereItemsQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2432:35)
-    at PostgresQueryGenerator.getWhereConditions (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2860:19)
-    at PostgresQueryGenerator.selectQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:1460:28)
-    at PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1002:27)
-    at Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:47)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async Function.findOne (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1998:12)
-[2024-12-10T11:29:42.240] [DEBUG] default - Error: WHERE parameter "tipe_input" has invalid "undefined" value
-    at PostgresQueryGenerator.whereItemQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2445:13)
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2434:25
-    at Array.forEach (<anonymous>)
-    at PostgresQueryGenerator.whereItemsQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2432:35)
-    at PostgresQueryGenerator.getWhereConditions (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2860:19)
-    at PostgresQueryGenerator.selectQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:1460:28)
-    at PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1002:27)
-    at Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:47)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async Function.findOne (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1998:12)
-[2024-12-10T11:30:02.367] [DEBUG] default - Error: WHERE parameter "tipe_input" has invalid "undefined" value
-    at PostgresQueryGenerator.whereItemQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2445:13)
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2434:25
-    at Array.forEach (<anonymous>)
-    at PostgresQueryGenerator.whereItemsQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2432:35)
-    at PostgresQueryGenerator.getWhereConditions (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2860:19)
-    at PostgresQueryGenerator.selectQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:1460:28)
-    at PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1002:27)
-    at Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:47)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async Function.findOne (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1998:12)
+[2025-01-15T16:34:53.076] [DEBUG] default - Error: ModuleNotFoundError: No module named 'face_recognition'
+    at PythonShell.parseError (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:376:21)
+    at terminateIfNeeded (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:239:32)
+    at ChildProcess.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:230:13)
+    at ChildProcess.emit (node:events:513:28)
+    at ChildProcess.emit (node:domain:489:12)
+    at Process.ChildProcess._handle.onexit (node:internal/child_process:291:12)
+    ----- Python Traceback -----
+    File "D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\python\facerecognitionpersonalid.py", line 1, in <module>
+      import face_recognition {
+  traceback: 'Traceback (most recent call last):\r\n' +
+    '  File "D:\\Dev SIPPP\\PMO\\sidapet-be-reb\\rebuild-sidapet-be\\src\\python\\facerecognitionpersonalid.py", line 1, in <module>\r\n' +
+    '    import face_recognition\r\n' +
+    "ModuleNotFoundError: No module named 'face_recognition'\r\n",
+  executable: 'python',
+  options: null,
+  script: 'src\\python\\facerecognitionpersonalid.py',
+  args: [
+    'D:\\Dev SIPPP\\PMO\\public\\sidapet\\images\\foto-ktp\\userphoto-1736933689536.png'
+  ],
+  exitCode: 1,
+  logs: []
+}
+[2025-01-15T16:41:53.115] [DEBUG] default - Error: ModuleNotFoundError: No module named 'face_recognition'
+    at PythonShell.parseError (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:376:21)
+    at terminateIfNeeded (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:239:32)
+    at ChildProcess.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:230:13)
+    at ChildProcess.emit (node:events:513:28)
+    at ChildProcess.emit (node:domain:489:12)
+    at Process.ChildProcess._handle.onexit (node:internal/child_process:291:12)
+    ----- Python Traceback -----
+    File "D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\python\facerecognitionpersonalid.py", line 1, in <module>
+      import face_recognition {
+  traceback: 'Traceback (most recent call last):\r\n' +
+    '  File "D:\\Dev SIPPP\\PMO\\sidapet-be-reb\\rebuild-sidapet-be\\src\\python\\facerecognitionpersonalid.py", line 1, in <module>\r\n' +
+    '    import face_recognition\r\n' +
+    "ModuleNotFoundError: No module named 'face_recognition'\r\n",
+  executable: 'python',
+  options: null,
+  script: 'src\\python\\facerecognitionpersonalid.py',
+  args: [
+    'D:\\Dev SIPPP\\PMO\\public\\sidapet\\images\\foto-ktp\\userphoto-1736934110061.png'
+  ],
+  exitCode: 1,
+  logs: []
+}

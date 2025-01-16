@@ -22,6 +22,7 @@
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "crypto-js": "^4.1.1",
+    "deep-email-validator": "^0.1.21",
     "express": "^4.18.2",
     "express-rate-limit": "^7.1.1",
     "form-data": "^4.0.1",

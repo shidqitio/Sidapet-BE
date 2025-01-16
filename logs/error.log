@@ -1,125 +1,53 @@
-[2024-12-10T11:03:57.628] [ERROR] error - Error: [2] Token Unauthorized
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:108:13
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:5:58)
+[2025-01-15T16:34:37.507] [ERROR] error - ERROR REMOVE FILE: Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\D:\Dev SIPPP\PMO\public\sidapet\images\foto-ktp\userphoto-1736933677497.png'
+[2025-01-15T16:34:53.077] [ERROR] error - Testing Error Register Vendor Error: Internal server error.
+[2025-01-15T16:34:53.077] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:277:19
+    at Generator.throw (<anonymous>)
+    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:29:65)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 401,
+  code: 500,
   status: 'error'
 }
-[2024-12-10T11:06:04.415] [ERROR] error - Testing Error Get By Id Item Tanya Tpl Error: Kesalahan Pada Id
-[2024-12-10T11:06:04.416] [ERROR] error - Error: Kesalahan Pada Id
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\itemTanyaTpl-service.ts:49:19
+[2025-01-15T16:38:12.610] [ERROR] error - Testing Error Register Vendor Error: Email Tidak Terdaftar
+[2025-01-15T16:38:12.611] [ERROR] error - Error: Email Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:275:19
     at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\itemTanyaTpl-service.ts:5:58)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
   code: 422,
-  status: 'success'
+  status: 'error'
 }
-[2024-12-10T11:11:25.280] [ERROR] error - Testing Error Get By Id Item Tanya Tpl Error: Data Tidak Ada
-[2024-12-10T11:11:25.280] [ERROR] error - Error: Data Tidak Ada
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\itemTanyaTpl-service.ts:49:19
+[2025-01-15T16:39:21.852] [ERROR] error - Testing Error Register Vendor Error: Email Tidak Terdaftar
+[2025-01-15T16:39:21.853] [ERROR] error - Error: Email Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:275:19
     at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\itemTanyaTpl-service.ts:5:58)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 404,
+  code: 422,
   status: 'error'
 }
-[2024-12-10T11:12:09.898] [ERROR] error - Testing Error Get By Id Item Tanya Tpl Error: Data Tidak Ada
-[2024-12-10T11:12:09.899] [ERROR] error - Error: Data Tidak Ada
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\itemTanyaTpl-service.ts:49:19
+[2025-01-15T16:39:44.808] [ERROR] error - Testing Error Register Vendor Error: Transaction cannot be rolled back because it has been finished with state: rollback
+[2025-01-15T16:39:44.809] [ERROR] error - Error: Transaction cannot be rolled back because it has been finished with state: rollback
+    at Transaction.rollback (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\transaction.js:82:13)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:273:13
     at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\itemTanyaTpl-service.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 404,
-  status: 'error'
-}
-[2024-12-10T11:14:50.615] [ERROR] error - Testing Error Store Item Tanya Tpl Error: Internal server error.
-[2024-12-10T11:14:50.616] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\itemTanyaTpl-service.ts:92:19
-    at Generator.throw (<anonymous>)
-    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\itemTanyaTpl-service.ts:6:65)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
-  status: 'error'
-}
-[2024-12-10T11:16:19.433] [ERROR] error - Testing Error Store Item Tanya Tpl Error: Internal server error.
-[2024-12-10T11:16:19.434] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\itemTanyaTpl-service.ts:94:19
-    at Generator.throw (<anonymous>)
-    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\itemTanyaTpl-service.ts:6:65)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
-  status: 'error'
-}
-[2024-12-10T11:27:17.258] [ERROR] error - Testing Error Store Item Tanya Tpl Error: Internal server error.
-[2024-12-10T11:27:17.259] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\itemTanyaTpl-service.ts:95:19
-    at Generator.throw (<anonymous>)
-    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\itemTanyaTpl-service.ts:6:65)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
-  status: 'error'
-}
-[2024-12-10T11:27:55.436] [ERROR] error - Testing Error Store Item Tanya Tpl Error: Internal server error.
-[2024-12-10T11:27:55.437] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\itemTanyaTpl-service.ts:95:19
-    at Generator.throw (<anonymous>)
-    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\itemTanyaTpl-service.ts:6:65)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
-  status: 'error'
-}
-[2024-12-10T11:28:02.974] [ERROR] error - Testing Error Store Item Tanya Tpl Error: Internal server error.
-[2024-12-10T11:28:02.975] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\itemTanyaTpl-service.ts:95:19
-    at Generator.throw (<anonymous>)
-    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\itemTanyaTpl-service.ts:6:65)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
-  status: 'error'
-}
-[2024-12-10T11:28:51.563] [ERROR] error - Testing Error Store Item Tanya Tpl Error: Terjadi Kesalahan Pada Tipe Input
-[2024-12-10T11:28:51.564] [ERROR] error - Error: Terjadi Kesalahan Pada Tipe Input
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\itemTanyaTpl-service.ts:91:19
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2025-01-15T16:40:58.321] [ERROR] error - Testing Error Register Vendor Error: Email Tidak Terdaftar
+[2025-01-15T16:40:58.323] [ERROR] error - Error: Email Tidak Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:276:19
     at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\itemTanyaTpl-service.ts:5:58)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 400,
+  code: 422,
   status: 'error'
 }
-[2024-12-10T11:29:42.274] [ERROR] error - Testing Error Store Item Tanya Tpl Error: Internal server error.
-[2024-12-10T11:29:42.275] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\itemTanyaTpl-service.ts:92:19
+[2025-01-15T16:41:53.116] [ERROR] error - Testing Error Register Vendor Error: Internal server error.
+[2025-01-15T16:41:53.118] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:281:19
     at Generator.throw (<anonymous>)
-    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\itemTanyaTpl-service.ts:6:65)
+    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:29:65)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
   code: 500,
-  status: 'error'
-}
-[2024-12-10T11:30:02.367] [ERROR] error - Testing Error Store Item Tanya Tpl Error: Internal server error.
-[2024-12-10T11:30:02.368] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\itemTanyaTpl-service.ts:93:19
-    at Generator.throw (<anonymous>)
-    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\itemTanyaTpl-service.ts:6:65)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
-  status: 'error'
-}
-[2024-12-10T12:01:57.047] [ERROR] error - Testing Error Delete Item Tanya Error: Terjadi Kesalahan Parameter / Item Tanya Bukan Custom
-[2024-12-10T12:01:57.048] [ERROR] error - Error: Terjadi Kesalahan Parameter / Item Tanya Bukan Custom
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\itemTanya-service.ts:231:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\itemTanya-service.ts:28:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 400,
-  status: 'error'
-}
-[2024-12-10T12:02:34.707] [ERROR] error - Testing Error Delete Item Tanya Error: Terjadi Kesalahan Parameter / Item Tanya Bukan Custom
-[2024-12-10T12:02:34.708] [ERROR] error - Error: Terjadi Kesalahan Parameter / Item Tanya Bukan Custom
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\itemTanya-service.ts:231:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\itemTanya-service.ts:28:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 400,
   status: 'error'
 }
