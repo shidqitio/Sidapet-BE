@@ -139,7 +139,7 @@ const authorization = async (
       token: token,
       id: user.id,
       kode_group: kode_group,
-      api_token: user.api_token,
+      api_token: api_token,
       is_login: user.is_login,
       username : userProf ? userProf.username : "",
       email : userProf ? userProf.email : "",
@@ -148,8 +148,6 @@ const authorization = async (
       };
 
     req.user = userData;
-
-
 
     next();
   } catch (err) {

@@ -2,6 +2,7 @@ import CustomError from "@middleware/error-handler";
 import { debugLogger } from "@config/logger";
 import db from "@config/database";
 import { responseStatus, httpCode } from "@utils/prefix";
+import { getCache, setCache, delCache } from "@cache/cache"
 
 //Import Model
 import Kategori from "@models/kategori-model";
@@ -14,7 +15,16 @@ import {
 //Get All Kategori
 const getKategori = async () : Promise<Kategori[]> => {
     try {
+        const cacheKey = "all_kategori"
+        const cacheKategori = getCache(cacheKey) 
+
+        if(cacheKategori) {
+            return cacheKategori
+        }
+
         const getAll = await Kategori.findAll()
+
+        setCache(cacheKey,getAll)
 
         return getAll
     } catch (error) {
