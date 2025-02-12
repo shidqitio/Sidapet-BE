@@ -72,7 +72,7 @@ const getPenyediaLimitOffset = async (
     }
 }
 
-const getPenyediaAll = async () : Promise<Vendor[]> => {
+const getPenyediaAll = async (ttp : string) : Promise<Vendor[]> => {
     try {
         const cacheKey = `all_penyedia_non_tetap`
         const cachedPenyediaNonTetap = getCache(cacheKey)
@@ -83,7 +83,7 @@ const getPenyediaAll = async () : Promise<Vendor[]> => {
 
         const penyedia : Vendor[] = await Vendor.findAll({
             where : {
-                is_tetap : false
+                is_tetap : ttp
             }
         })
 
