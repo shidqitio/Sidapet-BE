@@ -34,7 +34,9 @@ const getPenyediaAll = async (
     next : NextFunction
 ) : Promise<void> => {
     try {
-        const response = await vendorService.getPenyediaAll()
+        const id = req.params.id
+
+        const response = await vendorService.getPenyediaAll(id)
 
         responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response)
     } catch (error) {

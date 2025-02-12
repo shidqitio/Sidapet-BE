@@ -12,9 +12,9 @@ const router = express.Router()
 //get
 router.get("/", validate(querySchema) ,vendorController.getPenyediaLimitOffset)
 
-router.get("/all", vendorController.getPenyediaAll)
+router.get("/all/:id", vendorController.getPenyediaAll)
 
-router.post("/search-vendor", vendorController.getPenyediaByKode)
+router.post ("/search-vendor", vendorController.getPenyediaByKode)
 
 
 export default router
