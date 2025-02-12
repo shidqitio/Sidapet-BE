@@ -77,6 +77,8 @@ const getMenuStatus = async (
         
         const kode_vendor = req.user.kode_vendor
 
+        console.log(kode_vendor)
+
         if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
 
         const response = await profilVendorService.getMenuStatus(kode_vendor)

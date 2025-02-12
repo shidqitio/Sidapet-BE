@@ -21,12 +21,14 @@ import kategoriRoute2 from "./level2/kategori-route"
 import trxKategoriRoute from "./level2/trxKategori-route"
 import itemTanyaTplRoute2 from "./level2/itemTanyaTpl-route"
 import itemTanyaRoute2 from "./level2/itemTanya-route"
+import vendorRoute2 from "./level2/vendor-route"
 
 
 routes.use(level.ppk + "/master-tpl", authorization, itemTanyaTplRoute2)
 routes.use(level.ppk + "/item-tanya", authorization, itemTanyaRoute2)
 routes.use(level.ppk + "/kategori", authorization, kategoriRoute2)
 routes.use(level.ppk + "/trx-kategori", authorization, trxKategoriRoute)
+routes.use(level.ppk + "/penyedia", authorization, vendorRoute2)
 
 //Level3 
 import vendorRoute from "./level3/vendor-route"

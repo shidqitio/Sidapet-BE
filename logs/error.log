@@ -1,53 +1,26 @@
-[2025-01-15T16:34:37.507] [ERROR] error - ERROR REMOVE FILE: Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\D:\Dev SIPPP\PMO\public\sidapet\images\foto-ktp\userphoto-1736933677497.png'
-[2025-01-15T16:34:53.077] [ERROR] error - Testing Error Register Vendor Error: Internal server error.
-[2025-01-15T16:34:53.077] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:277:19
-    at Generator.throw (<anonymous>)
-    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:29:65)
+[2025-02-11T14:03:55.942] [ERROR] error - Error: User Not Authenticate
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:108:13
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
+  code: 401,
   status: 'error'
 }
-[2025-01-15T16:38:12.610] [ERROR] error - Testing Error Register Vendor Error: Email Tidak Terdaftar
-[2025-01-15T16:38:12.611] [ERROR] error - Error: Email Tidak Terdaftar
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:275:19
+[2025-02-11T14:04:34.825] [ERROR] error - Testing Error Get All By Status Vendor TypeError: Cannot read properties of undefined (reading 'vendor')
+[2025-02-11T14:04:34.825] [ERROR] error - TypeError: Cannot read properties of undefined (reading 'vendor')
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\vendor-controller.ts:25:113
     at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 422,
-  status: 'error'
-}
-[2025-01-15T16:39:21.852] [ERROR] error - Testing Error Register Vendor Error: Email Tidak Terdaftar
-[2025-01-15T16:39:21.853] [ERROR] error - Error: Email Tidak Terdaftar
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:275:19
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 422,
-  status: 'error'
-}
-[2025-01-15T16:39:44.808] [ERROR] error - Testing Error Register Vendor Error: Transaction cannot be rolled back because it has been finished with state: rollback
-[2025-01-15T16:39:44.809] [ERROR] error - Error: Transaction cannot be rolled back because it has been finished with state: rollback
-    at Transaction.rollback (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\transaction.js:82:13)
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:273:13
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\vendor-controller.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5)
-[2025-01-15T16:40:58.321] [ERROR] error - Testing Error Register Vendor Error: Email Tidak Terdaftar
-[2025-01-15T16:40:58.323] [ERROR] error - Error: Email Tidak Terdaftar
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:276:19
+[2025-02-11T14:05:49.745] [ERROR] error - Testing Error Get All By Status Vendor TypeError: Cannot read properties of undefined (reading 'vendor')
+[2025-02-11T14:05:49.747] [ERROR] error - TypeError: Cannot read properties of undefined (reading 'vendor')
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\vendor-controller.ts:23:113
     at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 422,
-  status: 'error'
-}
-[2025-01-15T16:41:53.116] [ERROR] error - Testing Error Register Vendor Error: Internal server error.
-[2025-01-15T16:41:53.118] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:281:19
-    at Generator.throw (<anonymous>)
-    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:29:65)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
-  status: 'error'
-}
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\vendor-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2025-02-11T14:05:58.548] [ERROR] error - Testing Error Get All By Status Vendor TypeError: Cannot read properties of undefined (reading 'vendor')
+[2025-02-11T14:05:58.549] [ERROR] error - TypeError: Cannot read properties of undefined (reading 'vendor')
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\vendor-controller.ts:23:113
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\controllers\api\vendor-controller.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)

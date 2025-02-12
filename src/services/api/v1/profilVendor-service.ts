@@ -60,10 +60,21 @@ import FormData from "form-data"
 
 import fs from "fs"
 
+import {setCache, getCache, delCache,flushAllCache} from "@cache/cache"
+
 
 //GET MENU 
 const getMenuAll = async (id : ParameterSchema["params"]["id"]) : Promise <KatDokumenVendor[]> => {
     try {
+        const cacheKey = `menu_${id}`
+        const cacheMenu = getCache(cacheKey)
+
+        if(cacheMenu) {
+            console.log("TES DATA");
+            
+            return cacheMenu
+        }
+
         const getMenu : KatDokumenVendor[] = await KatDokumenVendor.findAll({
             where : {
                 is_main : true,
@@ -72,6 +83,8 @@ const getMenuAll = async (id : ParameterSchema["params"]["id"]) : Promise <KatDo
         })
 
         // console.log("TESDATA", getMenu)
+
+        setCache(cacheKey, getMenu)
 
         return getMenu
     } catch (error) {
@@ -89,12 +102,21 @@ const getMenuAll = async (id : ParameterSchema["params"]["id"]) : Promise <KatDo
 //GET SUB MENU
 const getSubMenu = async (id:ParameterSchema["params"]["id"]) : Promise<KatDokumenVendor[]> => {
     try {
+        const cacheKey = `submenu_${id}`
+        const cacheSubMenu = getCache(cacheKey)
+
+        if(cacheSubMenu) {
+            return cacheSubMenu
+        }
+
         const getMenuSub : KatDokumenVendor[] = await KatDokumenVendor.findAll({
             where : {
                 main_kat : id,
                 is_main : false
             }
         })
+
+        setCache(cacheKey, getMenuSub)
 
         return getMenuSub
     } catch (error) {
