@@ -14,3 +14,159 @@
   code: 401,
   status: 'error'
 }
+[2025-02-18T16:45:54.842] [ERROR] error - Error: getaddrinfo ENOTFOUND dinovalley.ut.ac.id
+    at C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\src\middleware\authorization.ts:117:13
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\src\middleware\authorization.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 401,
+  status: 'error'
+}
+[2025-02-18T16:46:25.702] [ERROR] error - Error: getaddrinfo ENOTFOUND dinovalley.ut.ac.id
+    at C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\src\middleware\authorization.ts:117:13
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\src\middleware\authorization.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 401,
+  status: 'error'
+}
+[2025-02-18T16:46:47.822] [ERROR] error - Error [SequelizeConnectionError]: database � db_sidapet � tidak ada
+    at Client._connectionCallback (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\sequelize\src\dialects\postgres\connection-manager.js:191:24)
+    at Client._handleErrorWhileConnecting (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg\lib\client.js:326:19)
+    at Client._handleErrorMessage (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg\lib\client.js:346:19)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg\lib\connection.js:116:12
+    at Parser.parse (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\parser.ts:103:9)
+    at Socket.<anonymous> (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+    at Socket.emit (node:events:519:28)
+    at Socket.emit (node:domain:488:12) {
+  parent: error: database � db_sidapet � tidak ada
+      at Parser.parseErrorMessage (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:519:28)
+      at Socket.emit (node:domain:488:12)
+      at addChunk (node:internal/streams/readable:559:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+      at Socket.Readable.push (node:internal/streams/readable:390:5)
+      at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+    length: 93,
+    severity: 'FATAL',
+    code: '3D000',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'postinit.c',
+    line: '1021',
+    routine: 'InitPostgres'
+  },
+  original: error: database � db_sidapet � tidak ada
+      at Parser.parseErrorMessage (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:519:28)
+      at Socket.emit (node:domain:488:12)
+      at addChunk (node:internal/streams/readable:559:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+      at Socket.Readable.push (node:internal/streams/readable:390:5)
+      at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+    length: 93,
+    severity: 'FATAL',
+    code: '3D000',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'postinit.c',
+    line: '1021',
+    routine: 'InitPostgres'
+  }
+}
+[2025-02-18T16:46:54.246] [ERROR] error - Error [SequelizeConnectionError]: database � db_sidapet � tidak ada
+    at Client._connectionCallback (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\sequelize\src\dialects\postgres\connection-manager.js:191:24)
+    at Client._handleErrorWhileConnecting (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg\lib\client.js:326:19)
+    at Client._handleErrorMessage (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg\lib\client.js:346:19)
+    at Connection.emit (node:events:519:28)
+    at Connection.emit (node:domain:488:12)
+    at C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg\lib\connection.js:116:12
+    at Parser.parse (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\parser.ts:103:9)
+    at Socket.<anonymous> (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+    at Socket.emit (node:events:519:28)
+    at Socket.emit (node:domain:488:12) {
+  parent: error: database � db_sidapet � tidak ada
+      at Parser.parseErrorMessage (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:519:28)
+      at Socket.emit (node:domain:488:12)
+      at addChunk (node:internal/streams/readable:559:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+      at Socket.Readable.push (node:internal/streams/readable:390:5)
+      at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+    length: 93,
+    severity: 'FATAL',
+    code: '3D000',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'postinit.c',
+    line: '1021',
+    routine: 'InitPostgres'
+  },
+  original: error: database � db_sidapet � tidak ada
+      at Parser.parseErrorMessage (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:519:28)
+      at Socket.emit (node:domain:488:12)
+      at addChunk (node:internal/streams/readable:559:12)
+      at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+      at Socket.Readable.push (node:internal/streams/readable:390:5)
+      at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+    length: 93,
+    severity: 'FATAL',
+    code: '3D000',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'postinit.c',
+    line: '1021',
+    routine: 'InitPostgres'
+  }
+}

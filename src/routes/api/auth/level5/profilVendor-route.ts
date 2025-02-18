@@ -24,11 +24,13 @@ import {
     payloadPengalamanSekarangSchema,
     payloadPengalamanSekarangUpdateSchema
 } from "@schema/api/profilVendor-schema"
+import vendorController from "@controllers/api/vendor-controller";
 import validate from "@schema/validate"
 import { uploadPdf } from "@middleware/upload"
 
 const router = express.Router()
 
+router.post("/search-vendor", vendorController.getPenyediaByKode)
 router.get("/menu/:id", validate(parameterSchema), profilVendorController.getMenuAll)
 router.get("/menu-vendor", profilVendorController.getMenuStatus)
 router.get("/sub-menu/:id",validate(parameterSchema), profilVendorController.getSubMenu )
