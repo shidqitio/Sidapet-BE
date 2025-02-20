@@ -127,3 +127,19 @@
   code: 422,
   status: 'error'
 }
+[2025-02-20T12:36:30.570] [DEBUG] default - Error: Email Tidak Valid
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:71:27
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 422,
+  status: 'error'
+}
+[2025-02-20T12:37:05.614] [DEBUG] default - Error: Email Tidak Valid
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:70:27
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 422,
+  status: 'error'
+}
