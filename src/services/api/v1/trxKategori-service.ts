@@ -85,11 +85,7 @@ const storeTrxKategori = async (request:PayloadTrxKategoriSchema["body"]) : Prom
             kode_kategori : request.kode_kategori,
             keperluan : request.keperluan,
             kode_jenis_pengadaan : request.kode_jenis_pengadaan,
-            is_kualifikasi_b : request.is_kualifikasi_b,
-            is_kualifikasi_k : request.is_kualifikasi_k,
-            is_kualifikasi_m : request.is_kualifikasi_m,
-            is_pembuka : request.is_pembuka,
-            teks_pembuka : request.teks_pembuka
+            kode_unit_pbj : request.kode_unit_pbj
         },{transaction : t})
 
         if(!trxKategoriStore) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Terjadi Kesalahan Store TrxKategori")
@@ -129,11 +125,6 @@ const storeTrxKategori = async (request:PayloadTrxKategoriSchema["body"]) : Prom
             kode_kategori: storedData.kode_kategori,
             keperluan: storedData.keperluan,
             kode_jenis_pengadaan: storedData.kode_jenis_pengadaan,
-            is_kualifikasi_b : storedData. is_kualifikasi_b,
-            is_kualifikasi_k : storedData. is_kualifikasi_k,
-            is_kualifikasi_m : storedData. is_kualifikasi_m,
-            is_pembuka : storedData. is_pembuka,
-            teks_pembuka : storedData. teks_pembuka,
             pelaku_usaha : storedData.TrxKatJVendor.map((item : any) => {
                 return {
                     kode_jenis_vendor : item.kode_jenis_vendor,

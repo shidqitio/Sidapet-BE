@@ -645,9 +645,25 @@ const insertExternaltoUsman = async (
 //MIGRASI USER 
 const migrasiUserUsman = async () : Promise<RegisterVendor[]> => {
     try {
-        const vendorRegis : RegisterVendor[] = await RegisterVendor.findAll({
-            attributes : {exclude : ["ucr","uch","udcr", "udch"]},
-            limit : 5
+        const vendorRegis : any = await RegisterVendor.findAll({
+            attributes : [
+                "kode_register",
+                "kode_jenis_vendor",
+                "nama_perusahaan",
+                "email",
+                "password",
+                "Vendor.kode_vendor",
+
+            ],
+            limit : 5,
+            include : [
+                {
+                    model : Vendor,
+                    as : "Vendor"
+                }
+            ],
+            raw : true,
+            nest : true
         })
 
         if(vendorRegis.length === 0) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tidak Ada")
@@ -680,7 +696,7 @@ const migrasiUserUsman = async () : Promise<RegisterVendor[]> => {
             } 
             
             const [regisExternal, errorRegisterExternal] : [any, string] = await registerExternal({
-                id : vendorRegis[x].kode_register,
+                id : vendorRegis[x].kode_vendor,
                 email : vendorRegis[x].email as string,
                 username : vendorRegis[x].nama_perusahaan,
                 password : vendorRegis[x].password,

@@ -18,7 +18,7 @@ const getKategori = async () : Promise<Kategori[]> => {
         const cacheKey = "all_kategori"
         const cacheKategori = getCache(cacheKey) 
 
-        if(cacheKategori) {
+        if(cacheKategori) {            
             return cacheKategori
         }
 
@@ -40,6 +40,8 @@ const getKategori = async () : Promise<Kategori[]> => {
 
 const storeKategori = async (request:PayloadKategoriSchema["body"]) : Promise<Kategori> => {
     try {
+        const cacheKey = "all_kategori"
+
         const exKategori = await Kategori.findOne({
             where : {
                 nama_kategori : request.nama_kategori
@@ -53,6 +55,8 @@ const storeKategori = async (request:PayloadKategoriSchema["body"]) : Promise<Ka
         })
 
         if(!storeKategori) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Store Data")
+
+        delCache(cacheKey)
 
         return storeKategori
     } catch (error) {
@@ -90,6 +94,7 @@ const getByIdKategori = async (id:ParameterSchema["params"]["id"]) : Promise<Kat
 
 const deleteKategori = async (id:ParameterSchema["params"]["id"]) : Promise<Kategori> => {
     try {
+
         const exKategori = await Kategori.findByPk(id)
 
         if(!exKategori) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Data yang dihapus tidak tersedia")
@@ -101,6 +106,8 @@ const deleteKategori = async (id:ParameterSchema["params"]["id"]) : Promise<Kate
         })
 
         if(delKategori === 0) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Data Gagal Dihapus")
+
+        delCache("all_kategori")
 
         return exKategori
     } catch (error) {

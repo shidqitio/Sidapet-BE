@@ -7,6 +7,8 @@ import {uploadPdf, deleteFile} from "@services/pdf_upload"
 import {setCache, getCache, delCache} from "@cache/cache"
 
 import Domisili from "@models/domisili-model";
+import Kbli from "@models/kbli-model";
+import JenisPengadaan from "@models/jenisPengadaan-model";
 
 
 const domisiliInput = async () : Promise<any>=> {
@@ -44,6 +46,58 @@ const domisiliInput = async () : Promise<any>=> {
     }
 }
 
+const kbli = async () : Promise<Kbli[]> => {
+    try {
+        const cacheKey = "kbli"
+        const cachedKbli = getCache(cacheKey)
+
+        if(cachedKbli) return cachedKbli
+
+
+        const kbli = await Kbli.findAll()
+
+        setCache(cacheKey, kbli)
+
+        return kbli
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const jenisPengadaan = async () : Promise<JenisPengadaan[]> => {
+    try {
+        const cacheKey = "jenisPengadaanAll"
+        const cachedJenisPengadaan = getCache(cacheKey)
+
+        if(cachedJenisPengadaan) return cachedJenisPengadaan
+
+        const getJenisPengadaan = await JenisPengadaan.findAll({
+            order : [["kode_jenis_pengadaan","ASC"]]
+        })
+
+        setCache(cacheKey, getJenisPengadaan)
+
+        return getJenisPengadaan
+
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
 export default {
-    domisiliInput
+    domisiliInput,
+    kbli,
+    jenisPengadaan
 }
