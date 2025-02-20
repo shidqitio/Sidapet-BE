@@ -65,11 +65,11 @@ const storeTahap = async (request:PayloadTrxPenjaringanSchema["body"]) : Promise
         if(request.metode === "undangan") {
             if(request.undangan === null || request.undangan === undefined) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "harap isi daftar undangan")
             for(const undangan of request.undangan) {
-                // const {valid, reason, validators} = await validate(undangan.email)
-                // if(valid === false) {
-                //     await t.rollback()
-                //     throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Email Tidak Valid")
-                // }
+                const {valid, reason, validators} = await validate(undangan.email)
+                if(valid === false) {
+                    await t.rollback()
+                    throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Email Tidak Valid")
+                }
 
                 const rand_crypto = crypto.randomBytes(32).toString("hex")
 
