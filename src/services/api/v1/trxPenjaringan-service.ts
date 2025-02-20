@@ -90,16 +90,16 @@ const storeTahap = async (request:PayloadTrxPenjaringanSchema["body"]) : Promise
                 arr_undangan.push(storeUndangan) 
             }
 
-            for(const ar_und of arr_undangan) {
-                console.log("TES : ", ar_und.email, ar_und.token)
-                const tes = await sendMail(ar_und.email as string, "Undangan Vendor", templateEmail.templateHtmlUndangan("https://google.com", ar_und.token))
-                console.log(tes);
+            // for(const ar_und of arr_undangan) {
+            //     console.log("TES : ", ar_und.email, ar_und.token)
+            //     const tes = await sendMail(ar_und.email as string, "Undangan Vendor", templateEmail.templateHtmlUndangan("https://google.com", ar_und.token))
+            //     console.log(tes);
                 
-                continue;
-            }
+            //     continue;
+            // }
         }
 
-
+        await sendMail("shidqitio@gmail.com", "Undangan Vendor", templateEmail.templateHtmlUndangan("https://google.com", "113fkdam319e1qfkf-q1qdd"))
         
         let object = {
             ...storeTahapData.dataValues,
