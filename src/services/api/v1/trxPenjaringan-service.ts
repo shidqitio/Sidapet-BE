@@ -67,7 +67,6 @@ const storeTahap = async (request:PayloadTrxPenjaringanSchema["body"]) : Promise
             for(const undangan of request.undangan) {
                 const {valid, reason, validators} = await validate(undangan.email)
                 if(valid === false) {
-                    await t.rollback()
                     throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Email Tidak Valid")
                 }
 
@@ -90,11 +89,14 @@ const storeTahap = async (request:PayloadTrxPenjaringanSchema["body"]) : Promise
 
                 arr_undangan.push(storeUndangan) 
             }
+
+            for(const ar_und of arr_undangan) {
+                console.log("TES : ", ar_und.email, ar_und.token)
+                // await sendMail(ar_und.email as string, "Undangan Vendor", templateEmail.templateHtmlUndangan("https://google.com", ar_und.token))
+            }
         }
 
-        for(const ar_und of arr_undangan) {
-            await sendMail(ar_und.email as string, "Undangan Vendor", templateEmail.templateHtmlUndangan("https://google.com", ar_und.token))
-        }
+
         
         let object = {
             ...storeTahapData.dataValues,
