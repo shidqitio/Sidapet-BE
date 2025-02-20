@@ -91,8 +91,9 @@ const storeTahap = async (request:PayloadTrxPenjaringanSchema["body"]) : Promise
             }
 
             for(const ar_und of arr_undangan) {
-                console.log("TES : ", ar_und.email, ar_und.token)
-                // await sendMail(ar_und.email as string, "Undangan Vendor", templateEmail.templateHtmlUndangan("https://google.com", ar_und.token))
+                // console.log("TES : ", ar_und.email, ar_und.token)
+                await sendMail(ar_und.email as string, "Undangan Vendor", templateEmail.templateHtmlUndangan("https://google.com", ar_und.token))
+                continue;
             }
         }
 
