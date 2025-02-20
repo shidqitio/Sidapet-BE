@@ -21,6 +21,37 @@ const domisiliInput = async (
     }
 }
 
+const kbli = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const response = await selectInputService.kbli()
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response)
+    } catch (error) {
+        errorLogger.error(`Testing Error Get All KatDokumenVendor ${error}`)
+        next(error)
+    }
+}
+
+const jenisPengadaan = async (
+    req : Request,
+    res : Response, 
+    next : NextFunction
+) : Promise<void> => {
+    try {
+        const response = await selectInputService.jenisPengadaan()
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response)
+    } catch (error) {
+        errorLogger.error(`Testing Error Get All KatDokumenVendor ${error}`)
+        next(error)
+    }
+}
+
 export default {
-    domisiliInput
+    domisiliInput,
+    kbli,
+    jenisPengadaan
 }

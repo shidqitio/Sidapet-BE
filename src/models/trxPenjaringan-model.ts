@@ -28,9 +28,12 @@ interface ITrxPenjaringanAttributes {
 	tgl_evaluasi_akhir :  Date | undefined
 	tgl_pengumuman :  Date | undefined
 	s_tugas_dibuat : boolean
-	udcr : Date | undefined
+    file_s_tugas : string | undefined | null
+    is_kualifikasi_k : boolean,
+    is_kualifikasi_m : boolean,
+    is_kualifikasi_b : boolean
+ 	udcr : Date | undefined
     udch : Date | undefined
-	file_s_tugas : string | undefined | null
 }
 
 export type TrxPenjaringanOutput = Required<ITrxPenjaringanAttributes>
@@ -49,6 +52,9 @@ ITrxPenjaringanAttributes,
 "tgl_pengumuman" | 
 "s_tugas_dibuat" | 
 "file_s_tugas" | 
+"is_kualifikasi_b" | 
+"is_kualifikasi_k" | 
+"is_kualifikasi_m" |
 "udcr" | 
 "udch"
 >
@@ -72,6 +78,9 @@ class TrxPenjaringan
     declare s_tugas_dibuat : boolean ;
     declare udcr : Date | undefined ;
     declare file_s_tugas : string | undefined | null ;
+    declare is_kualifikasi_k: boolean;
+    declare is_kualifikasi_m: boolean;
+    declare is_kualifikasi_b: boolean;
     declare udch: Date | undefined;
 }
 
@@ -81,7 +90,8 @@ TrxPenjaringan.init(
         kode_penjaringan : {
             type : DataTypes.INTEGER,
             allowNull : false,
-            primaryKey : true
+            primaryKey : true,
+            autoIncrement : true
         },
         kode_trx_kategori : {
             type : DataTypes.INTEGER,
@@ -132,6 +142,18 @@ TrxPenjaringan.init(
             type : DataTypes.STRING,
             allowNull : true
         },
+        is_kualifikasi_m : {
+            type : DataTypes.BOOLEAN,
+            allowNull : true
+        },
+        is_kualifikasi_k : {
+            type : DataTypes.BOOLEAN,
+            allowNull : true
+        },
+        is_kualifikasi_b : {
+            type : DataTypes.BOOLEAN,
+            allowNull : true
+        },
         udcr : {
             type : DataTypes.DATE,
             allowNull : true
@@ -150,7 +172,8 @@ TrxPenjaringan.init(
         schema : "public",
         tableName : "trx_penjaringan",
         modelName : "TrxPenjaringan",
-        timestamps : true
+        createdAt : "udcr",
+        updatedAt : "udch"
     }
 )
 

@@ -13,14 +13,9 @@ export enum status_pengajuan_kat {
 interface ITrxKategoriAttributes {
 	kode_trx_kategori   : number
 	kode_kategori       : number | null
-	kode_cabang_ut      : number | null
+	kode_unit_pbj       : string | undefined | null
 	keperluan           : string | undefined | null
 	kode_jenis_pengadaan: number | null
-	is_kualifikasi_k    : boolean
-	is_kualifikasi_m    : boolean
-	is_kualifikasi_b    : boolean
-	is_pembuka          : boolean
-	teks_pembuka        : string | undefined | null
 	status_pengajuan_kat: status_pengajuan_kat
 	ucr                 : string | undefined | null
 	uch                 : string | undefined | null
@@ -34,14 +29,9 @@ export type TrxKategoriInput = Optional<
 ITrxKategoriAttributes,
 "kode_trx_kategori" |
 "kode_kategori" |
-"kode_cabang_ut" |
+"kode_unit_pbj" |
 "keperluan" |
 "kode_jenis_pengadaan" |
-"is_kualifikasi_k" |
-"is_kualifikasi_m" |
-"is_kualifikasi_b" |
-"is_pembuka" |
-"teks_pembuka" |
 "status_pengajuan_kat" |
 "ucr" |
 "uch" |
@@ -55,14 +45,9 @@ class TrxKategori
     {
         declare kode_trx_kategori   : number ;
         declare kode_kategori       : number | null ;
-        declare kode_cabang_ut      : number | null ;
+        declare kode_unit_pbj       : string | undefined | null ;
         declare keperluan           : string | undefined | null ;
         declare kode_jenis_pengadaan: number | null ;
-        declare is_kualifikasi_k    : boolean ;
-        declare is_kualifikasi_m    : boolean ;
-        declare is_kualifikasi_b    : boolean ;
-        declare is_pembuka          : boolean ;
-        declare teks_pembuka        : string | undefined | null ;
         declare status_pengajuan_kat: status_pengajuan_kat ;
         declare ucr                 : string | undefined | null ;
         declare uch                 : string | undefined | null ;
@@ -82,8 +67,8 @@ TrxKategori.init(
             type : DataTypes.INTEGER,
             allowNull : true
         },
-        kode_cabang_ut : {
-            type : DataTypes.INTEGER,
+        kode_unit_pbj : {
+            type : DataTypes.STRING(),
             allowNull : true
         },
         keperluan : {
@@ -92,26 +77,6 @@ TrxKategori.init(
         },
         kode_jenis_pengadaan : {
             type : DataTypes.INTEGER,
-            allowNull : true
-        },
-        is_kualifikasi_k : {
-            type : DataTypes.BOOLEAN,
-            allowNull : true
-        },
-        is_kualifikasi_m : {
-            type : DataTypes.BOOLEAN,
-            allowNull : true
-        },
-        is_kualifikasi_b : {
-            type : DataTypes.BOOLEAN,
-            allowNull : true
-        },
-        is_pembuka : {
-            type : DataTypes.BOOLEAN,
-            allowNull : true
-        },
-        teks_pembuka : {
-            type : DataTypes.STRING,
             allowNull : true
         },
         status_pengajuan_kat : {

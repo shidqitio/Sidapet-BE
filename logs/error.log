@@ -1,16 +1,81 @@
-[2025-02-12T11:20:02.355] [ERROR] error - Error: Token Not Match
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:108:13
+[2025-02-20T10:52:31.767] [ERROR] error - Testing Error Get Kategori Error: Data Kategori Tidak Tersedia
+[2025-02-20T10:52:31.767] [ERROR] error - Error: Data Kategori Tidak Tersedia
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:81:31
     at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:5:58)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 401,
+  code: 422,
   status: 'error'
 }
-[2025-02-12T11:20:22.887] [ERROR] error - Error: Token Not Match
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:108:13
+[2025-02-20T10:53:49.917] [ERROR] error - Testing Error Get Kategori Error: Data Kategori Tidak Tersedia
+[2025-02-20T10:53:49.918] [ERROR] error - Error: Data Kategori Tidak Tersedia
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:84:23
     at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:5:58)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 401,
+  code: 422,
+  status: 'error'
+}
+[2025-02-20T10:54:46.557] [ERROR] error - Testing Error Get Kategori Error: Data Kategori Tidak Tersedia
+[2025-02-20T10:54:46.558] [ERROR] error - Error: Data Kategori Tidak Tersedia
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:87:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 422,
+  status: 'error'
+}
+[2025-02-20T10:56:06.641] [ERROR] error - Testing Error Get Kategori Error: Internal server error.
+[2025-02-20T10:56:06.642] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:91:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2025-02-20T10:56:53.185] [ERROR] error - Testing Error Get Kategori Error: Internal server error.
+[2025-02-20T10:56:53.185] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:90:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2025-02-20T10:57:54.696] [ERROR] error - Testing Error Get Kategori Error: Internal server error.
+[2025-02-20T10:57:54.696] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:90:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2025-02-20T11:00:08.239] [ERROR] error - Testing Error Get Kategori Error: harap isi daftar undangan
+[2025-02-20T11:00:08.242] [ERROR] error - Error: harap isi daftar undangan
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:86:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 422,
+  status: 'error'
+}
+[2025-02-20T11:26:13.589] [ERROR] error - Testing Error Get Kategori Error: harap isi daftar undangan
+[2025-02-20T11:26:13.590] [ERROR] error - Error: harap isi daftar undangan
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:87:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 422,
+  status: 'error'
+}
+[2025-02-20T11:28:56.195] [ERROR] error - Testing Error Get Kategori Error: harap isi daftar undangan
+[2025-02-20T11:28:56.198] [ERROR] error - Error: harap isi daftar undangan
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:87:23
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 422,
   status: 'error'
 }

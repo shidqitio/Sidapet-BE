@@ -6,6 +6,10 @@ const payloadTrxKategori = {
             required_error : "kode_kategori harus diisi",
             invalid_type_error : "kode_kategori harus integer"
         }),
+        kode_unit_pbj : z.string({
+            required_error : "kode_unit_pbj harus diisi",
+            invalid_type_error : "kode_unit_pbj harus string"
+        }),
         keperluan : z.string({
             required_error : "keperluan harus diisi",
             invalid_type_error : "keperluan harus string"
@@ -14,13 +18,6 @@ const payloadTrxKategori = {
             required_error : "kode_jenis_pengadaan harus diisi",
             invalid_type_error : "kode_jenis_pengadaan harus integer"
         }),
-        is_kualifikasi_k : z.boolean().optional(),
-        is_kualifikasi_m : z.boolean().optional(),
-        is_kualifikasi_b : z.boolean().optional(),
-        is_pembuka : z.boolean().optional(),
-        teks_pembuka : z.string({
-            invalid_type_error : "teks_pembuka harus string"
-        }).optional(),
         pelaku_usaha : z.array(z.object({
             kode_jenis_vendor : z.number({
                 required_error : "kode_jenis_vendor Harus Diisi",
