@@ -32,9 +32,11 @@ const storeTrxKategori = async (
     res:Response,
     next:NextFunction) : Promise<void> => {
     try {
+        const user_email = req.user.email
+
         const request : PayloadTrxKategoriSchema["body"] = req.body
 
-        const response = await trxKategoriService.storeTrxKategori(request)
+        const response = await trxKategoriService.storeTrxKategori(request, user_email)
 
         responseSuccess(res, httpCode.created, responseStatus.success, "Berhasil Membuat Data", response)
     } catch (error) {

@@ -32,6 +32,12 @@ const payloadRegister = {
         // .refine((val) => Object.values(StatusRegister).includes(val), {
         //     message: "Invalid status_verif. Harus Salah Satu Dari 'proses', 'terima' dan 'tolak'",
         // }),
+        nama_narahubung : z.string({
+            invalid_type_error : "narahubung harus string"
+        }).optional(),
+        nomor_telp : z.string({
+            invalid_type_error : "nomor_telp harus string"
+        }).optional(),
         alasan_ditolak    : z.string({
             required_error    : "alasan_ditolak tidak boleh kosong",
             invalid_type_error: "alasan_ditolak harus string"

@@ -5,71 +5,77 @@ import Vendor from "./vendor-model";
 
 
 interface IPengalamanAttributes {
-	kode_pengalaman : number,
-	kode_vendor : number,
-	nm_pnglmn : string | undefined | null,
-	div_pnglmn : string | undefined | null,
-	ringkas_pnglmn : string | undefined | null,
-	lok_pnglmn : string | undefined | null,
-	pemberi_pnglmn : string | undefined | null,
-	alamat_pnglmn : string | undefined | null,
-	tgl_pnglmn : string | undefined | null,
-	nilai_pnglmn : string | undefined | null,
-	status_pnglmn : string | undefined | null,
-	tgl_selesai_pnglmn : string | undefined | null,
-	ba_pnglmn : string | undefined | null,
-	path_pnglmn : string | undefined | null,
-	custom : string | undefined | null,
-    encrypt_key : string | undefined | null
+	kode_pengalaman_perusahaan : number 
+	kode_vendor : number
+	nama_pekerjaan : string | undefined | null
+	tahun_pekerjaan : number | undefined
+	pemberi_kerja : string | undefined | null
+	nilai_pekerjaan : number | undefined | null
+	jangka_waktu : string | undefined | null
+	no_kontrak : string | undefined | null
+	file_kontrak : string | undefined | null
+    encrypt_key_kontrak : string | undefined | null
+	is_kontrak_selamanya : boolean
+	kontrak_berlaku_awal : Date | undefined
+	kontrak_berlaku_akhir : Date | undefined
+	file_bast : string | undefined | null
+	is_bast_selamanya : boolean
+	bast_berlaku_awal :  Date | undefined
+	bast_berlaku_akhir : Date | undefined
+    encrypt_key_bast : string | undefined | null
 }
 
 export type  PengalamanOutput= Required<IPengalamanAttributes>
 
 export type PengalamanInput = Optional<
 IPengalamanAttributes, 
-"kode_pengalaman" |
+"kode_pengalaman_perusahaan" |
 "kode_vendor" |
-"nm_pnglmn" |
-"div_pnglmn" |
-"ringkas_pnglmn" |
-"lok_pnglmn" |
-"pemberi_pnglmn" |
-"alamat_pnglmn" |
-"tgl_pnglmn" |
-"nilai_pnglmn" |
-"status_pnglmn" |
-"tgl_selesai_pnglmn" |
-"ba_pnglmn" |
-"path_pnglmn" |
-"custom" |
-"encrypt_key"
+"nama_pekerjaan" |
+"tahun_pekerjaan" |
+"pemberi_kerja" |
+"nilai_pekerjaan" |
+"jangka_waktu" |
+"no_kontrak" |
+"file_kontrak" |
+"is_kontrak_selamanya" |
+"kontrak_berlaku_awal" |
+"kontrak_berlaku_akhir" |
+"file_bast" |
+"is_bast_selamanya" |
+"bast_berlaku_awal" |
+"bast_berlaku_akhir" |
+"encrypt_key_kontrak" |
+"encrypt_key_bast" 
 >
 
 class Pengalaman 
     extends Model<IPengalamanAttributes, PengalamanInput>
     implements IPengalamanAttributes
 {
-	declare kode_pengalaman : number;
-	declare kode_vendor : number;
-	declare nm_pnglmn : string | undefined | null;
-	declare div_pnglmn : string | undefined | null;
-	declare ringkas_pnglmn : string | undefined | null;
-	declare lok_pnglmn : string | undefined | null;
-	declare pemberi_pnglmn : string | undefined | null;
-	declare alamat_pnglmn : string | undefined | null;
-	declare tgl_pnglmn : string | undefined | null;
-	declare nilai_pnglmn : string | undefined | null;
-	declare status_pnglmn : string | undefined | null;
-	declare tgl_selesai_pnglmn : string | undefined | null;
-	declare ba_pnglmn : string | undefined | null;
-	declare path_pnglmn : string | undefined | null;
-	declare custom : string | undefined | null;
-    declare encrypt_key: string | null | undefined;
+    declare kode_pengalaman_perusahaan : number ;
+    declare kode_vendor : number;
+    declare nama_pekerjaan : string | undefined | null;
+    declare tahun_pekerjaan : number | undefined;
+    declare pemberi_kerja : string | undefined | null;
+    declare nilai_pekerjaan : number | undefined | null;
+    declare jangka_waktu : string | undefined | null;
+    declare no_kontrak : string | undefined | null;
+    declare file_kontrak : string | undefined | null;
+    declare is_kontrak_selamanya : boolean;
+    declare kontrak_berlaku_awal : Date | undefined;
+    declare kontrak_berlaku_akhir : Date | undefined;
+    declare file_bast : string | undefined | null;
+    declare is_bast_selamanya : boolean;
+    declare bast_berlaku_awal :  Date | undefined;
+    declare bast_berlaku_akhir : Date | undefined;
+    declare encrypt_key_kontrak : string | undefined | null
+    declare encrypt_key_bast : string | undefined | null
 }
 
 Pengalaman.init(
     {
-        kode_pengalaman : {
+        kode_pengalaman_perusahaan : {
             type : DataTypes.INTEGER,
             allowNull : false,
             primaryKey : true,
@@ -77,69 +83,77 @@ Pengalaman.init(
         },
         kode_vendor : {
             type : DataTypes.INTEGER,
-            allowNull : false
+            allowNull : true
         },
-        nm_pnglmn : {
+        nama_pekerjaan : {
             type : DataTypes.STRING,
             allowNull : true
         },
-        div_pnglmn : {
+        tahun_pekerjaan : {
+            type : DataTypes.INTEGER,
+            allowNull : true
+        },
+        pemberi_kerja : {
             type : DataTypes.STRING,
             allowNull : true
         },
-        ringkas_pnglmn : {
+        nilai_pekerjaan : {
+            type : DataTypes.INTEGER,
+            allowNull : true
+        },
+        jangka_waktu : {
             type : DataTypes.STRING,
             allowNull : true
         },
-        lok_pnglmn : {
+        no_kontrak : {
             type : DataTypes.STRING,
             allowNull : true
         },
-        pemberi_pnglmn : {
+        file_kontrak : {
             type : DataTypes.STRING,
             allowNull : true
         },
-        alamat_pnglmn : {
+        encrypt_key_kontrak : {
             type : DataTypes.STRING,
             allowNull : true
         },
-        tgl_pnglmn : {
+        is_kontrak_selamanya : {
+            type : DataTypes.BOOLEAN,
+            allowNull : true
+        },
+        kontrak_berlaku_awal : {
+            type : DataTypes.DATE,
+            allowNull : true
+        },
+        kontrak_berlaku_akhir : {
+            type : DataTypes.DATE,
+            allowNull : true
+        },
+        file_bast : {
             type : DataTypes.STRING,
             allowNull : true
         },
-        nilai_pnglmn : {
+        encrypt_key_bast : {
             type : DataTypes.STRING,
             allowNull : true
         },
-        status_pnglmn : {
-            type : DataTypes.STRING,
+        is_bast_selamanya : {
+            type : DataTypes.BOOLEAN,
             allowNull : true
         },
-        tgl_selesai_pnglmn : {
-            type : DataTypes.STRING,
+        bast_berlaku_awal : {
+            type : DataTypes.DATE,
             allowNull : true
         },
-        ba_pnglmn : {
-            type : DataTypes.STRING,
+        bast_berlaku_akhir : {
+            type : DataTypes.DATE,
             allowNull : true
         },
-        path_pnglmn : {
-            type : DataTypes.STRING,
-            allowNull : true
-        },
-        custom : {
-            type : DataTypes.STRING,
-            allowNull : true
-        },
-        encrypt_key : {
-            type : DataTypes.STRING,
-            allowNull : true
-        }
     },
     {
         sequelize : db, 
         schema : "public",
-        tableName : "ref_pengalaman",
+        tableName : "ref_pengalaman_perusahaan",
         modelName : "Pengalaman",
         timestamps : false
     }

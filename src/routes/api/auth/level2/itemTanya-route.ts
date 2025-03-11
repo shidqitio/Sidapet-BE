@@ -12,7 +12,7 @@ const router = express.Router()
 //Get
 // router.get("/item/kat-dok-vendor/:id", validate(parameterSchema), itemTanyaController.getKatDokVendor)
 // router.get("/item/kat-dok-tanya/:id", validate(parameterSchema), itemTanyaController.getKatItemTanya)
-// router.get("/item/item-tanya-custom/:id", itemTanyaController.getItemTanyaCustom)
+router.get("/item/item-tanya-custom/:id", itemTanyaController.getItemTanyaCustom)
 // router.get("/item/tipe-input", itemTanyaController.getTipeInput)
 
 //post 

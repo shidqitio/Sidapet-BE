@@ -10,7 +10,7 @@ const payloadTrxPenjaringan = {
         nama_penjaringan : z.string({
             required_error : "nama_penjaringan harus diisi",
             invalid_type_error : "nama_penjaring harus string"
-        }),
+        }).optional(),
         metode : z.nativeEnum(metode_penjaringan)
         .refine((val) => Object.values(metode_penjaringan).includes(val), {
             message: "Invalid metode penjaringan. Harus Salah Satu Dari 'pengumuman' dan 'undangan'",
@@ -18,7 +18,7 @@ const payloadTrxPenjaringan = {
         is_kualifikasi_k : z.boolean(),
         is_kualifikasi_m : z.boolean(),
         is_kualifikasi_b : z.boolean(),
-        status_persetujuan : z.nativeEnum(status_persetujuan)
+        status_persetujuan : z.nativeEnum(status_persetujuan)  
         .refine((val) => Object.values(status_persetujuan).includes(val), {
             message : "Invalid metode penjaringan. Harus Salah Satu Dari 'belum_diproses', 'proses','terima', dan tolak"
         }).optional(),
@@ -46,6 +46,7 @@ const payloadTrxPenjaringan = {
         })).optional()
     })
 }
+
 
 //Reusable
 const parameter = {

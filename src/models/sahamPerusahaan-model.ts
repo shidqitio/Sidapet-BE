@@ -12,6 +12,9 @@ interface ISahamPerusahaanAttributes {
 	alamat_saham : string | undefined | null,
 	persentase_saham : string | undefined | null,
 	path_saham : string | undefined | null,
+    is_saham_selamanya : boolean,
+    saham_berlaku_awal : Date | undefined,
+    saham_berlaku_akhir : Date | undefined,
 	custom : string | undefined | null,
     encrypt_key : string | undefined | null
 }
@@ -27,6 +30,9 @@ ISahamPerusahaanAttributes,
 "alamat_saham" |
 "persentase_saham" |
 "path_saham" |
+"is_saham_selamanya" |
+"saham_berlaku_awal" |
+"saham_berlaku_akhir" |
 "custom" | 
 "encrypt_key"
 >
@@ -44,6 +50,9 @@ class SahamPerusahaan
     declare path_saham : string | undefined | null ;
     declare custom : string | undefined | null ;
     declare encrypt_key: string | null | undefined;
+    declare is_saham_selamanya : boolean
+    declare saham_berlaku_awal : Date | undefined
+    declare saham_berlaku_akhir : Date | undefined
 }
 
 SahamPerusahaan.init(
@@ -73,6 +82,18 @@ SahamPerusahaan.init(
         persentase_saham : {
             type : DataTypes.STRING,
             allowNull : true,
+        },
+        is_saham_selamanya : {
+            type : DataTypes.BOOLEAN,
+            allowNull : true
+        }, 
+        saham_berlaku_awal : {
+            type : DataTypes.DATE,
+            allowNull : true
+        },
+        saham_berlaku_akhir : {
+            type : DataTypes.DATE,
+            allowNull : true
         },
         path_saham : {
             type : DataTypes.STRING,

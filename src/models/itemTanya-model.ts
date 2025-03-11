@@ -33,6 +33,9 @@ interface IItemTanya {
 	jenis_item : jenis_item,
     is_required : boolean,
     kode_trx_kategori : number | null
+    nama_unik : string | undefined | null
+    is_inline : boolean
+    show_on_syarat_pdf : boolean
 	ucr : string | undefined | null
 	uch : string | undefined | null
 	udcr : Date | undefined
@@ -52,6 +55,9 @@ IItemTanya,
 "jenis_item" |
 "is_required"|
 "kode_trx_kategori" |
+"is_inline" | 
+"nama_unik" |
+"show_on_syarat_pdf" |
 "ucr" |
 "uch" |
 "udcr" |
@@ -74,6 +80,9 @@ class ItemTanya
     declare jenis_item : jenis_item ;
     declare is_required: boolean;
     declare kode_trx_kategori: number | null;
+    declare nama_unik: string | null | undefined;
+    declare is_inline: boolean;
+    declare show_on_syarat_pdf: boolean;
     declare ucr : string | undefined | null ;
     declare uch : string | undefined | null ;
     declare udcr : Date | undefined ;
@@ -131,6 +140,18 @@ ItemTanya.init(
         kode_trx_kategori : {
             type : DataTypes.INTEGER,
             allowNull : true
+        },
+        nama_unik : {
+            type : DataTypes.STRING(),
+            allowNull : true
+        },
+        is_inline : {
+            type : DataTypes.BOOLEAN(),
+            defaultValue : false
+        }, 
+        show_on_syarat_pdf : {
+            type : DataTypes.BOOLEAN(),
+            defaultValue : true
         },
         ucr : {
             type : DataTypes.STRING, 

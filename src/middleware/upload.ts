@@ -99,8 +99,6 @@ const fileFilterPdf = (
   if (allowedMimeTypesPdf.includes(file.mimetype)) {
     cb(null, true);
   } else {
-    console.log("ERROR TERLALU ")
-    cb(null, false);
     cb(
       new CustomError(
         httpCode.unsupportedMediaType,
@@ -110,6 +108,10 @@ const fileFilterPdf = (
     );
   }
 };
+
+const tesUpload = multer({
+  storage
+})
 
 const uploadImage: Multer = multer({
   storage,
@@ -123,4 +125,5 @@ const uploadPdf: Multer = multer({
   limits : {fileSize: 10000 * 1024 * 1024 }
 })
 
-export { uploadImage, uploadPdf };
+
+export { uploadImage, uploadPdf, tesUpload };

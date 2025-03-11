@@ -2,62 +2,69 @@ import db from "@config/database";
 import { DataTypes, Optional, Model } from "sequelize";
 import Vendor from "./vendor-model";
 
+export enum jenis_izin_usaha {
+    nib = "nib",
+    sbu = "sbu"
+}
 
 
 interface IIjinUsahaPerusahaanAttributes {
- kode_ijin_usaha  : number,
- kode_vendor      : number,
- nama_izin        : string | undefined | null,
- no_izin          : string | undefined | null,
- masa_izin        : string | undefined | null,
- pemberi_izin     : string | undefined | null,
- kualifikasi_usaha: string | undefined | null,
- klasifikasi_usaha: string | undefined | null,
- tdp              : string | undefined | null,
- path_izin        : string | undefined | null,
- custom           : string | undefined | null,
- encrypt_key      : string | undefined | null
+ kode_izin_usaha   : number,
+ kode_vendor       : number,
+ nama              : string | undefined | null,
+ jenis_izin_usaha  : jenis_izin_usaha
+ nomor_izin        : string | undefined | null,
+ kode              : string | undefined | null,
+ judul             : string | undefined | null,
+ file_izin         : string | undefined | null,
+ is_izin_selamanya : boolean,
+ izin_berlaku_awal : Date | undefined,
+ izin_berlaku_akhir: Date | undefined,
+ custom            : string | undefined | null,
+ encrypt_key       : string | undefined | null
 }
 
 export type  IjinUsahaPerusahaanOutput= Required<IIjinUsahaPerusahaanAttributes>
 
 export type IjinUsahaPerusahaanInput = Optional<
 IIjinUsahaPerusahaanAttributes, 
-"kode_ijin_usaha" |
+"kode_izin_usaha" |
 "kode_vendor" |
-"nama_izin" |
-"no_izin" |
-"masa_izin" |
-"pemberi_izin" |
-"kualifikasi_usaha" |
-"klasifikasi_usaha" |
-"tdp" |
-"path_izin" |
-"custom" | 
-"encrypt_key"
+"nama" |
+"jenis_izin_usaha" |
+"nomor_izin" |
+"kode" |
+"judul" |
+"file_izin" |
+"is_izin_selamanya" |
+"izin_berlaku_awal" |
+"izin_berlaku_akhir" |
+"custom" |
+"encrypt_key" 
 >
 
 class IjinUsahaPerusahaan 
     extends Model<IIjinUsahaPerusahaanAttributes, IjinUsahaPerusahaanInput>
     implements IIjinUsahaPerusahaanAttributes
 {
- declare kode_ijin_usaha  : number ;
- declare kode_vendor      : number ;
- declare nama_izin        : string | undefined | null ;
- declare no_izin          : string | undefined | null ;
- declare masa_izin        : string | undefined | null ;
- declare pemberi_izin     : string | undefined | null ;
- declare kualifikasi_usaha: string | undefined | null ;
- declare klasifikasi_usaha: string | undefined | null ;
- declare tdp              : string | undefined | null ;
- declare path_izin        : string | undefined | null ;
- declare custom           : string | undefined | null ;
- declare encrypt_key      : string | null | undefined;
+    declare kode_izin_usaha   : number
+    declare kode_vendor       : number
+    declare nama              : string | undefined | null
+    declare jenis_izin_usaha  : jenis_izin_usaha
+    declare nomor_izin        : string | undefined | null
+    declare kode              : string | undefined | null
+    declare judul             : string | undefined | null
+    declare file_izin         : string | undefined | null
+    declare is_izin_selamanya : boolean
+    declare izin_berlaku_awal : Date | undefined
+    declare izin_berlaku_akhir: Date | undefined
+    declare custom            : string | undefined | null
+    declare encrypt_key       : string | undefined | null
 }
 
 IjinUsahaPerusahaan.init(
     {
-        kode_ijin_usaha : {
+        kode_izin_usaha : {
             type : DataTypes.INTEGER,
             allowNull : false,
             primaryKey : true,
@@ -67,36 +74,41 @@ IjinUsahaPerusahaan.init(
             type : DataTypes.INTEGER,
             allowNull : false
         },
-        nama_izin : {
+        nama : {
             type : DataTypes.STRING,
             allowNull : true
         },
-        no_izin : {
+        jenis_izin_usaha : {
+            type : DataTypes.ENUM("NIB","SBU"),
+            allowNull : false
+        },
+        nomor_izin : {
             type : DataTypes.STRING,
             allowNull : true
         },
-        masa_izin : {
+        kode : {
             type : DataTypes.STRING,
             allowNull : true
         },
-        pemberi_izin : {
+        judul : {
             type : DataTypes.STRING,
             allowNull : true
         },
-        kualifikasi_usaha : {
+        file_izin : {
             type : DataTypes.STRING,
             allowNull : true
         },
-        klasifikasi_usaha : {
-            type : DataTypes.STRING,
+        is_izin_selamanya : {
+            type : DataTypes.BOOLEAN,
+            allowNull : false,
+            defaultValue : true
+        },
+        izin_berlaku_awal : {
+            type : DataTypes.DATE,
             allowNull : true
         },
-        tdp : {
-            type : DataTypes.STRING,
-            allowNull : true
-        },
-        path_izin : {
-            type : DataTypes.STRING,
+        izin_berlaku_akhir : {
+            type : DataTypes.DATE,
             allowNull : true
         },
         custom : {
@@ -111,7 +123,7 @@ IjinUsahaPerusahaan.init(
     {
         sequelize : db, 
         schema : "public",
-        tableName : "ref_ijin_usaha_perusahaan",
+        tableName : "ref_izin_usaha",
         modelName : "IjinUsahaPerusahaan",
         timestamps : false
     }

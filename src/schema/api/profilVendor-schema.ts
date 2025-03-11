@@ -1,5 +1,8 @@
 import {z, object} from "zod"
 
+import { jenis_izin_usaha } from "@models/ijinUsahaPerusahaan-model"
+import { kondisi } from "@models/fasilitasPerusahaan-model"
+
 const storeProfilVendor = {
     body : z.object({
         profil : z.array(z.object({
@@ -87,6 +90,15 @@ const storeUploadKomisaris = {
             required_error : "no_ktp_komisaris Tidak Boleh Kosong",
             invalid_type_error : "no_ktp_komisaris Harus String"
         }).min(16, "Minimum 16 Angka"),
+        is_ktp_selamanya : z.string({
+            invalid_type_error : "is_ktp_selamanya harus string"
+        }),
+        ktp_berlaku_awal : z.string({
+            invalid_type_error : "Ktp_berlaku_awal harus string"
+        }).optional(),
+        ktp_berlaku_akhir : z.string({
+            invalid_type_error : "ktp_berlaku_akhir harus string"
+        }).optional()
     })
 }
 
@@ -106,41 +118,51 @@ const payloadDireksi = {
         }).optional(),
         no_ktp_direksi : z.string({
             invalid_type_error : "Ktp Direksi Harus String"
-        })
+        }).min(16, "Minimum 16 Angka"),
+        is_ktp_selamanya : z.string({
+            invalid_type_error : "is_ktp_selamanya harus string"
+        }),
+        ktp_berlaku_awal : z.string({
+            invalid_type_error : "Ktp_berlaku_awal harus string"
+        }).optional(),
+        ktp_berlaku_akhir : z.string({
+            invalid_type_error : "ktp_berlaku_akhir harus string"
+        }).optional()
     })
 }
 
 //Ijin Usaha
 const payloadIjinUsaha = {
     body : z.object({
-        nama_izin : z.string({
-            required_error : "nama_izin Harus Diisi",
-            invalid_type_error : "nama_izin Harus String"
+        nama : z.string({
+            required_error : "nama Harus Diisi",
+            invalid_type_error : "nama Harus String"
         }),
-        no_izin : z.string({
-            required_error : "no_izin Harus Diisi",
-            invalid_type_error : "no_izin Harus String"
+        jenis_izin_usaha : z.nativeEnum(jenis_izin_usaha)
+        .refine((val) => Object.values(jenis_izin_usaha).includes(val), {
+            message : "Invalid Jenis Izin Usaha, harus salah satu dari 'NIB' / 'SBU' "
         }),
-        masa_izin : z.string({
-            required_error : "masa_izin Harus Diisi",
-            invalid_type_error : "masa_izin Harus String"
+        nomor_izin : z.string({
+            required_error : "nomor_izin Harus Diisi",
+            invalid_type_error : "nomor_izin Harus String"
+        }).max(150),
+        kode : z.string({
+            required_error : "kode Harus Diisi",
+            invalid_type_error : "kode Harus String"
+        }).max(150),
+        judul : z.string({
+            required_error : "judul Harus Diisi",
+            invalid_type_error : "judul Harus String"
         }),
-        pemberi_izin : z.string({
-            required_error : "pemberi_izin Harus Diisi",
-            invalid_type_error : "pemberi_izin Harus String"
+        is_izin_selamanya : z.string({
+            required_error : "is_izin_selamanya harus diisi"
         }),
-        kualifikasi_usaha : z.string({
-            required_error : "kualifikasi_usaha Harus Diisi",
-            invalid_type_error : "kualifikasi_usaha Harus String"
-        }),
-        klasifikasi_usaha : z.string({
-            required_error : "klasifikasi_usaha Harus Diisi",
-            invalid_type_error : "klasifikasi_usaha Harus String"
+        izin_berlaku_awal : z.string({
+            invalid_type_error : "izin_berlaku_awal diisi string"
         }).optional(),
-        tdp : z.string({
-            required_error : "tdp Harus Diisi",
-            invalid_type_error : "tdp Harus String"
-        }),
+        izin_berlaku_akhir : z.string({
+            invalid_type_error : "izin_berlaku_akhir diisi string"
+        }).optional()
     })
 }
 
@@ -162,6 +184,15 @@ const payloadSahamPerusahaan = {
             required_error : "persentase_saham Harus Diisi",
             invalid_type_error : "persentase_saham Harus String"
         }),
+        is_saham_selamanya : z.string({
+            invalid_type_error : "is_saham_selamany harus string"
+        }),
+        saham_berlaku_awal : z.string({
+            invalid_type_error : "saham_berlaku_awal harus string"
+        }),
+        saham_berlaku_akhir : z.string({
+            invalid_type_error : "saham_berlaku_akhir harus string"
+        })
     })
 }
 
@@ -200,83 +231,107 @@ const payloadPersonalia = {
 
 const payloadFasilitas = {
     body : z.object({
-        nm_fasilitas : z.string({
-            required_error : "nm_fasilitas Harus Diisi",
-            invalid_type_error : "nm_fasilitas Harus String"
+        nama : z.string({
+            required_error : "nama harus diisi",
+            invalid_type_error : "nama tidak boleh kosong"
         }),
-        jumlah_fasilitas : z.string({
-            required_error : "jumlah_fasilitas Harus Diisi",
-            invalid_type_error : "jumlah_fasilitas Harus String"
+        jumlah : z.string({
+            required_error : "jumlah harus diisi",
+            invalid_type_error : "jumlah tidak boleh kosong"
         }),
-        fasilitas_now : z.string({
-            required_error : "fasilitas_now Harus Diisi",
-            invalid_type_error : "fasilitas_now Harus String"
+        kondisi : z.nativeEnum(kondisi)
+        .refine((val) => Object.values(kondisi).includes(val), {
+            message : "Invalid Kondisi, harus salah satu dari 'baik' / 'sedang' / 'kurang_baik' "
+        }),
+        kode_kepemilikan : z.string({
+            required_error : "kode_kepemilikan harus diisi",
+            invalid_type_error : "kode_kepemilikan tidak boleh kosong"
+        }),
+        // file_kepemilikan : z.string({
+        //     required_error : "file_kepemilikan harus diisi",
+        //     invalid_type_error : "file_kepemilikan tidak boleh kosong"
+        // }),
+        is_kepemilikan_selamanya : z.string({
+            required_error : "is_kepemilikan_selamanya harus diisi",
+            invalid_type_error : "is_kepemilikan_selamanya tidak boleh kosong"
+        }),
+        kepemilikan_berlaku_awal : z.string({
+            required_error : "kepemilikan_berlaku_awal harus diisi",
+            invalid_type_error : "kepemilikan_berlaku_awal tidak boleh kosong"
         }).optional(),
-        merk_fasilitas : z.string({
-            required_error : "merk_fasilitas Harus Diisi",
-            invalid_type_error : "merk_fasilitas Harus String"
+        kepemilikan_berlaku_akhir : z.string({
+            required_error : "kepemilikan_berlaku_akhir harus diisi",
+            invalid_type_error : "kepemilikan_berlaku_akhir tidak boleh kosong"
+        }).optional(),
+        // file_foto : z.string({
+        //     required_error : "file_foto harus diisi",
+        //     invalid_type_error : "file_foto tidak boleh kosong"
+        // }),
+        is_foto_selamanya : z.string({
+            required_error : "is_foto_selamanya harus diisi",
+            invalid_type_error : "is_foto_selamanya tidak boleh kosong"
         }),
-        tahun_fasilitas : z.string({
-            required_error : "tahun_fasilitas Harus Diisi",
-            invalid_type_error : "tahun_fasilitas Harus String"
-        }),
-        kondisi_fasilitas : z.string({
-            required_error : "kondisi_fasilitas Harus Diisi",
-            invalid_type_error : "kondisi_fasilitas Harus String"
-        }),
-        lokasi_fasilitas : z.string({
-            required_error : "lokasi_fasilitas Harus Diisi",
-            invalid_type_error : "lokasi_fasilitas Harus String"
-        }),
+        foto_berlaku_awal : z.string({
+            required_error : "foto_berlaku_awal harus diisi",
+            invalid_type_error : "foto_berlaku_awal tidak boleh kosong"
+        }).optional(),
+        foto_berlaku_akhir : z.string({
+            required_error : "foto_berlaku_akhir harus diisi",
+            invalid_type_error : "foto_berlaku_akhir tidak boleh kosong"
+        }).optional() 
     })
 }
 
 const payloadPengalaman = {
     body : z.object({
-        nm_pnglmn : z.string({
-            required_error : "nm_pnglmn Harus String",
-            invalid_type_error : "nm_pnglmn Harus String"
+        nama_pekerjaan : z.string({
+            required_error : "nama_pekerjaan Harus String",
+            invalid_type_error : "nama_pekerjaan Harus String"
         }),
-        div_pnglmn : z.string({
-            required_error : "div_pnglmn Harus String",
-            invalid_type_error : "div_pnglmn Harus String"
+        tahun_pekerjaan : z.string({
+            required_error : "tahun_pekerjaan Harus String",
+            invalid_type_error : "tahun_pekerjaan Harus String"
         }),
-        ringkas_pnglmn : z.string({
-            required_error : "ringkas_pnglmn Harus String",
-            invalid_type_error : "ringkas_pnglmn Harus String"
+        pemberi_kerja : z.string({
+            required_error : "pemberi_kerja Harus String",
+            invalid_type_error : "pemberi_kerja Harus String"
         }),
-        lok_pnglmn : z.string({
-            required_error : "lok_pnglmn Harus String",
-            invalid_type_error : "lok_pnglmn Harus String"
+        nilai_pekerjaan : z.string({
+            required_error : "nilai_pekerjaan Harus String",
+            invalid_type_error : "nilai_pekerjaan Harus String"
         }),
-        pemberi_pnglmn : z.string({
-            required_error : "pemberi_pnglmn Harus String",
-            invalid_type_error : "pemberi_pnglmn Harus String"
+        jangka_waktu : z.string({
+            required_error : "jangka_waktu Harus String",
+            invalid_type_error : "jangka_waktu Harus String"
         }),
-        alamat_pnglmn : z.string({
-            required_error : "alamat_pnglmn Harus String",
-            invalid_type_error : "alamat_pnglmn Harus String"
+        no_kontrak : z.string({
+            required_error : "no_kontrak Harus String",
+            invalid_type_error : "no_kontrak Harus String"
         }),
-        tgl_pnglmn : z.string({
-            required_error : "tgl_pnglmn Harus String",
-            invalid_type_error : "tgl_pnglmn Harus String"
+        is_kontrak_selamanya : z.string({
+            required_error : "is_kontrak_selamanya Harus String",
+            invalid_type_error : "is_kontrak_selamanya Harus String"
         }),
-        nilai_pnglmn : z.string({
-            required_error : "nilai_pnglmn Harus String",
-            invalid_type_error : "nilai_pnglmn Harus String"
+        kontrak_berlaku_awal : z.string({
+            required_error : "kontrak_berlaku_awal Harus String",
+            invalid_type_error : "kontrak_berlaku_awal Harus String"
+        }).optional(),
+        kontrak_berlaku_akhir : z.string({
+            required_error : "kontrak_berlaku_akhir Harus String",
+            invalid_type_error : "kontrak_berlaku_akhir Harus String"
+        }).optional(),
+        is_bast_selamanya : z.string({
+            required_error : "is_bast_selamanya Harus String",
+            invalid_type_error : "is_bast_selamanya Harus String"
         }),
-        status_pnglmn : z.string({
-            required_error : "status_pnglmn Harus String",
-            invalid_type_error : "status_pnglmn Harus String"
-        }),
-        tgl_selesai_pnglmn : z.string({
-            required_error : "tgl_selesai_pnglmn Harus String",
-            invalid_type_error : "tgl_selesai_pnglmn Harus String"
-        }),
-        ba_pnglmn : z.string({
-            required_error : "ba_pnglmn Harus String",
-            invalid_type_error : "ba_pnglmn Harus String"
-        }),
+        bast_berlaku_awal : z.string({
+            required_error : "bast_berlaku_awal Harus String",
+            invalid_type_error : "bast_berlaku_awal Harus String"
+        }).optional(),
+        bast_berlaku_akhir : z.string({
+            required_error : "bast_berlaku_akhir Harus String",
+            invalid_type_error : "bast_berlaku_akhir Harus String"
+        }).optional(),
     })
 }
 
@@ -326,6 +381,200 @@ const payloadPengalamanSekarang = {
             required_error : "prestasi_pnglmn_sekarang Harus String",
             invalid_type_error : "prestasi_pnglmn_sekarang Harus String"
         }),
+    })
+}
+
+//Kantor
+const payloadKantor = {
+    body : z.object({
+        alamat : z.string({
+            required_error : "Alamat harus diisi",
+            invalid_type_error : "Alamat harus string"
+        }),
+        kode_kepemilikan : z.string({
+            required_error : "Kode Kepemilikan Harus Diisi",
+            invalid_type_error : "kode kepemilikan harus string"
+        }),
+        is_foto_selamanya : z.string({
+            required_error : "is_foto_selamanya harus diisi",
+            invalid_type_error : "is_foto_selamanya harus_string"
+        }),
+        foto_berlaku_awal : z.string({
+            invalid_type_error : "foto_berlaku_awal harus string"
+        }),
+        foto_berlaku_akhir : z.string({
+            invalid_type_error : "foto_berlaku_akhir harus string"
+        }),
+    })
+}
+
+//Tenaga Ahli
+const payloadTenagaAhli = {
+    body : z.object({
+        nama : z.string ({
+            required_error : "nama harus diisi",
+            invalid_type_error : "nama harus string"
+        }),
+        no_ktp : z.string ({
+            required_error : "no_ktp harus diisi",
+            invalid_type_error : "no_ktp harus string"
+        }).max(20),
+        is_ktp_selamanya : z.string ({
+            required_error : "is_ktp_selamanya harus diisi",
+            invalid_type_error : "is_ktp_selamanya harus string"
+        }),
+        ktp_berlaku_awal : z.string ({
+            required_error : "ktp_berlaku_awal harus diisi",
+            invalid_type_error : "ktp_berlaku_awal harus string"
+        }),
+        ktp_berlaku_akhir : z.string ({
+            required_error : "ktp_berlaku_akhir harus diisi",
+            invalid_type_error : "ktp_berlaku_akhir harus string"
+        }),
+        tempat_lahir : z.string ({
+            required_error : "tempat_lahir harus diisi",
+            invalid_type_error : "tempat_lahir harus string"
+        }),
+        tgl_lahir : z.string ({
+            required_error : "tgl_lahir harus diisi",
+            invalid_type_error : "tgl_lahir harus string"
+        }),
+        posisi : z.string ({
+            required_error : "posisi harus diisi",
+            invalid_type_error : "posisi harus string"
+        }),
+        kode_jenjang_pendidikan : z.string ({
+            required_error : "kode_jenjang_pendidikan harus diisi",
+            invalid_type_error : "kode_jenjang_pendidikan harus string"
+        }),
+        program_studi : z.string ({
+            required_error : "program_studi harus diisi",
+            invalid_type_error : "program_studi harus string"
+        }),
+        is_ijazah_selamanya : z.string ({
+            required_error : "is_ijazah_selamanya harus diisi",
+            invalid_type_error : "is_ijazah_selamanya harus string"
+        }),
+        ijazah_berlaku_awal : z.string ({
+            required_error : "ijazah_berlaku_awal harus diisi",
+            invalid_type_error : "ijazah_berlaku_awal harus string"
+        }),
+        ijazah_berlaku_akhir : z.string ({
+            required_error : "ijazah_berlaku_akhir harus diisi",
+            invalid_type_error : "ijazah_berlaku_akhir harus string"
+        }),
+        is_cv_selamanya : z.string ({
+            required_error : "is_cv_selamanya harus diisi",
+            invalid_type_error : "is_cv_selamanya harus string"
+        }),
+        cv_berlaku_awal : z.string ({
+            required_error : "cv_berlaku_awal harus diisi",
+            invalid_type_error : "cv_berlaku_awal harus string"
+        }),
+        cv_berlaku_akhir : z.string ({
+            required_error : "cv_berlaku_akhir harus diisi",
+            invalid_type_error : "cv_berlaku_akhir harus string"
+        }),
+    })
+}
+
+//Tenaga Pendukung
+const payloadTenagaPendukung = {
+    body : z.object({
+        nama : z.string ({
+            required_error : "nama harus diisi",
+            invalid_type_error : "nama harus string"
+        }),
+        no_ktp : z.string ({
+            required_error : "no_ktp harus diisi",
+            invalid_type_error : "no_ktp harus string"
+        }).max(20),
+        is_ktp_selamanya : z.string ({
+            required_error : "is_ktp_selamanya harus diisi",
+            invalid_type_error : "is_ktp_selamanya harus string"
+        }),
+        ktp_berlaku_awal : z.string ({
+            required_error : "ktp_berlaku_awal harus diisi",
+            invalid_type_error : "ktp_berlaku_awal harus string"
+        }),
+        ktp_berlaku_akhir : z.string ({
+            required_error : "ktp_berlaku_akhir harus diisi",
+            invalid_type_error : "ktp_berlaku_akhir harus string"
+        }),
+        tempat_lahir : z.string ({
+            required_error : "tempat_lahir harus diisi",
+            invalid_type_error : "tempat_lahir harus string"
+        }),
+        tgl_lahir : z.string ({
+            required_error : "tgl_lahir harus diisi",
+            invalid_type_error : "tgl_lahir harus string"
+        }),
+        posisi : z.string ({
+            required_error : "posisi harus diisi",
+            invalid_type_error : "posisi harus string"
+        }),
+        kode_jenjang_pendidikan : z.string ({
+            required_error : "kode_jenjang_pendidikan harus diisi",
+            invalid_type_error : "kode_jenjang_pendidikan harus string"
+        }),
+        program_studi : z.string ({
+            required_error : "program_studi harus diisi",
+            invalid_type_error : "program_studi harus string"
+        }),
+        is_ijazah_selamanya : z.string ({
+            required_error : "is_ijazah_selamanya harus diisi",
+            invalid_type_error : "is_ijazah_selamanya harus string"
+        }),
+        ijazah_berlaku_awal : z.string ({
+            required_error : "ijazah_berlaku_awal harus diisi",
+            invalid_type_error : "ijazah_berlaku_awal harus string"
+        }),
+        ijazah_berlaku_akhir : z.string ({
+            required_error : "ijazah_berlaku_akhir harus diisi",
+            invalid_type_error : "ijazah_berlaku_akhir harus string"
+        }),
+        is_cv_selamanya : z.string ({
+            required_error : "is_cv_selamanya harus diisi",
+            invalid_type_error : "is_cv_selamanya harus string"
+        }),
+        cv_berlaku_awal : z.string ({
+            required_error : "cv_berlaku_awal harus diisi",
+            invalid_type_error : "cv_berlaku_awal harus string"
+        }),
+        cv_berlaku_akhir : z.string ({
+            required_error : "cv_berlaku_akhir harus diisi",
+            invalid_type_error : "cv_berlaku_akhir harus string"
+        }),
+    })
+}
+
+//PengalamanTA 
+const payloadPengalamanTa = {
+    body : z.object({
+        kode_tenaga_ahli : z.string({
+            required_error : "kode_tenaga_ahli harus diisi"
+        }),
+        pengalaman_data : z.array(z.object({
+            pengalaman : z.string({
+                required_error : "pengalaman Tidak Boleh Kosong",
+                invalid_type_error : "pengalaman harus string"
+            }),
+        }))
+    })
+}
+
+//PengalamanTP
+const payloadPengalamanTp = {
+    body : z.object({
+        kode_tenaga_pendukung : z.string({
+            required_error : "kode_tenaga_ahli harus diisi"
+        }),
+        pengalaman_data : z.array(z.object({
+            pengalaman : z.string({
+                required_error : "pengalaman Tidak Boleh Kosong",
+                invalid_type_error : "pengalaman harus string"
+            }),
+        }))
     })
 }
 
@@ -446,6 +695,42 @@ export const payloadPengalamanSekarangUpdateSchema = object({
     ...payloadPengalamanSekarang
 })
 
+export const payloadKantorSchema = object({
+    ...payloadKantor
+})
+
+export const payloadKantorUpdateSchema = object({
+    ...parameter,
+    ...payloadKantor
+})
+
+export const payloadTenagaAhliSchema = object({
+    ...payloadTenagaAhli
+})
+
+export const payloadTenagaAhliUpdateSchema = object({
+    ...parameter,
+    ...payloadTenagaAhli
+})
+
+export const payloadTenagaPendukungSchema = object({
+    ...payloadTenagaPendukung
+})
+
+export const payloadTenagaPendukungUpdateSchema = object({
+    ...parameter,
+    ...payloadTenagaPendukung
+})
+
+export const payloadPengalamanTaSchema = object({
+    ...payloadPengalamanTa
+})
+
+export const payloadPengalamanTpSchema = object({
+    ...payloadPengalamanTp
+})
+
+
 //Reusable
 export const querySchema = object({
     ...query
@@ -486,6 +771,21 @@ export type PayloadPengalamanUpdateSchema = z.TypeOf<typeof payloadPengalamanUpd
 
 export type PayloadPengalamanSekarangSchema = z.TypeOf<typeof payloadPengalamanSekarangSchema>
 export type PayloadPengalamanSekarangUpdateSchema = z.TypeOf<typeof payloadPengalamanSekarangUpdateSchema>
+
+export type PayloadKantorSchema = z.TypeOf<typeof payloadKantorSchema>
+export type PayloadKantorUpdateSchema = z.TypeOf<typeof payloadKantorUpdateSchema>
+
+export type PayloadTenagaAhliSchema = z.TypeOf<typeof payloadTenagaAhliSchema>
+export type PayloadTenagaAhliUpdateSchema = z.TypeOf<typeof payloadTenagaAhliUpdateSchema>
+
+export type PayloadTenagaPendukungSchema = z.TypeOf<typeof payloadTenagaPendukungSchema>
+export type PayloadTenagaPendukungUpdateSchema = z.TypeOf<typeof payloadTenagaPendukungUpdateSchema>
+
+export type PayloadPengalamanTaSchema = z.TypeOf<typeof payloadPengalamanTaSchema>
+
+
+export type PayloadPengalamanTpSchema = z.TypeOf<typeof payloadPengalamanTpSchema>
+
 
 //Reusable
 
