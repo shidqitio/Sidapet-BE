@@ -18,15 +18,16 @@ interface IRegisterVendorAttributes {
     password           : string;
     nomor_handphone    : string | null | undefined;
     swafoto            : string | null | undefined;
-    status_register       : StatusRegister;
+    status_register    : StatusRegister;
     alasan_ditolak     : string | null | undefined ;
     user_verif         : string | null | undefined;
-    message : string | null | undefined;
+    message            : string | null | undefined;
     similarity         : boolean | null | undefined;
     distance_percentage: number |  null | undefined;
     distance_point     : number |  null | undefined;
     keypass            : any;
-    status_email : boolean ;
+    nama_narahubung    : string | null | undefined ;
+    nomor_telp         : string | null | undefined; //Nomor Kantor
     udcr               : Date | undefined;
     udch               : Date | undefined;
 }
@@ -35,21 +36,26 @@ export type RegisterVendorOutput = Required<IRegisterVendorAttributes>
 
 export type RegisterVendorInput = Optional<
 IRegisterVendorAttributes, 
-"kode_jenis_vendor" 
-|"kode_register"
-|"kode_vendor"
-| "user_verif" 
-| "similarity" 
-| "distance_percentage" 
-| "distance_point"
-| "keypass" 
-| "alasan_ditolak"
-| "udch" 
-| "udcr"
-| "swafoto"
-| "message"
-|"status_register" 
-|"status_email"
+"kode_register" |
+"kode_vendor" |
+"kode_jenis_vendor" |
+"nama_perusahaan" |
+"email" |
+"password" |
+"nomor_handphone" |
+"swafoto" |
+"status_register" |
+"alasan_ditolak" |
+"user_verif" |
+"message" |
+"similarity" |
+"distance_percentage" |
+"distance_point" |
+"keypass" |
+"nama_narahubung" |
+"nomor_telp" |
+"udcr" |
+"udch" 
 >
 
 class RegisterVendor 
@@ -57,22 +63,23 @@ class RegisterVendor
     implements IRegisterVendorAttributes
 {
     declare kode_register      : number;
-    declare kode_vendor        : number | 0;
+    declare kode_vendor        : number;
     declare kode_jenis_vendor  : number;
     declare nama_perusahaan    : string;
     declare email              : string | null | undefined;
     declare password           : string;
-    declare nomor_handphone    : string;
+    declare nomor_handphone    : string | null | undefined;
     declare swafoto            : string | null | undefined;
-    declare status_register       : StatusRegister;
+    declare status_register    : StatusRegister;
     declare alasan_ditolak     : string | null | undefined ;
-    declare message: string | null | undefined; 
     declare user_verif         : string | null | undefined;
+    declare message            : string | null | undefined;
     declare similarity         : boolean | null | undefined;
     declare distance_percentage: number |  null | undefined;
     declare distance_point     : number |  null | undefined;
     declare keypass            : any;
-    declare status_email: boolean;
+    declare nama_narahubung    : string | null | undefined ;
+    declare nomor_telp         : string | null | undefined;
     declare udcr               : Date | undefined;
     declare udch               : Date | undefined;
 }
@@ -147,10 +154,13 @@ RegisterVendor.init(
             type : DataTypes.STRING,
             allowNull : true
         },
-        status_email : {
-            type : DataTypes.BOOLEAN, 
-            allowNull : true,
-            defaultValue : false
+        nama_narahubung : {
+            type : DataTypes.STRING,
+            allowNull : true
+        },
+        nomor_telp : {
+            type : DataTypes.STRING,
+            allowNull : true
         },
         udcr : {
             type : DataTypes.DATE,

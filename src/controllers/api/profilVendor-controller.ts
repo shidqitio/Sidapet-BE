@@ -25,11 +25,21 @@ PayloadFasilitasUpdateSchema,
 PayloadPengalamanSchema,
 PayloadPengalamanUpdateSchema,
 PayloadPengalamanSekarangSchema,
-PayloadPengalamanSekarangUpdateSchema
+PayloadPengalamanSekarangUpdateSchema,
+PayloadTenagaAhliSchema,
+PayloadTenagaAhliUpdateSchema,
+PayloadTenagaPendukungSchema,
+PayloadTenagaPendukungUpdateSchema,
+PayloadKantorSchema,
+PayloadKantorUpdateSchema,
+PayloadPengalamanTaSchema,
+PayloadPengalamanTpSchema
 } from "@schema/api/profilVendor-schema"
 
 import profilVendorService from "@services/api/v1/profilVendor-service";
 import CustomError from "@middleware/error-handler";
+import { object } from "zod";
+import { tesUpload } from "@middleware/upload";
 
 const getMenuAll = async (
     req : Request,
@@ -636,7 +646,7 @@ const updateDireksi = async (
         responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Mengubah Direksi", response)
 
     } catch (error) {
-        errorLogger.error(`Testing Error Store Komisaris  ${error}`)
+        errorLogger.error(`Testing Error Update Direksi  ${error}`)
         next(error)
     }
 }
@@ -657,7 +667,7 @@ const getIjinUsaha = async (
         responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response)
 
     } catch (error) {
-        errorLogger.error(`Testing Error Get Direksi Vendor  ${error}`)
+        errorLogger.error(`Testing Error Get Ijin Usaha Vendor  ${error}`)
         next(error)
     }
 }
@@ -759,7 +769,7 @@ const getSahamPerusahaan = async (
         responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response)
 
     } catch (error) {
-        errorLogger.error(`Testing Error Get Direksi Vendor  ${error}`)
+        errorLogger.error(`Testing Error Get Saham Perusahaan Vendor  ${error}`)
         next(error)
     }
 }
@@ -799,7 +809,7 @@ const hapusSahamPerusahaan = async (
         responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menghapus Saham Perusahaan", response)
 
     } catch (error) {
-        errorLogger.error(`Testing Error Delete Ijin Usaha  ${error}`)
+        errorLogger.error(`Testing Error Delete Saham Usaha  ${error}`)
         next(error)
     }
 }
@@ -962,7 +972,7 @@ const getFasilitas = async (
         responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response)
 
     } catch (error) {
-        errorLogger.error(`Testing Error Get Direksi Vendor  ${error}`)
+        errorLogger.error(`Testing Error Get Fasilitas Vendor  ${error}`)
         next(error)
     }
 }
@@ -978,9 +988,25 @@ const storeFasilitas = async (
 
         const request : PayloadFasilitasSchema["body"] = req.body
 
-        const file = req.file
+        const files= req.files as { [fieldname: string]: Express.Multer.File[] };
 
-        const response = await profilVendorService.storeFasilitas(request, kode_vendor, file as Express.Multer.File)
+        console.log(files);
+        
+        const file_bukti_kepemilikan = files['file_bukti_kepemilikan'] ? files['file_bukti_kepemilikan'][0] : undefined; // Assuming 'file1' is the field name for the first file
+        console.log(file_bukti_kepemilikan);
+        
+        const file_foto = files['file_foto'] ? files['file_foto'][0] : undefined; // Assuming 'file2' is the field name for the second file
+
+        if (!file_bukti_kepemilikan || !file_foto) {
+            throw new CustomError(httpCode.badRequest, responseStatus.error, "Kedua file harus diupload");
+        }
+
+        console.log("FILE 1 : ", file_bukti_kepemilikan);
+
+        console.log("FILE 2 : ", file_foto);
+        
+
+        const response = await profilVendorService.storeFasilitas(request, kode_vendor, file_bukti_kepemilikan as Express.Multer.File, file_foto as Express.Multer.File)
 
         responseSuccess(res, httpCode.created, responseStatus.success, "Berhasil Menambah Fasilitas", response)
 
@@ -1002,12 +1028,12 @@ const hapusFasilitas = async (
         responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menghapus Fasilitas Perusahaan", response)
 
     } catch (error) {
-        errorLogger.error(`Testing Error Delete Ijin Usaha  ${error}`)
+        errorLogger.error(`Testing Error Delete Fasilitas  ${error}`)
         next(error)
     }
 }
 
-const getPdfUploadFasilitas = async (
+const getPdfUploadFasilitasKepemilikan = async (
     req:Request,
     res:Response,
     next:NextFunction) : Promise<void> => {
@@ -1018,11 +1044,31 @@ const getPdfUploadFasilitas = async (
 
         const id : ParameterSchema["params"]["id"] = req.params.id
 
-        const response = await profilVendorService.getPdfUploadFasilitas(id, kode_vendor)
+        const response = await profilVendorService.getPdfUploadFasilitasKepemilikan(id, kode_vendor)
 
         responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response.data)
     } catch (error) {
-        errorLogger.error(`Testing Error Get PDF Saham Perusahaan Upload  ${error}`)
+        errorLogger.error(`Testing Error Get PDF Fasilitas Kepemilikan  ${error}`)
+        next(error)
+    }
+}
+
+const getPdfUploadFasilitasFoto = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode_vendor = req.user.kode_vendor
+
+        if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
+
+        const id : ParameterSchema["params"]["id"] = req.params.id
+
+        const response = await profilVendorService.getPdfUploadFasilitasFoto(id, kode_vendor)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response.data)
+    } catch (error) {
+        errorLogger.error(`Testing Error Get PDF Fasilitas Foto  ${error}`)
         next(error)
     }
 }
@@ -1036,9 +1082,19 @@ const updateFasilitas = async (
 
         const request : PayloadFasilitasUpdateSchema["body"] = req.body
 
-        const file = req.file
+        const files= req.files as { [fieldname: string]: Express.Multer.File[] };
 
-        const response = await profilVendorService.updateFasilitas(id, request, file as Express.Multer.File)
+        console.log(files);
+        
+        const file_bukti_kepemilikan = files['file_bukti_kepemilikan'] ? files['file_bukti_kepemilikan'][0] : undefined; // Assuming 'file1' is the field name for the first file
+        console.log(file_bukti_kepemilikan);
+        
+        const file_foto = files['file_foto'] ? files['file_foto'][0] : undefined; // Assuming 'file2' is the field name for the second file
+
+        
+
+
+        const response = await profilVendorService.updateFasilitas(id, request, file_bukti_kepemilikan as Express.Multer.File, file_foto as Express.Multer.File)
 
         responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Mengubah Fasilitas Perusahaan", response)
 
@@ -1064,7 +1120,7 @@ const getPengalaman = async (
         responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response)
 
     } catch (error) {
-        errorLogger.error(`Testing Error Get Direksi Vendor  ${error}`)
+        errorLogger.error(`Testing Error Get Pengalaman Vendor  ${error}`)
         next(error)
     }
 }
@@ -1080,9 +1136,21 @@ const storePengalaman = async (
 
         const request : PayloadPengalamanSchema["body"] = req.body
 
-        const file = req.file
 
-        const response = await profilVendorService.storePengalaman(request, kode_vendor, file as Express.Multer.File)
+        const files= req.files as { [fieldname: string]: Express.Multer.File[] };
+
+
+        const file_kontrak = files['file_kontrak'] ? files['file_kontrak'][0] : undefined; // Assuming 'file1' is the field name for the first file
+        console.log(file_kontrak);
+        
+        const file_bast = files['file_bast'] ? files['file_bast'][0] : undefined; // Assuming 'file2' is the field name for the second file
+
+        if (!file_kontrak || !file_bast) {
+            throw new CustomError(httpCode.badRequest, responseStatus.error, "Kedua file harus diupload");
+        }
+
+        
+        const response = await profilVendorService.storePengalaman(request, kode_vendor, file_kontrak as Express.Multer.File, file_bast as Express.Multer.File)
 
         responseSuccess(res, httpCode.created, responseStatus.success, "Berhasil Menambah Pengalaman", response)
 
@@ -1104,12 +1172,12 @@ const hapusPengalamanBadanUsaha = async (
         responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menghapus Pengalaman Perusahaan", response)
 
     } catch (error) {
-        errorLogger.error(`Testing Error Delete Ijin Usaha  ${error}`)
+        errorLogger.error(`Testing Error Delete Pengalaman  ${error}`)
         next(error)
     }
 }
 
-const getPdfUploadPengalaman = async (
+const getPdfUploadPengalamanKontrak = async (
     req:Request,
     res:Response,
     next:NextFunction) : Promise<void> => {
@@ -1120,7 +1188,27 @@ const getPdfUploadPengalaman = async (
 
         const id : ParameterSchema["params"]["id"] = req.params.id
 
-        const response = await profilVendorService.getPdfUploadPengalaman(id, kode_vendor)
+        const response = await profilVendorService.getPdfUploadPengalamanKontrak(id, kode_vendor)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response.data)
+    } catch (error) {
+        errorLogger.error(`Testing Error Get PDF Pengalaman Perusahaan Upload  ${error}`)
+        next(error)
+    }
+}
+
+const getPdfUploadPengalamanBast = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode_vendor = req.user.kode_vendor
+
+        if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
+
+        const id : ParameterSchema["params"]["id"] = req.params.id
+
+        const response = await profilVendorService.getPdfUploadPengalamanBast(id, kode_vendor)
 
         responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response.data)
     } catch (error) {
@@ -1137,15 +1225,446 @@ const updatePengalaman = async (
         const id : PayloadPengalamanUpdateSchema["params"]["id"] = req.params.id
 
         const request : PayloadPengalamanUpdateSchema["body"] = req.body
+        const files= req.files as { [fieldname: string]: Express.Multer.File[] };
 
-        const file = req.file
 
-        const response = await profilVendorService.updatePengalaman(id, request, file as Express.Multer.File)
+        const file_kontrak = files['file_kontrak'] ? files['file_kontrak'][0] : undefined; // Assuming 'file1' is the field name for the first file
+        console.log(file_kontrak);
+        
+        const file_bast = files['file_bast'] ? files['file_bast'][0] : undefined; // Assuming 'file2' is the field name for the second file
+
+        const response = await profilVendorService.updatePengalaman(id, request, file_kontrak as Express.Multer.File, file_bast as Express.Multer.File)
 
         responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Mengubah Pengalaman Perusahaan", response)
 
     } catch (error) {
+        errorLogger.error(`Testing Error Update Pengalaman Perusahaan  ${error}`)
+        next(error)
+    }
+}
+
+// #################### Tenaga Ahli #########################################
+const getTenagaAhli = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode_vendor = req.user.kode_vendor
+
+        if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
+
+        const response = await profilVendorService.getTenagaAhli(kode_vendor)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response)
+
+    } catch (error) {
+        errorLogger.error(`Testing Error Get Tenaga Ahli Vendor  ${error}`)
+        next(error)
+    }
+}
+
+const storeTenagaAhli = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode_vendor = req.user.kode_vendor
+
+        if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
+
+        const request : PayloadTenagaAhliSchema["body"] = req.body
+
+
+        const files= req.files as { [fieldname: string]: Express.Multer.File[] };
+
+
+        const file_ktp = files['file_ktp'] ? files['file_ktp'][0] : undefined; // Assuming 'file1' is the field name for the first file
+        
+        const file_ijazah = files['file_ijazah'] ? files['file_ijazah'][0] : undefined; // Assuming 'file2' is the field name for the second file
+
+        const file_cv = files['file_cv'] ? files['file_cv'][0] : undefined; // Assuming 'file2' is the field name for the second file
+
+
+        if (!file_ktp || !file_ijazah || !file_cv) {
+            throw new CustomError(httpCode.badRequest, responseStatus.error, "Kedua file harus diupload");
+        }
+
+        
+        const response = await profilVendorService.storeTenagaAhli(request, kode_vendor, file_ktp as Express.Multer.File, file_cv as Express.Multer.File, file_ijazah as Express.Multer.File)
+
+        responseSuccess(res, httpCode.created, responseStatus.success, "Berhasil Menambah Tenaga Ahli", response)
+
+    } catch (error) {
+        errorLogger.error(`Testing Error Store Tenaga Ahli ${error}`)
+        next(error)
+    }
+}
+
+const hapusTenagaAhli = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const id : ParameterSchema["params"]["id"] = req.params.id
+
+        const response = await profilVendorService.hapusTenagaAhli(id)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menghapus Tenaga Ahli", response)
+
+    } catch (error) {
+        errorLogger.error(`Testing Error Delete Tenaga Ahli  ${error}`)
+        next(error)
+    }
+}
+
+const updateTenagaAhli = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const id : PayloadTenagaAhliUpdateSchema["params"]["id"] = req.params.id
+
+        const request : PayloadTenagaAhliUpdateSchema["body"] = req.body
+        const files= req.files as { [fieldname: string]: Express.Multer.File[] };
+
+
+        const file_ktp = files['file_ktp'] ? files['file_ktp'][0] : undefined; // Assuming 'file1' is the field name for the first file
+        
+        const file_ijazah = files['file_ijazah'] ? files['file_ijazah'][0] : undefined; // Assuming 'file2' is the field name for the second file
+
+        const file_cv = files['file_cv'] ? files['file_cv'][0] : undefined; // Assuming 'file2' is the field name for the second file
+
+
+        const response = await profilVendorService.updateTenagaAhli(id, request, file_ktp as Express.Multer.File, file_ijazah as Express.Multer.File, file_cv as Express.Multer.File)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Mengubah Tenaga Ahli", response)
+
+    } catch (error) {
+        errorLogger.error(`Testing Error Update Tenaga Ahli  ${error}`)
+        next(error)
+    }
+}
+
+const getPdfUploadTenagaAhliKtp = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode_vendor = req.user.kode_vendor
+
+        if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
+
+        const id : ParameterSchema["params"]["id"] = req.params.id
+
+        const response = await profilVendorService.getPdfUploadTenagaAhliKtp(id, kode_vendor)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response.data)
+    } catch (error) {
+        errorLogger.error(`Testing Error Get PDF Tenaga Ahli KTP  ${error}`)
+        next(error)
+    }
+}
+
+const getPdfUploadTenagaAhliCv = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode_vendor = req.user.kode_vendor
+
+        if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
+
+        const id : ParameterSchema["params"]["id"] = req.params.id
+
+        const response = await profilVendorService.getPdfUploadTenagaAhliCv(id, kode_vendor)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response.data)
+    } catch (error) {
+        errorLogger.error(`Testing Error Get PDF Tenaga Ahli CV  ${error}`)
+        next(error)
+    }
+}
+
+const getPdfUploadTenagaAhliIjazah = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode_vendor = req.user.kode_vendor
+
+        if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
+
+        const id : ParameterSchema["params"]["id"] = req.params.id
+
+        const response = await profilVendorService.getPdfUploadTenagaAhliIjazah(id, kode_vendor)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response.data)
+    } catch (error) {
+        errorLogger.error(`Testing Error Get PDF Tenaga Ahli Ijazah  ${error}`)
+        next(error)
+    }
+}
+
+// ################### Kantor ##########################################
+const getKantor = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode_vendor = req.user.kode_vendor
+
+        if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
+
+        const response = await profilVendorService.getKantor(kode_vendor)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response)
+
+    } catch (error) {
+        errorLogger.error(`Testing Error Get Kantor  ${error}`)
+        next(error)
+    }
+}
+
+const storeKantor = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode_vendor = req.user.kode_vendor
+
+        if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
+
+        const request : PayloadKantorSchema["body"] = req.body
+
+        const file = req.file
+
+        const response = await profilVendorService.storeKantor(request, kode_vendor, file as Express.Multer.File)
+
+        responseSuccess(res, httpCode.created, responseStatus.success, "Berhasil Menambah Kantor", response)
+
+    } catch (error) {
+        errorLogger.error(`Testing Error Store Saham Perusahaan  ${error}`)
+        next(error)
+    }
+}
+
+const hapusKantor = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const id : ParameterSchema["params"]["id"] = req.params.id
+
+        const response = await profilVendorService.hapusKantor(id)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menghapus Kantor", response)
+
+    } catch (error) {
+        errorLogger.error(`Testing Error Delete Kantor  ${error}`)
+        next(error)
+    }
+}
+
+const getPdfUploadKantor = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode_vendor = req.user.kode_vendor
+
+        if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
+
+        const id : ParameterSchema["params"]["id"] = req.params.id
+
+        const response = await profilVendorService.getPdfUploadKantor(id, kode_vendor)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response.data)
+    } catch (error) {
+        errorLogger.error(`Testing Error Get PDF Kantor  ${error}`)
+        next(error)
+    }
+}
+
+const updateKantor = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const id : PayloadKantorUpdateSchema["params"]["id"] = req.params.id
+
+        const request : PayloadKantorUpdateSchema["body"] = req.body
+
+        const file = req.file
+
+        const response = await profilVendorService.updateKantor(id, request, file as Express.Multer.File)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Mengubah Kantor", response)
+
+    } catch (error) {
+        errorLogger.error(`Testing Error Store Kantor  ${error}`)
+        next(error)
+    }
+}
+
+
+// #################### Tenaga Pendukung ####################################
+const getTenagaPendukung = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode_vendor = req.user.kode_vendor
+
+        if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
+
+        const response = await profilVendorService.getTenagaPendukung(kode_vendor)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response)
+
+    } catch (error) {
+        errorLogger.error(`Testing Error Get Direksi Vendor  ${error}`)
+        next(error)
+    }
+}
+
+const storeTenagaPendukung = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode_vendor = req.user.kode_vendor
+
+        if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
+
+        const request : PayloadTenagaPendukungSchema["body"] = req.body
+
+
+        const files= req.files as { [fieldname: string]: Express.Multer.File[] };
+
+
+        const file_ktp = files['file_ktp'] ? files['file_ktp'][0] : undefined; // Assuming 'file1' is the field name for the first file
+        
+        const file_ijazah = files['file_ijazah'] ? files['file_ijazah'][0] : undefined; // Assuming 'file2' is the field name for the second file
+
+        const file_cv = files['file_cv'] ? files['file_cv'][0] : undefined; // Assuming 'file2' is the field name for the second file
+
+
+        if (!file_ktp || !file_ijazah || !file_cv) {
+            throw new CustomError(httpCode.badRequest, responseStatus.error, "Kedua file harus diupload");
+        }
+
+        
+        const response = await profilVendorService.storeTenagaPendukung(request, kode_vendor, file_ktp as Express.Multer.File, file_cv as Express.Multer.File, file_ijazah as Express.Multer.File)
+
+        responseSuccess(res, httpCode.created, responseStatus.success, "Berhasil Menambah Tenaga Pendukung", response)
+
+    } catch (error) {
+        errorLogger.error(`Testing Error Store Tenaga Pendukung  ${error}`)
+        next(error)
+    }
+}
+
+const hapusTenagaPendukung = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const id : ParameterSchema["params"]["id"] = req.params.id
+
+        const response = await profilVendorService.hapusTenagaPendukung(id)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menghapus Tenaga Pendukung", response)
+
+    } catch (error) {
+        errorLogger.error(`Testing Error Delete Tenaga Pendukung  ${error}`)
+        next(error)
+    }
+}
+
+const updateTenagaPendukung = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const id : PayloadTenagaAhliUpdateSchema["params"]["id"] = req.params.id
+
+        const request : PayloadTenagaAhliUpdateSchema["body"] = req.body
+        const files= req.files as { [fieldname: string]: Express.Multer.File[] };
+
+
+        const file_ktp = files['file_ktp'] ? files['file_ktp'][0] : undefined; // Assuming 'file1' is the field name for the first file
+        
+        const file_ijazah = files['file_ijazah'] ? files['file_ijazah'][0] : undefined; // Assuming 'file2' is the field name for the second file
+
+        const file_cv = files['file_cv'] ? files['file_cv'][0] : undefined; // Assuming 'file2' is the field name for the second file
+
+
+        const response = await profilVendorService.updateTenagaPendukung(id, request, file_ktp as Express.Multer.File, file_ijazah as Express.Multer.File, file_cv as Express.Multer.File)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Mengubah Tenaga Pendukung", response)
+
+    } catch (error) {
         errorLogger.error(`Testing Error Store Pengalaman Perusahaan  ${error}`)
+        next(error)
+    }
+}
+
+const getPdfUploadTenagaPendukungKtp = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode_vendor = req.user.kode_vendor
+
+        if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
+
+        const id : ParameterSchema["params"]["id"] = req.params.id
+
+        const response = await profilVendorService.getPdfUploadTenagaPendukungKtp(id, kode_vendor)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response.data)
+    } catch (error) {
+        errorLogger.error(`Testing Error Get PDF Tenaga Pendukung KTP  ${error}`)
+        next(error)
+    }
+}
+
+const getPdfUploadTenagaPendukungCv = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode_vendor = req.user.kode_vendor
+
+        if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
+
+        const id : ParameterSchema["params"]["id"] = req.params.id
+
+        const response = await profilVendorService.getPdfUploadTenagaPendukungCv(id, kode_vendor)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response.data)
+    } catch (error) {
+        errorLogger.error(`Testing Error Get PDF Tenaga Pendukung CV  ${error}`)
+        next(error)
+    }
+}
+
+const getPdfUploadTenagaPendukungIjazah = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode_vendor = req.user.kode_vendor
+
+        if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
+
+        const id : ParameterSchema["params"]["id"] = req.params.id
+
+        const response = await profilVendorService.getPdfUploadTenagaPendukungIjazah(id, kode_vendor)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response.data)
+    } catch (error) {
+        errorLogger.error(`Testing Error Get PDF Tenaga Pendukung Ijazah  ${error}`)
         next(error)
     }
 }
@@ -1252,6 +1771,136 @@ const updatePengalamanSekarang = async (
     }
 }
 
+//PengalamanTA 
+const getPengalamanTa = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const id : ParameterSchema["params"]["id"] = req.params.id
+
+        const response = await profilVendorService.getAllPengalamanTa(id)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response)
+
+    } catch (error) {
+        errorLogger.error(`Testing Error Get Kantor  ${error}`)
+        next(error)
+    }
+}
+
+const storePengalamanTA = async (
+    req:Request,
+    res:Response,
+    next:NextFunction ) : Promise<void> => {
+    try {
+
+        const request : PayloadPengalamanTaSchema["body"] = req.body
+
+        console.log("TES REQUEST : ",request);
+        
+
+        const file = req.files
+
+        // console.log(file);
+        
+        
+        // console.log(file);
+        
+
+        const response = await profilVendorService.storePengalamanTA(request, file as Express.Multer.File[])
+
+        responseSuccess(res, httpCode.created, responseStatus.success, "Berhasil Menambah Pengalaman TA", response)
+
+    } catch (error) {
+        errorLogger.error(`Testing Error Store Pengalaman TA  ${error}`)
+        next(error)
+    }
+}
+
+
+
+const getPdfUploadPengalamanTa = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode_vendor = req.user.kode_vendor
+
+        if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
+
+        const id : ParameterSchema["params"]["id"] = req.params.id
+
+        const response = await profilVendorService.getPdfUploadPengalamanTa(id, kode_vendor)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response.data)
+    } catch (error) {
+        errorLogger.error(`Testing Error Get PDF Tenaga Pendukung CV  ${error}`)
+        next(error)
+    }
+}
+
+//PengalamanTP
+const getPengalamanTp = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const id : ParameterSchema["params"]["id"] = req.params.id
+
+        const response = await profilVendorService.getAllPengalamanTp(id)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response)
+
+    } catch (error) {
+        errorLogger.error(`Testing Error Get Kantor  ${error}`)
+        next(error)
+    }
+}
+
+const storePengalamanTP = async (
+    req:Request,
+    res:Response,
+    next:NextFunction ) : Promise<void> => {
+    try {
+
+        const request : PayloadPengalamanTpSchema["body"] = req.body
+
+        
+
+        const file = req.files
+
+        const response = await profilVendorService.storePengalamanTP(request, file as Express.Multer.File[])
+
+        responseSuccess(res, httpCode.created, responseStatus.success, "Berhasil Menambah Pengalaman TA", response)
+
+    } catch (error) {
+        errorLogger.error(`Testing Error Store Pengalaman TA  ${error}`)
+        next(error)
+    }
+}
+
+
+
+const getPdfUploadPengalamanTp = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode_vendor = req.user.kode_vendor
+
+        if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
+
+        const id : ParameterSchema["params"]["id"] = req.params.id
+
+        const response = await profilVendorService.getPdfUploadPengalamanTa(id, kode_vendor)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response.data)
+    } catch (error) {
+        errorLogger.error(`Testing Error Get PDF Tenaga Pendukung CV  ${error}`)
+        next(error)
+    }
+}
 
 
 export default{
@@ -1321,14 +1970,16 @@ export default{
     getFasilitas,
     storeFasilitas,
     hapusFasilitas,
-    getPdfUploadFasilitas,
+    getPdfUploadFasilitasKepemilikan,
+    getPdfUploadFasilitasFoto,
     updateFasilitas,
 
     //Pengalaman
     getPengalaman,
     storePengalaman,
     hapusPengalamanBadanUsaha,
-    getPdfUploadPengalaman,
+    getPdfUploadPengalamanKontrak,
+    getPdfUploadPengalamanBast,
     updatePengalaman,
 
     //Pengalaman Sekarang
@@ -1337,4 +1988,43 @@ export default{
     hapusPengalamanSekarangBadanUsaha,
     getPdfUploadPengalamanSekarang,
     updatePengalamanSekarang,
+
+    //Kantor
+    getKantor,
+    storeKantor,
+    hapusKantor,
+    getPdfUploadKantor,
+    updateKantor,
+
+    //Tenaga Pendukung
+    getTenagaPendukung,
+    storeTenagaPendukung,
+    hapusTenagaPendukung,
+    updateTenagaPendukung,
+    getPdfUploadTenagaPendukungKtp,
+    getPdfUploadTenagaPendukungCv,
+    getPdfUploadTenagaPendukungIjazah,
+
+    //Tenaga Ahli 
+    getTenagaAhli,
+    storeTenagaAhli,
+    hapusTenagaAhli,
+    updateTenagaAhli,
+    getPdfUploadTenagaAhliKtp,
+    getPdfUploadTenagaAhliCv,
+    getPdfUploadTenagaAhliIjazah,
+
+    //Pengalaman TA
+    storePengalamanTA,
+    getPdfUploadPengalamanTa,
+    getPengalamanTa,
+
+    //Pengalaman TP
+    storePengalamanTP,
+    getPdfUploadPengalamanTp,
+    getPengalamanTp,
+
+
+    
+
 }

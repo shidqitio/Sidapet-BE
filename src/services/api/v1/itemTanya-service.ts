@@ -165,6 +165,7 @@ const storeItemTanya = async (
         if(!itemTanyaTpl) throw new CustomError(httpCode.badRequest, responseStatus.error, "Item Tanya TPL Tidak Tersedia")
    
         
+            
         const storeItem = await ItemTanya.create({
             kode_jenis_vendor : request.kode_jenis_vendor,
             kode_kat_dokumen_vendor : request.kode_kat_dokumen_vendor,

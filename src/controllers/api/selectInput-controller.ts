@@ -16,7 +16,21 @@ const domisiliInput = async (
 
         responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response)
     } catch (error) {
-        errorLogger.error(`Testing Error Get All KatDokumenVendor ${error}`)
+        errorLogger.error(`Testing Error Get Domisil Input ${error}`)
+        next(error)
+    }
+}
+
+const bankInput = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const response = await selectInputService.bankInput()
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response)
+    } catch (error) {
+        errorLogger.error(`Testing Error Get Bank Input ${error}`)
         next(error)
     }
 }
@@ -30,7 +44,7 @@ const kbli = async (
 
         responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response)
     } catch (error) {
-        errorLogger.error(`Testing Error Get All KatDokumenVendor ${error}`)
+        errorLogger.error(`Testing Error KBLI ${error}`)
         next(error)
     }
 }
@@ -45,13 +59,31 @@ const jenisPengadaan = async (
 
         responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response)
     } catch (error) {
-        errorLogger.error(`Testing Error Get All KatDokumenVendor ${error}`)
+        errorLogger.error(`Testing Error JenisPengadaan ${error}`)
+        next(error)
+    }
+}
+
+const jenjangPendidikan = async (
+    req : Request,
+    res : Response, 
+    next : NextFunction
+) : Promise<void> => {
+    try {
+        const response = await selectInputService.jenjangPendidikan()
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response)
+
+    } catch (error) {
+        errorLogger.error(`Testing Error Jenjang Pendidikan ${error}`)
         next(error)
     }
 }
 
 export default {
     domisiliInput,
+    bankInput,
     kbli,
-    jenisPengadaan
+    jenisPengadaan,
+    jenjangPendidikan
 }

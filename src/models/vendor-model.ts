@@ -9,6 +9,7 @@ interface IVendorAttributes {
   kode_jenis_vendor : number;
   nama_perusahaan : string;
   is_tetap : boolean;
+  is_email_verified : boolean;
   udcr : Date | undefined;
   udch : Date | undefined;
 }
@@ -22,6 +23,7 @@ IVendorAttributes,
 "nama_perusahaan" |
 "udch" | 
 "udcr" | 
+"is_email_verified" |
 "is_tetap">
 
 
@@ -33,6 +35,7 @@ class Vendor
     declare kode_jenis_vendor : number;
     declare nama_perusahaan : string;
     declare is_tetap : boolean;
+    declare is_email_verified: boolean;
     declare udcr : Date | undefined;
     declare udch : Date | undefined;
 }
@@ -57,6 +60,10 @@ Vendor.init(
             type : DataTypes.BOOLEAN(), 
             allowNull : true,
             defaultValue : false
+        },
+        is_email_verified : {
+            type : DataTypes.BOOLEAN(),
+            defaultValue : false,
         },
         udcr : {
             type : DataTypes.DATE, 

@@ -12,7 +12,9 @@ interface IDireksiPerusahaanAttributes {
 	hp_direksi : string | undefined | null,
 	no_ktp_direksi : string | undefined | null,
 	path_ktp_direksi : string | undefined | null,
-	status_direksi_perusahaan : string | undefined | null,
+    is_ktp_selamanya : boolean,
+    ktp_berlaku_awal : Date | undefined,
+    ktp_berlaku_akhir : Date | undefined,
 	custom : string | undefined | null,
     encrypt_key : string | undefined | null
 }
@@ -28,7 +30,9 @@ IDireksiPerusahaanAttributes,
 "hp_direksi" |
 "no_ktp_direksi" |
 "path_ktp_direksi" |
-"status_direksi_perusahaan" |
+"is_ktp_selamanya" |
+"ktp_berlaku_akhir"|
+"ktp_berlaku_awal" |
 "custom" |
 "encrypt_key"
 >
@@ -44,7 +48,9 @@ class DireksiPerusahaan
 	declare hp_direksi : string | undefined | null ;
 	declare no_ktp_direksi : string | undefined | null ;
 	declare path_ktp_direksi : string | undefined | null ;
-	declare status_direksi_perusahaan : string | undefined | null ;
+    declare is_ktp_selamanya : boolean;
+    declare ktp_berlaku_awal : Date | undefined;
+    declare ktp_berlaku_akhir : Date | undefined;
 	declare custom : string | undefined | null ;
     declare encrypt_key: string | null | undefined; 
 }
@@ -81,8 +87,16 @@ DireksiPerusahaan.init(
             type : DataTypes.STRING, 
             allowNull : true
         },
-        status_direksi_perusahaan : {
-            type : DataTypes.STRING, 
+        is_ktp_selamanya : {
+            type : DataTypes.BOOLEAN(),
+            defaultValue : true,
+        },
+        ktp_berlaku_awal : {
+            type : DataTypes.DATE(),
+            allowNull : true
+        },
+        ktp_berlaku_akhir : {
+            type : DataTypes.DATE(),
             allowNull : true
         },
         custom : {

@@ -2,111 +2,150 @@ import db from "@config/database";
 import { DataTypes, Optional, Model } from "sequelize";
 import Vendor from "./vendor-model";
 
-
+export enum kondisi {
+    baik = "baik",
+    sedang = "sedang",
+    kurang_baik = "kurang_baik"
+}
 
 interface IFasilitasPerusahaanAttributes {
-	kode_peralatan : number,
-	kode_vendor : number,
-	nm_fasilitas : string | null | undefined,
-	jumlah_fasilitas : string | null | undefined,
-	fasilitas_now : string | null | undefined,
-	merk_fasilitas : string | null | undefined,
-	tahun_fasilitas : string | null | undefined,
-	kondisi_fasilitas : string | null | undefined,
-	lokasi_fasilitas : string | null | undefined,
-	path_fasilitas : string | null | undefined,
-	custom : string | null | undefined,
-    encrypt_key : string | null | undefined
+	kode_fasilitas_usaha : number
+	kode_vendor : number
+	nama : string | undefined | null
+	jumlah : string | undefined | null
+	kondisi : kondisi
+	kode_kepemilikan : number
+	file_kepemilikan : string | undefined | null
+	is_kepemilikan_selamanya : boolean
+	kepemilikan_berlaku_awal : Date | undefined
+	kepemilikan_berlaku_akhir : Date | undefined
+	encrypt_key_kepemilikan : string | undefined | null
+	file_foto : string | undefined | null
+	is_foto_selamanya : boolean
+	foto_berlaku_awal : Date | undefined
+	foto_berlaku_akhir : Date | undefined
+	encrypt_key_foto : string | undefined | null
+	custom : string | undefined | null
 }
 
 export type  FasilitasPerusahaanOutput= Required<IFasilitasPerusahaanAttributes>
 
 export type FasilitasPerusahaanInput = Optional<
-IFasilitasPerusahaanAttributes, 
-"kode_peralatan" | 
-"kode_vendor" | 
-"nm_fasilitas" | 
-"jumlah_fasilitas" | 
-"fasilitas_now" | 
-"merk_fasilitas" | 
-"tahun_fasilitas" | 
-"kondisi_fasilitas" | 
-"lokasi_fasilitas" | 
-"path_fasilitas" | 
-"custom"  |
-"encrypt_key"
+IFasilitasPerusahaanAttributes,
+"kode_fasilitas_usaha" |
+"kode_vendor" |
+"nama" |
+"jumlah" |
+"kondisi" |
+"kode_kepemilikan" |
+"file_kepemilikan" |
+"is_kepemilikan_selamanya" |
+"kepemilikan_berlaku_awal" |
+"kepemilikan_berlaku_akhir" |
+"encrypt_key_kepemilikan" |
+"file_foto" |
+"is_foto_selamanya" |
+"foto_berlaku_awal" |
+"foto_berlaku_akhir" |
+"encrypt_key_foto" |
+"custom" 
 >
 
 class FasilitasPerusahaan 
     extends Model<IFasilitasPerusahaanAttributes, FasilitasPerusahaanInput>
     implements IFasilitasPerusahaanAttributes
 {
-	declare kode_peralatan : number;
-	declare kode_vendor : number;
-	declare nm_fasilitas : string | null | undefined;
-	declare jumlah_fasilitas : string | null | undefined;
-	declare fasilitas_now : string | null | undefined;
-	declare merk_fasilitas : string | null | undefined;
-	declare tahun_fasilitas : string | null | undefined;
-	declare kondisi_fasilitas : string | null | undefined;
-	declare lokasi_fasilitas : string | null | undefined;
-	declare path_fasilitas : string | null | undefined;
-	declare custom : string | null | undefined;
-    declare encrypt_key: string | null | undefined;
+    declare kode_fasilitas_usaha : number
+    declare kode_vendor : number
+    declare nama : string | undefined | null
+    declare jumlah : string | undefined | null
+    declare kondisi : kondisi
+    declare kode_kepemilikan : number
+    declare file_kepemilikan : string | undefined | null
+    declare is_kepemilikan_selamanya : boolean
+    declare kepemilikan_berlaku_awal : Date | undefined
+    declare kepemilikan_berlaku_akhir : Date | undefined
+    declare encrypt_key_kepemilikan : string | undefined | null
+    declare file_foto : string | undefined | null
+    declare is_foto_selamanya : boolean
+    declare foto_berlaku_awal : Date | undefined
+    declare foto_berlaku_akhir : Date | undefined
+    declare encrypt_key_foto : string | undefined | null
+    declare custom : string | undefined | null
 }
 
 FasilitasPerusahaan.init(
     {
-        kode_peralatan : {
-            type : DataTypes.INTEGER,
+        kode_fasilitas_usaha : {
+            type : DataTypes.NUMBER(),
             allowNull : false,
             primaryKey : true,
-            autoIncrement : true
+            autoIncrement:true
         },
         kode_vendor : {
-            type : DataTypes.INTEGER,
-            allowNull : false
-        },
-        nm_fasilitas : {
-            type : DataTypes.STRING,
+            type : DataTypes.STRING(),
             allowNull : true
         },
-        jumlah_fasilitas : {
-            type : DataTypes.STRING,
+        nama : {
+            type : DataTypes.STRING(),
             allowNull : true
         },
-        fasilitas_now : {
-            type : DataTypes.STRING,
+        jumlah : {
+            type : DataTypes.STRING(),
             allowNull : true
         },
-        merk_fasilitas : {
-            type : DataTypes.STRING,
+        kondisi : {
+            type : DataTypes.ENUM("baik","sedang","kurang_baik"),
             allowNull : true
         },
-        tahun_fasilitas : {
-            type : DataTypes.STRING,
+        kode_kepemilikan : {
+            type : DataTypes.STRING(),
             allowNull : true
         },
-        kondisi_fasilitas : {
-            type : DataTypes.STRING,
+        file_kepemilikan : {
+            type : DataTypes.STRING(),
             allowNull : true
         },
-        lokasi_fasilitas : {
-            type : DataTypes.STRING,
+        is_kepemilikan_selamanya : {
+            type : DataTypes.BOOLEAN(),
             allowNull : true
         },
-        path_fasilitas : {
-            type : DataTypes.STRING,
+        kepemilikan_berlaku_awal : {
+            type : DataTypes.DATE(),
+            allowNull : true
+        },
+        kepemilikan_berlaku_akhir : {
+            type : DataTypes.DATE(),
+            allowNull : true
+        },
+        encrypt_key_kepemilikan : {
+            type : DataTypes.STRING(),
+            allowNull : true
+        },
+        file_foto : {
+            type : DataTypes.STRING(),
+            allowNull : true
+        },
+        is_foto_selamanya : {
+            type : DataTypes.BOOLEAN(),
+            allowNull : true
+        },
+        foto_berlaku_awal : {
+            type : DataTypes.DATE(),
+            allowNull : true
+        },
+        foto_berlaku_akhir : {
+            type : DataTypes.DATE(),
+            allowNull : true
+        },
+        encrypt_key_foto : {
+            type : DataTypes.STRING(),
             allowNull : true
         },
         custom : {
-            type : DataTypes.STRING,
+            type : DataTypes.STRING(),
             allowNull : true
         },
-        encrypt_key : {
-            type : DataTypes.STRING,
-            allowNull : true
-        }
     },
     {
         sequelize : db, 

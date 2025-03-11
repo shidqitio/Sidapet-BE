@@ -1,261 +1,312 @@
-[2025-02-20T10:52:31.767] [ERROR] error - Testing Error Get Kategori Error: Data Kategori Tidak Tersedia
-[2025-02-20T10:52:31.767] [ERROR] error - Error: Data Kategori Tidak Tersedia
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:81:31
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:5:58)
+[2025-03-11T10:20:24.947] [ERROR] error - Testing Error Store Pengalaman TA  Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1741663224873.pdf'
+[2025-03-11T10:20:24.948] [ERROR] error - Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1741663224873.pdf'
+    at Object.unlinkSync (node:fs:1808:3)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4845:30
+    at Array.map (<anonymous>)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4845:14
+    at Generator.throw (<anonymous>)
+    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:6:65)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 422,
-  status: 'error'
+  errno: -4058,
+  syscall: 'unlink',
+  code: 'ENOENT',
+  path: 'D:\\Dev SIPPP\\PMO\\public\\sidapet\\temporary\\undefined-1741663224873.pdf'
 }
-[2025-02-20T10:53:49.917] [ERROR] error - Testing Error Get Kategori Error: Data Kategori Tidak Tersedia
-[2025-02-20T10:53:49.918] [ERROR] error - Error: Data Kategori Tidak Tersedia
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:84:23
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:5:58)
+[2025-03-11T10:30:55.648] [ERROR] error - Testing Error Store Pengalaman TA  Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1741663855575.pdf'
+[2025-03-11T10:30:55.649] [ERROR] error - Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1741663855575.pdf'
+    at Object.unlinkSync (node:fs:1808:3)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4845:30
+    at Array.map (<anonymous>)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4845:14
+    at Generator.throw (<anonymous>)
+    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:6:65)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 422,
-  status: 'error'
+  errno: -4058,
+  syscall: 'unlink',
+  code: 'ENOENT',
+  path: 'D:\\Dev SIPPP\\PMO\\public\\sidapet\\temporary\\undefined-1741663855575.pdf'
 }
-[2025-02-20T10:54:46.557] [ERROR] error - Testing Error Get Kategori Error: Data Kategori Tidak Tersedia
-[2025-02-20T10:54:46.558] [ERROR] error - Error: Data Kategori Tidak Tersedia
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:87:23
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 422,
-  status: 'error'
-}
-[2025-02-20T10:56:06.641] [ERROR] error - Testing Error Get Kategori Error: Internal server error.
-[2025-02-20T10:56:06.642] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:91:23
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 500,
-  status: 'error'
-}
-[2025-02-20T10:56:53.185] [ERROR] error - Testing Error Get Kategori Error: Internal server error.
-[2025-02-20T10:56:53.185] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:90:23
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:5:58)
+[2025-03-11T10:40:15.319] [ERROR] error - Testing Error Store Pengalaman TA  Error: Internal server error.
+[2025-03-11T10:40:15.320] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4853:19
+    at Generator.throw (<anonymous>)
+    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:6:65)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
   code: 500,
   status: 'error'
 }
-[2025-02-20T10:57:54.696] [ERROR] error - Testing Error Get Kategori Error: Internal server error.
-[2025-02-20T10:57:54.696] [ERROR] error - Error: Internal server error.
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:90:23
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:5:58)
+[2025-03-11T10:41:11.237] [ERROR] error - Testing Error Store Pengalaman TA  Error: Internal server error.
+[2025-03-11T10:41:11.238] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4853:19
+    at Generator.throw (<anonymous>)
+    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:6:65) {
+  code: 500,
+  status: 'error'
+}
+[2025-03-11T10:42:13.457] [ERROR] error - Testing Error Store Pengalaman TA  Error: Internal server error.
+[2025-03-11T10:42:13.458] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4853:19
+    at Generator.throw (<anonymous>)
+    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:6:65)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
   code: 500,
   status: 'error'
 }
-[2025-02-20T11:00:08.239] [ERROR] error - Testing Error Get Kategori Error: harap isi daftar undangan
-[2025-02-20T11:00:08.242] [ERROR] error - Error: harap isi daftar undangan
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:86:23
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:5:58)
+[2025-03-11T10:43:05.123] [ERROR] error - Testing Error Store Pengalaman TA  Error: Internal server error.
+[2025-03-11T10:43:05.123] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4853:19
+    at Generator.throw (<anonymous>)
+    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:6:65)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 422,
+  code: 500,
   status: 'error'
 }
-[2025-02-20T11:26:13.589] [ERROR] error - Testing Error Get Kategori Error: harap isi daftar undangan
-[2025-02-20T11:26:13.590] [ERROR] error - Error: harap isi daftar undangan
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:87:23
+[2025-03-11T10:44:29.520] [ERROR] error - Testing Error Store Pengalaman TA  Error: Data Tenaga Pendukung Tidak Ditemukan
+[2025-03-11T10:44:29.521] [ERROR] error - Error: Data Tenaga Pendukung Tidak Ditemukan
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4849:19
     at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:28:58)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 422,
+  code: 404,
   status: 'error'
 }
-[2025-02-20T11:28:56.195] [ERROR] error - Testing Error Get Kategori Error: harap isi daftar undangan
-[2025-02-20T11:28:56.198] [ERROR] error - Error: harap isi daftar undangan
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:87:23
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:28:58)
+[2025-03-11T10:47:58.571] [ERROR] error - Testing Error Get Direksi Vendor  Error: Internal server error.
+[2025-03-11T10:47:58.572] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4278:19
+    at Generator.throw (<anonymous>)
+    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:6:65)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 422,
+  code: 500,
   status: 'error'
 }
-[2025-02-18T16:45:54.842] [ERROR] error - Error: getaddrinfo ENOTFOUND dinovalley.ut.ac.id
-    at C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\src\middleware\authorization.ts:117:13
+[2025-03-11T10:49:20.950] [ERROR] error - Testing Error Get PDF Tenaga Pendukung KTP  Error: Data Tidak Tersedia / Data Bukan Format PDF
+[2025-03-11T10:49:20.950] [ERROR] error - Error: Data Tidak Tersedia / Data Bukan Format PDF
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4599:19
     at Generator.next (<anonymous>)
-    at fulfilled (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\src\middleware\authorization.ts:5:58)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 401,
+  code: 404,
   status: 'error'
 }
-[2025-02-18T16:46:25.702] [ERROR] error - Error: getaddrinfo ENOTFOUND dinovalley.ut.ac.id
-    at C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\src\middleware\authorization.ts:117:13
+[2025-03-11T10:49:29.339] [ERROR] error - Testing Error Get PDF Tenaga Pendukung CV  Error: Data Tidak Tersedia / Data Bukan Format PDF
+[2025-03-11T10:49:29.339] [ERROR] error - Error: Data Tidak Tersedia / Data Bukan Format PDF
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4632:19
     at Generator.next (<anonymous>)
-    at fulfilled (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\src\middleware\authorization.ts:5:58)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 401,
+  code: 404,
   status: 'error'
 }
-[2025-02-18T16:46:47.822] [ERROR] error - Error [SequelizeConnectionError]: database � db_sidapet � tidak ada
-    at Client._connectionCallback (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\sequelize\src\dialects\postgres\connection-manager.js:191:24)
-    at Client._handleErrorWhileConnecting (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg\lib\client.js:326:19)
-    at Client._handleErrorMessage (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg\lib\client.js:346:19)
-    at Connection.emit (node:events:519:28)
-    at Connection.emit (node:domain:488:12)
-    at C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg\lib\connection.js:116:12
-    at Parser.parse (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\parser.ts:103:9)
-    at Socket.<anonymous> (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\index.ts:7:48)
-    at Socket.emit (node:events:519:28)
-    at Socket.emit (node:domain:488:12) {
-  parent: error: database � db_sidapet � tidak ada
-      at Parser.parseErrorMessage (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
-      at Parser.handlePacket (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
-      at Parser.parse (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
-      at Socket.<anonymous> (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\index.ts:7:48)
-      at Socket.emit (node:events:519:28)
-      at Socket.emit (node:domain:488:12)
-      at addChunk (node:internal/streams/readable:559:12)
-      at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
-      at Socket.Readable.push (node:internal/streams/readable:390:5)
-      at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
-    length: 93,
-    severity: 'FATAL',
-    code: '3D000',
-    detail: undefined,
-    hint: undefined,
-    position: undefined,
-    internalPosition: undefined,
-    internalQuery: undefined,
-    where: undefined,
-    schema: undefined,
-    table: undefined,
-    column: undefined,
-    dataType: undefined,
-    constraint: undefined,
-    file: 'postinit.c',
-    line: '1021',
-    routine: 'InitPostgres'
-  },
-  original: error: database � db_sidapet � tidak ada
-      at Parser.parseErrorMessage (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
-      at Parser.handlePacket (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
-      at Parser.parse (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
-      at Socket.<anonymous> (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\index.ts:7:48)
-      at Socket.emit (node:events:519:28)
-      at Socket.emit (node:domain:488:12)
-      at addChunk (node:internal/streams/readable:559:12)
-      at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
-      at Socket.Readable.push (node:internal/streams/readable:390:5)
-      at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
-    length: 93,
-    severity: 'FATAL',
-    code: '3D000',
-    detail: undefined,
-    hint: undefined,
-    position: undefined,
-    internalPosition: undefined,
-    internalQuery: undefined,
-    where: undefined,
-    schema: undefined,
-    table: undefined,
-    column: undefined,
-    dataType: undefined,
-    constraint: undefined,
-    file: 'postinit.c',
-    line: '1021',
-    routine: 'InitPostgres'
-  }
-}
-[2025-02-18T16:46:54.246] [ERROR] error - Error [SequelizeConnectionError]: database � db_sidapet � tidak ada
-    at Client._connectionCallback (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\sequelize\src\dialects\postgres\connection-manager.js:191:24)
-    at Client._handleErrorWhileConnecting (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg\lib\client.js:326:19)
-    at Client._handleErrorMessage (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg\lib\client.js:346:19)
-    at Connection.emit (node:events:519:28)
-    at Connection.emit (node:domain:488:12)
-    at C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg\lib\connection.js:116:12
-    at Parser.parse (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\parser.ts:103:9)
-    at Socket.<anonymous> (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\index.ts:7:48)
-    at Socket.emit (node:events:519:28)
-    at Socket.emit (node:domain:488:12) {
-  parent: error: database � db_sidapet � tidak ada
-      at Parser.parseErrorMessage (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
-      at Parser.handlePacket (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
-      at Parser.parse (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
-      at Socket.<anonymous> (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\index.ts:7:48)
-      at Socket.emit (node:events:519:28)
-      at Socket.emit (node:domain:488:12)
-      at addChunk (node:internal/streams/readable:559:12)
-      at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
-      at Socket.Readable.push (node:internal/streams/readable:390:5)
-      at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
-    length: 93,
-    severity: 'FATAL',
-    code: '3D000',
-    detail: undefined,
-    hint: undefined,
-    position: undefined,
-    internalPosition: undefined,
-    internalQuery: undefined,
-    where: undefined,
-    schema: undefined,
-    table: undefined,
-    column: undefined,
-    dataType: undefined,
-    constraint: undefined,
-    file: 'postinit.c',
-    line: '1021',
-    routine: 'InitPostgres'
-  },
-  original: error: database � db_sidapet � tidak ada
-      at Parser.parseErrorMessage (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
-      at Parser.handlePacket (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
-      at Parser.parse (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
-      at Socket.<anonymous> (C:\Users\irgyr\Documents\kerjaan\promise\rebuild-si-dapet-be\node_modules\pg-protocol\src\index.ts:7:48)
-      at Socket.emit (node:events:519:28)
-      at Socket.emit (node:domain:488:12)
-      at addChunk (node:internal/streams/readable:559:12)
-      at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
-      at Socket.Readable.push (node:internal/streams/readable:390:5)
-      at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
-    length: 93,
-    severity: 'FATAL',
-    code: '3D000',
-    detail: undefined,
-    hint: undefined,
-    position: undefined,
-    internalPosition: undefined,
-    internalQuery: undefined,
-    where: undefined,
-    schema: undefined,
-    table: undefined,
-    column: undefined,
-    dataType: undefined,
-    constraint: undefined,
-    file: 'postinit.c',
-    line: '1021',
-    routine: 'InitPostgres'
-  }
-}
-[2025-02-20T12:36:23.308] [ERROR] error - Error: Token Not Match
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:108:13
+[2025-03-11T10:49:37.474] [ERROR] error - Testing Error Get PDF Tenaga Pendukung Ijazah  Error: Data Tidak Tersedia / Data Bukan Format PDF
+[2025-03-11T10:49:37.475] [ERROR] error - Error: Data Tidak Tersedia / Data Bukan Format PDF
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4665:19
     at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:5:58)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 401,
+  code: 404,
   status: 'error'
 }
-[2025-02-20T12:36:30.572] [ERROR] error - Testing Error Get Kategori Error: Transaction cannot be rolled back because it has been finished with state: rollback
-[2025-02-20T12:36:30.572] [ERROR] error - Error: Transaction cannot be rolled back because it has been finished with state: rollback
-    at Transaction.rollback (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\transaction.js:82:13)
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:110:17
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:28:58)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-[2025-02-20T12:37:05.621] [ERROR] error - Testing Error Get Kategori Error: Email Tidak Valid
-[2025-02-20T12:37:05.622] [ERROR] error - Error: Email Tidak Valid
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:111:23
-    at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:28:58)
+[2025-03-11T10:51:11.263] [ERROR] error - Testing Error Store Tenaga Pendukung  Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1741665068126.pdf'
+[2025-03-11T10:51:11.264] [ERROR] error - Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1741665068126.pdf'
+    at Object.unlinkSync (node:fs:1808:3)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4371:12
+    at Generator.throw (<anonymous>)
+    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:6:65)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 422,
+  errno: -4058,
+  syscall: 'unlink',
+  code: 'ENOENT',
+  path: 'D:\\Dev SIPPP\\PMO\\public\\sidapet\\temporary\\undefined-1741665068126.pdf'
+}
+[2025-03-11T10:51:35.076] [ERROR] error - Testing Error Store Tenaga Pendukung  Error: Internal server error.
+[2025-03-11T10:51:35.076] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4377:19
+    at Generator.throw (<anonymous>)
+    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:6:65)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2025-03-11T10:53:24.414] [ERROR] error - Testing Error Store Tenaga Pendukung  Error: Internal server error.
+[2025-03-11T10:53:24.414] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4377:19
+    at Generator.throw (<anonymous>)
+    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:6:65)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2025-03-11T10:58:39.381] [ERROR] error - Testing Error Store Tenaga Pendukung  Error: Internal server error.
+[2025-03-11T10:58:39.383] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4377:19
+    at Generator.throw (<anonymous>)
+    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:6:65)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2025-03-11T11:01:51.394] [ERROR] error - Testing Error Store Tenaga Pendukung  Error: Internal server error.
+[2025-03-11T11:01:51.397] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4377:19
+    at Generator.throw (<anonymous>)
+    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:6:65)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2025-03-11T11:02:41.108] [ERROR] error - Testing Error Store Tenaga Pendukung  Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1741665759083.pdf'
+[2025-03-11T11:02:41.110] [ERROR] error - Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1741665759083.pdf'
+    at Object.unlinkSync (node:fs:1808:3)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4371:12
+    at Generator.throw (<anonymous>)
+    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:6:65)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  errno: -4058,
+  syscall: 'unlink',
+  code: 'ENOENT',
+  path: 'D:\\Dev SIPPP\\PMO\\public\\sidapet\\temporary\\undefined-1741665759083.pdf'
+}
+[2025-03-11T11:02:50.014] [ERROR] error - Testing Error Store Tenaga Pendukung  Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1741665768084.pdf'
+[2025-03-11T11:02:50.017] [ERROR] error - Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1741665768084.pdf'
+    at Object.unlinkSync (node:fs:1808:3)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4371:12
+    at Generator.throw (<anonymous>)
+    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:6:65)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  errno: -4058,
+  syscall: 'unlink',
+  code: 'ENOENT',
+  path: 'D:\\Dev SIPPP\\PMO\\public\\sidapet\\temporary\\undefined-1741665768084.pdf'
+}
+[2025-03-11T11:04:29.832] [ERROR] error - Testing Error Store Tenaga Pendukung  Error: Internal server error.
+[2025-03-11T11:04:29.834] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4384:19
+    at Generator.throw (<anonymous>)
+    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:6:65)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2025-03-11T11:05:30.600] [ERROR] error - Testing Error Store Tenaga Pendukung  Error: Internal server error.
+[2025-03-11T11:05:30.602] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4384:19
+    at Generator.throw (<anonymous>)
+    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:6:65)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2025-03-11T11:07:07.095] [ERROR] error - Testing Error Store Tenaga Pendukung  Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1741666025252.pdf'
+[2025-03-11T11:07:07.096] [ERROR] error - Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1741666025252.pdf'
+    at Object.unlinkSync (node:fs:1808:3)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4371:16
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  errno: -4058,
+  syscall: 'unlink',
+  code: 'ENOENT',
+  path: 'D:\\Dev SIPPP\\PMO\\public\\sidapet\\temporary\\undefined-1741666025252.pdf'
+}
+[2025-03-11T11:07:45.385] [ERROR] error - Testing Error Store Tenaga Pendukung  Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1741666063515.pdf'
+[2025-03-11T11:07:45.385] [ERROR] error - Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1741666063515.pdf'
+    at Object.unlinkSync (node:fs:1808:3)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4371:16
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  errno: -4058,
+  syscall: 'unlink',
+  code: 'ENOENT',
+  path: 'D:\\Dev SIPPP\\PMO\\public\\sidapet\\temporary\\undefined-1741666063515.pdf'
+}
+[2025-03-11T11:08:26.480] [ERROR] error - Testing Error Store Tenaga Pendukung  Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1741666104332.pdf'
+[2025-03-11T11:08:26.482] [ERROR] error - Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1741666104332.pdf'
+    at Object.unlinkSync (node:fs:1808:3)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4372:16
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  errno: -4058,
+  syscall: 'unlink',
+  code: 'ENOENT',
+  path: 'D:\\Dev SIPPP\\PMO\\public\\sidapet\\temporary\\undefined-1741666104332.pdf'
+}
+[2025-03-11T11:10:51.043] [ERROR] error - Testing Error Store Pengalaman TA  Error: Data Tenaga Pendukung Tidak Ditemukan
+[2025-03-11T11:10:51.044] [ERROR] error - Error: Data Tenaga Pendukung Tidak Ditemukan
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4857:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'error'
+}
+[2025-03-11T11:10:55.345] [ERROR] error - Testing Error Store Pengalaman TA  Error: Data Tenaga Pendukung Tidak Ditemukan
+[2025-03-11T11:10:55.345] [ERROR] error - Error: Data Tenaga Pendukung Tidak Ditemukan
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4857:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'error'
+}
+[2025-03-11T11:12:03.490] [ERROR] error - Testing Error Store Pengalaman TA  Error: Upload Gagal
+[2025-03-11T11:12:03.492] [ERROR] error - Error: Upload Gagal
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4856:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 400,
+  status: 'error'
+}
+[2025-03-11T11:16:33.097] [ERROR] error - Testing Error Store Pengalaman TA  Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1741666590686.pdf'
+[2025-03-11T11:16:33.098] [ERROR] error - Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1741666590686.pdf'
+    at Object.unlinkSync (node:fs:1808:3)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4860:20
+    at Array.map (<anonymous>)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4859:18
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  errno: -4058,
+  syscall: 'unlink',
+  code: 'ENOENT',
+  path: 'D:\\Dev SIPPP\\PMO\\public\\sidapet\\temporary\\undefined-1741666590686.pdf'
+}
+[2025-03-11T11:17:58.625] [ERROR] error - Testing Error Store Pengalaman TA  Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1741666676649.pdf'
+[2025-03-11T11:17:58.626] [ERROR] error - Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1741666676649.pdf'
+    at Object.unlinkSync (node:fs:1808:3)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4858:35
+    at Array.map (<anonymous>)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4857:18
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  errno: -4058,
+  syscall: 'unlink',
+  code: 'ENOENT',
+  path: 'D:\\Dev SIPPP\\PMO\\public\\sidapet\\temporary\\undefined-1741666676649.pdf'
+}
+[2025-03-11T11:19:43.439] [ERROR] error - Testing Error Store Pengalaman TA  Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1741666781400.pdf'
+[2025-03-11T11:19:43.440] [ERROR] error - Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1741666781400.pdf'
+    at Object.unlinkSync (node:fs:1808:3)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4859:35
+    at Array.map (<anonymous>)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4858:18
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  errno: -4058,
+  syscall: 'unlink',
+  code: 'ENOENT',
+  path: 'D:\\Dev SIPPP\\PMO\\public\\sidapet\\temporary\\undefined-1741666781400.pdf'
+}
+[2025-03-11T11:35:50.384] [ERROR] error - Testing Error Get PDF Tenaga Pendukung CV  Error: Data Tidak Tersedia / Data Bukan Format PDF
+[2025-03-11T11:35:50.386] [ERROR] error - Error: Data Tidak Tersedia / Data Bukan Format PDF
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4812:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
   status: 'error'
 }

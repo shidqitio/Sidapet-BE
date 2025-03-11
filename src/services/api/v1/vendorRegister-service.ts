@@ -157,9 +157,9 @@ const registerVendor = async (request:PayloadRegisterSchema["body"], file : Expr
         
         const {valid, reason, validators} = await validate(request.email)
 
-        console.log("TES VALID : ", valid)
-        console.log("REASON :" , reason)
-        console.log("VALIDATOR : ", validators)
+        // console.log("TES VALID : ", valid)
+        // console.log("REASON :" , reason)
+        // console.log("VALIDATOR : ", validators)
         
         if(valid === false ) {
         await t.rollback()
@@ -202,6 +202,8 @@ const registerVendor = async (request:PayloadRegisterSchema["body"], file : Expr
             email : request.email,
             password : pw,
             nomor_handphone : request.nomor_handphone,
+            nama_narahubung : request.nama_narahubung,
+            nomor_telp : request.nomor_telp,
             status_register : StatusRegister.proses,
             alasan_ditolak : request.alasan_ditolak,
             swafoto : fileImages
@@ -271,7 +273,7 @@ const registerVendor = async (request:PayloadRegisterSchema["body"], file : Expr
         return createVendor
         
     } catch (error) {
-
+        debugLogger.debug(error)
         if(error instanceof CustomError) {
             throw new CustomError(error.code,error.status, error.message)
         } 
@@ -408,7 +410,6 @@ const updateStatusVendor = async (
 
         if(!exRegisterVendor) throw new CustomError(httpCode.notFound, responseStatus.success, "Vendor Tidak Tersedia")
 
-        console.log(uch)
 
         const req_input : RegisterVendorHistoryInput = {
                 kode_register : exRegisterVendor.kode_register,
@@ -418,6 +419,8 @@ const updateStatusVendor = async (
                 swafoto : exRegisterVendor.swafoto,
                 password : exRegisterVendor.password,
                 nomor_handphone : exRegisterVendor.nomor_handphone,
+                nama_narahubung : exRegisterVendor.nama_narahubung,
+                nomor_telp : exRegisterVendor.nomor_telp,
                 status_register : status_register,
                 alasan_ditolak : alasan,
                 user_verif : uch
@@ -464,7 +467,8 @@ const updateStatusVendor = async (
         const createVendor : Vendor = await Vendor.create({
             kode_jenis_vendor : exRegisterVendor.kode_jenis_vendor,
             nama_perusahaan : exRegisterVendor.nama_perusahaan,
-            is_tetap : false
+            is_tetap : false,
+            is_email_verified : false
         },{transaction : t})
 
         if(!createVendor) {
@@ -495,7 +499,26 @@ const updateStatusVendor = async (
 
         let cipherText = encryptWithKey(idString, getConfig("SECRET_KEY"))
 
-        let kirimEmail = template.templateHtmlEmailVerif(`https://dinovalley.ut.ac.id/verifikasi-akun?id=${cipherText}`)
+        let tampil
+
+        if(exRegisterVendor.kode_jenis_vendor === 1)  tampil = "Badan Usaha"
+
+        else {
+            tampil = "Perorangan"
+        }
+
+        let data_sendEmail = {
+            nama_perusahaan : exRegisterVendor.nama_perusahaan,
+            email : exRegisterVendor.email,
+            no_wa : exRegisterVendor.nomor_handphone,
+            jenis_penyedia : tampil,
+            base_url : `${getConfig("SIDAPET_BASE_URL")}/verifikasi-akun?id=${cipherText}`
+        }
+
+        let kirimEmail = template.templateHtmlEmailVerif(data_sendEmail)
+
+        
+        
         
         //  `Registrasi Akun Anda Berhasil Silahkan klink link berikut : https://dinovalley.ut.ac.id/verifikasi-akun?id=${exRegisterVendor.kode_register}`
 
@@ -529,13 +552,11 @@ const updateVerifEmail = async (kode_register:string) : Promise<any> => {
         const exEmail = await RegisterVendor.findOne({
             where : {
                 kode_register : parseInt(kode),
-                status_email : false
             }
         })
 
         if(!exEmail) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Email Tidak Ditemukan")
 
-        exEmail.status_email = true
 
          const updateResponse = await exEmail.save()
 
@@ -565,6 +586,7 @@ const updateVerifEmail = async (kode_register:string) : Promise<any> => {
 //Register External to USMAN
 const insertExternaltoUsman = async (
     id:ParameterSchema["params"]["id"]) : Promise<VendorOutput> => {
+    const t = await db.transaction()
     try {
 
         const kode = decryptWithKey(id, getConfig("SECRET_KEY"))
@@ -588,7 +610,8 @@ const insertExternaltoUsman = async (
                     attributes : []
                 }
             ],
-            raw : true
+            raw : true,
+            transaction : t
         })
 
         if(!exVendor){
@@ -623,13 +646,29 @@ const insertExternaltoUsman = async (
             statusPengguna : statusPengguna
         })
 
+        
         if(errorRegisterExternal) {
             throw new CustomError(httpCode.serviceUnavailable,"error", errorRegisterExternal)
         }
 
+        const updateVerifEmail = await Vendor.update({
+            is_email_verified : true
+        }, {
+            where : {
+                kode_vendor : exVendor.kode_vendor
+            },
+            transaction : t
+        })
+
+        if(updateVerifEmail[0] === 0) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Terjadi Kesalahan Pada Update Verifikasi Email")
+
+        await t.commit()
+
         return regisExternal
 
     } catch (error) {
+        await t.rollback()
+        debugLogger.debug(error)
         if(error instanceof CustomError) {
             throw new CustomError(error.code, error.status,error.message)
         } 

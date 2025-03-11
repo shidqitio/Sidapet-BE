@@ -13,6 +13,7 @@ interface IKatDokumenVendor {
 	is_has_sub             : boolean;
 	main_kat               : number;
 	nama_kategori          : string;
+    show_on_syarat_pdf : boolean
 }
 
 export type KatDokumenVendorOutput = Required<IKatDokumenVendor>
@@ -25,7 +26,8 @@ IKatDokumenVendor,
 "kode_jenis_vendor"|
 "main_kat"|
 "nama_kategori"|
-"urutan"
+"urutan" | 
+"show_on_syarat_pdf"
 >
 
 class KatDokumenVendor 
@@ -39,6 +41,7 @@ class KatDokumenVendor
         declare is_has_sub             : boolean;
         declare main_kat               : number;
         declare nama_kategori          : string;
+        declare show_on_syarat_pdf     : boolean;
     }
 
 KatDokumenVendor.init(
@@ -73,6 +76,10 @@ KatDokumenVendor.init(
             type : DataTypes.INTEGER,
             allowNull : true,  
         },
+        show_on_syarat_pdf : {
+            type : DataTypes.BOOLEAN(),
+            defaultValue : false
+        }
     },
     {
         sequelize : db, 

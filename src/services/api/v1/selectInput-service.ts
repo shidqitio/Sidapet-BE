@@ -9,6 +9,8 @@ import {setCache, getCache, delCache} from "@cache/cache"
 import Domisili from "@models/domisili-model";
 import Kbli from "@models/kbli-model";
 import JenisPengadaan from "@models/jenisPengadaan-model";
+import Bank from "@models/bank-model";
+import JenjangPendidikan from "@models/jenjangPendidikan-model";
 
 
 const domisiliInput = async () : Promise<any>=> {
@@ -96,8 +98,70 @@ const jenisPengadaan = async () : Promise<JenisPengadaan[]> => {
     }
 }
 
+const bankInput = async () : Promise<any>=> {
+    try {
+        const cacheKey = 'all_bank'
+        const cachedBank = getCache(cacheKey)
+
+        if(cachedBank) {
+            return cachedBank
+        }
+
+        const bank = await Bank.findAll({
+            raw : true
+        })
+
+        const cek = bank.map(item => {
+            return {
+                "label" : item.nama_bank,
+                "value" : item.sandi_bank
+            }
+        })
+
+        setCache(cacheKey, cek)
+
+        return cek
+        
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const jenjangPendidikan = async () : Promise<JenjangPendidikan[]> => {
+    try {
+        const cacheKey = "jenjangPendidikan_all"
+        const cachedJenjangPendidikan = getCache(cacheKey)
+
+        if(cachedJenjangPendidikan) return cachedJenjangPendidikan
+
+        const getJenjangPendidikan = await JenjangPendidikan.findAll({
+            order : [["kode_jenjang_pendidikan","ASC"]]
+        })
+
+        setCache(cacheKey, getJenjangPendidikan)
+
+        return getJenjangPendidikan
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
 export default {
     domisiliInput,
+    bankInput,
     kbli,
-    jenisPengadaan
+    jenisPengadaan,
+    jenjangPendidikan
 }

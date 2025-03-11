@@ -60,7 +60,7 @@ const getListKategori = async (
     }
 }
 
-const storeTrxKategori = async (request:PayloadTrxKategoriSchema["body"]) : Promise<any> => {
+const storeTrxKategori = async (request:PayloadTrxKategoriSchema["body"], user_email : string) : Promise<any> => {
     const t = await db.transaction()
     try {
         const exKategori = await Kategori.findOne({
@@ -85,7 +85,8 @@ const storeTrxKategori = async (request:PayloadTrxKategoriSchema["body"]) : Prom
             kode_kategori : request.kode_kategori,
             keperluan : request.keperluan,
             kode_jenis_pengadaan : request.kode_jenis_pengadaan,
-            kode_unit_pbj : request.kode_unit_pbj
+            kode_unit_pbj : request.kode_unit_pbj,
+            ucr : user_email
         },{transaction : t})
 
         if(!trxKategoriStore) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Terjadi Kesalahan Store TrxKategori")

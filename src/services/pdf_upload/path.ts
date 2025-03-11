@@ -18,6 +18,8 @@ export default pdfUpload
 
 export const PDF_UPLOAD_SERVICE_PATH = {
     UPLOAD : "/uploads/pdf",
+    UPLOADFIELD : "/uploads/pdf-many",
+    UPLOADPERSONALIA : "/uploads/pdf-many-personalia",
     SHOW : "/shows-doc/pdf",
     DELETE_UPLOAD : "/remove-file"
 }

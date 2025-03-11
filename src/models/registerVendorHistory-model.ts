@@ -25,6 +25,8 @@ interface IRegisterVendorHistoryAttributes {
     distance_percentage: number |  null | undefined;
     distance_point     : number |  null | undefined;
     keypass            : any;
+    nama_narahubung    : string | null | undefined ;
+    nomor_telp         : string | null | undefined; //Nomor Kantor
     udcr               : Date | undefined;
     udch               : Date | undefined;
 }
@@ -45,9 +47,11 @@ IRegisterVendorHistoryAttributes,
 | "udch" 
 | "udcr"
 | "swafoto"
-| "message"
+| "message" 
+| "nama_narahubung"
+| "nomor_telp"
 | "udcr"
-| "udch"
+| "udch" 
 >
 
 class RegisterVendorHistory
@@ -70,6 +74,8 @@ class RegisterVendorHistory
     declare distance_percentage: number |  null | undefined;
     declare distance_point     : number |  null | undefined;
     declare keypass            : any;
+    declare nama_narahubung: string | null | undefined;
+    declare nomor_telp: string | null | undefined;
     declare udcr               : Date | undefined;
     declare udch               : Date | undefined;
 }
@@ -139,6 +145,14 @@ RegisterVendorHistory.init(
             allowNull : true
         },
         keypass : {
+            type : DataTypes.STRING,
+            allowNull : true
+        },
+        nama_narahubung : {
+            type : DataTypes.STRING, 
+            allowNull : true
+        },
+        nomor_telp : {
             type : DataTypes.STRING,
             allowNull : true
         },

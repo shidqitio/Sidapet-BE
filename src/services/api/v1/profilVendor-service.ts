@@ -3,7 +3,7 @@ import CustomError from "@middleware/error-handler";
 import logger, { errorLogger, debugLogger } from "@config/logger";
 import { httpCode, responseStatus } from "@utils/prefix";
 import db from "@config/database";
-import {uploadPdf, deleteFile} from "@services/pdf_upload"
+import {uploadPdf, deleteFile, uploadPdfMany, uploadPdfManyPersonalia, uploadPdfArray} from "@services/pdf_upload"
 import { showFile } from "@services/pdf_show";
 
 //Import Model
@@ -18,7 +18,7 @@ import PengalamanPerorangan from "@models/pengalamanPerorangan-model";
 import RegisterVendor from "@models/registerVendor-model";
 import KomisarisPerusahaan from "@models/komisarisPerusahaan-model";
 import DireksiPerusahaan from "@models/direksiPerusahaan-model";
-import IjinUsahaPerusahaan from "@models/ijinUsahaPerusahaan-model";
+import IjinUsahaPerusahaan, { jenis_izin_usaha } from "@models/ijinUsahaPerusahaan-model";
 import SahamPerusahaan from "@models/sahamPerusahaan-model";
 import PersonaliaPerusahaan from "@models/personalianPerusahaan-model";
 import FasilitasPerusahaan from "@models/fasilitasPerusahaan-model";
@@ -49,7 +49,15 @@ import {
     PayloadPengalamanSchema,
     PayloadPengalamanUpdateSchema,
     PayloadPengalamanSekarangSchema,
-    PayloadPengalamanSekarangUpdateSchema
+    PayloadPengalamanSekarangUpdateSchema,
+    PayloadKantorSchema, 
+    PayloadKantorUpdateSchema,
+    PayloadTenagaAhliSchema,
+    PayloadTenagaAhliUpdateSchema,
+    PayloadTenagaPendukungSchema,
+    PayloadTenagaPendukungUpdateSchema,
+    PayloadPengalamanTaSchema,
+    PayloadPengalamanTpSchema,
 } from "@schema/api/profilVendor-schema"
 
 import { QueryTypes, Sequelize } from "sequelize";
@@ -61,6 +69,13 @@ import FormData from "form-data"
 import fs from "fs"
 
 import {setCache, getCache, delCache,flushAllCache} from "@cache/cache"
+import path from "path";
+import moment from "moment";
+import Kantor from "@models/kantor-model";
+import TenagaAhli from "@models/tenagaAhli-model";
+import TenagaPendukung from "@models/tenagaPendukung-model";
+import PengalamanTa from "@models/pengalamanTa-model";
+import PengalamanTp from "@models/pengalamanTp-model";
 
 
 //GET MENU 
@@ -88,6 +103,7 @@ const getMenuAll = async (id : ParameterSchema["params"]["id"]) : Promise <KatDo
 
         return getMenu
     } catch (error) {
+        debugLogger.debug(error)
         if(error instanceof CustomError) {
             throw new CustomError(error.code,error.status, error.message)
         } 
@@ -689,7 +705,7 @@ const listPertanyaanPerorangan = async (
                     as : "KatItemTanya", 
                     include : [
                         {
-                            attributes : ["kode_item", "kode_kat_item_tanya", "urutan", "nama_item", "tipe_input", "keterangan", "nama_unik", "jenis_item", "is_required"],
+                            attributes : ["kode_item", "kode_kat_item_tanya", "urutan", "nama_item", "tipe_input", "keterangan", "nama_unik", "jenis_item", "is_required", "metadata"],
                             model : ItemTanya, 
                             as : "ItemTanya",
                             where : {
@@ -1335,7 +1351,7 @@ const listPertanyaanBadanUsaha = async (
                     as : "KatItemTanya", 
                     include : [
                         {
-                            attributes : ["kode_item", "kode_kat_item_tanya", "urutan", "nama_item", "tipe_input", "keterangan", "nama_unik", "jenis_item", "is_required"],
+                            attributes : ["kode_item", "kode_kat_item_tanya", "urutan", "nama_item", "tipe_input", "keterangan", "nama_unik", "jenis_item", "is_required","metadata"],
                             model : ItemTanya, 
                             as : "ItemTanya",
                             where : {
@@ -1412,6 +1428,9 @@ const storeUploadKomisaris = async (request:StoreUploadKomisarisSchema["body"], 
             jbtn_komisaris : request.jbtn_komisaris,
             hp_komisaris : request.hp_komisaris,
             no_ktp_komisaris : request.no_ktp_komisaris,
+            is_ktp_selamanya : request.is_ktp_selamanya === "true" ? true : false,
+            ktp_berlaku_awal : request.ktp_berlaku_awal ? moment.utc(request.ktp_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+            ktp_berlaku_akhir : request.ktp_berlaku_akhir ? moment.utc(request.ktp_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
             path_ktp_komisaris : upload[0].file_name,
             encrypt_key : upload[0].keypass
         })
@@ -1422,6 +1441,9 @@ const storeUploadKomisaris = async (request:StoreUploadKomisarisSchema["body"], 
             jbtn_komisaris : request.jbtn_komisaris,
             hp_komisaris : request.hp_komisaris,
             no_ktp_komisaris : request.no_ktp_komisaris,
+            is_ktp_selamanya : request.is_ktp_selamanya,
+            ktp_berlaku_awal : request.ktp_berlaku_awal,
+            ktp_berlaku_akhir : request.ktp_berlaku_akhir,
             path_ktp_komisaris : upload[0].file_name,
         }
 
@@ -1539,6 +1561,9 @@ const updateKomisaris = async (id:UpdateKomisarisSchema["params"]["id"],
             exKomisaris.jbtn_komisaris   = request.jbtn_komisaris
             exKomisaris.hp_komisaris     = request.hp_komisaris
             exKomisaris.no_ktp_komisaris = request.no_ktp_komisaris
+            exKomisaris.is_ktp_selamanya = request.is_ktp_selamanya === "true" ? true : false
+            exKomisaris.ktp_berlaku_awal = request.ktp_berlaku_awal ? moment.utc(request.ktp_berlaku_awal, "YYYY-MM-DD").toDate() : undefined
+            exKomisaris.ktp_berlaku_akhir = request.ktp_berlaku_akhir ? moment.utc(request.ktp_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined
 
            await exKomisaris.save()
            komisarisUpdate = {
@@ -1546,6 +1571,10 @@ const updateKomisaris = async (id:UpdateKomisarisSchema["params"]["id"],
             jbtn_komisaris  : request.jbtn_komisaris,
             hp_komisaris    : request.hp_komisaris,
             no_ktp_komisaris: request.no_ktp_komisaris,
+            is_ktp_selamanya : request.is_ktp_selamanya,
+            ktp_berlaku_awal : request.ktp_berlaku_awal,
+            ktp_berlaku_akhir : request.ktp_berlaku_akhir,
+            
         }
         }
 
@@ -1569,6 +1598,9 @@ const updateKomisaris = async (id:UpdateKomisarisSchema["params"]["id"],
                 jbtn_komisaris    : request.jbtn_komisaris,
                 hp_komisaris      : request.hp_komisaris,
                 no_ktp_komisaris  : request.no_ktp_komisaris,
+                is_ktp_selamanya  : request.is_ktp_selamanya === "true" ? true                                              : false,
+                ktp_berlaku_awal  : request.ktp_berlaku_awal ? moment.utc(request.ktp_berlaku_awal, "YYYY-MM-DD").toDate()  : undefined,
+                ktp_berlaku_akhir : request.ktp_berlaku_akhir ? moment.utc(request.ktp_berlaku_akhir, "YYYY-MM-DD").toDate(): undefined,
                 path_ktp_komisaris: upload[0].file_name,
                 encrypt_key       : upload[0].keypass
             },{
@@ -1588,6 +1620,9 @@ const updateKomisaris = async (id:UpdateKomisarisSchema["params"]["id"],
                 hp_komisaris      : komisarisUpd[1][0].hp_komisaris,
                 no_ktp_komisaris  : komisarisUpd[1][0].no_ktp_komisaris,
                 path_ktp_komisaris: komisarisUpd[1][0].path_ktp_komisaris,
+                is_ktp_selamanya  : komisarisUpd[1][0].is_ktp_selamanya,
+                ktp_berlaku_awal  : komisarisUpd[1][0].ktp_berlaku_awal,
+                ktp_berlaku_akhir : komisarisUpd[1][0].ktp_berlaku_akhir,
             }
            
         }
@@ -1648,6 +1683,9 @@ const storeUploadDireksi = async (request:PayloadDireksiSchema["body"], kode_ven
             jbtn_direksi : request.jbtn_direksi,
             hp_direksi : request.hp_direksi,
             no_ktp_direksi : request.no_ktp_direksi,
+            is_ktp_selamanya : request.is_ktp_selamanya === "true" ? true : false,
+            ktp_berlaku_awal : request.ktp_berlaku_awal ?  moment.utc(request.ktp_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+            ktp_berlaku_akhir : request.ktp_berlaku_akhir ?  moment.utc(request.ktp_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
             path_ktp_direksi : upload[0].file_name,
             encrypt_key : upload[0].keypass
         })
@@ -1657,6 +1695,9 @@ const storeUploadDireksi = async (request:PayloadDireksiSchema["body"], kode_ven
             nm_direksi : request.nm_direksi,
             jbtn_direksi : request.jbtn_direksi,
             hp_direksi : request.hp_direksi,
+            is_ktp_selamanya : request.is_ktp_selamanya === "true" ? true : false,
+            ktp_berlaku_awal : request.ktp_berlaku_awal,
+            ktp_berlaku_akhir : request.ktp_berlaku_akhir,
             no_ktp_direksi : request.no_ktp_direksi,
             path_ktp_direksi : upload[0].file_name,
         }
@@ -1773,7 +1814,9 @@ const updateDireksi = async (id:PayloadUpdateDireksiSchema["params"]["id"],
             exDireksi.jbtn_direksi = request.jbtn_direksi
             exDireksi.hp_direksi = request.hp_direksi
             exDireksi.no_ktp_direksi = request.no_ktp_direksi
-
+            exDireksi.is_ktp_selamanya = request.is_ktp_selamanya === "true" ? true : false
+            exDireksi.ktp_berlaku_awal = request.ktp_berlaku_awal ? moment.utc(request.ktp_berlaku_awal, "YYYY-MM-DD").toDate() : undefined
+            exDireksi.ktp_berlaku_akhir =request.ktp_berlaku_akhir ?  moment.utc(request.ktp_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined
             await exDireksi.save()
 
             direksiUpdate = {
@@ -1781,6 +1824,9 @@ const updateDireksi = async (id:PayloadUpdateDireksiSchema["params"]["id"],
                 jbtn_direksi :  request.jbtn_direksi,
                 hp_direksi :  request.hp_direksi,
                 no_ktp_direksi :  request.no_ktp_direksi,
+                is_ktp_selamanya : request.is_ktp_selamanya === "true" ? true : false,
+                ktp_berlaku_awal : request.ktp_berlaku_awal,
+                ktp_berlaku_akhir : request.ktp_berlaku_akhir,
             }
         }
 
@@ -1805,6 +1851,9 @@ const updateDireksi = async (id:PayloadUpdateDireksiSchema["params"]["id"],
                 jbtn_direksi : request.jbtn_direksi,
                 hp_direksi : request.hp_direksi,
                 no_ktp_direksi : request.no_ktp_direksi,
+                is_ktp_selamanya : request.is_ktp_selamanya === "true" ? true : false,
+                ktp_berlaku_awal :request.ktp_berlaku_awal ?  moment.utc(request.ktp_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+                ktp_berlaku_akhir : request.ktp_berlaku_akhir ? moment.utc(request.ktp_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
                 path_ktp_direksi : upload[0].file_name,
                 encrypt_key : upload[0].keypass
             },{
@@ -1823,6 +1872,9 @@ const updateDireksi = async (id:PayloadUpdateDireksiSchema["params"]["id"],
                     jbtn_direksi :direksiUpd[1][0].jbtn_direksi,
                     hp_direksi : direksiUpd[1][0].hp_direksi,
                     no_ktp_direksi  :direksiUpd[1][0].no_ktp_direksi,
+                    is_ktp_selamanya : direksiUpd[1][0].is_ktp_selamanya,
+                    ktp_berlaku_awal : direksiUpd[1][0].ktp_berlaku_awal,
+                    ktp_berlaku_akhir : direksiUpd[1][0].ktp_berlaku_akhir,
                     path_ktp_direksi :direksiUpd[1][0].path_ktp_direksi,
                 }
         }
@@ -1880,27 +1932,29 @@ const storeIjinUsaha = async (request:PayloadIjinUsaha["body"], kode_vendor : nu
 
         const create = await IjinUsahaPerusahaan.create({
             kode_vendor : kode_vendor,
-            nama_izin : request.nama_izin,
-            no_izin : request.no_izin,
-            masa_izin : request.masa_izin,
-            pemberi_izin : request.pemberi_izin,
-            kualifikasi_usaha : request.kualifikasi_usaha, 
-            klasifikasi_usaha : request.klasifikasi_usaha, 
-            tdp : request.tdp, 
-            path_izin : upload[0].file_name,
+            nama : request.nama,
+            jenis_izin_usaha : request.jenis_izin_usaha,
+            nomor_izin : request.nomor_izin,
+            kode : request.kode,
+            judul : request.judul, 
+            is_izin_selamanya : request.is_izin_selamanya === "true" ? true : false, 
+            izin_berlaku_awal : moment.utc(request.izin_berlaku_awal, "YYYY-MM-DD").toDate(),
+            izin_berlaku_akhir : moment.utc(request.izin_berlaku_akhir, "YYYY-MM-DD").toDate(),
+            file_izin : upload[0].file_name,
             encrypt_key : upload[0].keypass 
         })
 
         const result = {
             kode_vendor : kode_vendor,
-            nama_izin : request.nama_izin,
-            no_izin : request.no_izin,
-            masa_izin : request.masa_izin,
-            pemberi_izin : request.pemberi_izin,
-            kualifikasi_usaha : request.kualifikasi_usaha, 
-            klasifikasi_usaha : request.klasifikasi_usaha, 
-            tdp : request.tdp, 
-            path_izin : upload[0].file_name,
+            nama : request.nama,
+            jenis_izin_usaha : request.jenis_izin_usaha,
+            nomor_izin : request.nomor_izin,
+            kode : request.kode,
+            judul : request.judul, 
+            is_izin_selamanya : request.is_izin_selamanya, 
+            izin_berlaku_awal : request.izin_berlaku_awal,
+            izin_berlaku_akhir : request.izin_berlaku_akhir,
+            file_izin : upload[0].file_name,
         }
 
         if(!create) {
@@ -1932,7 +1986,7 @@ const hapusIjinUsaha = async (id:ParameterSchema["params"]["id"]) : Promise<Ijin
     try {
         const exIjinUsaha = await IjinUsahaPerusahaan.findOne({
             where : {
-                kode_ijin_usaha : id
+                kode_izin_usaha : id
             },
             attributes : {exclude : ["encrypt_key"]}
         })
@@ -1940,13 +1994,13 @@ const hapusIjinUsaha = async (id:ParameterSchema["params"]["id"]) : Promise<Ijin
         if(!exIjinUsaha) throw new CustomError(httpCode.notFound, responseStatus.success, "Data Ijin Usaha Tidak Ada")
             
 
-        const hapusFile = await deleteFile(exIjinUsaha.path_izin as string)
+        const hapusFile = await deleteFile(exIjinUsaha.file_izin as string)
 
         if(hapusFile[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File")
 
         const hapusData = await IjinUsahaPerusahaan.destroy({
             where : {
-                kode_ijin_usaha : id
+                kode_izin_usaha : id
             }
         })
 
@@ -1969,7 +2023,7 @@ const getPdfUploadIjinUsaha = async (id:ParameterSchema["params"]["id"], kode_ve
         const getIjinUsaha = await IjinUsahaPerusahaan.findOne({
             where : {
                 kode_vendor : kode_vendor,
-                kode_ijin_usaha : id,
+                kode_izin_usaha : id,
                 encrypt_key : {
                     [Op.not] : null
                 }
@@ -1980,7 +2034,7 @@ const getPdfUploadIjinUsaha = async (id:ParameterSchema["params"]["id"], kode_ve
         if(!getIjinUsaha) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tidak Tersedia / Data Bukan Format PDF")
 
         const data = {
-            nama_file : getIjinUsaha.path_izin as string, 
+            nama_file : getIjinUsaha.file_izin as string, 
             keypass : getIjinUsaha.encrypt_key as string
         }
 
@@ -2008,32 +2062,35 @@ const updateIjinUsaha = async (id:PayloadUpdateDireksiSchema["params"]["id"],
 
         if(!exIjinUsaha) throw new CustomError(httpCode.notFound, responseStatus.success, "Ijin Usaha Tidak Tersedia")
 
-        let direksiIjinUsaha
+        let izin_usaha
 
         if(!file) {
-           exIjinUsaha.nama_izin         = request.nama_izin,
-           exIjinUsaha.no_izin           = request.no_izin,
-           exIjinUsaha.masa_izin         = request.masa_izin,
-           exIjinUsaha.pemberi_izin      = request.pemberi_izin,
-           exIjinUsaha.kualifikasi_usaha = request.kualifikasi_usaha,
-           exIjinUsaha.klasifikasi_usaha = request.klasifikasi_usaha,
-           exIjinUsaha.tdp               = request.tdp,
+           exIjinUsaha.nama               = request.nama,
+           exIjinUsaha.jenis_izin_usaha   = request.jenis_izin_usaha,
+           exIjinUsaha.nomor_izin         = request.nomor_izin,
+           exIjinUsaha.kode               = request.kode,
+           exIjinUsaha.judul              = request.judul,
+           exIjinUsaha.is_izin_selamanya  = request.is_izin_selamanya === "true" ? true : false,
+           exIjinUsaha.izin_berlaku_awal = request.izin_berlaku_awal ? moment.utc(request.izin_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+           exIjinUsaha.izin_berlaku_akhir  = request.izin_berlaku_akhir ? moment.utc(request.izin_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
+
 
             await exIjinUsaha.save()
 
-            direksiIjinUsaha = {
-                nama_izin        : request.nama_izin,
-                no_izin          : request.no_izin,
-                masa_izin        : request.masa_izin,
-                pemberi_izin     : request.pemberi_izin,
-                kualifikasi_usaha: request.kualifikasi_usaha,
-                klasifikasi_usaha: request.klasifikasi_usaha,
-                tdp              : request.tdp,
+            izin_usaha = {
+                nama               : request.nama,
+                jenis_izin_usaha   : request.jenis_izin_usaha,
+                nomor_izin         : request.nomor_izin,
+                kode               : request.kode,
+                judul              : request.judul,
+                is_izin_selamanya  : request.is_izin_selamanya,
+                izin_berlaku_awal  : request.izin_berlaku_awal,
+                izin_berlaku_akhir : request.izin_berlaku_akhir,
             }
         }
 
         else {
-            await deleteFile(exIjinUsaha.path_izin as string)
+            await deleteFile(exIjinUsaha.file_izin as string)
 
             const formData = new FormData()
 
@@ -2049,39 +2106,40 @@ const updateIjinUsaha = async (id:PayloadUpdateDireksiSchema["params"]["id"],
             }
 
             let ijinUsahaUpd = await IjinUsahaPerusahaan.update({
-                nama_izin        : request.nama_izin,
-                no_izin          : request.no_izin,
-                masa_izin        : request.masa_izin,
-                pemberi_izin     : request.pemberi_izin,
-                kualifikasi_usaha: request.kualifikasi_usaha,
-                klasifikasi_usaha: request.klasifikasi_usaha,
-                tdp              : request.tdp,
-                path_izin        : upload[0].file_name,
+                nama               : request.nama,
+                jenis_izin_usaha   : request.jenis_izin_usaha,
+                nomor_izin         : request.nomor_izin,
+                kode               : request.kode,
+                judul              : request.judul,
+                is_izin_selamanya  : request.is_izin_selamanya === "true" ? true : false,
+                izin_berlaku_awal  : request.izin_berlaku_awal ? moment.utc(request.izin_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+                izin_berlaku_akhir : request.izin_berlaku_akhir ? moment.utc(request.izin_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
+                file_izin        : upload[0].file_name,
                 encrypt_key      : upload[0].keypass
             },{
                 where : {
-                    kode_ijin_usaha : id
+                    kode_izin_usaha : id
                 },
                 returning : true,
             })
 
-            console.log(ijinUsahaUpd)
 
             if(ijinUsahaUpd[0] === 0) throw new CustomError(httpCode.unprocessableEntity,responseStatus.error,"Gagal Update Ijin Usaha")
 
-                direksiIjinUsaha = {
-                    nama_izin        : ijinUsahaUpd[1][0].nama_izin,
-                    no_izin          : ijinUsahaUpd[1][0].no_izin,
-                    masa_izin        : ijinUsahaUpd[1][0].masa_izin,
-                    pemberi_izin     : ijinUsahaUpd[1][0].pemberi_izin,
-                    kualifikasi_usaha: ijinUsahaUpd[1][0].kualifikasi_usaha,
-                    klasifikasi_usaha: ijinUsahaUpd[1][0].klasifikasi_usaha,
-                    tdp              : ijinUsahaUpd[1][0].tdp,
-                    path_izin        : ijinUsahaUpd[1][0].path_izin,
+                izin_usaha = {
+                    nama              : ijinUsahaUpd[1][0].nama,
+                    jenis_izin_usaha  : ijinUsahaUpd[1][0].jenis_izin_usaha,
+                    nomor_izin        : ijinUsahaUpd[1][0].nomor_izin,
+                    kode              : ijinUsahaUpd[1][0].kode,
+                    judul             : ijinUsahaUpd[1][0].judul,
+                    is_izin_selamanya : ijinUsahaUpd[1][0].is_izin_selamanya,
+                    izin_berlaku_awal : ijinUsahaUpd[1][0].izin_berlaku_awal,
+                    izin_berlaku_akhir: ijinUsahaUpd[1][0].izin_berlaku_akhir,
+                    file_izin         : ijinUsahaUpd[1][0].file_izin,
                 }
         }
 
-        return direksiIjinUsaha
+        return izin_usaha
     } catch (error) {
         console.log(error)
         if(error instanceof CustomError) {
@@ -2138,6 +2196,9 @@ const storeSahamPerusahaan = async (request:PayloadSahamPerusahaanSchema["body"]
             no_ktp_saham : request.no_ktp_saham,
             alamat_saham : request.alamat_saham,
             persentase_saham : request.persentase_saham,
+            is_saham_selamanya : request.is_saham_selamanya === "true" ? true : false,
+            saham_berlaku_awal : request.saham_berlaku_awal ? moment.utc(request.saham_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+            saham_berlaku_akhir : request.saham_berlaku_akhir ? moment.utc(request.saham_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
             path_saham : upload[0].file_name,
             encrypt_key : upload[0].keypass 
         })
@@ -2148,6 +2209,9 @@ const storeSahamPerusahaan = async (request:PayloadSahamPerusahaanSchema["body"]
             no_ktp_saham : request.no_ktp_saham,
             alamat_saham : request.alamat_saham,
             persentase_saham : request.persentase_saham,
+            is_saham_selamanya : request.is_saham_selamanya,
+            saham_berlaku_awal : request.saham_berlaku_awal,
+            saham_berlaku_akhir : request.saham_berlaku_akhir,
             path_saham : upload[0].file_name,
         }
 
@@ -2263,6 +2327,9 @@ const updateSahamPerusahaan = async (id:PayloadSahamPerusahaanUpdateSchema["para
            exSahamPerusahaan.no_ktp_saham     = request.no_ktp_saham,
            exSahamPerusahaan.alamat_saham     = request.alamat_saham,
            exSahamPerusahaan.persentase_saham = request.persentase_saham,
+           exSahamPerusahaan.is_saham_selamanya = request.is_saham_selamanya === "true" ? true : false,
+           exSahamPerusahaan.saham_berlaku_awal = request.saham_berlaku_awal ? moment.utc(request.saham_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+           exSahamPerusahaan.saham_berlaku_akhir = request.saham_berlaku_akhir ? moment.utc(request.saham_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
 
             await exSahamPerusahaan.save()
 
@@ -2271,6 +2338,9 @@ const updateSahamPerusahaan = async (id:PayloadSahamPerusahaanUpdateSchema["para
                 no_ktp_saham    : request.no_ktp_saham,
                 alamat_saham    : request.alamat_saham,
                 persentase_saham: request.persentase_saham,
+                is_saham_selamanya : request.is_saham_selamanya,
+                saham_berlaku_awal : request.saham_berlaku_awal,
+                saham_berlaku_akhir : request.saham_berlaku_akhir,
             }
         }
 
@@ -2291,12 +2361,15 @@ const updateSahamPerusahaan = async (id:PayloadSahamPerusahaanUpdateSchema["para
             }
 
             let sahamPerusahaanUpd = await SahamPerusahaan.update({
-                nm_saham        : request.nm_saham,
-                no_ktp_saham    : request.no_ktp_saham,
-                alamat_saham    : request.alamat_saham,
-                persentase_saham: request.persentase_saham,
-                path_saham      : upload[0].file_name,
-                encrypt_key     : upload[0].keypass
+                nm_saham           : request.nm_saham,
+                no_ktp_saham       : request.no_ktp_saham,
+                alamat_saham       : request.alamat_saham,
+                persentase_saham   : request.persentase_saham,
+                is_saham_selamanya : request.is_saham_selamanya === "true" ? true                                                : false,
+                saham_berlaku_awal : request.saham_berlaku_awal ? moment.utc(request.saham_berlaku_awal, "YYYY-MM-DD").toDate()  : undefined,
+                saham_berlaku_akhir: request.saham_berlaku_akhir ? moment.utc(request.saham_berlaku_akhir, "YYYY-MM-DD").toDate(): undefined,
+                path_saham         : upload[0].file_name,
+                encrypt_key        : upload[0].keypass
             },{
                 where : {
                     kode_saham : id
@@ -2314,6 +2387,9 @@ const updateSahamPerusahaan = async (id:PayloadSahamPerusahaanUpdateSchema["para
                     alamat_saham    : sahamPerusahaanUpd[1][0].alamat_saham,
                     persentase_saham: sahamPerusahaanUpd[1][0].persentase_saham,
                     path_saham      : sahamPerusahaanUpd[1][0].path_saham,
+                    is_saham_selamanya : sahamPerusahaanUpd[1][0].is_saham_selamanya,
+                    saham_berlaku_awal : sahamPerusahaanUpd[1][0].saham_berlaku_awal,
+                    saham_berlaku_akhir : sahamPerusahaanUpd[1][0].saham_berlaku_akhir,
                 }
         }
 
@@ -2605,14 +2681,18 @@ const getFasilitas = async (kode_vendor:number) : Promise<FasilitasPerusahaan[]>
     }
 }
 
-const storeFasilitas = async (request:PayloadFasilitasSchema["body"], kode_vendor : number, file : Express.Multer.File) : Promise<any> => {
+const storeFasilitas = async (request:PayloadFasilitasSchema["body"], kode_vendor : number, file_bukti_kepemilikan : Express.Multer.File, file_foto : Express.Multer.File) : Promise<any> => {
     try {
         const formData = new FormData()
 
         formData.append('nama_aplikasi','SI-DaPeT')
-        formData.append('file', fs.createReadStream(file.path))
+        formData.append('file1', fs.createReadStream(file_bukti_kepemilikan.path))
+        formData.append('file2', fs.createReadStream(file_foto.path))
 
-        const upload = await uploadPdf(formData)
+        const upload = await uploadPdfMany(formData)
+
+        console.log(file_bukti_kepemilikan);
+        
 
 
         if(upload[1] !== null || !upload[0]){
@@ -2621,44 +2701,56 @@ const storeFasilitas = async (request:PayloadFasilitasSchema["body"], kode_vendo
 
         const create = await FasilitasPerusahaan.create({
             kode_vendor : kode_vendor,
-            nm_fasilitas : request.nm_fasilitas,
-            jumlah_fasilitas : request.jumlah_fasilitas,
-            fasilitas_now : request.fasilitas_now,
-            merk_fasilitas : request.merk_fasilitas,
-            tahun_fasilitas : request.tahun_fasilitas,
-            kondisi_fasilitas : request.kondisi_fasilitas,
-            lokasi_fasilitas : request.lokasi_fasilitas,
-            path_fasilitas : upload[0].file_name,
-            encrypt_key : upload[0].keypass 
+            nama : request.nama,
+            jumlah : request.jumlah,
+            kondisi : request.kondisi,
+            kode_kepemilikan : parseInt(request.kode_kepemilikan),
+            is_kepemilikan_selamanya : request.is_kepemilikan_selamanya === "true" ? true : false,
+            kepemilikan_berlaku_awal : request.kepemilikan_berlaku_awal ? moment.utc(request.kepemilikan_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+            kepemilikan_berlaku_akhir : request.kepemilikan_berlaku_akhir ? moment.utc(request.kepemilikan_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
+            is_foto_selamanya : request.is_foto_selamanya === "true" ? true : false,
+            foto_berlaku_awal : request.foto_berlaku_awal ? moment.utc(request.foto_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+            foto_berlaku_akhir : request.foto_berlaku_akhir ? moment.utc(request.foto_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
+            file_kepemilikan : upload[0][0].file_name,
+            encrypt_key_kepemilikan : upload[0][0].keypass,
+            file_foto : upload[0][1].file_name,
+            encrypt_key_foto : upload[0][1].keypass 
         })
 
         const result = {
             kode_vendor : kode_vendor,
-            nm_fasilitas : request.nm_fasilitas,
-            jumlah_fasilitas : request.jumlah_fasilitas,
-            fasilitas_now : request.fasilitas_now,
-            merk_fasilitas : request.merk_fasilitas,
-            tahun_fasilitas : request.tahun_fasilitas,
-            kondisi_fasilitas : request.kondisi_fasilitas,
-            lokasi_fasilitas : request.lokasi_fasilitas,
-            path_fasilitas : upload[0].file_name,
+            nama : request.nama,
+            jumlah : request.jumlah,
+            kondisi : request.kondisi,
+            kode_kepemilikan : request.kode_kepemilikan,
+            is_kepemilikan_selamanya : request.is_kepemilikan_selamanya,
+            kepemilikan_berlaku_awal : request.kepemilikan_berlaku_awal,
+            kepemilikan_berlaku_akhir : request.kepemilikan_berlaku_akhir,
+            is_foto_selamanya : request.is_foto_selamanya,
+            foto_berlaku_awal : request.foto_berlaku_awal,
+            foto_berlaku_akhir : request.foto_berlaku_akhir,
+            file_kepemilikan : upload[0][0].file_name,
+            file_foto : upload[0][1].file_name,
         }
 
         if(!create) {
-            await deleteFile(upload[0].file_name)
+            await deleteFile(upload[0][0].file_name)
+            await deleteFile(upload[0][1].file_name)
             throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Store Data Gagal")
         }
 
         if(create) {
-            fs.unlinkSync(file.path)
+            fs.unlinkSync(file_bukti_kepemilikan.path)
+            fs.unlinkSync(file_foto.path)
         }
 
         return result
 
 
     } catch (error) {
-        console.log(error)
-        fs.unlinkSync(file.path)
+        debugLogger.debug(error)
+        fs.unlinkSync(file_bukti_kepemilikan.path)
+        fs.unlinkSync(file_foto.path)
         if(error instanceof CustomError) {
             throw new CustomError(error.code,error.status, error.message)
         } 
@@ -2673,21 +2765,26 @@ const hapusFasilitas = async (id:ParameterSchema["params"]["id"]) : Promise<Fasi
     try {
         const exFasilitas = await FasilitasPerusahaan.findOne({
             where : {
-                kode_peralatan : id
+                kode_fasilitas_usaha : id
             },
             attributes : {exclude : ["encrypt_key"]}
         })
 
         if(!exFasilitas) throw new CustomError(httpCode.notFound, responseStatus.success, "Data Fasilitas Perusahaan Tidak Ada")
-            
 
-        const hapusFile = await deleteFile(exFasilitas.path_fasilitas as string)
+        if(exFasilitas.file_kepemilikan) {
+            const hapusFile = await deleteFile(exFasilitas.file_kepemilikan as string)
+            if(hapusFile[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File")
+        }
 
-        if(hapusFile[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File")
+        if(exFasilitas.file_foto) {
+            const hapusFile = await deleteFile(exFasilitas.file_foto as string)
+            if(hapusFile[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File")
+        }
 
         const hapusData = await FasilitasPerusahaan.destroy({
             where : {
-                kode_peralatan : id
+                kode_fasilitas_usaha : id
             }
         })
 
@@ -2705,15 +2802,15 @@ const hapusFasilitas = async (id:ParameterSchema["params"]["id"]) : Promise<Fasi
     }
 }
 
-const getPdfUploadFasilitas = async (id:ParameterSchema["params"]["id"], kode_vendor:number) : Promise<any> => {
+const getPdfUploadFasilitasKepemilikan = async (id:ParameterSchema["params"]["id"], kode_vendor:number) : Promise<any> => {
     try {
         const getFasilitas = await FasilitasPerusahaan.findOne({
             where : {
                 kode_vendor : kode_vendor,
-                kode_peralatan : id,
-                encrypt_key : {
-                    [Op.not] : null
-                }
+                kode_fasilitas_usaha : id,
+                // encrypt_key : {
+                //     [Op.not] : null
+                // }
             }
         })
 
@@ -2721,8 +2818,44 @@ const getPdfUploadFasilitas = async (id:ParameterSchema["params"]["id"], kode_ve
         if(!getFasilitas) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tidak Tersedia / Data Bukan Format PDF")
 
         const data = {
-            nama_file : getFasilitas?.path_fasilitas as string, 
-            keypass : getFasilitas.encrypt_key as string
+            nama_file : getFasilitas?.file_kepemilikan as string, 
+            keypass : getFasilitas?.encrypt_key_kepemilikan as string
+        }
+
+
+        const tampilGambar = await showFile(data)
+
+        return tampilGambar[0]
+
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const getPdfUploadFasilitasFoto = async (id:ParameterSchema["params"]["id"], kode_vendor:number) : Promise<any> => {
+    try {
+        const getFasilitas = await FasilitasPerusahaan.findOne({
+            where : {
+                kode_vendor : kode_vendor,
+                kode_fasilitas_usaha : id,
+                // encrypt_key : {
+                //     [Op.not] : null
+                // }
+            }
+        })
+
+
+        if(!getFasilitas) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tidak Tersedia / Data Bukan Format PDF")
+
+        const data = {
+            nama_file : getFasilitas?.file_foto as string, 
+            keypass : getFasilitas.encrypt_key_foto as string
         }
 
 
@@ -2743,7 +2876,8 @@ const getPdfUploadFasilitas = async (id:ParameterSchema["params"]["id"], kode_ve
 
 const updateFasilitas = async (id:PayloadFasilitasUpdateSchema["params"]["id"], 
     request:PayloadFasilitasUpdateSchema["body"],
-     file : Express.Multer.File) : Promise<any> => {
+    file_bukti_kepemilikan : Express.Multer.File, 
+    file_foto : Express.Multer.File) : Promise<any> => {
     try {
         const exFasilitas = await FasilitasPerusahaan.findByPk(id)
 
@@ -2751,37 +2885,46 @@ const updateFasilitas = async (id:PayloadFasilitasUpdateSchema["params"]["id"],
 
         let fasilitas
 
-        if(!file) {
-           exFasilitas.nm_fasilitas      = request.nm_fasilitas,
-           exFasilitas.jumlah_fasilitas  = request.jumlah_fasilitas,
-           exFasilitas.fasilitas_now     = request.fasilitas_now,
-           exFasilitas.merk_fasilitas    = request.merk_fasilitas,
-           exFasilitas.tahun_fasilitas   = request.tahun_fasilitas,
-           exFasilitas.kondisi_fasilitas = request.kondisi_fasilitas,
-           exFasilitas.lokasi_fasilitas  = request.lokasi_fasilitas
+        if(!file_bukti_kepemilikan && !file_foto ) {
+            exFasilitas.nama = request.nama,
+            exFasilitas.jumlah = request.jumlah,
+            exFasilitas.kondisi = request.kondisi,
+            exFasilitas.kode_kepemilikan = parseInt(request.kode_kepemilikan),
+            exFasilitas.is_kepemilikan_selamanya = request.is_kepemilikan_selamanya === "true" ? true : false,
+            exFasilitas.kepemilikan_berlaku_awal = request.kepemilikan_berlaku_awal ? moment.utc(request.kepemilikan_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+            exFasilitas.kepemilikan_berlaku_akhir = request.kepemilikan_berlaku_akhir ? moment.utc(request.kepemilikan_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
+            exFasilitas.is_foto_selamanya = request.is_foto_selamanya === "true" ? true : false,
+            exFasilitas.foto_berlaku_awal = request.foto_berlaku_awal ? moment.utc(request.foto_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+            exFasilitas.foto_berlaku_akhir = request.foto_berlaku_akhir ? moment.utc(request.foto_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
 
             await exFasilitas.save()
 
             fasilitas = {
-                nm_fasilitas     : request.nm_fasilitas,
-                jumlah_fasilitas : request.jumlah_fasilitas,
-                fasilitas_now    : request.fasilitas_now,
-                merk_fasilitas   : request.merk_fasilitas,
-                tahun_fasilitas  : request.tahun_fasilitas,
-                kondisi_fasilitas: request.kondisi_fasilitas,
-                lokasi_fasilitas : request.lokasi_fasilitas
+                nama : request.nama,
+                jumlah : request.jumlah,
+                kondisi : request.kondisi,
+                kode_kepemilikan : request.kode_kepemilikan,
+                is_kepemilikan_selamanya : request.is_kepemilikan_selamanya,
+                kepemilikan_berlaku_awal : request.kepemilikan_berlaku_awal,
+                kepemilikan_berlaku_akhir : request.kepemilikan_berlaku_akhir,
+                is_foto_selamanya : request.is_foto_selamanya,
+                foto_berlaku_awal : request.foto_berlaku_awal,
+                foto_berlaku_akhir : request.foto_berlaku_akhir, 
             }
         }
 
         else {
-            await deleteFile(exFasilitas.path_fasilitas as string)
+            await deleteFile(exFasilitas.file_kepemilikan as string)
+            await deleteFile(exFasilitas.file_foto as string)
 
             const formData = new FormData()
 
             formData.append('nama_aplikasi','SI-DaPeT')
-            formData.append('file', fs.createReadStream(file.path))
+            formData.append('file1', fs.createReadStream(file_bukti_kepemilikan.path))
+            formData.append('file2', fs.createReadStream(file_foto.path))
+
     
-            const upload : any = await uploadPdf(formData)
+            const upload : any = await uploadPdfMany(formData)
     
 
             if(upload[1] !== null || !upload[0]){
@@ -2789,18 +2932,23 @@ const updateFasilitas = async (id:PayloadFasilitasUpdateSchema["params"]["id"],
             }
 
             let fasilitasUpd = await FasilitasPerusahaan.update({
-                nm_fasilitas     : request.nm_fasilitas,
-                jumlah_fasilitas : request.jumlah_fasilitas,
-                fasilitas_now    : request.fasilitas_now,
-                merk_fasilitas   : request.merk_fasilitas,
-                tahun_fasilitas  : request.tahun_fasilitas,
-                kondisi_fasilitas: request.kondisi_fasilitas,
-                lokasi_fasilitas : request.lokasi_fasilitas,
-                path_fasilitas   : upload[0].file_name,
-                encrypt_key      : upload[0].keypass
+                nama : request.nama,
+                jumlah : request.jumlah,
+                kondisi : request.kondisi,
+                kode_kepemilikan : parseInt(request.kode_kepemilikan),
+                is_kepemilikan_selamanya : request.is_kepemilikan_selamanya === "true" ? true : false,
+                kepemilikan_berlaku_awal : request.kepemilikan_berlaku_awal ? moment.utc(request.kepemilikan_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+                kepemilikan_berlaku_akhir : request.kepemilikan_berlaku_akhir ? moment.utc(request.kepemilikan_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
+                is_foto_selamanya : request.is_foto_selamanya === "true" ? true : false,
+                foto_berlaku_awal : request.foto_berlaku_awal ? moment.utc(request.foto_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+                foto_berlaku_akhir : request.foto_berlaku_akhir ? moment.utc(request.foto_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
+                file_kepemilikan : upload[0][0].file_name,
+                encrypt_key_kepemilikan : upload[0][0].keypass,
+                file_foto : upload[0][1].file_name,
+                encrypt_key_foto : upload[0][1].keypass 
             },{
                 where : {
-                    kode_peralatan : id
+                    kode_fasilitas_usaha : id
                 },
                 returning : true,
             })
@@ -2809,14 +2957,18 @@ const updateFasilitas = async (id:PayloadFasilitasUpdateSchema["params"]["id"],
             if(fasilitasUpd[0] === 0) throw new CustomError(httpCode.unprocessableEntity,responseStatus.error,"Gagal Update Fasilitas")
 
                 fasilitas = {
-                 nm_fasilitas    :fasilitasUpd[1][0].nm_fasilitas,
-                 jumlah_fasilitas    :fasilitasUpd[1][0].jumlah_fasilitas,
-                 fasilitas_now    :fasilitasUpd[1][0].fasilitas_now,
-                 merk_fasilitas    :fasilitasUpd[1][0].merk_fasilitas,
-                 tahun_fasilitas    :fasilitasUpd[1][0].tahun_fasilitas,
-                 kondisi_fasilitas    :fasilitasUpd[1][0].kondisi_fasilitas,
-                 lokasi_fasilitas    :fasilitasUpd[1][0].lokasi_fasilitas,
-                 path_fasilitas    :fasilitasUpd[1][0].path_fasilitas,
+                    nama : fasilitasUpd[1][0].nama,
+                    jumlah : fasilitasUpd[1][0].jumlah,
+                    kondisi : fasilitasUpd[1][0].kondisi,
+                    kode_kepemilikan : fasilitasUpd[1][0].kode_kepemilikan,
+                    is_kepemilikan_selamanya : fasilitasUpd[1][0].is_kepemilikan_selamanya,
+                    kepemilikan_berlaku_awal : fasilitasUpd[1][0].kepemilikan_berlaku_awal,
+                    kepemilikan_berlaku_akhir : fasilitasUpd[1][0].kepemilikan_berlaku_akhir,
+                    is_foto_selamanya : fasilitasUpd[1][0].is_foto_selamanya,
+                    foto_berlaku_awal : fasilitasUpd[1][0].foto_berlaku_awal,
+                    foto_berlaku_akhir : fasilitasUpd[1][0].foto_berlaku_akhir,
+                    file_kepemilikan : fasilitasUpd[1][0].file_kepemilikan,
+                    file_foto : fasilitasUpd[1][0].file_foto,
                 }
         }
 
@@ -2832,6 +2984,249 @@ const updateFasilitas = async (id:PayloadFasilitasUpdateSchema["params"]["id"],
         }
     }
 }
+
+//#################### Kantor ########################################
+const getKantor = async (kode_vendor:number) : Promise<Kantor[]> => {
+    try {
+        const getKantor : Kantor[] = await Kantor.findAll({
+            where : {
+                kode_vendor : kode_vendor
+            }, 
+            attributes : {exclude : ["encrypt_key"]}
+        })
+
+        return getKantor
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const storeKantor = async (request:PayloadKantorSchema["body"], kode_vendor : number, file : Express.Multer.File) : Promise<any> => {
+    try {
+        const formData = new FormData()
+
+        formData.append('nama_aplikasi','SI-DaPeT')
+        formData.append('file', fs.createReadStream(file.path))
+
+        const upload = await uploadPdf(formData)
+
+
+        if(upload[1] !== null || !upload[0]){
+            throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
+        }
+
+        const create = await Kantor.create({
+            kode_vendor : kode_vendor,
+            alamat : request.alamat,
+            kode_kepemilikan : parseInt(request.kode_kepemilikan),
+            is_foto_selamanya : request.is_foto_selamanya === "true" ? true : false,
+            foto_berlaku_awal : request.foto_berlaku_awal ? moment.utc(request.foto_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+            foto_berlaku_akhir : request.foto_berlaku_akhir ? moment.utc(request.foto_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
+            file_foto : upload[0].file_name,
+            encrypt_key : upload[0].keypass,
+
+        })
+
+        const result = {
+            kode_vendor : kode_vendor,
+            alamat : request.alamat,
+            kode_kepemilikan : request.kode_kepemilikan,
+            is_foto_selamanya : request.is_foto_selamanya,
+            foto_berlaku_awal : request.foto_berlaku_awal,
+            foto_berlaku_akhir : request.foto_berlaku_akhir,
+            file_foto : upload[0].file_name,
+        }
+
+        if(!create) {
+            await deleteFile(upload[0].file_name)
+            throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
+        }
+
+        if(create) {
+            fs.unlinkSync(file.path)
+        }
+
+        return result
+    } catch (error) {
+        fs.unlinkSync(file.path)
+        debugLogger.debug(error)
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const hapusKantor = async (id:ParameterSchema["params"]["id"]) : Promise<Kantor> => {
+    try {
+        const exKantor = await Kantor.findOne({
+            where : {
+                kode_kantor : id
+            },
+            attributes : {exclude : ["encrypt_key"]}
+        })
+
+        if(!exKantor) throw new CustomError(httpCode.notFound, responseStatus.success, "Data Saham Perusahaan Tidak Ada")
+            
+
+        const hapusFile = await deleteFile(exKantor.file_foto as string)
+
+        if(hapusFile[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File")
+
+        const hapusData = await Kantor.destroy({
+            where : {
+                kode_kantor : id
+            }
+        })
+
+        if(hapusData === 0 ) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus Data")
+
+        return exKantor
+    } catch (error) {
+        debugLogger.debug(error)
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const getPdfUploadKantor = async (id:ParameterSchema["params"]["id"], kode_vendor:number) : Promise<any> => {
+    try {
+        const getKantor = await Kantor.findOne({
+            where : {
+                kode_vendor : kode_vendor,
+                kode_kantor : id,
+                encrypt_key : {
+                    [Op.not] : null
+                }
+            }
+        })
+
+
+        if(!getKantor) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tidak Tersedia / Data Bukan Format PDF")
+
+        const data = {
+            nama_file : getKantor?.file_foto as string, 
+            keypass : getKantor.encrypt_key as string
+        }
+
+
+        const tampilGambar = await showFile(data)
+
+        return tampilGambar[0]
+
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const updateKantor = async (id:PayloadKantorUpdateSchema["params"]["id"], 
+    request:PayloadKantorUpdateSchema["body"],
+     file : Express.Multer.File) : Promise<any> => {
+    try {
+        const exKantor = await Kantor.findByPk(id)
+
+        if(!exKantor) throw new CustomError(httpCode.notFound, responseStatus.success, "Saham Perusahaan Tidak Tersedia")
+
+        let kantor
+
+        if(!file) {
+            exKantor.alamat = request.alamat,
+            exKantor.kode_kepemilikan = parseInt(request.kode_kepemilikan),
+            exKantor.is_foto_selamanya = request.is_foto_selamanya === "true" ? true : false,
+            exKantor.foto_berlaku_awal = request.foto_berlaku_awal ? moment.utc(request.foto_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+            exKantor.foto_berlaku_akhir = request.foto_berlaku_akhir ? moment.utc(request.foto_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
+
+
+            await exKantor.save()
+
+            kantor = {
+                alamat : request.alamat,
+                kode_kepemilikan : request.kode_kepemilikan,
+                is_foto_selamanya : request.is_foto_selamanya,
+                foto_berlaku_awal : request.foto_berlaku_awal,
+                foto_berlaku_akhir : request.foto_berlaku_akhir,
+            }
+        }
+
+        else {
+            await deleteFile(exKantor.file_foto as string)
+
+            const formData = new FormData()
+
+            formData.append('nama_aplikasi','SI-DaPeT')
+            formData.append('file', fs.createReadStream(file.path))
+    
+            const upload : any = await uploadPdf(formData)
+    
+            console.log(upload)
+
+            if(upload[1] !== null || !upload[0]){
+                throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
+            }
+
+            let kantorUpd = await Kantor.update({
+                alamat : request.alamat,
+                kode_kepemilikan : parseInt(request.kode_kepemilikan),
+                is_foto_selamanya : request.is_foto_selamanya === "true" ? true : false,
+                foto_berlaku_awal : request.foto_berlaku_awal ? moment.utc(request.foto_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+                foto_berlaku_akhir : request.foto_berlaku_akhir ? moment.utc(request.foto_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
+                file_foto         : upload[0].file_name,
+                encrypt_key        : upload[0].keypass
+            },{
+                where : {
+                    kode_kantor : id
+                },
+                returning : true,
+            })
+
+            if(kantorUpd[0] === 0) throw new CustomError(httpCode.unprocessableEntity,responseStatus.error,"Gagal Update Saham")
+
+                kantor = {
+                    alamat : kantorUpd[1][0].alamat,
+                    kode_kepemilikan : kantorUpd[1][0].kode_kepemilikan,
+                    is_foto_selamanya : kantorUpd[1][0].is_foto_selamanya,
+                    foto_berlaku_awal : kantorUpd[1][0].foto_berlaku_awal,
+                    foto_berlaku_akhir : kantorUpd[1][0].foto_berlaku_akhir,
+                    file_foto : kantorUpd[1][0].file_foto,
+                }
+        }
+
+        return kantor
+    } catch (error) {
+        console.log(error)
+        debugLogger.debug(error)
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+
+//#####################################################################
 
 
 
@@ -2858,14 +3253,18 @@ const getPengalaman = async (kode_vendor:number) : Promise<Pengalaman[]> => {
     }
 }
 
-const storePengalaman = async (request:PayloadPengalamanSchema["body"], kode_vendor : number, file : Express.Multer.File) : Promise<any> => {
-    try {
+const storePengalaman = async (request:PayloadPengalamanSchema["body"], kode_vendor : number, file_kontrak : Express.Multer.File, file_bast : Express.Multer.File) : Promise<any> => {
+    try {        
+
         const formData = new FormData()
 
         formData.append('nama_aplikasi','SI-DaPeT')
-        formData.append('file', fs.createReadStream(file.path))
+        formData.append('file1', fs.createReadStream(file_kontrak.path))
+        formData.append('file2', fs.createReadStream(file_bast.path))
+        
 
-        const upload = await uploadPdf(formData)
+        const upload = await uploadPdfMany(formData)
+
 
 
         if(upload[1] !== null || !upload[0]){
@@ -2874,52 +3273,59 @@ const storePengalaman = async (request:PayloadPengalamanSchema["body"], kode_ven
 
         const create = await Pengalaman.create({
             kode_vendor : kode_vendor,
-            nm_pnglmn : request.nm_pnglmn,
-            div_pnglmn : request.div_pnglmn,
-            ringkas_pnglmn : request.ringkas_pnglmn,
-            lok_pnglmn : request.lok_pnglmn,
-            pemberi_pnglmn : request.pemberi_pnglmn,
-            alamat_pnglmn : request.alamat_pnglmn,
-            tgl_pnglmn : request.tgl_pnglmn,
-            nilai_pnglmn : request.nilai_pnglmn,
-            status_pnglmn : request.status_pnglmn,
-            tgl_selesai_pnglmn : request.tgl_selesai_pnglmn,
-            ba_pnglmn : request.ba_pnglmn,
-            path_pnglmn : upload[0].file_name,
-            encrypt_key : upload[0].keypass 
+            nama_pekerjaan : request.nama_pekerjaan,
+            tahun_pekerjaan : parseInt(request.tahun_pekerjaan),
+            pemberi_kerja : request.pemberi_kerja,
+            nilai_pekerjaan : parseInt(request.nilai_pekerjaan),
+            jangka_waktu : request.jangka_waktu,
+            no_kontrak : request.no_kontrak,
+            is_kontrak_selamanya : request.is_kontrak_selamanya === "true" ? true : false,
+            kontrak_berlaku_awal : request.kontrak_berlaku_awal ? moment.utc(request.kontrak_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+            kontrak_berlaku_akhir : request.kontrak_berlaku_akhir ? moment.utc(request.kontrak_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
+            is_bast_selamanya : request.is_bast_selamanya === "true" ? true : false,
+            bast_berlaku_awal : request.bast_berlaku_awal ? moment.utc( request.bast_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+            bast_berlaku_akhir : request.bast_berlaku_akhir ? moment.utc( request.bast_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
+            file_kontrak : upload[0][0].file_name,
+            encrypt_key_kontrak : upload[0][0].keypass ,
+            file_bast : upload[0][1].file_name,
+            encrypt_key_bast : upload[0][1].keypass
         })
 
         const result = {
-            kode_vendor : kode_vendor,
-            nm_pnglmn : request.nm_pnglmn,
-            div_pnglmn : request.div_pnglmn,
-            ringkas_pnglmn : request.ringkas_pnglmn,
-            lok_pnglmn : request.lok_pnglmn,
-            pemberi_pnglmn : request.pemberi_pnglmn,
-            alamat_pnglmn : request.alamat_pnglmn,
-            tgl_pnglmn : request.tgl_pnglmn,
-            nilai_pnglmn : request.nilai_pnglmn,
-            status_pnglmn : request.status_pnglmn,
-            tgl_selesai_pnglmn : request.tgl_selesai_pnglmn,
-            ba_pnglmn : request.ba_pnglmn,
-            path_pnglmn : upload[0].file_name,
+            nama_pekerjaan : request.nama_pekerjaan,
+            tahun_pekerjaan : request.tahun_pekerjaan,
+            pemberi_kerja : request.pemberi_kerja,
+            nilai_pekerjaan : request.nilai_pekerjaan,
+            jangka_waktu : request.jangka_waktu,
+            no_kontrak : request.no_kontrak,
+            is_kontrak_selamanya : request.is_kontrak_selamanya,
+            kontrak_berlaku_awal : request.kontrak_berlaku_awal,
+            kontrak_berlaku_akhir : request.kontrak_berlaku_akhir,
+            is_bast_selamanya : request.is_bast_selamanya,
+            bast_berlaku_awal : request.bast_berlaku_awal,
+            bast_berlaku_akhir : request.bast_berlaku_akhir,
+            file_kontrak : upload[0][0].file_name,
+            file_bast : upload[0][1].file_name,
         }
 
         if(!create) {
-            await deleteFile(upload[0].file_name)
+            await deleteFile(upload[0][0].file_name)
+            await deleteFile(upload[0][1].file_name)
             throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Store Data Gagal")
         }
 
         if(create) {
-            fs.unlinkSync(file.path)
+            fs.unlinkSync(file_kontrak.path)
+            fs.unlinkSync(file_bast.path)
         }
 
         return result
 
 
     } catch (error) {
-        console.log(error)
-        fs.unlinkSync(file.path)
+        debugLogger.debug(error)
+        fs.unlinkSync(file_kontrak.path)
+        fs.unlinkSync(file_bast.path)
         if(error instanceof CustomError) {
             throw new CustomError(error.code,error.status, error.message)
         } 
@@ -2934,7 +3340,7 @@ const hapusPengalamanBadanUsaha = async (id:ParameterSchema["params"]["id"]) : P
     try {
         const exPengalaman = await Pengalaman.findOne({
             where : {
-                kode_pengalaman : id
+                kode_pengalaman_perusahaan : id
             },
             attributes : {exclude : ["encrypt_key"]}
         })
@@ -2942,13 +3348,20 @@ const hapusPengalamanBadanUsaha = async (id:ParameterSchema["params"]["id"]) : P
         if(!exPengalaman) throw new CustomError(httpCode.notFound, responseStatus.success, "Data Pengalaman Perusahaan Tidak Ada")
             
 
-        const hapusFile = await deleteFile(exPengalaman.path_pnglmn as string)
+        if(exPengalaman.file_kontrak) {
+            const hapusFile = await deleteFile(exPengalaman.file_kontrak as string)
+            if(hapusFile[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File")
 
-        if(hapusFile[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File")
+        }
+
+        if(exPengalaman.file_bast) {
+            const hapusFile2 = await deleteFile(exPengalaman.file_bast as string)
+            if(hapusFile2[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File")
+        }
 
         const hapusData = await Pengalaman.destroy({
             where : {
-                kode_pengalaman : id
+                kode_pengalaman_perusahaan : id
             }
         })
 
@@ -2966,15 +3379,12 @@ const hapusPengalamanBadanUsaha = async (id:ParameterSchema["params"]["id"]) : P
     }
 }
 
-const getPdfUploadPengalaman = async (id:ParameterSchema["params"]["id"], kode_vendor:number) : Promise<any> => {
+const getPdfUploadPengalamanKontrak = async (id:ParameterSchema["params"]["id"], kode_vendor:number) : Promise<any> => {
     try {
         const getPengalaman : Pengalaman | null = await Pengalaman.findOne({
             where : {
                 kode_vendor : kode_vendor,
-                kode_pengalaman : id,
-                encrypt_key : {
-                    [Op.not] : null
-                }
+                kode_pengalaman_perusahaan : id,       
             }
         })
 
@@ -2982,8 +3392,41 @@ const getPdfUploadPengalaman = async (id:ParameterSchema["params"]["id"], kode_v
         if(!getPengalaman) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tidak Tersedia / Data Bukan Format PDF")
 
         const data = {
-            nama_file : getPengalaman?.path_pnglmn as string, 
-            keypass : getPengalaman.encrypt_key as string
+            nama_file : getPengalaman?.file_kontrak as string, 
+            keypass : getPengalaman.encrypt_key_kontrak as string
+        }
+
+
+        const tampilGambar = await showFile(data)
+
+        return tampilGambar[0]
+
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const getPdfUploadPengalamanBast = async (id:ParameterSchema["params"]["id"], kode_vendor:number) : Promise<any> => {
+    try {
+        const getPengalaman : Pengalaman | null = await Pengalaman.findOne({
+            where : {
+                kode_vendor : kode_vendor,
+                kode_pengalaman_perusahaan : id,       
+            }
+        })
+
+
+        if(!getPengalaman) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tidak Tersedia / Data Bukan Format PDF")
+
+        const data = {
+            nama_file : getPengalaman?.file_bast as string, 
+            keypass : getPengalaman.encrypt_key_bast as string
         }
 
 
@@ -3004,7 +3447,7 @@ const getPdfUploadPengalaman = async (id:ParameterSchema["params"]["id"], kode_v
 
 const updatePengalaman = async (id:PayloadPengalamanUpdateSchema["params"]["id"], 
     request:PayloadPengalamanUpdateSchema["body"],
-     file : Express.Multer.File) : Promise<any> => {
+     file_kontrak : Express.Multer.File, file_bast : Express.Multer.File) : Promise<any> => {
     try {
         const exPengalaman = await Pengalaman.findByPk(id)
 
@@ -3012,45 +3455,49 @@ const updatePengalaman = async (id:PayloadPengalamanUpdateSchema["params"]["id"]
 
         let pengalaman
 
-        if(!file) {
-            exPengalaman.nm_pnglmn          = request.nm_pnglmn,
-            exPengalaman.div_pnglmn         = request.div_pnglmn,
-            exPengalaman.ringkas_pnglmn     = request.ringkas_pnglmn,
-            exPengalaman.lok_pnglmn         = request.lok_pnglmn,
-            exPengalaman.pemberi_pnglmn     = request.pemberi_pnglmn,
-            exPengalaman.alamat_pnglmn      = request.alamat_pnglmn,
-            exPengalaman.tgl_pnglmn         = request.tgl_pnglmn,
-            exPengalaman.nilai_pnglmn       = request.nilai_pnglmn,
-            exPengalaman.status_pnglmn      = request.status_pnglmn,
-            exPengalaman.tgl_selesai_pnglmn = request.tgl_selesai_pnglmn,
-            exPengalaman.ba_pnglmn          = request.ba_pnglmn,
+        if(!file_kontrak || !file_bast) {
+            exPengalaman.nama_pekerjaan = request.nama_pekerjaan
+            exPengalaman.tahun_pekerjaan = parseInt(request.tahun_pekerjaan)
+            exPengalaman.pemberi_kerja = request.pemberi_kerja
+            exPengalaman.nilai_pekerjaan = parseInt(request.nilai_pekerjaan)
+            exPengalaman.jangka_waktu = request.jangka_waktu
+            exPengalaman.no_kontrak = request.no_kontrak
+            exPengalaman.is_kontrak_selamanya = request.is_kontrak_selamanya === "true" ? true : false
+            exPengalaman.kontrak_berlaku_awal = request.kontrak_berlaku_awal ? moment.utc(request.kontrak_berlaku_awal, "YYYY-MM-DD").toDate() : undefined
+            exPengalaman.kontrak_berlaku_akhir = request.kontrak_berlaku_akhir ? moment.utc(request.kontrak_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined
+            exPengalaman.is_bast_selamanya = request.is_bast_selamanya === "true" ? true : false
+            exPengalaman.bast_berlaku_awal = request.bast_berlaku_awal ? moment.utc(request.bast_berlaku_awal, "YYYY-MM-DD").toDate() : undefined
+            exPengalaman.bast_berlaku_akhir = request.bast_berlaku_akhir ? moment.utc(request.bast_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined
 
             await exPengalaman.save()
 
             pengalaman = {
-                nm_pnglmn         : request.nm_pnglmn,
-                div_pnglmn        : request.div_pnglmn,
-                ringkas_pnglmn    : request.ringkas_pnglmn,
-                lok_pnglmn        : request.lok_pnglmn,
-                pemberi_pnglmn    : request.pemberi_pnglmn,
-                alamat_pnglmn     : request.alamat_pnglmn,
-                tgl_pnglmn        : request.tgl_pnglmn,
-                nilai_pnglmn      : request.nilai_pnglmn,
-                status_pnglmn     : request.status_pnglmn,
-                tgl_selesai_pnglmn: request.tgl_selesai_pnglmn,
-                ba_pnglmn         : request.ba_pnglmn,
+                nama_pekerjaan : request.nama_pekerjaan,
+                tahun_pekerjaan : request.tahun_pekerjaan,
+                pemberi_kerja : request.pemberi_kerja,
+                nilai_pekerjaan : request.nilai_pekerjaan,
+                jangka_waktu : request.jangka_waktu,
+                no_kontrak : request.no_kontrak,
+                is_kontrak_selamanya : request.is_kontrak_selamanya,
+                kontrak_berlaku_awal : request.kontrak_berlaku_awal,
+                kontrak_berlaku_akhir : request.kontrak_berlaku_akhir,
+                is_bast_selamanya : request.is_bast_selamanya,
+                bast_berlaku_awal : request.bast_berlaku_awal,
+                bast_berlaku_akhir : request.bast_berlaku_akhir,
             }
         }
 
         else {
-            await deleteFile(exPengalaman.path_pnglmn as string)
+            await deleteFile(exPengalaman.file_bast as string)
+            await deleteFile(exPengalaman.file_kontrak as string)
 
             const formData = new FormData()
 
             formData.append('nama_aplikasi','SI-DaPeT')
-            formData.append('file', fs.createReadStream(file.path))
+            formData.append('file1', fs.createReadStream(file_kontrak.path))
+            formData.append('file2', fs.createReadStream(file_bast.path))
     
-            const upload : any = await uploadPdf(formData)
+            const upload : any = await uploadPdfMany(formData)
     
 
             if(upload[1] !== null || !upload[0]){
@@ -3058,22 +3505,25 @@ const updatePengalaman = async (id:PayloadPengalamanUpdateSchema["params"]["id"]
             }
 
             let pengalamanUpd = await Pengalaman.update({
-                nm_pnglmn         : request.nm_pnglmn,
-                div_pnglmn        : request.div_pnglmn,
-                ringkas_pnglmn    : request.ringkas_pnglmn,
-                lok_pnglmn        : request.lok_pnglmn,
-                pemberi_pnglmn    : request.pemberi_pnglmn,
-                alamat_pnglmn     : request.alamat_pnglmn,
-                tgl_pnglmn        : request.tgl_pnglmn,
-                nilai_pnglmn      : request.nilai_pnglmn,
-                status_pnglmn     : request.status_pnglmn,
-                tgl_selesai_pnglmn: request.tgl_selesai_pnglmn,
-                ba_pnglmn         : request.ba_pnglmn,
-                path_pnglmn   : upload[0].file_name,
-                encrypt_key      : upload[0].keypass
+                nama_pekerjaan : request.nama_pekerjaan,
+                tahun_pekerjaan : parseInt(request.tahun_pekerjaan),
+                pemberi_kerja : request.pemberi_kerja,
+                nilai_pekerjaan : parseInt(request.nilai_pekerjaan),
+                jangka_waktu : request.jangka_waktu,
+                no_kontrak : request.no_kontrak,
+                is_kontrak_selamanya : request.is_kontrak_selamanya === "true" ? true : false,
+                kontrak_berlaku_awal : request.kontrak_berlaku_awal ? moment.utc(request.kontrak_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+                kontrak_berlaku_akhir : request.kontrak_berlaku_akhir ? moment.utc(request.kontrak_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
+                is_bast_selamanya : request.is_bast_selamanya === "true" ? true : false,
+                bast_berlaku_awal : request.bast_berlaku_awal ? moment.utc(request.bast_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+                bast_berlaku_akhir : request.bast_berlaku_akhir ? moment.utc(request.bast_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
+                file_kontrak   : upload[0][0].file_name,
+                encrypt_key_kontrak : upload[0][0].keypass,
+                file_bast : upload[0][1].file_name,
+                encrypt_key_bast : upload[0][1].keypass
             },{
                 where : {
-                    kode_pengalaman : id
+                    kode_pengalaman_perusahaan : id
                 },
                 returning : true,
             })
@@ -3081,18 +3531,20 @@ const updatePengalaman = async (id:PayloadPengalamanUpdateSchema["params"]["id"]
             if(pengalamanUpd[0] === 0) throw new CustomError(httpCode.unprocessableEntity,responseStatus.error,"Gagal Update Pengalaman")
 
                 pengalaman = {
-                    nm_pnglmn         : pengalamanUpd[1][0].nm_pnglmn,
-                    div_pnglmn        : pengalamanUpd[1][0].div_pnglmn,
-                    ringkas_pnglmn    : pengalamanUpd[1][0].ringkas_pnglmn,
-                    lok_pnglmn        : pengalamanUpd[1][0].lok_pnglmn,
-                    pemberi_pnglmn    : pengalamanUpd[1][0].pemberi_pnglmn,
-                    alamat_pnglmn     : pengalamanUpd[1][0].alamat_pnglmn,
-                    tgl_pnglmn        : pengalamanUpd[1][0].tgl_pnglmn,
-                    nilai_pnglmn      : pengalamanUpd[1][0].nilai_pnglmn,
-                    status_pnglmn     : pengalamanUpd[1][0].status_pnglmn,
-                    tgl_selesai_pnglmn: pengalamanUpd[1][0].tgl_selesai_pnglmn,
-                    ba_pnglmn         : pengalamanUpd[1][0].ba_pnglmn,
-                    path_pnglmn       : pengalamanUpd[1][0].path_pnglmn,
+                    nama_pekerjaan : pengalamanUpd[1][0].nama_pekerjaan,
+                    tahun_pekerjaan : pengalamanUpd[1][0].tahun_pekerjaan,
+                    pemberi_kerja : pengalamanUpd[1][0].pemberi_kerja,
+                    nilai_pekerjaan : pengalamanUpd[1][0].nilai_pekerjaan,
+                    jangka_waktu : pengalamanUpd[1][0].jangka_waktu,
+                    no_kontrak : pengalamanUpd[1][0].no_kontrak,
+                    is_kontrak_selamanya : pengalamanUpd[1][0].is_kontrak_selamanya,
+                    kontrak_berlaku_awal : pengalamanUpd[1][0].kontrak_berlaku_awal,
+                    kontrak_berlaku_akhir : pengalamanUpd[1][0].kontrak_berlaku_akhir,
+                    is_bast_selamanya : pengalamanUpd[1][0].is_bast_selamanya,
+                    bast_berlaku_awal : pengalamanUpd[1][0].bast_berlaku_awal,
+                    bast_berlaku_akhir : pengalamanUpd[1][0].bast_berlaku_akhir,
+                    file_kontrak : pengalamanUpd[1][0].file_kontrak,
+                    file_bast : pengalamanUpd[1][0].file_bast,
                 }
         }
 
@@ -3109,6 +3561,8 @@ const updatePengalaman = async (id:PayloadPengalamanUpdateSchema["params"]["id"]
         }
     }
 }
+
+
 
 // ################################# PENGALAMAN #########################################
 
@@ -3389,6 +3843,1124 @@ const updatePengalamanSekarang = async (id:PayloadPengalamanSekarangUpdateSchema
 
 // ############################## PENGALAMAN SEKARANG ###################################
 
+// ############################## TENAGA AHLI ###########################################
+const getTenagaAhli = async (kode_vendor:number) : Promise<TenagaAhli[]> => {
+    try {
+        const getTenaga : TenagaAhli[] = await TenagaAhli.findAll({
+            where : {
+                kode_vendor : kode_vendor
+            },
+            attributes : {exclude : ["encrypt_key_ktp", "encrypt_key_cv","encrypt_key_ijazah"]}
+        })
+
+        return getTenaga
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const storeTenagaAhli = async (request:PayloadTenagaAhliSchema["body"], kode_vendor : number, file_ktp : Express.Multer.File, file_ijazah : Express.Multer.File, file_cv : Express.Multer.File) : Promise<any> => {
+    try {        
+
+        const formData = new FormData()
+
+        formData.append('nama_aplikasi','SI-DaPeT')
+        formData.append('file1', fs.createReadStream(file_ktp.path))
+        formData.append('file2', fs.createReadStream(file_ijazah.path))
+        formData.append('file3', fs.createReadStream(file_cv.path))
+
+        
+
+        const upload = await uploadPdfManyPersonalia(formData)
+
+
+
+        if(upload[1] !== null || !upload[0]){
+            throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
+        }
+
+        const create = await TenagaAhli.create({
+            kode_vendor : kode_vendor,
+            nama : request.nama,
+            no_ktp : request.no_ktp,
+            is_ktp_selamanya : request.is_ktp_selamanya === "true" ? true : false,
+            ktp_berlaku_awal : request.ktp_berlaku_awal ? moment.utc(request.ktp_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+            ktp_berlaku_akhir : request.ktp_berlaku_akhir ? moment.utc(request.ktp_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
+            file_ktp : upload[0][0].file_name,
+            encrypt_key_ktp : upload[0][0].keypass,
+            tempat_lahir : request.tempat_lahir,
+            tgl_lahir : request.tgl_lahir ? moment.utc(request.tgl_lahir, "YYYY-MM-DD").toDate() : undefined,
+            posisi : request.posisi,
+            kode_jenjang_pendidikan : parseInt(request.kode_jenjang_pendidikan),
+            program_studi : request.program_studi,
+            is_ijazah_selamanya : request.is_ijazah_selamanya === "true" ? true : false,
+            ijazah_berlaku_awal : request.ijazah_berlaku_awal ? moment.utc(request.ijazah_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+            ijazah_berlaku_akhir : request.ijazah_berlaku_akhir ? moment.utc(request.ijazah_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
+            file_ijazah : upload[0][1].file_name,
+            encrypt_key_ijazah : upload[0][1].keypass,
+            is_cv_selamanya : request.is_cv_selamanya === "true" ? true : false,
+            cv_berlaku_awal : request.cv_berlaku_awal ? moment.utc(request.cv_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+            cv_berlaku_akhir : request.cv_berlaku_akhir ? moment.utc(request.cv_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
+            file_cv : upload[0][2].file_name,
+            encrypt_key_cv : upload[0][2].keypass,
+        })
+
+        const result = {
+            nama : request.nama,
+            no_ktp : request.no_ktp,
+            is_ktp_selamanya : request.is_ktp_selamanya,
+            ktp_berlaku_awal : request.ktp_berlaku_awal,
+            ktp_berlaku_akhir : request.ktp_berlaku_akhir,
+            tempat_lahir : request.tempat_lahir,
+            tgl_lahir : request.tgl_lahir,
+            posisi : request.posisi,
+            kode_jenjang_pendidikan : request.kode_jenjang_pendidikan,
+            program_studi : request.program_studi,
+            is_ijazah_selamanya : request.is_ijazah_selamanya,
+            ijazah_berlaku_awal : request.ijazah_berlaku_awal,
+            ijazah_berlaku_akhir : request.ijazah_berlaku_akhir,
+            is_cv_selamanya : request.is_cv_selamanya,
+            cv_berlaku_awal : request.cv_berlaku_awal,
+            cv_berlaku_akhir : request.cv_berlaku_akhir,
+            file_ktp : upload[0][0].file_name,
+            file_ijazah : upload[0][1].file_name,
+            file_cv : upload[0][2].file_name,
+        }
+
+        if(!create) {
+            await deleteFile(upload[0][0].file_name)
+            await deleteFile(upload[0][1].file_name)
+            await deleteFile(upload[0][2].file_name)
+            throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Store Data Gagal")
+        }
+
+        if(create) {
+            if(file_ktp.path) {
+                fs.unlinkSync(file_ktp.path)
+            }
+            else if(file_cv.path) {
+                fs.unlinkSync(file_cv.path)
+            }
+            else fs.unlinkSync(file_ijazah.path)
+        }
+
+        return result
+
+
+    } catch (error) {
+        debugLogger.debug(error)
+        if(file_ktp.path) {
+            fs.unlinkSync(file_ktp.path)
+        }
+        else if(file_cv.path) {
+            fs.unlinkSync(file_cv.path)
+        }
+        else fs.unlinkSync(file_ijazah.path)
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const hapusTenagaAhli = async (id:ParameterSchema["params"]["id"]) : Promise<TenagaAhli> => {
+    try {
+        const exTenagaAhli = await TenagaAhli.findOne({
+            where : {
+                kode_tenaga_ahli : id
+            },
+            attributes : {exclude : ["encrypt_key"]}
+        })
+
+        if(!exTenagaAhli) throw new CustomError(httpCode.notFound, responseStatus.success, "Data Pengalaman Perusahaan Tidak Ada")
+            
+
+        if(exTenagaAhli.file_ktp) {
+            const hapusFile = await deleteFile(exTenagaAhli.file_ktp as string)
+            if(hapusFile[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File")
+
+        }
+
+        if(exTenagaAhli.file_cv) {
+            const hapusFile2 = await deleteFile(exTenagaAhli.file_cv as string)
+            if(hapusFile2[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File")
+        }
+
+        if(exTenagaAhli.file_ijazah) {
+            const hapusFile3 = await deleteFile(exTenagaAhli.file_ijazah as string)
+            if(hapusFile3[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File")
+        }
+
+        const hapusData = await TenagaAhli.destroy({
+            where : {
+                kode_tenaga_ahli : id
+            }
+        })
+
+        if(hapusData === 0 ) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus Data")
+
+        return exTenagaAhli
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const updateTenagaAhli = async (id:PayloadTenagaAhliUpdateSchema["params"]["id"], 
+    request:PayloadTenagaAhliUpdateSchema["body"],
+    file_ktp:Express.Multer.File, file_cv:Express.Multer.File ,file_ijazah:Express.Multer.File)  : Promise<any> => {
+    try {
+        const exTenagaAhli = await TenagaAhli.findByPk(id)
+
+        if(!exTenagaAhli) throw new CustomError(httpCode.notFound, responseStatus.success, "Pengalaman Tidak Tersedia")
+
+        let tenagaAhli
+
+        if(!file_ktp || !file_cv || !file_ijazah ) {
+            exTenagaAhli.nama = request.nama
+            exTenagaAhli.no_ktp = request.no_ktp
+            exTenagaAhli.is_ktp_selamanya = request.is_ktp_selamanya === "true" ? true : false
+            exTenagaAhli.ktp_berlaku_awal = request.ktp_berlaku_awal ? moment.utc(request.ktp_berlaku_awal, "YYYY-MM-DD").toDate() : undefined
+            exTenagaAhli.ktp_berlaku_akhir = request.ktp_berlaku_akhir ? moment.utc(request.ktp_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined
+            exTenagaAhli.tempat_lahir = request.tempat_lahir
+            exTenagaAhli.tgl_lahir = request.tgl_lahir ? moment.utc(request.tgl_lahir, "YYYY-MM-DD").toDate() : undefined
+            exTenagaAhli.posisi = request.posisi
+            exTenagaAhli.kode_jenjang_pendidikan = parseInt(request.kode_jenjang_pendidikan )
+            exTenagaAhli.program_studi = request.program_studi
+            exTenagaAhli.is_ijazah_selamanya = request.is_ijazah_selamanya === "true" ? true : false
+            exTenagaAhli.ijazah_berlaku_awal = request.ijazah_berlaku_awal ? moment.utc(request.ijazah_berlaku_awal, "YYYY-MM-DD").toDate() : undefined
+            exTenagaAhli.ijazah_berlaku_akhir = request.ijazah_berlaku_akhir ? moment.utc(request.ijazah_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined
+            exTenagaAhli.is_cv_selamanya = request.is_cv_selamanya === "true" ? true : false
+            exTenagaAhli.cv_berlaku_awal = request.cv_berlaku_awal ? moment.utc(request.cv_berlaku_awal, "YYYY-MM-DD").toDate() : undefined
+            exTenagaAhli.cv_berlaku_akhir = request.cv_berlaku_akhir ? moment.utc(request.cv_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined
+
+            await exTenagaAhli.save()
+
+            tenagaAhli = {
+                nama : request.nama ,
+                no_ktp : request.no_ktp ,
+                is_ktp_selamanya : request.is_ktp_selamanya ,
+                ktp_berlaku_awal : request.ktp_berlaku_awal ,
+                ktp_berlaku_akhir : request.ktp_berlaku_akhir ,
+                tempat_lahir : request.tempat_lahir ,
+                tgl_lahir : request.tgl_lahir ,
+                posisi : request.posisi ,
+                kode_jenjang_pendidikan : request.kode_jenjang_pendidikan ,
+                program_studi : request.program_studi ,
+                is_ijazah_selamanya : request.is_ijazah_selamanya ,
+                ijazah_berlaku_awal : request.ijazah_berlaku_awal ,
+                ijazah_berlaku_akhir : request.ijazah_berlaku_akhir ,
+                is_cv_selamanya : request.is_cv_selamanya ,
+                cv_berlaku_awal : request.cv_berlaku_awal ,
+                cv_berlaku_akhir : request.cv_berlaku_akhir ,
+    
+            }
+        }
+
+        else {
+            await deleteFile(exTenagaAhli.file_ktp as string)
+            await deleteFile(exTenagaAhli.file_cv as string)
+            await deleteFile(exTenagaAhli.file_ijazah as string)
+
+
+            const formData = new FormData()
+
+            formData.append('nama_aplikasi','SI-DaPeT')
+            formData.append('file1', fs.createReadStream(file_ktp.path))
+            formData.append('file2', fs.createReadStream(file_cv.path))
+            formData.append('file3', fs.createReadStream(file_ijazah.path))
+
+            
+    
+            const upload : any = await uploadPdfManyPersonalia(formData)
+    
+
+            if(upload[1] !== null || !upload[0]){
+                throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
+            }
+
+            let tenagaAhliUpd = await TenagaAhli.update({
+                nama : request.nama,
+                no_ktp : request.no_ktp,
+                is_ktp_selamanya : request.is_ktp_selamanya === "true" ? true : false,
+                ktp_berlaku_awal : request.ktp_berlaku_awal ? moment.utc(request.ktp_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+                ktp_berlaku_akhir : request.ktp_berlaku_akhir ? moment.utc(request.ktp_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
+                tempat_lahir : request.tempat_lahir,
+                tgl_lahir : request.tgl_lahir ? moment.utc(request.tgl_lahir, "YYYY-MM-DD").toDate() : undefined,
+                posisi : request.posisi,
+                kode_jenjang_pendidikan : parseInt(request.kode_jenjang_pendidikan ),
+                program_studi : request.program_studi,
+                is_ijazah_selamanya : request.is_ijazah_selamanya === "true" ? true : false,
+                ijazah_berlaku_awal : request.ijazah_berlaku_awal ? moment.utc(request.ijazah_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+                ijazah_berlaku_akhir : request.ijazah_berlaku_akhir ? moment.utc(request.ijazah_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
+                is_cv_selamanya : request.is_cv_selamanya === "true" ? true : false,
+                cv_berlaku_awal : request.cv_berlaku_awal ? moment.utc(request.cv_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+                cv_berlaku_akhir : request.cv_berlaku_akhir ? moment.utc(request.cv_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
+                file_ktp : upload[0][0].file_name,
+                file_cv : upload[0][1].file_name,
+                file_ijazah : upload[0][2].file_name,
+                encrypt_key_ktp : upload[0][0].key_pass,
+                encrypt_key_cv : upload[0][0].key_pass,
+                encrypt_key_ijazah : upload[0][0].key_pass
+
+            },{
+                where : {
+                    kode_tenaga_ahli : id
+                },
+                returning : true,
+            })
+
+            if(tenagaAhliUpd[0] === 0) throw new CustomError(httpCode.unprocessableEntity,responseStatus.error,"Gagal Update Tenaga Ahli")
+
+            
+            tenagaAhli = {
+                nama : tenagaAhliUpd[1][0].nama,
+                no_ktp : tenagaAhliUpd[1][0].no_ktp,
+                is_ktp_selamanya : tenagaAhliUpd[1][0].is_ktp_selamanya,
+                ktp_berlaku_awal : tenagaAhliUpd[1][0].ktp_berlaku_awal,
+                ktp_berlaku_akhir : tenagaAhliUpd[1][0].ktp_berlaku_akhir,
+                tempat_lahir : tenagaAhliUpd[1][0].tempat_lahir,
+                tgl_lahir : tenagaAhliUpd[1][0].tgl_lahir,
+                posisi : tenagaAhliUpd[1][0].posisi,
+                kode_jenjang_pendidikan : tenagaAhliUpd[1][0].kode_jenjang_pendidikan,
+                program_studi : tenagaAhliUpd[1][0].program_studi,
+                is_ijazah_selamanya : tenagaAhliUpd[1][0].is_ijazah_selamanya,
+                ijazah_berlaku_awal : tenagaAhliUpd[1][0].ijazah_berlaku_awal,
+                ijazah_berlaku_akhir : tenagaAhliUpd[1][0].ijazah_berlaku_akhir,
+                is_cv_selamanya : tenagaAhliUpd[1][0].is_cv_selamanya,
+                cv_berlaku_awal : tenagaAhliUpd[1][0].cv_berlaku_awal,
+                cv_berlaku_akhir : tenagaAhliUpd[1][0].cv_berlaku_akhir,
+                file_ktp : tenagaAhliUpd[1][0].file_ktp,
+                file_cv : tenagaAhliUpd[1][0].file_cv,
+                file_ijazah : tenagaAhliUpd[1][0].file_ijazah,
+            }
+            
+        }
+
+        return tenagaAhli
+
+    } catch (error) {
+        console.log(error)
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+} 
+
+const getPdfUploadTenagaAhliKtp = async (id:ParameterSchema["params"]["id"], kode_vendor:number) : Promise<any> => {
+    try {
+        const getTenaga : TenagaAhli | null = await TenagaAhli.findOne({
+            where : {
+                kode_vendor : kode_vendor,
+                kode_tenaga_ahli : id,       
+            }
+        })
+
+
+        if(!getTenaga) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tidak Tersedia / Data Bukan Format PDF")
+
+        const data = {
+            nama_file : getTenaga?.file_ktp as string, 
+            keypass : getTenaga.encrypt_key_ktp as string
+        }
+
+
+        const tampilGambar = await showFile(data)
+
+        return tampilGambar[0]
+
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const getPdfUploadTenagaAhliCv = async (id:ParameterSchema["params"]["id"], kode_vendor:number) : Promise<any> => {
+    try {
+        const getTenaga : TenagaAhli | null = await TenagaAhli.findOne({
+            where : {
+                kode_vendor : kode_vendor,
+                kode_tenaga_ahli : id,       
+            }
+        })
+
+
+        if(!getTenaga) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tidak Tersedia / Data Bukan Format PDF")
+
+        const data = {
+            nama_file : getTenaga?.file_cv as string, 
+            keypass : getTenaga.encrypt_key_cv as string
+        }
+
+
+        const tampilGambar = await showFile(data)
+
+        return tampilGambar[0]
+
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const getPdfUploadTenagaAhliIjazah = async (id:ParameterSchema["params"]["id"], kode_vendor:number) : Promise<any> => {
+    try {
+        const getTenaga : TenagaAhli | null = await TenagaAhli.findOne({
+            where : {
+                kode_vendor : kode_vendor,
+                kode_tenaga_ahli : id,       
+            }
+        })
+
+
+        if(!getTenaga) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tidak Tersedia / Data Bukan Format PDF")
+
+        const data = {
+            nama_file : getTenaga?.file_ijazah as string, 
+            keypass : getTenaga.encrypt_key_ijazah as string
+        }
+
+
+        const tampilGambar = await showFile(data)
+
+        return tampilGambar[0]
+
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+// ######################################################################################
+
+// ############################## TENAGA PENDUKUNG ######################################
+const getTenagaPendukung = async (kode_vendor:number) : Promise<TenagaPendukung[]> => {
+    try {
+        const getTenaga : TenagaPendukung[] = await TenagaPendukung.findAll({
+            where : {
+                kode_vendor : kode_vendor
+            },
+            attributes : {exclude : ["encrypt_key"]}
+        })
+
+        return getTenaga
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const storeTenagaPendukung = async (request:PayloadTenagaPendukungSchema["body"], kode_vendor : number, file_ktp : Express.Multer.File, file_ijazah : Express.Multer.File, file_cv : Express.Multer.File) : Promise<any> => {
+    try {        
+
+        const formData = new FormData()
+
+        formData.append('nama_aplikasi','SI-DaPeT')
+        formData.append('file1', fs.createReadStream(file_ktp.path))
+        formData.append('file2', fs.createReadStream(file_ijazah.path))
+        formData.append('file3', fs.createReadStream(file_cv.path))
+
+        
+
+        const upload = await uploadPdfManyPersonalia(formData)
+
+
+
+        if(upload[1] !== null || !upload[0]){
+            throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
+        }
+
+        const create = await TenagaPendukung.create({
+            kode_vendor : kode_vendor,
+            nama : request.nama,
+            no_ktp : request.no_ktp,
+            is_ktp_selamanya : request.is_ktp_selamanya === "true" ? true : false,
+            ktp_berlaku_awal : request.ktp_berlaku_awal ? moment.utc(request.ktp_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+            ktp_berlaku_akhir : request.ktp_berlaku_akhir ? moment.utc(request.ktp_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
+            file_ktp : upload[0][0].file_name,
+            encrypt_key_ktp : upload[0][0].keypass,
+            tempat_lahir : request.tempat_lahir,
+            tgl_lahir : request.tgl_lahir ? moment.utc(request.tgl_lahir, "YYYY-MM-DD").toDate() : undefined,
+            posisi : request.posisi,
+            kode_jenjang_pendidikan : parseInt(request.kode_jenjang_pendidikan),
+            program_studi : request.program_studi,
+            is_ijazah_selamanya : request.is_ijazah_selamanya === "true" ? true : false,
+            ijazah_berlaku_awal : request.ijazah_berlaku_awal ? moment.utc(request.ijazah_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+            ijazah_berlaku_akhir : request.ijazah_berlaku_akhir ? moment.utc(request.ijazah_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
+            file_ijazah : upload[0][1].file_name,
+            encrypt_key_ijazah : upload[0][1].keypass,
+            is_cv_selamanya : request.is_cv_selamanya === "true" ? true : false,
+            cv_berlaku_awal : request.cv_berlaku_awal ? moment.utc(request.cv_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+            cv_berlaku_akhir : request.cv_berlaku_akhir ? moment.utc(request.cv_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
+            file_cv : upload[0][2].file_name,
+            encrypt_key_cv : upload[0][2].keypass,
+        })
+
+        const result = {
+            nama : request.nama,
+            no_ktp : request.no_ktp,
+            is_ktp_selamanya : request.is_ktp_selamanya,
+            ktp_berlaku_awal : request.ktp_berlaku_awal,
+            ktp_berlaku_akhir : request.ktp_berlaku_akhir,
+            tempat_lahir : request.tempat_lahir,
+            tgl_lahir : request.tgl_lahir,
+            posisi : request.posisi,
+            kode_jenjang_pendidikan : request.kode_jenjang_pendidikan,
+            program_studi : request.program_studi,
+            is_ijazah_selamanya : request.is_ijazah_selamanya,
+            ijazah_berlaku_awal : request.ijazah_berlaku_awal,
+            ijazah_berlaku_akhir : request.ijazah_berlaku_akhir,
+            is_cv_selamanya : request.is_cv_selamanya,
+            cv_berlaku_awal : request.cv_berlaku_awal,
+            cv_berlaku_akhir : request.cv_berlaku_akhir,
+            file_ktp : upload[0][0].file_name,
+            file_ijazah : upload[0][1].file_name,
+            file_cv : upload[0][2].file_name,
+        }
+
+        if(!create) {
+            await deleteFile(upload[0][0].file_name)
+            await deleteFile(upload[0][1].file_name)
+            await deleteFile(upload[0][2].file_name)
+            throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Store Data Gagal")
+        }
+
+        if(create) {
+            console.log("TES")
+            if(file_ktp.path) fs.unlinkSync(file_ktp.path)
+            else if(file_cv.path) fs.unlinkSync(file_cv.path)
+            else fs.unlinkSync(file_ijazah.path)
+        }
+
+        return result
+
+
+    } catch (error) {
+        console.log(error)
+        debugLogger.debug(error)
+        if(file_ktp.path) {
+            fs.unlinkSync(file_ktp.path)
+        }
+        else if(file_cv.path) {
+            fs.unlinkSync(file_cv.path)
+        }
+        else fs.unlinkSync(file_ijazah.path)
+
+
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const hapusTenagaPendukung = async (id:ParameterSchema["params"]["id"]) : Promise<TenagaPendukung> => {
+    try {
+        const exTenagaPendukung = await TenagaPendukung.findOne({
+            where : {
+                kode_tenaga_pendukung : id
+            },
+            attributes : {exclude : ["encrypt_key"]}
+        })
+
+        if(!exTenagaPendukung) throw new CustomError(httpCode.notFound, responseStatus.success, "Data Pengalaman Perusahaan Tidak Ada")
+            
+
+        if(exTenagaPendukung.file_ktp) {
+            const hapusFile = await deleteFile(exTenagaPendukung.file_ktp as string)
+            if(hapusFile[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File")
+
+        }
+
+        if(exTenagaPendukung.file_cv) {
+            const hapusFile2 = await deleteFile(exTenagaPendukung.file_cv as string)
+            if(hapusFile2[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File")
+        }
+
+        if(exTenagaPendukung.file_ijazah) {
+            const hapusFile3 = await deleteFile(exTenagaPendukung.file_ijazah as string)
+            if(hapusFile3[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File")
+        }
+
+        const hapusData = await TenagaPendukung.destroy({
+            where : {
+                kode_tenaga_pendukung : id
+            }
+        })
+
+        if(hapusData === 0 ) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus Data")
+
+        return exTenagaPendukung
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const updateTenagaPendukung = async (id:PayloadTenagaPendukungUpdateSchema["params"]["id"], 
+    request:PayloadTenagaPendukungUpdateSchema["body"],
+    file_ktp:Express.Multer.File, file_cv:Express.Multer.File ,file_ijazah:Express.Multer.File)  : Promise<any> => {
+    try {
+        const exTenagaPendukung = await TenagaPendukung.findByPk(id)
+
+        if(!exTenagaPendukung) throw new CustomError(httpCode.notFound, responseStatus.success, "Pengalaman Tidak Tersedia")
+
+        let tenagaPendukung
+
+        if(!file_ktp || !file_cv || !file_ijazah ) {
+            exTenagaPendukung.nama = request.nama
+            exTenagaPendukung.no_ktp = request.no_ktp
+            exTenagaPendukung.is_ktp_selamanya = request.is_ktp_selamanya === "true" ? true : false
+            exTenagaPendukung.ktp_berlaku_awal = request.ktp_berlaku_awal ? moment.utc(request.ktp_berlaku_awal, "YYYY-MM-DD").toDate() : undefined
+            exTenagaPendukung.ktp_berlaku_akhir = request.ktp_berlaku_akhir ? moment.utc(request.ktp_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined
+            exTenagaPendukung.tempat_lahir = request.tempat_lahir
+            exTenagaPendukung.tgl_lahir = request.tgl_lahir ? moment.utc(request.tgl_lahir, "YYYY-MM-DD").toDate() : undefined
+            exTenagaPendukung.posisi = request.posisi
+            exTenagaPendukung.kode_jenjang_pendidikan = parseInt(request.kode_jenjang_pendidikan )
+            exTenagaPendukung.program_studi = request.program_studi
+            exTenagaPendukung.is_ijazah_selamanya = request.is_ijazah_selamanya === "true" ? true : false
+            exTenagaPendukung.ijazah_berlaku_awal = request.ijazah_berlaku_awal ? moment.utc(request.ijazah_berlaku_awal, "YYYY-MM-DD").toDate() : undefined
+            exTenagaPendukung.ijazah_berlaku_akhir = request.ijazah_berlaku_akhir ? moment.utc(request.ijazah_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined
+            exTenagaPendukung.is_cv_selamanya = request.is_cv_selamanya === "true" ? true : false
+            exTenagaPendukung.cv_berlaku_awal = request.cv_berlaku_awal ? moment.utc(request.cv_berlaku_awal, "YYYY-MM-DD").toDate() : undefined
+            exTenagaPendukung.cv_berlaku_akhir = request.cv_berlaku_akhir ? moment.utc(request.cv_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined
+
+            await exTenagaPendukung.save()
+
+            tenagaPendukung = {
+                nama : request.nama ,
+                no_ktp : request.no_ktp ,
+                is_ktp_selamanya : request.is_ktp_selamanya ,
+                ktp_berlaku_awal : request.ktp_berlaku_awal ,
+                ktp_berlaku_akhir : request.ktp_berlaku_akhir ,
+                tempat_lahir : request.tempat_lahir ,
+                tgl_lahir : request.tgl_lahir ,
+                posisi : request.posisi ,
+                kode_jenjang_pendidikan : request.kode_jenjang_pendidikan ,
+                program_studi : request.program_studi ,
+                is_ijazah_selamanya : request.is_ijazah_selamanya ,
+                ijazah_berlaku_awal : request.ijazah_berlaku_awal ,
+                ijazah_berlaku_akhir : request.ijazah_berlaku_akhir ,
+                is_cv_selamanya : request.is_cv_selamanya ,
+                cv_berlaku_awal : request.cv_berlaku_awal ,
+                cv_berlaku_akhir : request.cv_berlaku_akhir ,
+    
+            }
+        }
+
+        else {
+            await deleteFile(exTenagaPendukung.file_ktp as string)
+            await deleteFile(exTenagaPendukung.file_cv as string)
+            await deleteFile(exTenagaPendukung.file_ijazah as string)
+
+
+            const formData = new FormData()
+
+            formData.append('nama_aplikasi','SI-DaPeT')
+            formData.append('file1', fs.createReadStream(file_ktp.path))
+            formData.append('file2', fs.createReadStream(file_cv.path))
+            formData.append('file3', fs.createReadStream(file_ijazah.path))
+
+            
+    
+            const upload : any = await uploadPdfManyPersonalia(formData)
+    
+
+            if(upload[1] !== null || !upload[0]){
+                throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
+            }
+
+            let tenagaPendukungUpd = await TenagaPendukung.update({
+                nama : request.nama,
+                no_ktp : request.no_ktp,
+                is_ktp_selamanya : request.is_ktp_selamanya === "true" ? true : false,
+                ktp_berlaku_awal : request.ktp_berlaku_awal ? moment.utc(request.ktp_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+                ktp_berlaku_akhir : request.ktp_berlaku_akhir ? moment.utc(request.ktp_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
+                tempat_lahir : request.tempat_lahir,
+                tgl_lahir : request.tgl_lahir ? moment.utc(request.tgl_lahir, "YYYY-MM-DD").toDate() : undefined,
+                posisi : request.posisi,
+                kode_jenjang_pendidikan : parseInt(request.kode_jenjang_pendidikan ),
+                program_studi : request.program_studi,
+                is_ijazah_selamanya : request.is_ijazah_selamanya === "true" ? true : false,
+                ijazah_berlaku_awal : request.ijazah_berlaku_awal ? moment.utc(request.ijazah_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+                ijazah_berlaku_akhir : request.ijazah_berlaku_akhir ? moment.utc(request.ijazah_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
+                is_cv_selamanya : request.is_cv_selamanya === "true" ? true : false,
+                cv_berlaku_awal : request.cv_berlaku_awal ? moment.utc(request.cv_berlaku_awal, "YYYY-MM-DD").toDate() : undefined,
+                cv_berlaku_akhir : request.cv_berlaku_akhir ? moment.utc(request.cv_berlaku_akhir, "YYYY-MM-DD").toDate() : undefined,
+                file_ktp : upload[0][0].file_name,
+                file_cv : upload[0][1].file_name,
+                file_ijazah : upload[0][2].file_name,
+                encrypt_key_ktp : upload[0][0].key_pass,
+                encrypt_key_cv : upload[0][0].key_pass,
+                encrypt_key_ijazah : upload[0][0].key_pass
+
+            },{
+                where : {
+                    kode_tenaga_pendukung : id
+                },
+                returning : true,
+            })
+
+            if(tenagaPendukungUpd[0] === 0) throw new CustomError(httpCode.unprocessableEntity,responseStatus.error,"Gagal Update Tenaga Ahli")
+
+            
+            tenagaPendukung = {
+                nama : tenagaPendukungUpd[1][0].nama,
+                no_ktp : tenagaPendukungUpd[1][0].no_ktp,
+                is_ktp_selamanya : tenagaPendukungUpd[1][0].is_ktp_selamanya,
+                ktp_berlaku_awal : tenagaPendukungUpd[1][0].ktp_berlaku_awal,
+                ktp_berlaku_akhir : tenagaPendukungUpd[1][0].ktp_berlaku_akhir,
+                tempat_lahir : tenagaPendukungUpd[1][0].tempat_lahir,
+                tgl_lahir : tenagaPendukungUpd[1][0].tgl_lahir,
+                posisi : tenagaPendukungUpd[1][0].posisi,
+                kode_jenjang_pendidikan : tenagaPendukungUpd[1][0].kode_jenjang_pendidikan,
+                program_studi : tenagaPendukungUpd[1][0].program_studi,
+                is_ijazah_selamanya : tenagaPendukungUpd[1][0].is_ijazah_selamanya,
+                ijazah_berlaku_awal : tenagaPendukungUpd[1][0].ijazah_berlaku_awal,
+                ijazah_berlaku_akhir : tenagaPendukungUpd[1][0].ijazah_berlaku_akhir,
+                is_cv_selamanya : tenagaPendukungUpd[1][0].is_cv_selamanya,
+                cv_berlaku_awal : tenagaPendukungUpd[1][0].cv_berlaku_awal,
+                cv_berlaku_akhir : tenagaPendukungUpd[1][0].cv_berlaku_akhir,
+                file_ktp : tenagaPendukungUpd[1][0].file_ktp,
+                file_cv : tenagaPendukungUpd[1][0].file_cv,
+                file_ijazah : tenagaPendukungUpd[1][0].file_ijazah,
+            }
+            
+        }
+
+        return tenagaPendukung
+
+    } catch (error) {
+        console.log(error)
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+} 
+
+const getPdfUploadTenagaPendukungKtp = async (id:ParameterSchema["params"]["id"], kode_vendor:number) : Promise<any> => {
+    try {
+        const getPendukung : TenagaPendukung | null = await TenagaPendukung.findOne({
+            where : {
+                kode_vendor : kode_vendor,
+                kode_tenaga_pendukung : id,       
+            }
+        })
+
+
+        if(!getPendukung) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tidak Tersedia / Data Bukan Format PDF")
+
+        const data = {
+            nama_file : getPendukung?.file_ktp as string, 
+            keypass : getPendukung.encrypt_key_ktp as string
+        }
+
+
+        const tampilGambar = await showFile(data)
+
+        return tampilGambar[0]
+
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const getPdfUploadTenagaPendukungCv = async (id:ParameterSchema["params"]["id"], kode_vendor:number) : Promise<any> => {
+    try {
+        const getPendukung : TenagaPendukung | null = await TenagaPendukung.findOne({
+            where : {
+                kode_vendor : kode_vendor,
+                kode_tenaga_pendukung : id,       
+            }
+        })
+
+
+        if(!getPendukung) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tidak Tersedia / Data Bukan Format PDF")
+
+        const data = {
+            nama_file : getPendukung?.file_cv as string, 
+            keypass : getPendukung.encrypt_key_cv as string
+        }
+
+
+        const tampilGambar = await showFile(data)
+
+        return tampilGambar[0]
+
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const getPdfUploadTenagaPendukungIjazah = async (id:ParameterSchema["params"]["id"], kode_vendor:number) : Promise<any> => {
+    try {
+        const getPedukung : TenagaPendukung | null = await TenagaPendukung.findOne({
+            where : {
+                kode_vendor : kode_vendor,
+                kode_tenaga_pendukung : id,       
+            }
+        })
+
+
+        if(!getPedukung) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tidak Tersedia / Data Bukan Format PDF")
+
+        const data = {
+            nama_file : getPedukung?.file_ijazah as string, 
+            keypass : getPedukung.encrypt_key_ijazah as string
+        }
+
+
+        const tampilGambar = await showFile(data)
+
+        return tampilGambar[0]
+
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+// #####################################################################################
+
+// ############################### Pengalaman TA ########################
+const getAllPengalamanTa = async (id:ParameterSchema["params"]["id"]) : Promise<PengalamanTa[]> => {
+    try {
+        const getPengalaman : PengalamanTa[] = await PengalamanTa.findAll({
+            where : {
+                kode_tenaga_ahli : id
+            },
+            attributes : {exclude : ["encrypt_key"]}
+        })
+
+        return getPengalaman
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const storePengalamanTA = async (request:PayloadPengalamanTaSchema["body"], file : Express.Multer.File[]) : Promise<any> => {
+    try {
+        const arr_pengalaman = []
+
+        const exTenagaAhli = await TenagaAhli.findOne({
+            where : {
+                kode_tenaga_ahli : request.kode_tenaga_ahli
+            }
+        })
+
+        if(!exTenagaAhli) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tenaga Ahli Tidak Ditemukan")
+
+        const formData = new FormData()
+
+        formData.append('nama_aplikasi','SI-DaPeT')
+        file.map(files => formData.append('file', fs.createReadStream(files.path))) 
+        const upload = await uploadPdfArray(formData)
+
+        console.log("TES UPLOAD : ", upload)
+
+        const panjangArray = request.pengalaman_data.length
+
+        console.log(panjangArray)
+
+        if(upload[1] !== null || !upload[0]){
+            throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
+        }
+
+        for(const [index, pengalaman_dat] of request.pengalaman_data.entries()) {
+                
+
+            const createPenglamanTA = await PengalamanTa.create({
+                kode_tenaga_ahli : parseInt(request.kode_tenaga_ahli),
+                pengalaman : pengalaman_dat.pengalaman,
+                file_bukti : upload[0][index].file_name,
+                encrypt_key : upload[0][index].keypass
+            })
+
+
+            if(!createPenglamanTA) {
+            await deleteFile(upload[0].file_name)
+            throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Terjadi Kesalahan Saat Store Data")
+            }
+
+
+            // if(createPenglamanTA) {
+            //     // fs.unlinkSync(file.path)
+            // }
+
+
+            arr_pengalaman.push({
+                "kode_tenaga_ahli" : createPenglamanTA.kode_tenaga_ahli,
+                "pengalaman" : createPenglamanTA.pengalaman,
+                "file_bukti" : createPenglamanTA.file_bukti
+            })
+        }
+
+        if(arr_pengalaman.length > 0) {
+            file.map(item => fs.unlinkSync(item.path))
+        }
+
+        return arr_pengalaman
+
+    } catch (error) {
+        debugLogger.debug(error)
+        file.map(files => fs.unlinkSync(files.path))
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const getPdfUploadPengalamanTa = async (id:ParameterSchema["params"]["id"], kode_vendor:number) : Promise<any> => {
+    try {
+        const getPengalaman : PengalamanTa | null = await PengalamanTa.findOne({
+            where : {
+                kode_pengalaman_ta : id,       
+            }
+        })
+
+
+        if(!getPengalaman) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tidak Tersedia / Data Bukan Format PDF")
+
+        const data = {
+            nama_file : getPengalaman?.file_bukti as string, 
+            keypass : getPengalaman.encrypt_key as string
+        }
+
+
+        const tampilGambar = await showFile(data)
+
+        return tampilGambar[0]
+
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+
+// ######################################################################
+
+// ############################### Pengalaman TP #######################
+const getAllPengalamanTp = async (id:ParameterSchema["params"]["id"]) : Promise<PengalamanTp[]> => {
+    try {
+        const getPengalaman : PengalamanTp[] = await PengalamanTp.findAll({
+            where : {
+                kode_tenaga_pendukung : id
+            },
+            attributes : {exclude : ["encrypt_key"]}
+        })
+
+        return getPengalaman
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const storePengalamanTP = async (request:PayloadPengalamanTpSchema["body"], file : Express.Multer.File[]) : Promise<any> => {
+    try {
+        const arr_pengalaman = []
+
+        const exPengalamanTenagaPendukung = await TenagaPendukung.findOne({
+            where : {
+                kode_tenaga_pendukung : request.kode_tenaga_pendukung
+            }
+        })
+
+        if(!exPengalamanTenagaPendukung) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tenaga Pendukung Tidak Ditemukan")
+
+        const formData = new FormData()
+
+        formData.append('nama_aplikasi','SI-DaPeT')
+        file.map(files => formData.append('file', fs.createReadStream(files.path))) 
+        const upload = await uploadPdfArray(formData)
+
+
+        const panjangArray = request.pengalaman_data.length
+
+        console.log("TES : ", file)
+
+        if(upload[1] !== null || !upload[0]){
+            throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
+        }
+
+        for(const [index, pengalaman_dat] of request.pengalaman_data.entries()) {
+                
+
+            const createPenglamanTA = await PengalamanTp.create({
+                kode_tenaga_pendukung : parseInt(request.kode_tenaga_pendukung),
+                pengalaman : pengalaman_dat.pengalaman,
+                file_bukti : upload[0][index].file_name,
+                encrypt_key : upload[0][index].keypass
+            })
+
+
+            if(!createPenglamanTA) {
+            await deleteFile(upload[0].file_name)
+            throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Terjadi Kesalahan Saat Store Data")
+            }
+
+
+            // if(createPenglamanTA) {
+            //     console.log("gagal hapus")
+            //     if(file.length > 0)
+            //     file.map((files) => {
+            //         console.log(files)
+            //         if(files.path) fs.unlinkSync(files.path)
+            //     })
+            // }
+
+
+            arr_pengalaman.push({
+                "kode_tenaga_pendukung" : createPenglamanTA.kode_tenaga_pendukung,
+                "pengalaman" : createPenglamanTA.pengalaman,
+                "file_bukti" : createPenglamanTA.file_bukti
+            })
+        }
+
+        if(arr_pengalaman.length > 0) {
+            file.map(item => fs.unlinkSync(item.path))
+        }
+
+        return arr_pengalaman
+
+    } catch (error) {
+        debugLogger.debug(error)
+        if(file.length > 0)
+            file.map((files) => {
+                if(files.path) fs.unlinkSync(files.path)
+            })
+        // file.map(files => fs.unlinkSync(files.path))
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const getPdfUploadPengalamanTp = async (id:ParameterSchema["params"]["id"], kode_vendor:number) : Promise<any> => {
+    try {
+        const getPengalaman : PengalamanTp | null = await PengalamanTp.findOne({
+            where : {
+                kode_pengalaman_tp : id,       
+            }
+        })
+
+
+        if(!getPengalaman) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tidak Tersedia / Data Bukan Format PDF")
+
+        const data = {
+            nama_file : getPengalaman?.file_bukti as string, 
+            keypass : getPengalaman.encrypt_key as string
+        }
+
+
+        const tampilGambar = await showFile(data)
+
+        return tampilGambar[0]
+
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+// #####################################################################
+
 // ################################ Badan Usaha ##########################
 
 
@@ -3474,14 +5046,16 @@ export default {
     getFasilitas,
     storeFasilitas,
     hapusFasilitas,
-    getPdfUploadFasilitas,
+    getPdfUploadFasilitasKepemilikan,
+    getPdfUploadFasilitasFoto,
     updateFasilitas,
 
     //Pengalaman
     getPengalaman,
     storePengalaman,
     hapusPengalamanBadanUsaha,
-    getPdfUploadPengalaman,
+    getPdfUploadPengalamanKontrak,
+    getPdfUploadPengalamanBast,
     updatePengalaman,
 
     //Pengalaman Sekarang
@@ -3490,4 +5064,42 @@ export default {
     hapusPengalamanSekarangBadanUsaha,
     getPdfUploadPengalamanSekarang,
     updatePengalamanSekarang,
+    
+    //Kantor 
+    getKantor,
+    storeKantor,
+    hapusKantor,
+    getPdfUploadKantor,
+    updateKantor,
+
+    //Tenaga Ahli 
+    getTenagaAhli,
+    storeTenagaAhli,
+    hapusTenagaAhli,
+    updateTenagaAhli,
+    getPdfUploadTenagaAhliKtp,
+    getPdfUploadTenagaAhliCv,
+    getPdfUploadTenagaAhliIjazah,
+
+    //TenagaPendukung
+    getTenagaPendukung,
+    storeTenagaPendukung,
+    hapusTenagaPendukung,
+    updateTenagaPendukung,
+    getPdfUploadTenagaPendukungKtp,
+    getPdfUploadTenagaPendukungCv,
+    getPdfUploadTenagaPendukungIjazah,
+
+    //Pengalaman TA
+    storePengalamanTA,
+    getPdfUploadPengalamanTa,
+    getAllPengalamanTa,
+
+    //Pengalaman TP
+    getAllPengalamanTp,
+    storePengalamanTP,
+    getPdfUploadPengalamanTp,
+
+    
+
 }

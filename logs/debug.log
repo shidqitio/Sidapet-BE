@@ -1,145 +1,2523 @@
-[2025-02-20T10:56:06.610] [DEBUG] default - Error [SequelizeValidationError]: notNull Violation: TrxPenjaringan.kode_penjaringan cannot be null
-    at InstanceValidator._validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:78:13)
+[2025-03-11T10:20:24.887] [DEBUG] default - Error: WHERE parameter "kode_tenaga_pendukung" has invalid "undefined" value
+    at PostgresQueryGenerator.whereItemQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2445:13)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2434:25
+    at Array.forEach (<anonymous>)
+    at PostgresQueryGenerator.whereItemsQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2432:35)
+    at PostgresQueryGenerator.getWhereConditions (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2860:19)
+    at PostgresQueryGenerator.selectQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:1460:28)
+    at PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1002:27)
+    at Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:47)
     at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async InstanceValidator._validateAndRunHooks (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:111:7)
-    at async InstanceValidator.validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:93:12)
-    at async TrxPenjaringan.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4076:7)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
-  errors: [
-    {
-      message: 'TrxPenjaringan.kode_penjaringan cannot be null',
-      type: 'notNull Violation',
-      path: 'kode_penjaringan',
-      value: null,
-      origin: 'CORE',
-      instance: [Object],
-      validatorKey: 'is_null',
-      validatorName: null,
-      validatorArgs: []
-    }
-  ]
-}
-[2025-02-20T10:56:53.169] [DEBUG] default - Error [SequelizeValidationError]: notNull Violation: TrxPenjaringan.kode_penjaringan cannot be null
-    at InstanceValidator._validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:78:13)
+    at async Function.findOne (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1998:12)
+[2025-03-11T10:30:55.646] [DEBUG] default - Error: WHERE parameter "kode_tenaga_pendukung" has invalid "undefined" value
+    at PostgresQueryGenerator.whereItemQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2445:13)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2434:25
+    at Array.forEach (<anonymous>)
+    at PostgresQueryGenerator.whereItemsQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2432:35)
+    at PostgresQueryGenerator.getWhereConditions (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2860:19)
+    at PostgresQueryGenerator.selectQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:1460:28)
+    at PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1002:27)
+    at Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:47)
     at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async InstanceValidator._validateAndRunHooks (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:111:7)
-    at async InstanceValidator.validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:93:12)
-    at async TrxPenjaringan.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4076:7)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
-  errors: [
-    {
-      message: 'TrxPenjaringan.kode_penjaringan cannot be null',
-      type: 'notNull Violation',
-      path: 'kode_penjaringan',
-      value: null,
-      origin: 'CORE',
-      instance: [Object],
-      validatorKey: 'is_null',
-      validatorName: null,
-      validatorArgs: []
-    }
-  ]
-}
-[2025-02-20T10:56:53.184] [DEBUG] default - Error [SequelizeValidationError]: notNull Violation: TrxPenjaringan.kode_penjaringan cannot be null
-    at InstanceValidator._validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:78:13)
+    at async Function.findOne (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1998:12)
+[2025-03-11T10:40:15.223] [DEBUG] default - Error: WHERE parameter "kode_tenaga_pendukung" has invalid "undefined" value
+    at PostgresQueryGenerator.whereItemQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2445:13)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2434:25
+    at Array.forEach (<anonymous>)
+    at PostgresQueryGenerator.whereItemsQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2432:35)
+    at PostgresQueryGenerator.getWhereConditions (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2860:19)
+    at PostgresQueryGenerator.selectQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:1460:28)
+    at PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1002:27)
+    at Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:47)
     at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async InstanceValidator._validateAndRunHooks (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:111:7)
-    at async InstanceValidator.validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:93:12)
-    at async TrxPenjaringan.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4076:7)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
-  errors: [
-    {
-      message: 'TrxPenjaringan.kode_penjaringan cannot be null',
-      type: 'notNull Violation',
-      path: 'kode_penjaringan',
-      value: null,
-      origin: 'CORE',
-      instance: [Object],
-      validatorKey: 'is_null',
-      validatorName: null,
-      validatorArgs: []
-    }
-  ]
-}
-[2025-02-20T10:57:54.693] [DEBUG] default - Error [SequelizeValidationError]: notNull Violation: TrxPenjaringan.kode_penjaringan cannot be null
-    at InstanceValidator._validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:78:13)
+    at async Function.findOne (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1998:12)
+[2025-03-11T10:40:15.318] [DEBUG] default - Error: WHERE parameter "kode_tenaga_pendukung" has invalid "undefined" value
+    at PostgresQueryGenerator.whereItemQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2445:13)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2434:25
+    at Array.forEach (<anonymous>)
+    at PostgresQueryGenerator.whereItemsQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2432:35)
+    at PostgresQueryGenerator.getWhereConditions (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2860:19)
+    at PostgresQueryGenerator.selectQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:1460:28)
+    at PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1002:27)
+    at Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:47)
     at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async InstanceValidator._validateAndRunHooks (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:111:7)
-    at async InstanceValidator.validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:93:12)
-    at async TrxPenjaringan.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4076:7)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
-  errors: [
-    {
-      message: 'TrxPenjaringan.kode_penjaringan cannot be null',
-      type: 'notNull Violation',
-      path: 'kode_penjaringan',
-      value: null,
-      origin: 'CORE',
-      instance: [Object],
-      validatorKey: 'is_null',
-      validatorName: null,
-      validatorArgs: []
-    }
-  ]
+    at async Function.findOne (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1998:12)
+[2025-03-11T10:41:11.206] [DEBUG] default - Error: WHERE parameter "kode_tenaga_pendukung" has invalid "undefined" value
+    at PostgresQueryGenerator.whereItemQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2445:13)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2434:25
+    at Array.forEach (<anonymous>)
+    at PostgresQueryGenerator.whereItemsQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2432:35)
+    at PostgresQueryGenerator.getWhereConditions (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2860:19)
+    at PostgresQueryGenerator.selectQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:1460:28)
+    at PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1002:27)
+    at Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:47)
+    at async Function.findOne (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1998:12)
+[2025-03-11T10:41:11.236] [DEBUG] default - Error: WHERE parameter "kode_tenaga_pendukung" has invalid "undefined" value
+    at PostgresQueryGenerator.whereItemQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2445:13)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2434:25
+    at Array.forEach (<anonymous>)
+    at PostgresQueryGenerator.whereItemsQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2432:35)
+    at PostgresQueryGenerator.getWhereConditions (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:2860:19)
+    at PostgresQueryGenerator.selectQuery (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-generator.js:1460:28)
+    at PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1002:27)
+    at Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:47)
+    at async Function.findOne (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1998:12)
+[2025-03-11T10:42:13.442] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at async PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1001:12)
+    at async Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:21)
+    at async Function.findOne (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1998:12) {
+  name: 'SequelizeDatabaseError',
+  parent: error: kolom « kode_pengalaman_tp » tidak ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 193,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: 'Perhaps you meant to reference the column "PengalamanTa.kode_pengalaman_ta".',
+    position: '8',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3729',
+    routine: 'errorMissingColumn',
+    sql: `SELECT "kode_pengalaman_tp", "kode_tenaga_pendukung", "pengalaman", "file_bukti", "encrypt_key" FROM "public"."ref_pengalaman_ta" AS "PengalamanTa" WHERE "PengalamanTa"."kode_tenaga_pendukung" = '1' LIMIT 1;`,
+    parameters: undefined
+  },
+  original: error: kolom « kode_pengalaman_tp » tidak ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 193,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: 'Perhaps you meant to reference the column "PengalamanTa.kode_pengalaman_ta".',
+    position: '8',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3729',
+    routine: 'errorMissingColumn',
+    sql: `SELECT "kode_pengalaman_tp", "kode_tenaga_pendukung", "pengalaman", "file_bukti", "encrypt_key" FROM "public"."ref_pengalaman_ta" AS "PengalamanTa" WHERE "PengalamanTa"."kode_tenaga_pendukung" = '1' LIMIT 1;`,
+    parameters: undefined
+  },
+  sql: `SELECT "kode_pengalaman_tp", "kode_tenaga_pendukung", "pengalaman", "file_bukti", "encrypt_key" FROM "public"."ref_pengalaman_ta" AS "PengalamanTa" WHERE "PengalamanTa"."kode_tenaga_pendukung" = '1' LIMIT 1;`,
+  parameters: {}
 }
-[2025-02-20T10:57:54.696] [DEBUG] default - Error [SequelizeValidationError]: notNull Violation: TrxPenjaringan.kode_penjaringan cannot be null
-    at InstanceValidator._validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:78:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async InstanceValidator._validateAndRunHooks (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:111:7)
-    at async InstanceValidator.validate (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\instance-validator.js:93:12)
-    at async TrxPenjaringan.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4076:7)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
-  errors: [
-    {
-      message: 'TrxPenjaringan.kode_penjaringan cannot be null',
-      type: 'notNull Violation',
-      path: 'kode_penjaringan',
-      value: null,
-      origin: 'CORE',
-      instance: [Object],
-      validatorKey: 'is_null',
-      validatorName: null,
-      validatorArgs: []
-    }
-  ]
+[2025-03-11T10:42:13.456] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at async PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1001:12)
+    at async Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:21)
+    at async Function.findOne (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1998:12) {
+  name: 'SequelizeDatabaseError',
+  parent: error: kolom « kode_pengalaman_tp » tidak ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 193,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: 'Perhaps you meant to reference the column "PengalamanTa.kode_pengalaman_ta".',
+    position: '8',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3729',
+    routine: 'errorMissingColumn',
+    sql: `SELECT "kode_pengalaman_tp", "kode_tenaga_pendukung", "pengalaman", "file_bukti", "encrypt_key" FROM "public"."ref_pengalaman_ta" AS "PengalamanTa" WHERE "PengalamanTa"."kode_tenaga_pendukung" = '1' LIMIT 1;`,
+    parameters: undefined
+  },
+  original: error: kolom « kode_pengalaman_tp » tidak ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 193,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: 'Perhaps you meant to reference the column "PengalamanTa.kode_pengalaman_ta".',
+    position: '8',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3729',
+    routine: 'errorMissingColumn',
+    sql: `SELECT "kode_pengalaman_tp", "kode_tenaga_pendukung", "pengalaman", "file_bukti", "encrypt_key" FROM "public"."ref_pengalaman_ta" AS "PengalamanTa" WHERE "PengalamanTa"."kode_tenaga_pendukung" = '1' LIMIT 1;`,
+    parameters: undefined
+  },
+  sql: `SELECT "kode_pengalaman_tp", "kode_tenaga_pendukung", "pengalaman", "file_bukti", "encrypt_key" FROM "public"."ref_pengalaman_ta" AS "PengalamanTa" WHERE "PengalamanTa"."kode_tenaga_pendukung" = '1' LIMIT 1;`,
+  parameters: {}
 }
-[2025-02-20T11:00:08.231] [DEBUG] default - Error: harap isi daftar undangan
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:51:83
+[2025-03-11T10:43:05.121] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at async PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1001:12)
+    at async Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:21)
+    at async Function.findOne (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1998:12) {
+  name: 'SequelizeDatabaseError',
+  parent: error: kolom « kode_pengalaman_tp » tidak ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 193,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: 'Perhaps you meant to reference the column "PengalamanTa.kode_pengalaman_ta".',
+    position: '8',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3729',
+    routine: 'errorMissingColumn',
+    sql: `SELECT "kode_pengalaman_tp", "kode_tenaga_pendukung", "pengalaman", "file_bukti", "encrypt_key" FROM "public"."ref_pengalaman_ta" AS "PengalamanTa" WHERE "PengalamanTa"."kode_tenaga_pendukung" = '1' LIMIT 1;`,
+    parameters: undefined
+  },
+  original: error: kolom « kode_pengalaman_tp » tidak ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 193,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: 'Perhaps you meant to reference the column "PengalamanTa.kode_pengalaman_ta".',
+    position: '8',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3729',
+    routine: 'errorMissingColumn',
+    sql: `SELECT "kode_pengalaman_tp", "kode_tenaga_pendukung", "pengalaman", "file_bukti", "encrypt_key" FROM "public"."ref_pengalaman_ta" AS "PengalamanTa" WHERE "PengalamanTa"."kode_tenaga_pendukung" = '1' LIMIT 1;`,
+    parameters: undefined
+  },
+  sql: `SELECT "kode_pengalaman_tp", "kode_tenaga_pendukung", "pengalaman", "file_bukti", "encrypt_key" FROM "public"."ref_pengalaman_ta" AS "PengalamanTa" WHERE "PengalamanTa"."kode_tenaga_pendukung" = '1' LIMIT 1;`,
+  parameters: {}
+}
+[2025-03-11T10:43:05.123] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at async PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1001:12)
+    at async Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:21)
+    at async Function.findOne (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1998:12) {
+  name: 'SequelizeDatabaseError',
+  parent: error: kolom « kode_pengalaman_tp » tidak ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 193,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: 'Perhaps you meant to reference the column "PengalamanTa.kode_pengalaman_ta".',
+    position: '8',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3729',
+    routine: 'errorMissingColumn',
+    sql: `SELECT "kode_pengalaman_tp", "kode_tenaga_pendukung", "pengalaman", "file_bukti", "encrypt_key" FROM "public"."ref_pengalaman_ta" AS "PengalamanTa" WHERE "PengalamanTa"."kode_tenaga_pendukung" = '1' LIMIT 1;`,
+    parameters: undefined
+  },
+  original: error: kolom « kode_pengalaman_tp » tidak ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 193,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: 'Perhaps you meant to reference the column "PengalamanTa.kode_pengalaman_ta".',
+    position: '8',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3729',
+    routine: 'errorMissingColumn',
+    sql: `SELECT "kode_pengalaman_tp", "kode_tenaga_pendukung", "pengalaman", "file_bukti", "encrypt_key" FROM "public"."ref_pengalaman_ta" AS "PengalamanTa" WHERE "PengalamanTa"."kode_tenaga_pendukung" = '1' LIMIT 1;`,
+    parameters: undefined
+  },
+  sql: `SELECT "kode_pengalaman_tp", "kode_tenaga_pendukung", "pengalaman", "file_bukti", "encrypt_key" FROM "public"."ref_pengalaman_ta" AS "PengalamanTa" WHERE "PengalamanTa"."kode_tenaga_pendukung" = '1' LIMIT 1;`,
+  parameters: {}
+}
+[2025-03-11T10:44:29.497] [DEBUG] default - Error: Data Tenaga Pendukung Tidak Ditemukan
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4794:48
     at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:5:58)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 422,
+  code: 404,
   status: 'error'
 }
-[2025-02-20T11:26:13.585] [DEBUG] default - Error: harap isi daftar undangan
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:52:83
+[2025-03-11T10:47:58.565] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1001:12)
+    at async Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:21) {
+  name: 'SequelizeDatabaseError',
+  parent: error: kolom « encrypt_key_ktp » tidak ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 114,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: undefined,
+    position: '139',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: 'SELECT "kode_tenaga_pendukung", "kode_vendor", "nama", "no_ktp", "file_ktp", "is_ktp_selamanya", "ktp_berlaku_awal", "ktp_berlaku_akhir", "encrypt_key_ktp", "tempat_lahir", "tgl_lahir", "posisi", "kode_jenjang_pendidikan", "program_studi", "file_ijazah", "is_ijazah_selamanya", "ijazah_berlaku_awal", "ijazah_berlaku_akhir", "encrypt_key_ijazah", "file_cv", "is_cv_selamanya", "cv_berlaku_awal", "cv_berlaku_akhir", "encrypt_key_cv", "custom" FROM "public"."ref_tenaga_pendukung" AS "TenagaPendukung" WHERE "TenagaPendukung"."kode_vendor" = 2;',
+    parameters: undefined
+  },
+  original: error: kolom « encrypt_key_ktp » tidak ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 114,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: undefined,
+    position: '139',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: 'SELECT "kode_tenaga_pendukung", "kode_vendor", "nama", "no_ktp", "file_ktp", "is_ktp_selamanya", "ktp_berlaku_awal", "ktp_berlaku_akhir", "encrypt_key_ktp", "tempat_lahir", "tgl_lahir", "posisi", "kode_jenjang_pendidikan", "program_studi", "file_ijazah", "is_ijazah_selamanya", "ijazah_berlaku_awal", "ijazah_berlaku_akhir", "encrypt_key_ijazah", "file_cv", "is_cv_selamanya", "cv_berlaku_awal", "cv_berlaku_akhir", "encrypt_key_cv", "custom" FROM "public"."ref_tenaga_pendukung" AS "TenagaPendukung" WHERE "TenagaPendukung"."kode_vendor" = 2;',
+    parameters: undefined
+  },
+  sql: 'SELECT "kode_tenaga_pendukung", "kode_vendor", "nama", "no_ktp", "file_ktp", "is_ktp_selamanya", "ktp_berlaku_awal", "ktp_berlaku_akhir", "encrypt_key_ktp", "tempat_lahir", "tgl_lahir", "posisi", "kode_jenjang_pendidikan", "program_studi", "file_ijazah", "is_ijazah_selamanya", "ijazah_berlaku_awal", "ijazah_berlaku_akhir", "encrypt_key_ijazah", "file_cv", "is_cv_selamanya", "cv_berlaku_awal", "cv_berlaku_akhir", "encrypt_key_cv", "custom" FROM "public"."ref_tenaga_pendukung" AS "TenagaPendukung" WHERE "TenagaPendukung"."kode_vendor" = 2;',
+  parameters: {}
+}
+[2025-03-11T10:51:11.260] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.insert (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:795:21)
+    at async TenagaPendukung.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4153:35)
+    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
+  name: 'SequelizeDatabaseError',
+  parent: error: sintaks masukan tidak valid untuk tipe timestamp with time zone : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 187,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665068266-867649515.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      'ieYk7jwNbWVhA8pFQqpbJGIovqSm-VXqlExm86K7v7U=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      2000,
+      'SI-DaPeT_1741665068295-818324512.pdf',
+      false,
+      'psftO9TJS8_IBw_gx4rnWyfRCM7qnSuzE45z4aJy2eE=',
+      'SI-DaPeT_1741665068315-747892223.pdf',
+      false,
+      'WwQljDLy1oalbSAWlHZOHcf6qne-zQvc062iWSzWXrU='
+    ]
+  },
+  original: error: sintaks masukan tidak valid untuk tipe timestamp with time zone : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 187,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665068266-867649515.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      'ieYk7jwNbWVhA8pFQqpbJGIovqSm-VXqlExm86K7v7U=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      2000,
+      'SI-DaPeT_1741665068295-818324512.pdf',
+      false,
+      'psftO9TJS8_IBw_gx4rnWyfRCM7qnSuzE45z4aJy2eE=',
+      'SI-DaPeT_1741665068315-747892223.pdf',
+      false,
+      'WwQljDLy1oalbSAWlHZOHcf6qne-zQvc062iWSzWXrU='
+    ]
+  },
+  sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+  parameters: [
+    2,
+    'Kontak Hambala',
+    '2010',
+    'SI-DaPeT_1741665068266-867649515.pdf',
+    false,
+    'Invalid date',
+    '2050-01-01 00:00:00.000 +00:00',
+    'ieYk7jwNbWVhA8pFQqpbJGIovqSm-VXqlExm86K7v7U=',
+    'false',
+    '2000-12-09 00:00:00.000 +00:00',
+    '2040-10-10',
+    NaN,
+    2000,
+    'SI-DaPeT_1741665068295-818324512.pdf',
+    false,
+    'psftO9TJS8_IBw_gx4rnWyfRCM7qnSuzE45z4aJy2eE=',
+    'SI-DaPeT_1741665068315-747892223.pdf',
+    false,
+    'WwQljDLy1oalbSAWlHZOHcf6qne-zQvc062iWSzWXrU='
+  ]
+}
+[2025-03-11T10:51:35.072] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.insert (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:795:21)
+    at async TenagaPendukung.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4153:35)
+    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
+  name: 'SequelizeDatabaseError',
+  parent: error: sintaks masukan tidak valid untuk tipe timestamp with time zone : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 187,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665093427-41063952.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      '_u4RpStcLyoqbeif_HMpj9QlE5kH5pHj8rVL1CY00T4=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      2000,
+      'SI-DaPeT_1741665093443-192394318.pdf',
+      false,
+      'K1yXVqYccoVPZeAQW7H1jninImih61FOXVzV5CseZE8=',
+      'SI-DaPeT_1741665093458-398715897.pdf',
+      false,
+      'K4UkMac0h07q71c0qYVvjaiqq5JDXmaqlwCH8Bq7m4A='
+    ]
+  },
+  original: error: sintaks masukan tidak valid untuk tipe timestamp with time zone : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 187,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665093427-41063952.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      '_u4RpStcLyoqbeif_HMpj9QlE5kH5pHj8rVL1CY00T4=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      2000,
+      'SI-DaPeT_1741665093443-192394318.pdf',
+      false,
+      'K1yXVqYccoVPZeAQW7H1jninImih61FOXVzV5CseZE8=',
+      'SI-DaPeT_1741665093458-398715897.pdf',
+      false,
+      'K4UkMac0h07q71c0qYVvjaiqq5JDXmaqlwCH8Bq7m4A='
+    ]
+  },
+  sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+  parameters: [
+    2,
+    'Kontak Hambala',
+    '2010',
+    'SI-DaPeT_1741665093427-41063952.pdf',
+    false,
+    'Invalid date',
+    '2050-01-01 00:00:00.000 +00:00',
+    '_u4RpStcLyoqbeif_HMpj9QlE5kH5pHj8rVL1CY00T4=',
+    'false',
+    '2000-12-09 00:00:00.000 +00:00',
+    '2040-10-10',
+    NaN,
+    2000,
+    'SI-DaPeT_1741665093443-192394318.pdf',
+    false,
+    'K1yXVqYccoVPZeAQW7H1jninImih61FOXVzV5CseZE8=',
+    'SI-DaPeT_1741665093458-398715897.pdf',
+    false,
+    'K4UkMac0h07q71c0qYVvjaiqq5JDXmaqlwCH8Bq7m4A='
+  ]
+}
+[2025-03-11T10:51:35.075] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.insert (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:795:21)
+    at async TenagaPendukung.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4153:35)
+    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
+  name: 'SequelizeDatabaseError',
+  parent: error: sintaks masukan tidak valid untuk tipe timestamp with time zone : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 187,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665093427-41063952.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      '_u4RpStcLyoqbeif_HMpj9QlE5kH5pHj8rVL1CY00T4=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      2000,
+      'SI-DaPeT_1741665093443-192394318.pdf',
+      false,
+      'K1yXVqYccoVPZeAQW7H1jninImih61FOXVzV5CseZE8=',
+      'SI-DaPeT_1741665093458-398715897.pdf',
+      false,
+      'K4UkMac0h07q71c0qYVvjaiqq5JDXmaqlwCH8Bq7m4A='
+    ]
+  },
+  original: error: sintaks masukan tidak valid untuk tipe timestamp with time zone : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 187,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665093427-41063952.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      '_u4RpStcLyoqbeif_HMpj9QlE5kH5pHj8rVL1CY00T4=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      2000,
+      'SI-DaPeT_1741665093443-192394318.pdf',
+      false,
+      'K1yXVqYccoVPZeAQW7H1jninImih61FOXVzV5CseZE8=',
+      'SI-DaPeT_1741665093458-398715897.pdf',
+      false,
+      'K4UkMac0h07q71c0qYVvjaiqq5JDXmaqlwCH8Bq7m4A='
+    ]
+  },
+  sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+  parameters: [
+    2,
+    'Kontak Hambala',
+    '2010',
+    'SI-DaPeT_1741665093427-41063952.pdf',
+    false,
+    'Invalid date',
+    '2050-01-01 00:00:00.000 +00:00',
+    '_u4RpStcLyoqbeif_HMpj9QlE5kH5pHj8rVL1CY00T4=',
+    'false',
+    '2000-12-09 00:00:00.000 +00:00',
+    '2040-10-10',
+    NaN,
+    2000,
+    'SI-DaPeT_1741665093443-192394318.pdf',
+    false,
+    'K1yXVqYccoVPZeAQW7H1jninImih61FOXVzV5CseZE8=',
+    'SI-DaPeT_1741665093458-398715897.pdf',
+    false,
+    'K4UkMac0h07q71c0qYVvjaiqq5JDXmaqlwCH8Bq7m4A='
+  ]
+}
+[2025-03-11T10:53:24.410] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.insert (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:795:21)
+    at async TenagaPendukung.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4153:35)
+    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
+  name: 'SequelizeDatabaseError',
+  parent: error: sintaks masukan tidak valid untuk tipe timestamp with time zone : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 187,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665202536-617824052.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      'A17M8CZnybyBnaGjKeH3nwRiRl9SexC8eqs_k8qIheI=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      2000,
+      'SI-DaPeT_1741665202551-935103189.pdf',
+      false,
+      '60pkXnowI4qdbctLdXdkmT1mBGqHoeboQo6R2kMHLak=',
+      'SI-DaPeT_1741665202567-194046766.pdf',
+      false,
+      'K8c2OI2fJiT846rYn0iVBGmp9zM1Zs0FC3i4Jwo26gU='
+    ]
+  },
+  original: error: sintaks masukan tidak valid untuk tipe timestamp with time zone : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 187,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665202536-617824052.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      'A17M8CZnybyBnaGjKeH3nwRiRl9SexC8eqs_k8qIheI=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      2000,
+      'SI-DaPeT_1741665202551-935103189.pdf',
+      false,
+      '60pkXnowI4qdbctLdXdkmT1mBGqHoeboQo6R2kMHLak=',
+      'SI-DaPeT_1741665202567-194046766.pdf',
+      false,
+      'K8c2OI2fJiT846rYn0iVBGmp9zM1Zs0FC3i4Jwo26gU='
+    ]
+  },
+  sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+  parameters: [
+    2,
+    'Kontak Hambala',
+    '2010',
+    'SI-DaPeT_1741665202536-617824052.pdf',
+    false,
+    'Invalid date',
+    '2050-01-01 00:00:00.000 +00:00',
+    'A17M8CZnybyBnaGjKeH3nwRiRl9SexC8eqs_k8qIheI=',
+    'false',
+    '2000-12-09 00:00:00.000 +00:00',
+    '2040-10-10',
+    NaN,
+    2000,
+    'SI-DaPeT_1741665202551-935103189.pdf',
+    false,
+    '60pkXnowI4qdbctLdXdkmT1mBGqHoeboQo6R2kMHLak=',
+    'SI-DaPeT_1741665202567-194046766.pdf',
+    false,
+    'K8c2OI2fJiT846rYn0iVBGmp9zM1Zs0FC3i4Jwo26gU='
+  ]
+}
+[2025-03-11T10:53:24.414] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.insert (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:795:21)
+    at async TenagaPendukung.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4153:35)
+    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
+  name: 'SequelizeDatabaseError',
+  parent: error: sintaks masukan tidak valid untuk tipe timestamp with time zone : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 187,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665202536-617824052.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      'A17M8CZnybyBnaGjKeH3nwRiRl9SexC8eqs_k8qIheI=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      2000,
+      'SI-DaPeT_1741665202551-935103189.pdf',
+      false,
+      '60pkXnowI4qdbctLdXdkmT1mBGqHoeboQo6R2kMHLak=',
+      'SI-DaPeT_1741665202567-194046766.pdf',
+      false,
+      'K8c2OI2fJiT846rYn0iVBGmp9zM1Zs0FC3i4Jwo26gU='
+    ]
+  },
+  original: error: sintaks masukan tidak valid untuk tipe timestamp with time zone : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 187,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665202536-617824052.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      'A17M8CZnybyBnaGjKeH3nwRiRl9SexC8eqs_k8qIheI=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      2000,
+      'SI-DaPeT_1741665202551-935103189.pdf',
+      false,
+      '60pkXnowI4qdbctLdXdkmT1mBGqHoeboQo6R2kMHLak=',
+      'SI-DaPeT_1741665202567-194046766.pdf',
+      false,
+      'K8c2OI2fJiT846rYn0iVBGmp9zM1Zs0FC3i4Jwo26gU='
+    ]
+  },
+  sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+  parameters: [
+    2,
+    'Kontak Hambala',
+    '2010',
+    'SI-DaPeT_1741665202536-617824052.pdf',
+    false,
+    'Invalid date',
+    '2050-01-01 00:00:00.000 +00:00',
+    'A17M8CZnybyBnaGjKeH3nwRiRl9SexC8eqs_k8qIheI=',
+    'false',
+    '2000-12-09 00:00:00.000 +00:00',
+    '2040-10-10',
+    NaN,
+    2000,
+    'SI-DaPeT_1741665202551-935103189.pdf',
+    false,
+    '60pkXnowI4qdbctLdXdkmT1mBGqHoeboQo6R2kMHLak=',
+    'SI-DaPeT_1741665202567-194046766.pdf',
+    false,
+    'K8c2OI2fJiT846rYn0iVBGmp9zM1Zs0FC3i4Jwo26gU='
+  ]
+}
+[2025-03-11T10:58:39.370] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.insert (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:795:21)
+    at async TenagaPendukung.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4153:35)
+    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
+  name: 'SequelizeDatabaseError',
+  parent: error: sintaks masukan tidak valid untuk tipe timestamp with time zone : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 187,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665516838-131968140.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      '5uQ-VZFXPv5x58pjJW38aCnENQAcK4Fojf70F_kGs10=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      '2000-12-09',
+      'SI-DaPeT_1741665516890-302423521.pdf',
+      false,
+      'E6bw9EBq065_93S6fAAOGAO9xN6I4XjNdpkWhrVTfdc=',
+      'SI-DaPeT_1741665516906-860807501.pdf',
+      false,
+      'K7frf1lYeX4BfZoPKJTXv7hHd9fAD8pUDXMptjW1xfw='
+    ]
+  },
+  original: error: sintaks masukan tidak valid untuk tipe timestamp with time zone : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 187,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665516838-131968140.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      '5uQ-VZFXPv5x58pjJW38aCnENQAcK4Fojf70F_kGs10=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      '2000-12-09',
+      'SI-DaPeT_1741665516890-302423521.pdf',
+      false,
+      'E6bw9EBq065_93S6fAAOGAO9xN6I4XjNdpkWhrVTfdc=',
+      'SI-DaPeT_1741665516906-860807501.pdf',
+      false,
+      'K7frf1lYeX4BfZoPKJTXv7hHd9fAD8pUDXMptjW1xfw='
+    ]
+  },
+  sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+  parameters: [
+    2,
+    'Kontak Hambala',
+    '2010',
+    'SI-DaPeT_1741665516838-131968140.pdf',
+    false,
+    'Invalid date',
+    '2050-01-01 00:00:00.000 +00:00',
+    '5uQ-VZFXPv5x58pjJW38aCnENQAcK4Fojf70F_kGs10=',
+    'false',
+    '2000-12-09 00:00:00.000 +00:00',
+    '2040-10-10',
+    NaN,
+    '2000-12-09',
+    'SI-DaPeT_1741665516890-302423521.pdf',
+    false,
+    'E6bw9EBq065_93S6fAAOGAO9xN6I4XjNdpkWhrVTfdc=',
+    'SI-DaPeT_1741665516906-860807501.pdf',
+    false,
+    'K7frf1lYeX4BfZoPKJTXv7hHd9fAD8pUDXMptjW1xfw='
+  ]
+}
+[2025-03-11T10:58:39.378] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.insert (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:795:21)
+    at async TenagaPendukung.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4153:35)
+    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
+  name: 'SequelizeDatabaseError',
+  parent: error: sintaks masukan tidak valid untuk tipe timestamp with time zone : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 187,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665516838-131968140.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      '5uQ-VZFXPv5x58pjJW38aCnENQAcK4Fojf70F_kGs10=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      '2000-12-09',
+      'SI-DaPeT_1741665516890-302423521.pdf',
+      false,
+      'E6bw9EBq065_93S6fAAOGAO9xN6I4XjNdpkWhrVTfdc=',
+      'SI-DaPeT_1741665516906-860807501.pdf',
+      false,
+      'K7frf1lYeX4BfZoPKJTXv7hHd9fAD8pUDXMptjW1xfw='
+    ]
+  },
+  original: error: sintaks masukan tidak valid untuk tipe timestamp with time zone : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 187,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665516838-131968140.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      '5uQ-VZFXPv5x58pjJW38aCnENQAcK4Fojf70F_kGs10=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      '2000-12-09',
+      'SI-DaPeT_1741665516890-302423521.pdf',
+      false,
+      'E6bw9EBq065_93S6fAAOGAO9xN6I4XjNdpkWhrVTfdc=',
+      'SI-DaPeT_1741665516906-860807501.pdf',
+      false,
+      'K7frf1lYeX4BfZoPKJTXv7hHd9fAD8pUDXMptjW1xfw='
+    ]
+  },
+  sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+  parameters: [
+    2,
+    'Kontak Hambala',
+    '2010',
+    'SI-DaPeT_1741665516838-131968140.pdf',
+    false,
+    'Invalid date',
+    '2050-01-01 00:00:00.000 +00:00',
+    '5uQ-VZFXPv5x58pjJW38aCnENQAcK4Fojf70F_kGs10=',
+    'false',
+    '2000-12-09 00:00:00.000 +00:00',
+    '2040-10-10',
+    NaN,
+    '2000-12-09',
+    'SI-DaPeT_1741665516890-302423521.pdf',
+    false,
+    'E6bw9EBq065_93S6fAAOGAO9xN6I4XjNdpkWhrVTfdc=',
+    'SI-DaPeT_1741665516906-860807501.pdf',
+    false,
+    'K7frf1lYeX4BfZoPKJTXv7hHd9fAD8pUDXMptjW1xfw='
+  ]
+}
+[2025-03-11T11:01:51.382] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.insert (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:795:21)
+    at async TenagaPendukung.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4153:35)
+    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
+  name: 'SequelizeDatabaseError',
+  parent: error: sintaks masukan tidak valid untuk tipe timestamp with time zone : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 187,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665708970-57437613.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      'UM7z-rTeroQn5MwlzfA7hyNTMQG8AWDlim9yxgfT6hE=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      '2000-12-09',
+      'SI-DaPeT_1741665708991-826558233.pdf',
+      false,
+      'QBt-f-PIdpy7ssDkKxJyu0mhmsc-HRXpzWMwvUZ1_vU=',
+      'SI-DaPeT_1741665709011-449369035.pdf',
+      false,
+      'vn2jC9alUReHeF4sfC_EeABK_vJTwZ79b5cmQaM7kIw='
+    ]
+  },
+  original: error: sintaks masukan tidak valid untuk tipe timestamp with time zone : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 187,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665708970-57437613.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      'UM7z-rTeroQn5MwlzfA7hyNTMQG8AWDlim9yxgfT6hE=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      '2000-12-09',
+      'SI-DaPeT_1741665708991-826558233.pdf',
+      false,
+      'QBt-f-PIdpy7ssDkKxJyu0mhmsc-HRXpzWMwvUZ1_vU=',
+      'SI-DaPeT_1741665709011-449369035.pdf',
+      false,
+      'vn2jC9alUReHeF4sfC_EeABK_vJTwZ79b5cmQaM7kIw='
+    ]
+  },
+  sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+  parameters: [
+    2,
+    'Kontak Hambala',
+    '2010',
+    'SI-DaPeT_1741665708970-57437613.pdf',
+    false,
+    'Invalid date',
+    '2050-01-01 00:00:00.000 +00:00',
+    'UM7z-rTeroQn5MwlzfA7hyNTMQG8AWDlim9yxgfT6hE=',
+    'false',
+    '2000-12-09 00:00:00.000 +00:00',
+    '2040-10-10',
+    NaN,
+    '2000-12-09',
+    'SI-DaPeT_1741665708991-826558233.pdf',
+    false,
+    'QBt-f-PIdpy7ssDkKxJyu0mhmsc-HRXpzWMwvUZ1_vU=',
+    'SI-DaPeT_1741665709011-449369035.pdf',
+    false,
+    'vn2jC9alUReHeF4sfC_EeABK_vJTwZ79b5cmQaM7kIw='
+  ]
+}
+[2025-03-11T11:01:51.390] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.insert (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:795:21)
+    at async TenagaPendukung.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4153:35)
+    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
+  name: 'SequelizeDatabaseError',
+  parent: error: sintaks masukan tidak valid untuk tipe timestamp with time zone : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 187,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665708970-57437613.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      'UM7z-rTeroQn5MwlzfA7hyNTMQG8AWDlim9yxgfT6hE=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      '2000-12-09',
+      'SI-DaPeT_1741665708991-826558233.pdf',
+      false,
+      'QBt-f-PIdpy7ssDkKxJyu0mhmsc-HRXpzWMwvUZ1_vU=',
+      'SI-DaPeT_1741665709011-449369035.pdf',
+      false,
+      'vn2jC9alUReHeF4sfC_EeABK_vJTwZ79b5cmQaM7kIw='
+    ]
+  },
+  original: error: sintaks masukan tidak valid untuk tipe timestamp with time zone : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 187,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665708970-57437613.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      'UM7z-rTeroQn5MwlzfA7hyNTMQG8AWDlim9yxgfT6hE=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      '2000-12-09',
+      'SI-DaPeT_1741665708991-826558233.pdf',
+      false,
+      'QBt-f-PIdpy7ssDkKxJyu0mhmsc-HRXpzWMwvUZ1_vU=',
+      'SI-DaPeT_1741665709011-449369035.pdf',
+      false,
+      'vn2jC9alUReHeF4sfC_EeABK_vJTwZ79b5cmQaM7kIw='
+    ]
+  },
+  sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+  parameters: [
+    2,
+    'Kontak Hambala',
+    '2010',
+    'SI-DaPeT_1741665708970-57437613.pdf',
+    false,
+    'Invalid date',
+    '2050-01-01 00:00:00.000 +00:00',
+    'UM7z-rTeroQn5MwlzfA7hyNTMQG8AWDlim9yxgfT6hE=',
+    'false',
+    '2000-12-09 00:00:00.000 +00:00',
+    '2040-10-10',
+    NaN,
+    '2000-12-09',
+    'SI-DaPeT_1741665708991-826558233.pdf',
+    false,
+    'QBt-f-PIdpy7ssDkKxJyu0mhmsc-HRXpzWMwvUZ1_vU=',
+    'SI-DaPeT_1741665709011-449369035.pdf',
+    false,
+    'vn2jC9alUReHeF4sfC_EeABK_vJTwZ79b5cmQaM7kIw='
+  ]
+}
+[2025-03-11T11:02:41.101] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.insert (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:795:21)
+    at async TenagaPendukung.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4153:35)
+    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
+  name: 'SequelizeDatabaseError',
+  parent: error: sintaks masukan tidak valid untuk tipe timestamp with time zone : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 187,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665759173-19357519.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      'fAec1OWgnUkht9TFB6FApxIz8vsYQ0IoJ6PHbszkgOY=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      '2000-12-09',
+      'SI-DaPeT_1741665759185-461167217.pdf',
+      false,
+      '7ybfVyi8k2HDabijC4h0q4BjsELnJJHEGm8PZSXVvV0=',
+      'SI-DaPeT_1741665759195-239192404.pdf',
+      false,
+      'zwCrq4AqubIrSBUF_Cms6B5ghz51vpg96J3hoQN0abU='
+    ]
+  },
+  original: error: sintaks masukan tidak valid untuk tipe timestamp with time zone : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 187,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665759173-19357519.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      'fAec1OWgnUkht9TFB6FApxIz8vsYQ0IoJ6PHbszkgOY=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      '2000-12-09',
+      'SI-DaPeT_1741665759185-461167217.pdf',
+      false,
+      '7ybfVyi8k2HDabijC4h0q4BjsELnJJHEGm8PZSXVvV0=',
+      'SI-DaPeT_1741665759195-239192404.pdf',
+      false,
+      'zwCrq4AqubIrSBUF_Cms6B5ghz51vpg96J3hoQN0abU='
+    ]
+  },
+  sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+  parameters: [
+    2,
+    'Kontak Hambala',
+    '2010',
+    'SI-DaPeT_1741665759173-19357519.pdf',
+    false,
+    'Invalid date',
+    '2050-01-01 00:00:00.000 +00:00',
+    'fAec1OWgnUkht9TFB6FApxIz8vsYQ0IoJ6PHbszkgOY=',
+    'false',
+    '2000-12-09 00:00:00.000 +00:00',
+    '2040-10-10',
+    NaN,
+    '2000-12-09',
+    'SI-DaPeT_1741665759185-461167217.pdf',
+    false,
+    '7ybfVyi8k2HDabijC4h0q4BjsELnJJHEGm8PZSXVvV0=',
+    'SI-DaPeT_1741665759195-239192404.pdf',
+    false,
+    'zwCrq4AqubIrSBUF_Cms6B5ghz51vpg96J3hoQN0abU='
+  ]
+}
+[2025-03-11T11:02:50.011] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.insert (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:795:21)
+    at async TenagaPendukung.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4153:35)
+    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
+  name: 'SequelizeDatabaseError',
+  parent: error: sintaks masukan tidak valid untuk tipe timestamp with time zone : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 187,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665768142-144138627.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      'RxF7pHyRclHBJv3KgQa-vPwL4M0H0D7x-8Yb12CydcE=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      '2000-12-09',
+      'SI-DaPeT_1741665768154-291547457.pdf',
+      false,
+      'vZPlG7eUKF3opQubOnHUES5mCqNVAl4s54_aNcZyzCc=',
+      'SI-DaPeT_1741665768167-749688961.pdf',
+      false,
+      'RrwB6JB0UpELYUDjLl30kwvaOfqAZKudKkaoXhGI8FU='
+    ]
+  },
+  original: error: sintaks masukan tidak valid untuk tipe timestamp with time zone : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 187,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665768142-144138627.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      'RxF7pHyRclHBJv3KgQa-vPwL4M0H0D7x-8Yb12CydcE=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      '2000-12-09',
+      'SI-DaPeT_1741665768154-291547457.pdf',
+      false,
+      'vZPlG7eUKF3opQubOnHUES5mCqNVAl4s54_aNcZyzCc=',
+      'SI-DaPeT_1741665768167-749688961.pdf',
+      false,
+      'RrwB6JB0UpELYUDjLl30kwvaOfqAZKudKkaoXhGI8FU='
+    ]
+  },
+  sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+  parameters: [
+    2,
+    'Kontak Hambala',
+    '2010',
+    'SI-DaPeT_1741665768142-144138627.pdf',
+    false,
+    'Invalid date',
+    '2050-01-01 00:00:00.000 +00:00',
+    'RxF7pHyRclHBJv3KgQa-vPwL4M0H0D7x-8Yb12CydcE=',
+    'false',
+    '2000-12-09 00:00:00.000 +00:00',
+    '2040-10-10',
+    NaN,
+    '2000-12-09',
+    'SI-DaPeT_1741665768154-291547457.pdf',
+    false,
+    'vZPlG7eUKF3opQubOnHUES5mCqNVAl4s54_aNcZyzCc=',
+    'SI-DaPeT_1741665768167-749688961.pdf',
+    false,
+    'RrwB6JB0UpELYUDjLl30kwvaOfqAZKudKkaoXhGI8FU='
+  ]
+}
+[2025-03-11T11:04:29.829] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.insert (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:795:21)
+    at async TenagaPendukung.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4153:35)
+    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
+  name: 'SequelizeDatabaseError',
+  parent: error: sintaks masukan tidak valid untuk tipe timestamp with time zone : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 187,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665867869-271190487.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      'BLAhu_CVa-qwYp4MOS3VdpZsar8vE7FopzkeFLq5gpI=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      '2000-12-09',
+      'SI-DaPeT_1741665867881-852922097.pdf',
+      false,
+      'I2z7SHq6NFQ4bvQFmlf60R0wWVY6bwb13YYXE4mD0qc=',
+      'SI-DaPeT_1741665867891-313425995.pdf',
+      false,
+      'reZ1AHGcOEDvcHcL1Gz-4r257MmXHJG9ReN2Z1IHQCA='
+    ]
+  },
+  original: error: sintaks masukan tidak valid untuk tipe timestamp with time zone : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 187,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665867869-271190487.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      'BLAhu_CVa-qwYp4MOS3VdpZsar8vE7FopzkeFLq5gpI=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      '2000-12-09',
+      'SI-DaPeT_1741665867881-852922097.pdf',
+      false,
+      'I2z7SHq6NFQ4bvQFmlf60R0wWVY6bwb13YYXE4mD0qc=',
+      'SI-DaPeT_1741665867891-313425995.pdf',
+      false,
+      'reZ1AHGcOEDvcHcL1Gz-4r257MmXHJG9ReN2Z1IHQCA='
+    ]
+  },
+  sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+  parameters: [
+    2,
+    'Kontak Hambala',
+    '2010',
+    'SI-DaPeT_1741665867869-271190487.pdf',
+    false,
+    'Invalid date',
+    '2050-01-01 00:00:00.000 +00:00',
+    'BLAhu_CVa-qwYp4MOS3VdpZsar8vE7FopzkeFLq5gpI=',
+    'false',
+    '2000-12-09 00:00:00.000 +00:00',
+    '2040-10-10',
+    NaN,
+    '2000-12-09',
+    'SI-DaPeT_1741665867881-852922097.pdf',
+    false,
+    'I2z7SHq6NFQ4bvQFmlf60R0wWVY6bwb13YYXE4mD0qc=',
+    'SI-DaPeT_1741665867891-313425995.pdf',
+    false,
+    'reZ1AHGcOEDvcHcL1Gz-4r257MmXHJG9ReN2Z1IHQCA='
+  ]
+}
+[2025-03-11T11:04:29.831] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.insert (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:795:21)
+    at async TenagaPendukung.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4153:35)
+    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
+  name: 'SequelizeDatabaseError',
+  parent: error: sintaks masukan tidak valid untuk tipe timestamp with time zone : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 187,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665867869-271190487.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      'BLAhu_CVa-qwYp4MOS3VdpZsar8vE7FopzkeFLq5gpI=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      '2000-12-09',
+      'SI-DaPeT_1741665867881-852922097.pdf',
+      false,
+      'I2z7SHq6NFQ4bvQFmlf60R0wWVY6bwb13YYXE4mD0qc=',
+      'SI-DaPeT_1741665867891-313425995.pdf',
+      false,
+      'reZ1AHGcOEDvcHcL1Gz-4r257MmXHJG9ReN2Z1IHQCA='
+    ]
+  },
+  original: error: sintaks masukan tidak valid untuk tipe timestamp with time zone : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 187,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665867869-271190487.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      'BLAhu_CVa-qwYp4MOS3VdpZsar8vE7FopzkeFLq5gpI=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      '2000-12-09',
+      'SI-DaPeT_1741665867881-852922097.pdf',
+      false,
+      'I2z7SHq6NFQ4bvQFmlf60R0wWVY6bwb13YYXE4mD0qc=',
+      'SI-DaPeT_1741665867891-313425995.pdf',
+      false,
+      'reZ1AHGcOEDvcHcL1Gz-4r257MmXHJG9ReN2Z1IHQCA='
+    ]
+  },
+  sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+  parameters: [
+    2,
+    'Kontak Hambala',
+    '2010',
+    'SI-DaPeT_1741665867869-271190487.pdf',
+    false,
+    'Invalid date',
+    '2050-01-01 00:00:00.000 +00:00',
+    'BLAhu_CVa-qwYp4MOS3VdpZsar8vE7FopzkeFLq5gpI=',
+    'false',
+    '2000-12-09 00:00:00.000 +00:00',
+    '2040-10-10',
+    NaN,
+    '2000-12-09',
+    'SI-DaPeT_1741665867881-852922097.pdf',
+    false,
+    'I2z7SHq6NFQ4bvQFmlf60R0wWVY6bwb13YYXE4mD0qc=',
+    'SI-DaPeT_1741665867891-313425995.pdf',
+    false,
+    'reZ1AHGcOEDvcHcL1Gz-4r257MmXHJG9ReN2Z1IHQCA='
+  ]
+}
+[2025-03-11T11:05:30.598] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.insert (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:795:21)
+    at async TenagaPendukung.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4153:35)
+    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
+  name: 'SequelizeDatabaseError',
+  parent: error: sintaks masukan tidak valid untuk tipe date : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 167,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665928891-273179747.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      '9QrEUnZSK8Iif3zT5IOL6Mmvaz-nXyxA_IDrXwGNFGI=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      '2000-12-09',
+      'SI-DaPeT_1741665928958-868813490.pdf',
+      false,
+      'T6yuLecjM59SVp28t3nNEOzhB76LG6bjEH9WZKMkbos=',
+      'SI-DaPeT_1741665928975-226710156.pdf',
+      false,
+      '6M2H8GNSgwHYvyAtL3faXguQhA9tiTn-T9DcUkGRHbM='
+    ]
+  },
+  original: error: sintaks masukan tidak valid untuk tipe date : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 167,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665928891-273179747.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      '9QrEUnZSK8Iif3zT5IOL6Mmvaz-nXyxA_IDrXwGNFGI=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      '2000-12-09',
+      'SI-DaPeT_1741665928958-868813490.pdf',
+      false,
+      'T6yuLecjM59SVp28t3nNEOzhB76LG6bjEH9WZKMkbos=',
+      'SI-DaPeT_1741665928975-226710156.pdf',
+      false,
+      '6M2H8GNSgwHYvyAtL3faXguQhA9tiTn-T9DcUkGRHbM='
+    ]
+  },
+  sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+  parameters: [
+    2,
+    'Kontak Hambala',
+    '2010',
+    'SI-DaPeT_1741665928891-273179747.pdf',
+    false,
+    'Invalid date',
+    '2050-01-01 00:00:00.000 +00:00',
+    '9QrEUnZSK8Iif3zT5IOL6Mmvaz-nXyxA_IDrXwGNFGI=',
+    'false',
+    '2000-12-09 00:00:00.000 +00:00',
+    '2040-10-10',
+    NaN,
+    '2000-12-09',
+    'SI-DaPeT_1741665928958-868813490.pdf',
+    false,
+    'T6yuLecjM59SVp28t3nNEOzhB76LG6bjEH9WZKMkbos=',
+    'SI-DaPeT_1741665928975-226710156.pdf',
+    false,
+    '6M2H8GNSgwHYvyAtL3faXguQhA9tiTn-T9DcUkGRHbM='
+  ]
+}
+[2025-03-11T11:05:30.599] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.insert (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:795:21)
+    at async TenagaPendukung.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4153:35)
+    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
+  name: 'SequelizeDatabaseError',
+  parent: error: sintaks masukan tidak valid untuk tipe date : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 167,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665928891-273179747.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      '9QrEUnZSK8Iif3zT5IOL6Mmvaz-nXyxA_IDrXwGNFGI=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      '2000-12-09',
+      'SI-DaPeT_1741665928958-868813490.pdf',
+      false,
+      'T6yuLecjM59SVp28t3nNEOzhB76LG6bjEH9WZKMkbos=',
+      'SI-DaPeT_1741665928975-226710156.pdf',
+      false,
+      '6M2H8GNSgwHYvyAtL3faXguQhA9tiTn-T9DcUkGRHbM='
+    ]
+  },
+  original: error: sintaks masukan tidak valid untuk tipe date : « Invalid date »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 167,
+    severity: 'ERROR',
+    code: '22007',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: "unnamed portal parameter $6 = '...'",
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'datetime.c',
+    line: '4018',
+    routine: 'DateTimeParseError',
+    sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+    parameters: [
+      2,
+      'Kontak Hambala',
+      '2010',
+      'SI-DaPeT_1741665928891-273179747.pdf',
+      false,
+      'Invalid date',
+      '2050-01-01 00:00:00.000 +00:00',
+      '9QrEUnZSK8Iif3zT5IOL6Mmvaz-nXyxA_IDrXwGNFGI=',
+      'false',
+      '2000-12-09 00:00:00.000 +00:00',
+      '2040-10-10',
+      NaN,
+      '2000-12-09',
+      'SI-DaPeT_1741665928958-868813490.pdf',
+      false,
+      'T6yuLecjM59SVp28t3nNEOzhB76LG6bjEH9WZKMkbos=',
+      'SI-DaPeT_1741665928975-226710156.pdf',
+      false,
+      '6M2H8GNSgwHYvyAtL3faXguQhA9tiTn-T9DcUkGRHbM='
+    ]
+  },
+  sql: 'INSERT INTO "public"."ref_tenaga_pendukung" ("kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING "kode_tenaga_pendukung","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
+  parameters: [
+    2,
+    'Kontak Hambala',
+    '2010',
+    'SI-DaPeT_1741665928891-273179747.pdf',
+    false,
+    'Invalid date',
+    '2050-01-01 00:00:00.000 +00:00',
+    '9QrEUnZSK8Iif3zT5IOL6Mmvaz-nXyxA_IDrXwGNFGI=',
+    'false',
+    '2000-12-09 00:00:00.000 +00:00',
+    '2040-10-10',
+    NaN,
+    '2000-12-09',
+    'SI-DaPeT_1741665928958-868813490.pdf',
+    false,
+    'T6yuLecjM59SVp28t3nNEOzhB76LG6bjEH9WZKMkbos=',
+    'SI-DaPeT_1741665928975-226710156.pdf',
+    false,
+    '6M2H8GNSgwHYvyAtL3faXguQhA9tiTn-T9DcUkGRHbM='
+  ]
+}
+[2025-03-11T11:07:07.095] [DEBUG] default - Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1741666025261.pdf'
+    at Object.unlinkSync (node:fs:1808:3)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4361:16
     at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:28:58)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 422,
+  errno: -4058,
+  syscall: 'unlink',
+  code: 'ENOENT',
+  path: 'D:\\Dev SIPPP\\PMO\\public\\sidapet\\temporary\\undefined-1741666025261.pdf'
+}
+[2025-03-11T11:07:45.385] [DEBUG] default - Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1741666063518.pdf'
+    at Object.unlinkSync (node:fs:1808:3)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4361:16
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  errno: -4058,
+  syscall: 'unlink',
+  code: 'ENOENT',
+  path: 'D:\\Dev SIPPP\\PMO\\public\\sidapet\\temporary\\undefined-1741666063518.pdf'
+}
+[2025-03-11T11:08:26.479] [DEBUG] default - Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1741666104338.pdf'
+    at Object.unlinkSync (node:fs:1808:3)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4362:16
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  errno: -4058,
+  syscall: 'unlink',
+  code: 'ENOENT',
+  path: 'D:\\Dev SIPPP\\PMO\\public\\sidapet\\temporary\\undefined-1741666104338.pdf'
+}
+[2025-03-11T11:10:50.993] [DEBUG] default - Error: Data Tenaga Pendukung Tidak Ditemukan
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4802:48
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
   status: 'error'
 }
-[2025-02-20T11:28:56.190] [DEBUG] default - Error: harap isi daftar undangan
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:52:83
+[2025-03-11T11:10:55.344] [DEBUG] default - Error: Data Tenaga Pendukung Tidak Ditemukan
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4802:48
     at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:28:58)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 422,
+  code: 404,
   status: 'error'
 }
-[2025-02-20T12:36:30.570] [DEBUG] default - Error: Email Tidak Valid
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:71:27
+[2025-03-11T11:12:03.470] [DEBUG] default - Error: Upload Gagal
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4817:19
     at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:28:58)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 422,
+  code: 400,
   status: 'error'
 }
-[2025-02-20T12:37:05.614] [DEBUG] default - Error: Email Tidak Valid
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:70:27
+[2025-03-11T11:16:33.075] [DEBUG] default - Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1741666590686.pdf'
+    at Object.unlinkSync (node:fs:1808:3)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4842:24
+    at Array.map (<anonymous>)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4841:22
     at Generator.next (<anonymous>)
-    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\trxPenjaringan-service.ts:28:58)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  code: 422,
-  status: 'error'
+  errno: -4058,
+  syscall: 'unlink',
+  code: 'ENOENT',
+  path: 'D:\\Dev SIPPP\\PMO\\public\\sidapet\\temporary\\undefined-1741666590686.pdf'
+}
+[2025-03-11T11:17:58.603] [DEBUG] default - Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1741666676649.pdf'
+    at Object.unlinkSync (node:fs:1808:3)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4840:39
+    at Array.map (<anonymous>)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4839:22
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  errno: -4058,
+  syscall: 'unlink',
+  code: 'ENOENT',
+  path: 'D:\\Dev SIPPP\\PMO\\public\\sidapet\\temporary\\undefined-1741666676649.pdf'
+}
+[2025-03-11T11:19:43.411] [DEBUG] default - Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1741666781400.pdf'
+    at Object.unlinkSync (node:fs:1808:3)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4841:39
+    at Array.map (<anonymous>)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:4839:22
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  errno: -4058,
+  syscall: 'unlink',
+  code: 'ENOENT',
+  path: 'D:\\Dev SIPPP\\PMO\\public\\sidapet\\temporary\\undefined-1741666781400.pdf'
 }

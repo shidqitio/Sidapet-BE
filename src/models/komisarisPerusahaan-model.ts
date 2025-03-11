@@ -12,6 +12,9 @@ interface IKomisarisPerusahaanAttributes {
 	hp_komisaris : string | null | undefined,
 	no_ktp_komisaris : string | null | undefined,
 	path_ktp_komisaris : string | null | undefined,
+    is_ktp_selamanya : boolean,
+    ktp_berlaku_awal : Date | undefined,
+    ktp_berlaku_akhir : Date | undefined,
 	custom : string | null | undefined,
     encrypt_key : string | null | undefined
 }
@@ -27,6 +30,9 @@ IKomisarisPerusahaanAttributes,
 "hp_komisaris"|
 "no_ktp_komisaris"|
 "path_ktp_komisaris"|
+"is_ktp_selamanya" | 
+"ktp_berlaku_awal" | 
+"ktp_berlaku_akhir" | 
 "custom" | 
 "encrypt_key"
 >
@@ -42,6 +48,9 @@ class KomisarisPerusahaan
 	declare hp_komisaris : string | null | undefined;
 	declare no_ktp_komisaris : string | null | undefined;
 	declare path_ktp_komisaris : string | null | undefined;
+    declare is_ktp_selamanya : boolean;
+    declare ktp_berlaku_awal : Date | undefined;
+    declare ktp_berlaku_akhir : Date | undefined;
 	declare custom : string | null | undefined;
     declare encrypt_key: string | null | undefined;
 }
@@ -76,6 +85,18 @@ KomisarisPerusahaan.init(
         },
         path_ktp_komisaris : {
             type : DataTypes.STRING, 
+            allowNull : true
+        },
+        is_ktp_selamanya : {
+            type : DataTypes.BOOLEAN,
+            allowNull : false
+        }, 
+        ktp_berlaku_awal : {
+            type : DataTypes.DATE,
+            allowNull : true
+        },
+        ktp_berlaku_akhir : {
+            type : DataTypes.DATE,
             allowNull : true
         },
         custom : {

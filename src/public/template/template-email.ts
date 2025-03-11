@@ -6,34 +6,55 @@ const templateHtmlEmailVerif = (
     try {
         const contentReset = `
         <h1 style="font-family: 'Fredoka', sans-serif; font-optical-sizing: auto; font-weight: bold; font-style: normal; font-variation-settings: 'wdth' 100; font-size: 20px; margin-bottom: 40px;">
-            Verifikasi Akun Vendor
+            Pendaftaran Akun Berhasil
         </h1>
         <p style="font-family: 'Public Sans', sans-serif; font-optical-sizing: auto; font-weight: normal; font-style: normal; font-size: 14px;">
-            Anda menerima email ini karena kami menerima permintaan untuk verifikasi akun
+            Yth. ${val.nama_perusahaan}
         </p>
         <p style="font-family: 'Public Sans', sans-serif; font-optical-sizing: auto; font-weight: normal; font-style: normal; font-size: 14px;">
-            Silahkan klik link di bawah dan ikuti tahapannya:
+            Anda telah berhasil melakukan pendaftaran akun dengan data sebagai berikut
+        </p>
+         <p style="font-family: 'Public Sans', sans-serif; font-optical-sizing: auto; font-weight: normal; font-style: normal; font-size: 14px;">
+            Nama : <b>${val.nama_perusahaan}</b>
+        </p>
+        <p style="font-family: 'Public Sans', sans-serif; font-optical-sizing: auto; font-weight: normal; font-style: normal; font-size: 14px;">
+        	Email : <b>${val.email}</b>
+        </p>
+        <p style="font-family: 'Public Sans', sans-serif; font-optical-sizing: auto; font-weight: normal; font-style: normal; font-size: 14px;">
+        	No Whattsapp : <b>${val.no_wa}</b>
+        </p>
+        <p style="font-family: 'Public Sans', sans-serif; font-optical-sizing: auto; font-weight: normal; font-style: normal; font-size: 14px;">
+        	Jenis Penyedia : <b>${val.jenis_penyedia}</b>
+        </p>
+        <p style="font-family: 'Public Sans', sans-serif; font-optical-sizing: auto; font-weight: normal; font-style: normal; font-size: 14px;">
+            Tekan Tombol ini untuk menyelesaikan pendaftaran akun agar anda bisa login ke modul-modul di ProMiSe:
         </p>
 
         <br><br><br>
 
         <div style="font-family: 'Public Sans', sans-serif; font-optical-sizing: auto; font-weight: normal; font-style: normal; font-size: 14px;">
             <p>Silahkan klik tombol di bawah ini:</p>
-            <a href="${val}" style="background-color: #212B36; border-radius: 8px; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; font-weight: bold; margin: 4px 2px; cursor: pointer;">
-                Verifikasi
+            <a href="${val.base_url}" style="background-color: #212B36; border-radius: 8px; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; font-weight: bold; margin: 4px 2px; cursor: pointer;">
+                Aktivasi Akun
             </a>
 
             <br><br><br>
 
             <p>Atau copy link di bawah:</p>
-            <a href="${val}" style="text-decoration: none; color: #007bff; font-weight: bold;">
-                ${val}
+            <a href="${val.base_url}" style="text-decoration: none; color: #007bff; font-weight: bold;">
+                ${val.base_url}
             </a>
 
             <br><br><br>
 
-            <p>Jika anda tidak pernah meminta permintaan ini, silahkan abaikan email ini.</p>
+            <p>Apabila Anda tidak pernah melakukan pendaftaran di aplikas
+ProMISe, artinya seseorang telah mencoba mendaftar menggunakar
+alamat E-mail Anda. Jika hal tersebut terjadi, silahkan abaikan atau
+hapus pesan ini.</p>
+			<br><br><br>
+            <p> Terima Kasih </p>
         </div>
+                    
         `
         // const contentBerhasil = `
         // <h1 style="font-family: 'Fredoka', sans-serif; font-optical-sizing: auto; font-weight: bold; font-style: normal; font-variation-settings: 'wdth' 100; font-size: 20px; margin-bottom: 40px;">
@@ -704,14 +725,6 @@ const validationEmail = (
         throw new Error('Halaman Sedang Tidak Tersedia')
     }
 }
-
-
-
-
-
-
-
-
 
 const templateHtmlUndangan = (
     val: any,
