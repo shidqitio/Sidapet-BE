@@ -4113,9 +4113,9 @@ const updateTenagaAhli = async (id:PayloadTenagaAhliUpdateSchema["params"]["id"]
                 file_ktp : upload[0][0].file_name,
                 file_cv : upload[0][1].file_name,
                 file_ijazah : upload[0][2].file_name,
-                encrypt_key_ktp : upload[0][0].key_pass,
-                encrypt_key_cv : upload[0][0].key_pass,
-                encrypt_key_ijazah : upload[0][0].key_pass
+                encrypt_key_ktp : upload[0][0].keypass,
+                encrypt_key_cv : upload[0][1].keypass,
+                encrypt_key_ijazah : upload[0][2].keypass
 
             },{
                 where : {
@@ -4176,11 +4176,12 @@ const getPdfUploadTenagaAhliKtp = async (id:ParameterSchema["params"]["id"], kod
 
 
         if(!getTenaga) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tidak Tersedia / Data Bukan Format PDF")
-
+        
         const data = {
             nama_file : getTenaga?.file_ktp as string, 
             keypass : getTenaga.encrypt_key_ktp as string
         }
+        
 
 
         const tampilGambar = await showFile(data)
@@ -4536,9 +4537,9 @@ const updateTenagaPendukung = async (id:PayloadTenagaPendukungUpdateSchema["para
                 file_ktp : upload[0][0].file_name,
                 file_cv : upload[0][1].file_name,
                 file_ijazah : upload[0][2].file_name,
-                encrypt_key_ktp : upload[0][0].key_pass,
-                encrypt_key_cv : upload[0][0].key_pass,
-                encrypt_key_ijazah : upload[0][0].key_pass
+                encrypt_key_ktp : upload[0][0].keypass,
+                encrypt_key_cv : upload[0][0].keypass,
+                encrypt_key_ijazah : upload[0][0].keypass
 
             },{
                 where : {
