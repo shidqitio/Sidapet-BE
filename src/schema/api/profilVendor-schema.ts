@@ -424,13 +424,12 @@ const payloadTenagaAhli = {
             invalid_type_error : "is_ktp_selamanya harus string"
         }),
         ktp_berlaku_awal : z.string ({
-            required_error : "ktp_berlaku_awal harus diisi",
             invalid_type_error : "ktp_berlaku_awal harus string"
-        }),
+        }).optional(),
         ktp_berlaku_akhir : z.string ({
             required_error : "ktp_berlaku_akhir harus diisi",
             invalid_type_error : "ktp_berlaku_akhir harus string"
-        }),
+        }).optional(),
         tempat_lahir : z.string ({
             required_error : "tempat_lahir harus diisi",
             invalid_type_error : "tempat_lahir harus string"
@@ -456,25 +455,21 @@ const payloadTenagaAhli = {
             invalid_type_error : "is_ijazah_selamanya harus string"
         }),
         ijazah_berlaku_awal : z.string ({
-            required_error : "ijazah_berlaku_awal harus diisi",
             invalid_type_error : "ijazah_berlaku_awal harus string"
-        }),
+        }).optional(),
         ijazah_berlaku_akhir : z.string ({
-            required_error : "ijazah_berlaku_akhir harus diisi",
             invalid_type_error : "ijazah_berlaku_akhir harus string"
-        }),
+        }).optional(),
         is_cv_selamanya : z.string ({
             required_error : "is_cv_selamanya harus diisi",
             invalid_type_error : "is_cv_selamanya harus string"
         }),
         cv_berlaku_awal : z.string ({
-            required_error : "cv_berlaku_awal harus diisi",
             invalid_type_error : "cv_berlaku_awal harus string"
-        }),
+        }).optional(),
         cv_berlaku_akhir : z.string ({
-            required_error : "cv_berlaku_akhir harus diisi",
             invalid_type_error : "cv_berlaku_akhir harus string"
-        }),
+        }).optional(),
     })
 }
 
@@ -494,13 +489,11 @@ const payloadTenagaPendukung = {
             invalid_type_error : "is_ktp_selamanya harus string"
         }),
         ktp_berlaku_awal : z.string ({
-            required_error : "ktp_berlaku_awal harus diisi",
             invalid_type_error : "ktp_berlaku_awal harus string"
-        }),
+        }).optional(),
         ktp_berlaku_akhir : z.string ({
-            required_error : "ktp_berlaku_akhir harus diisi",
             invalid_type_error : "ktp_berlaku_akhir harus string"
-        }),
+        }).optional(),
         tempat_lahir : z.string ({
             required_error : "tempat_lahir harus diisi",
             invalid_type_error : "tempat_lahir harus string"
@@ -526,25 +519,21 @@ const payloadTenagaPendukung = {
             invalid_type_error : "is_ijazah_selamanya harus string"
         }),
         ijazah_berlaku_awal : z.string ({
-            required_error : "ijazah_berlaku_awal harus diisi",
             invalid_type_error : "ijazah_berlaku_awal harus string"
-        }),
+        }).optional(),
         ijazah_berlaku_akhir : z.string ({
-            required_error : "ijazah_berlaku_akhir harus diisi",
             invalid_type_error : "ijazah_berlaku_akhir harus string"
-        }),
+        }).optional(),
         is_cv_selamanya : z.string ({
             required_error : "is_cv_selamanya harus diisi",
             invalid_type_error : "is_cv_selamanya harus string"
         }),
         cv_berlaku_awal : z.string ({
-            required_error : "cv_berlaku_awal harus diisi",
             invalid_type_error : "cv_berlaku_awal harus string"
-        }),
+        }).optional(),
         cv_berlaku_akhir : z.string ({
-            required_error : "cv_berlaku_akhir harus diisi",
             invalid_type_error : "cv_berlaku_akhir harus string"
-        }),
+        }).optional(),
     })
 }
 

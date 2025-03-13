@@ -2666,7 +2666,7 @@ const getFasilitas = async (kode_vendor:number) : Promise<FasilitasPerusahaan[]>
             where : {
                 kode_vendor : kode_vendor
             },
-            attributes : {exclude : ["encrypt_key"]}
+            attributes : {exclude : ["encrypt_key_kepemilikan", "encrypt_key_foto"]}
         })
 
         return getFasilitas
