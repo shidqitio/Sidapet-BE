@@ -11,6 +11,7 @@ import Kbli from "@models/kbli-model";
 import JenisPengadaan from "@models/jenisPengadaan-model";
 import Bank from "@models/bank-model";
 import JenjangPendidikan from "@models/jenjangPendidikan-model";
+import Kepemilikan from "@models/kepemilikan-model";
 
 
 const domisiliInput = async () : Promise<any>=> {
@@ -158,10 +159,36 @@ const jenjangPendidikan = async () : Promise<JenjangPendidikan[]> => {
     }
 }
 
+const kepemilikan = async () : Promise<any> => {
+    try {
+        const cacheKey = "kepemilikan_all"
+        const cachedKepemilikan = getCache(cacheKey)
+
+        if(cachedKepemilikan) return cachedKepemilikan
+
+        const getKepemilikan = await Kepemilikan.findAll({
+            order : [["kode_kepemilikan","ASC"]]
+        })
+
+        setCache(cacheKey, getKepemilikan)
+
+        return getKepemilikan
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
 export default {
     domisiliInput,
     bankInput,
     kbli,
     jenisPengadaan,
-    jenjangPendidikan
+    jenjangPendidikan,
+    kepemilikan
 }

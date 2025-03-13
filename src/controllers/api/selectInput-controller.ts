@@ -80,10 +80,27 @@ const jenjangPendidikan = async (
     }
 }
 
+const kepemilikan = async (
+    req : Request,
+    res : Response, 
+    next : NextFunction
+) : Promise<void> => {
+    try {
+        const response = await selectInputService.kepemilikan()
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response)
+
+    } catch (error) {
+        errorLogger.error(`Testing Error Jenjang Pendidikan ${error}`)
+        next(error)
+    }
+}
+
 export default {
     domisiliInput,
     bankInput,
     kbli,
     jenisPengadaan,
-    jenjangPendidikan
+    jenjangPendidikan,
+    kepemilikan
 }
