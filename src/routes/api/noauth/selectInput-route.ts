@@ -14,6 +14,8 @@ router.get("/jenis-pengadaan", selectInputController.jenisPengadaan)
 
 router.get("/jenjang-pendidikan", selectInputController.jenjangPendidikan)
 
+router.get("/kepemilikan", selectInputController.kepemilikan)
+
 
 export default router
 
