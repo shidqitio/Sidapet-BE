@@ -16,7 +16,7 @@ interface IRegisterVendorAttributes {
     nama_perusahaan    : string;
     email              : string | null | undefined;
     password           : string;
-    nomor_handphone    : string | null | undefined;
+    no_telp            : string | null | undefined;
     swafoto            : string | null | undefined;
     status_register    : StatusRegister;
     alasan_ditolak     : string | null | undefined ;
@@ -27,7 +27,7 @@ interface IRegisterVendorAttributes {
     distance_point     : number |  null | undefined;
     keypass            : any;
     nama_narahubung    : string | null | undefined ;
-    nomor_telp         : string | null | undefined; //Nomor Kantor
+    no_wa_narahubung   : string | null | undefined;   //Nomor Kantor
     udcr               : Date | undefined;
     udch               : Date | undefined;
 }
@@ -42,7 +42,7 @@ IRegisterVendorAttributes,
 "nama_perusahaan" |
 "email" |
 "password" |
-"nomor_handphone" |
+"no_telp" |
 "swafoto" |
 "status_register" |
 "alasan_ditolak" |
@@ -53,7 +53,7 @@ IRegisterVendorAttributes,
 "distance_point" |
 "keypass" |
 "nama_narahubung" |
-"nomor_telp" |
+"no_wa_narahubung" |
 "udcr" |
 "udch" 
 >
@@ -68,7 +68,7 @@ class RegisterVendor
     declare nama_perusahaan    : string;
     declare email              : string | null | undefined;
     declare password           : string;
-    declare nomor_handphone    : string | null | undefined;
+    declare no_telp    : string | null | undefined;
     declare swafoto            : string | null | undefined;
     declare status_register    : StatusRegister;
     declare alasan_ditolak     : string | null | undefined ;
@@ -79,7 +79,7 @@ class RegisterVendor
     declare distance_point     : number |  null | undefined;
     declare keypass            : any;
     declare nama_narahubung    : string | null | undefined ;
-    declare nomor_telp         : string | null | undefined;
+    declare no_wa_narahubung         : string | null | undefined;
     declare udcr               : Date | undefined;
     declare udch               : Date | undefined;
 }
@@ -113,7 +113,7 @@ RegisterVendor.init(
             type : DataTypes.STRING,
             allowNull : false
         },
-        nomor_handphone : {
+        no_telp : {
             type : DataTypes.STRING,
             allowNull : true
         },
@@ -158,7 +158,7 @@ RegisterVendor.init(
             type : DataTypes.STRING,
             allowNull : true
         },
-        nomor_telp : {
+        no_wa_narahubung : {
             type : DataTypes.STRING,
             allowNull : true
         },

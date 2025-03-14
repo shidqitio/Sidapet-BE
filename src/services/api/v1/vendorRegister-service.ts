@@ -201,9 +201,9 @@ const registerVendor = async (request:PayloadRegisterSchema["body"], file : Expr
             nama_perusahaan : request.nama_perusahaan,
             email : request.email,
             password : pw,
-            nomor_handphone : request.nomor_handphone,
+            no_telp : request.no_telp,  // Nomor Perusahaan
             nama_narahubung : request.nama_narahubung,
-            nomor_telp : request.nomor_telp,
+            no_wa_narahubung : request.no_wa_narahubung, // Nomor Narahubung 
             status_register : StatusRegister.proses,
             alasan_ditolak : request.alasan_ditolak,
             swafoto : fileImages
@@ -418,9 +418,9 @@ const updateStatusVendor = async (
                 email : exRegisterVendor.email,
                 swafoto : exRegisterVendor.swafoto,
                 password : exRegisterVendor.password,
-                nomor_handphone : exRegisterVendor.nomor_handphone,
+                no_telp : exRegisterVendor.no_telp,
                 nama_narahubung : exRegisterVendor.nama_narahubung,
-                nomor_telp : exRegisterVendor.nomor_telp,
+                no_wa_narahubung : exRegisterVendor.no_wa_narahubung,
                 status_register : status_register,
                 alasan_ditolak : alasan,
                 user_verif : uch
@@ -510,7 +510,7 @@ const updateStatusVendor = async (
         let data_sendEmail = {
             nama_perusahaan : exRegisterVendor.nama_perusahaan,
             email : exRegisterVendor.email,
-            no_wa : exRegisterVendor.nomor_handphone,
+            no_telp : exRegisterVendor.no_telp,
             jenis_penyedia : tampil,
             base_url : `${getConfig("SIDAPET_BASE_URL")}/verifikasi-akun?id=${cipherText}`
         }
@@ -794,7 +794,7 @@ const getVendorbyStatusVerifikasiSearch = async (
                                 email : {
                                     [Op.like] : `%${search_input}%`
                                 },
-                                nomor_handphone : {
+                                no_telp : {
                                     [Op.like] : `%${search_input}%`
                                 }
                             }
@@ -822,7 +822,7 @@ const getVendorbyStatusVerifikasiSearch = async (
                                 email : {
                                     [Op.like] : `%${search_input}%`
                                 },
-                                nomor_handphone : {
+                                no_telp : {
                                     [Op.like] : `%${search_input}%`
                                 }
                             }
@@ -852,7 +852,7 @@ const getVendorbyStatusVerifikasiSearch = async (
                                 email : {
                                     [Op.like] : `%${search_input}%`
                                 },
-                                nomor_handphone : {
+                                no_telp : {
                                     [Op.like] : `%${search_input}%`
                                 }
                             }
@@ -879,7 +879,7 @@ const getVendorbyStatusVerifikasiSearch = async (
                                 email : {
                                     [Op.like] : `%${search_input}%`
                                 },
-                                nomor_handphone : {
+                                no_telp : {
                                     [Op.like] : `%${search_input}%`
                                 }
                             }

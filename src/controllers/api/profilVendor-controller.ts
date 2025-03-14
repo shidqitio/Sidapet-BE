@@ -1286,7 +1286,7 @@ const storeTenagaAhli = async (
 
 
         if (!file_ktp || !file_ijazah || !file_cv) {
-            throw new CustomError(httpCode.badRequest, responseStatus.error, "Kedua file harus diupload");
+            throw new CustomError(httpCode.badRequest, responseStatus.error, "Semua file harus diupload");
         }
 
         
@@ -1550,7 +1550,7 @@ const storeTenagaPendukung = async (
 
 
         if (!file_ktp || !file_ijazah || !file_cv) {
-            throw new CustomError(httpCode.badRequest, responseStatus.error, "Kedua file harus diupload");
+            throw new CustomError(httpCode.badRequest, responseStatus.error, "Semua file harus diupload");
         }
 
         
