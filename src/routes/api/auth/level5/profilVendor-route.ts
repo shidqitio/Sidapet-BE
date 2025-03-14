@@ -47,7 +47,6 @@ router.get("/tanya-perorangan/:id", validate(parameterSchema), profilVendorContr
 router.get("/tes-domisili/:id", validate(parameterSchema), profilVendorController.tesDomisili)
 router.get("/domisili", profilVendorController.domisili)
 
-router.get("/get-pengalaman", profilVendorController.getPengalamanVendor)
 router.get("/get-sertifikat", profilVendorController.getSertifikat)
 router.get("/show/profil-upload/:id", profilVendorController.getPdfUpload);
 
@@ -65,6 +64,7 @@ router.delete("/hapus/profil-vendor/:id", validate(parameterSchema), profilVendo
 router.post("/perorangan/upload/pengalaman", uploadPdf.single("file"), validate(payloadStoreUploadPengalamanPeroranganSchema), profilVendorController.storeUploadPengalamanOrang)
 router.delete("/perorangan/hapus/pengalaman/:id", validate(parameterSchema), profilVendorController.hapusPengalaman)
 router.get("/perorangan/profil-pengalaman/:id",validate(parameterSchema), profilVendorController.getPdfUploadPengalamanPerorangan)
+router.get("/get-pengalaman", profilVendorController.getPengalamanVendor)
 
 //Sertifikat Perorangan
 router.get("/perorang/profil-sertif/:id", profilVendorController.getPdfUploadSertifikat);

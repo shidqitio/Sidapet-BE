@@ -304,9 +304,11 @@ const getRegisterVendorDetail = async (id:ParameterSchema["params"]["id"]) => {
                 "kode_jenis_vendor",
                 "nama_perusahaan",
                 "email",
-                "nomor_handphone",
+                "no_telp",
                 "status_register",
                 "alasan_ditolak",
+                "nama_narahubung",
+                "no_wa_narahubung",
                 "message",
                 "user_verif",
                 "similarity",
@@ -354,7 +356,9 @@ const getRegisterVendorDetail = async (id:ParameterSchema["params"]["id"]) => {
                 "kode_jenis_vendor",
                 "nama_perusahaan",
                 "email",
-                "nomor_handphone",
+                "no_telp",
+                "nama_narahubung",
+                "no_wa_narahubung",
                 "status_register",
                 "alasan_ditolak",
                 "message",
@@ -381,6 +385,7 @@ const getRegisterVendorDetail = async (id:ParameterSchema["params"]["id"]) => {
 
 
     } catch (error) {
+        debugLogger.debug(error)
         if(error instanceof CustomError) {
             throw new CustomError(error.code, error.status,error.message)
         } 
@@ -499,7 +504,7 @@ const updateStatusVendor = async (
 
         let cipherText = encryptWithKey(idString, getConfig("SECRET_KEY"))
 
-        console.log(cipherText);
+        // console.log(cipherText);
         
 
         let tampil
