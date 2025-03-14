@@ -350,3 +350,376 @@
   fields: {},
   sql: 'INSERT INTO "public"."ref_vendor_reg_history" ("kode_register","kode_jenis_vendor","nama_perusahaan","email","password","no_telp","swafoto","status_register","alasan_ditolak","user_verif","nama_narahubung","no_wa_narahubung","udcr","udch") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14) RETURNING "kode_register","kode_vendor","kode_jenis_vendor","nama_perusahaan","email","password","no_telp","swafoto","status_register","alasan_ditolak","message","user_verif","similarity","distance_percentage","distance_point","keypass","nama_narahubung","no_wa_narahubung","udcr","udch";'
 }
+[2025-03-14T15:29:55.704] [DEBUG] default - Error: Email Sudah Terdaftar
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:177:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 409,
+  status: 'success'
+}
+[2025-03-14T15:36:27.003] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1001:12)
+    at async Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:21)
+    at async Function.findOne (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1998:12) {
+  name: 'SequelizeDatabaseError',
+  parent: error: kolom VendorRegister.nomor_handphone belum ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 123,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: undefined,
+    position: '174',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: `SELECT "VendorRegister"."kode_register", "VendorRegister"."kode_vendor", "VendorRegister"."kode_jenis_vendor", "VendorRegister"."nama_perusahaan", "VendorRegister"."email", "VendorRegister"."nomor_handphone", "VendorRegister"."status_register", "VendorRegister"."alasan_ditolak", "VendorRegister"."message", "VendorRegister"."user_verif", "VendorRegister"."similarity", "VendorRegister"."distance_percentage", "VendorRegister"."distance_point", "VendorRegister"."keypass", "JenisVendor"."kode_jenis_vendor" AS "JenisVendor.kode_jenis_vendor", "JenisVendor"."jenis_vendor" AS "JenisVendor.jenis_vendor" FROM "public"."ref_vendor_register" AS "VendorRegister" LEFT OUTER JOIN "public"."ref_jenis_vendor" AS "JenisVendor" ON "VendorRegister"."kode_jenis_vendor" = "JenisVendor"."kode_jenis_vendor" WHERE "VendorRegister"."kode_register" = '8';`,
+    parameters: undefined
+  },
+  original: error: kolom VendorRegister.nomor_handphone belum ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 123,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: undefined,
+    position: '174',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: `SELECT "VendorRegister"."kode_register", "VendorRegister"."kode_vendor", "VendorRegister"."kode_jenis_vendor", "VendorRegister"."nama_perusahaan", "VendorRegister"."email", "VendorRegister"."nomor_handphone", "VendorRegister"."status_register", "VendorRegister"."alasan_ditolak", "VendorRegister"."message", "VendorRegister"."user_verif", "VendorRegister"."similarity", "VendorRegister"."distance_percentage", "VendorRegister"."distance_point", "VendorRegister"."keypass", "JenisVendor"."kode_jenis_vendor" AS "JenisVendor.kode_jenis_vendor", "JenisVendor"."jenis_vendor" AS "JenisVendor.jenis_vendor" FROM "public"."ref_vendor_register" AS "VendorRegister" LEFT OUTER JOIN "public"."ref_jenis_vendor" AS "JenisVendor" ON "VendorRegister"."kode_jenis_vendor" = "JenisVendor"."kode_jenis_vendor" WHERE "VendorRegister"."kode_register" = '8';`,
+    parameters: undefined
+  },
+  sql: `SELECT "VendorRegister"."kode_register", "VendorRegister"."kode_vendor", "VendorRegister"."kode_jenis_vendor", "VendorRegister"."nama_perusahaan", "VendorRegister"."email", "VendorRegister"."nomor_handphone", "VendorRegister"."status_register", "VendorRegister"."alasan_ditolak", "VendorRegister"."message", "VendorRegister"."user_verif", "VendorRegister"."similarity", "VendorRegister"."distance_percentage", "VendorRegister"."distance_point", "VendorRegister"."keypass", "JenisVendor"."kode_jenis_vendor" AS "JenisVendor.kode_jenis_vendor", "JenisVendor"."jenis_vendor" AS "JenisVendor.jenis_vendor" FROM "public"."ref_vendor_register" AS "VendorRegister" LEFT OUTER JOIN "public"."ref_jenis_vendor" AS "JenisVendor" ON "VendorRegister"."kode_jenis_vendor" = "JenisVendor"."kode_jenis_vendor" WHERE "VendorRegister"."kode_register" = '8';`,
+  parameters: {}
+}
+[2025-03-14T15:37:22.509] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1001:12)
+    at async Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:21)
+    at async Function.findOne (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1998:12) {
+  name: 'SequelizeDatabaseError',
+  parent: error: kolom VendorRegister.nomor_handphone belum ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 123,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: undefined,
+    position: '174',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: `SELECT "VendorRegister"."kode_register", "VendorRegister"."kode_vendor", "VendorRegister"."kode_jenis_vendor", "VendorRegister"."nama_perusahaan", "VendorRegister"."email", "VendorRegister"."nomor_handphone", "VendorRegister"."status_register", "VendorRegister"."alasan_ditolak", "VendorRegister"."message", "VendorRegister"."user_verif", "VendorRegister"."similarity", "VendorRegister"."distance_percentage", "VendorRegister"."distance_point", "VendorRegister"."keypass", "JenisVendor"."kode_jenis_vendor" AS "JenisVendor.kode_jenis_vendor", "JenisVendor"."jenis_vendor" AS "JenisVendor.jenis_vendor" FROM "public"."ref_vendor_register" AS "VendorRegister" LEFT OUTER JOIN "public"."ref_jenis_vendor" AS "JenisVendor" ON "VendorRegister"."kode_jenis_vendor" = "JenisVendor"."kode_jenis_vendor" WHERE "VendorRegister"."kode_register" = '8';`,
+    parameters: undefined
+  },
+  original: error: kolom VendorRegister.nomor_handphone belum ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 123,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: undefined,
+    position: '174',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: `SELECT "VendorRegister"."kode_register", "VendorRegister"."kode_vendor", "VendorRegister"."kode_jenis_vendor", "VendorRegister"."nama_perusahaan", "VendorRegister"."email", "VendorRegister"."nomor_handphone", "VendorRegister"."status_register", "VendorRegister"."alasan_ditolak", "VendorRegister"."message", "VendorRegister"."user_verif", "VendorRegister"."similarity", "VendorRegister"."distance_percentage", "VendorRegister"."distance_point", "VendorRegister"."keypass", "JenisVendor"."kode_jenis_vendor" AS "JenisVendor.kode_jenis_vendor", "JenisVendor"."jenis_vendor" AS "JenisVendor.jenis_vendor" FROM "public"."ref_vendor_register" AS "VendorRegister" LEFT OUTER JOIN "public"."ref_jenis_vendor" AS "JenisVendor" ON "VendorRegister"."kode_jenis_vendor" = "JenisVendor"."kode_jenis_vendor" WHERE "VendorRegister"."kode_register" = '8';`,
+    parameters: undefined
+  },
+  sql: `SELECT "VendorRegister"."kode_register", "VendorRegister"."kode_vendor", "VendorRegister"."kode_jenis_vendor", "VendorRegister"."nama_perusahaan", "VendorRegister"."email", "VendorRegister"."nomor_handphone", "VendorRegister"."status_register", "VendorRegister"."alasan_ditolak", "VendorRegister"."message", "VendorRegister"."user_verif", "VendorRegister"."similarity", "VendorRegister"."distance_percentage", "VendorRegister"."distance_point", "VendorRegister"."keypass", "JenisVendor"."kode_jenis_vendor" AS "JenisVendor.kode_jenis_vendor", "JenisVendor"."jenis_vendor" AS "JenisVendor.jenis_vendor" FROM "public"."ref_vendor_register" AS "VendorRegister" LEFT OUTER JOIN "public"."ref_jenis_vendor" AS "JenisVendor" ON "VendorRegister"."kode_jenis_vendor" = "JenisVendor"."kode_jenis_vendor" WHERE "VendorRegister"."kode_register" = '8';`,
+  parameters: {}
+}
+[2025-03-14T15:37:22.513] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1001:12)
+    at async Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:21)
+    at async Function.findOne (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1998:12) {
+  name: 'SequelizeDatabaseError',
+  parent: error: kolom VendorRegister.nomor_handphone belum ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 123,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: undefined,
+    position: '174',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: `SELECT "VendorRegister"."kode_register", "VendorRegister"."kode_vendor", "VendorRegister"."kode_jenis_vendor", "VendorRegister"."nama_perusahaan", "VendorRegister"."email", "VendorRegister"."nomor_handphone", "VendorRegister"."status_register", "VendorRegister"."alasan_ditolak", "VendorRegister"."message", "VendorRegister"."user_verif", "VendorRegister"."similarity", "VendorRegister"."distance_percentage", "VendorRegister"."distance_point", "VendorRegister"."keypass", "JenisVendor"."kode_jenis_vendor" AS "JenisVendor.kode_jenis_vendor", "JenisVendor"."jenis_vendor" AS "JenisVendor.jenis_vendor" FROM "public"."ref_vendor_register" AS "VendorRegister" LEFT OUTER JOIN "public"."ref_jenis_vendor" AS "JenisVendor" ON "VendorRegister"."kode_jenis_vendor" = "JenisVendor"."kode_jenis_vendor" WHERE "VendorRegister"."kode_register" = '8';`,
+    parameters: undefined
+  },
+  original: error: kolom VendorRegister.nomor_handphone belum ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 123,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: undefined,
+    position: '174',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: `SELECT "VendorRegister"."kode_register", "VendorRegister"."kode_vendor", "VendorRegister"."kode_jenis_vendor", "VendorRegister"."nama_perusahaan", "VendorRegister"."email", "VendorRegister"."nomor_handphone", "VendorRegister"."status_register", "VendorRegister"."alasan_ditolak", "VendorRegister"."message", "VendorRegister"."user_verif", "VendorRegister"."similarity", "VendorRegister"."distance_percentage", "VendorRegister"."distance_point", "VendorRegister"."keypass", "JenisVendor"."kode_jenis_vendor" AS "JenisVendor.kode_jenis_vendor", "JenisVendor"."jenis_vendor" AS "JenisVendor.jenis_vendor" FROM "public"."ref_vendor_register" AS "VendorRegister" LEFT OUTER JOIN "public"."ref_jenis_vendor" AS "JenisVendor" ON "VendorRegister"."kode_jenis_vendor" = "JenisVendor"."kode_jenis_vendor" WHERE "VendorRegister"."kode_register" = '8';`,
+    parameters: undefined
+  },
+  sql: `SELECT "VendorRegister"."kode_register", "VendorRegister"."kode_vendor", "VendorRegister"."kode_jenis_vendor", "VendorRegister"."nama_perusahaan", "VendorRegister"."email", "VendorRegister"."nomor_handphone", "VendorRegister"."status_register", "VendorRegister"."alasan_ditolak", "VendorRegister"."message", "VendorRegister"."user_verif", "VendorRegister"."similarity", "VendorRegister"."distance_percentage", "VendorRegister"."distance_point", "VendorRegister"."keypass", "JenisVendor"."kode_jenis_vendor" AS "JenisVendor.kode_jenis_vendor", "JenisVendor"."jenis_vendor" AS "JenisVendor.jenis_vendor" FROM "public"."ref_vendor_register" AS "VendorRegister" LEFT OUTER JOIN "public"."ref_jenis_vendor" AS "JenisVendor" ON "VendorRegister"."kode_jenis_vendor" = "JenisVendor"."kode_jenis_vendor" WHERE "VendorRegister"."kode_register" = '8';`,
+  parameters: {}
+}
+[2025-03-14T15:38:29.837] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1001:12)
+    at async Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:21)
+    at async Function.findOne (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1998:12) {
+  name: 'SequelizeDatabaseError',
+  parent: error: kolom VendorRegister.nomor_handphone belum ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 123,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: undefined,
+    position: '174',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: `SELECT "VendorRegister"."kode_register", "VendorRegister"."kode_vendor", "VendorRegister"."kode_jenis_vendor", "VendorRegister"."nama_perusahaan", "VendorRegister"."email", "VendorRegister"."nomor_handphone", "VendorRegister"."status_register", "VendorRegister"."alasan_ditolak", "VendorRegister"."message", "VendorRegister"."user_verif", "VendorRegister"."similarity", "VendorRegister"."distance_percentage", "VendorRegister"."distance_point", "VendorRegister"."keypass", "JenisVendor"."kode_jenis_vendor" AS "JenisVendor.kode_jenis_vendor", "JenisVendor"."jenis_vendor" AS "JenisVendor.jenis_vendor" FROM "public"."ref_vendor_register" AS "VendorRegister" LEFT OUTER JOIN "public"."ref_jenis_vendor" AS "JenisVendor" ON "VendorRegister"."kode_jenis_vendor" = "JenisVendor"."kode_jenis_vendor" WHERE "VendorRegister"."kode_register" = '8';`,
+    parameters: undefined
+  },
+  original: error: kolom VendorRegister.nomor_handphone belum ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 123,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: undefined,
+    position: '174',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: `SELECT "VendorRegister"."kode_register", "VendorRegister"."kode_vendor", "VendorRegister"."kode_jenis_vendor", "VendorRegister"."nama_perusahaan", "VendorRegister"."email", "VendorRegister"."nomor_handphone", "VendorRegister"."status_register", "VendorRegister"."alasan_ditolak", "VendorRegister"."message", "VendorRegister"."user_verif", "VendorRegister"."similarity", "VendorRegister"."distance_percentage", "VendorRegister"."distance_point", "VendorRegister"."keypass", "JenisVendor"."kode_jenis_vendor" AS "JenisVendor.kode_jenis_vendor", "JenisVendor"."jenis_vendor" AS "JenisVendor.jenis_vendor" FROM "public"."ref_vendor_register" AS "VendorRegister" LEFT OUTER JOIN "public"."ref_jenis_vendor" AS "JenisVendor" ON "VendorRegister"."kode_jenis_vendor" = "JenisVendor"."kode_jenis_vendor" WHERE "VendorRegister"."kode_register" = '8';`,
+    parameters: undefined
+  },
+  sql: `SELECT "VendorRegister"."kode_register", "VendorRegister"."kode_vendor", "VendorRegister"."kode_jenis_vendor", "VendorRegister"."nama_perusahaan", "VendorRegister"."email", "VendorRegister"."nomor_handphone", "VendorRegister"."status_register", "VendorRegister"."alasan_ditolak", "VendorRegister"."message", "VendorRegister"."user_verif", "VendorRegister"."similarity", "VendorRegister"."distance_percentage", "VendorRegister"."distance_point", "VendorRegister"."keypass", "JenisVendor"."kode_jenis_vendor" AS "JenisVendor.kode_jenis_vendor", "JenisVendor"."jenis_vendor" AS "JenisVendor.jenis_vendor" FROM "public"."ref_vendor_register" AS "VendorRegister" LEFT OUTER JOIN "public"."ref_jenis_vendor" AS "JenisVendor" ON "VendorRegister"."kode_jenis_vendor" = "JenisVendor"."kode_jenis_vendor" WHERE "VendorRegister"."kode_register" = '8';`,
+  parameters: {}
+}
+[2025-03-14T15:38:29.842] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.select (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:1001:12)
+    at async Function.findAll (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1824:21)
+    at async Function.findOne (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:1998:12) {
+  name: 'SequelizeDatabaseError',
+  parent: error: kolom VendorRegister.nomor_handphone belum ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 123,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: undefined,
+    position: '174',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: `SELECT "VendorRegister"."kode_register", "VendorRegister"."kode_vendor", "VendorRegister"."kode_jenis_vendor", "VendorRegister"."nama_perusahaan", "VendorRegister"."email", "VendorRegister"."nomor_handphone", "VendorRegister"."status_register", "VendorRegister"."alasan_ditolak", "VendorRegister"."message", "VendorRegister"."user_verif", "VendorRegister"."similarity", "VendorRegister"."distance_percentage", "VendorRegister"."distance_point", "VendorRegister"."keypass", "JenisVendor"."kode_jenis_vendor" AS "JenisVendor.kode_jenis_vendor", "JenisVendor"."jenis_vendor" AS "JenisVendor.jenis_vendor" FROM "public"."ref_vendor_register" AS "VendorRegister" LEFT OUTER JOIN "public"."ref_jenis_vendor" AS "JenisVendor" ON "VendorRegister"."kode_jenis_vendor" = "JenisVendor"."kode_jenis_vendor" WHERE "VendorRegister"."kode_register" = '8';`,
+    parameters: undefined
+  },
+  original: error: kolom VendorRegister.nomor_handphone belum ada
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 123,
+    severity: 'ERROR',
+    code: '42703',
+    detail: undefined,
+    hint: undefined,
+    position: '174',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '3718',
+    routine: 'errorMissingColumn',
+    sql: `SELECT "VendorRegister"."kode_register", "VendorRegister"."kode_vendor", "VendorRegister"."kode_jenis_vendor", "VendorRegister"."nama_perusahaan", "VendorRegister"."email", "VendorRegister"."nomor_handphone", "VendorRegister"."status_register", "VendorRegister"."alasan_ditolak", "VendorRegister"."message", "VendorRegister"."user_verif", "VendorRegister"."similarity", "VendorRegister"."distance_percentage", "VendorRegister"."distance_point", "VendorRegister"."keypass", "JenisVendor"."kode_jenis_vendor" AS "JenisVendor.kode_jenis_vendor", "JenisVendor"."jenis_vendor" AS "JenisVendor.jenis_vendor" FROM "public"."ref_vendor_register" AS "VendorRegister" LEFT OUTER JOIN "public"."ref_jenis_vendor" AS "JenisVendor" ON "VendorRegister"."kode_jenis_vendor" = "JenisVendor"."kode_jenis_vendor" WHERE "VendorRegister"."kode_register" = '8';`,
+    parameters: undefined
+  },
+  sql: `SELECT "VendorRegister"."kode_register", "VendorRegister"."kode_vendor", "VendorRegister"."kode_jenis_vendor", "VendorRegister"."nama_perusahaan", "VendorRegister"."email", "VendorRegister"."nomor_handphone", "VendorRegister"."status_register", "VendorRegister"."alasan_ditolak", "VendorRegister"."message", "VendorRegister"."user_verif", "VendorRegister"."similarity", "VendorRegister"."distance_percentage", "VendorRegister"."distance_point", "VendorRegister"."keypass", "JenisVendor"."kode_jenis_vendor" AS "JenisVendor.kode_jenis_vendor", "JenisVendor"."jenis_vendor" AS "JenisVendor.jenis_vendor" FROM "public"."ref_vendor_register" AS "VendorRegister" LEFT OUTER JOIN "public"."ref_jenis_vendor" AS "JenisVendor" ON "VendorRegister"."kode_jenis_vendor" = "JenisVendor"."kode_jenis_vendor" WHERE "VendorRegister"."kode_register" = '8';`,
+  parameters: {}
+}
