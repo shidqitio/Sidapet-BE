@@ -20,10 +20,10 @@ const payloadRegister = {
             required_error    : "password tidak boleh kosong",
             invalid_type_error: "password harus string"
         }).min(8, "password minimal 8 karakter"),
-        nomor_handphone   : z.string({
+        no_telp   : z.string({
             required_error    : "nomor_handphone tidak boleh kosong",
             invalid_type_error: "nomor_handphone harus string"
-        }).min(10, "nomor handphone minimal 10 karakter"),
+        }),
         swafoto           : z.string({
             required_error    : "swafoto tidak boleh kosong",
             invalid_type_error: "swafoto harus string"
@@ -35,9 +35,10 @@ const payloadRegister = {
         nama_narahubung : z.string({
             invalid_type_error : "narahubung harus string"
         }).optional(),
-        nomor_telp : z.string({
+        no_wa_narahubung : z.string({
             invalid_type_error : "nomor_telp harus string"
-        }).optional(),
+        }).min(10, "nomor handphone minimal 10 karakter").optional(),
+
         alasan_ditolak    : z.string({
             required_error    : "alasan_ditolak tidak boleh kosong",
             invalid_type_error: "alasan_ditolak harus string"

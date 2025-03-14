@@ -1,508 +1,66 @@
-[2025-03-13T11:26:18.185] [DEBUG] default - Error
-    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+[2025-03-14T10:32:08.150] [DEBUG] default - TypeError: Cannot read properties of undefined (reading 'path')
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:220:56
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async PostgresQueryInterface.insert (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:795:21)
-    at async TenagaAhli.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4153:35)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
-  name: 'SequelizeDatabaseError',
-  parent: error: sintaks masukan tidak valid untuk tipe integer : « NaN »
-      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
-      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
-      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
-      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
-      at Socket.emit (node:events:513:28)
-      at Socket.emit (node:domain:489:12)
-      at addChunk (node:internal/streams/readable:324:12)
-      at readableAddChunk (node:internal/streams/readable:297:9)
-      at Socket.Readable.push (node:internal/streams/readable:234:10)
-      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
-    length: 161,
-    severity: 'ERROR',
-    code: '22P02',
-    detail: undefined,
-    hint: undefined,
-    position: undefined,
-    internalPosition: undefined,
-    internalQuery: undefined,
-    where: "unnamed portal parameter $10 = '...'",
-    schema: undefined,
-    table: undefined,
-    column: undefined,
-    dataType: undefined,
-    constraint: undefined,
-    file: 'numutils.c',
-    line: '620',
-    routine: 'pg_strtoint32_safe',
-    sql: 'INSERT INTO "public"."ref_tenaga_ahli" ("kode_tenaga_ahli","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17) RETURNING "kode_tenaga_ahli","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
-    parameters: [
-      2,
-      'Kontak Hambala',
-      '2010',
-      'SI-DaPeT_1741839977604-726406876.pdf',
-      true,
-      'vAetfKUvs7FmGLutUuf4WUWDL_69DWtKUIcm6JHCR24=',
-      'false',
-      '2000-12-09 00:00:00.000 +00:00',
-      'Bawahan',
-      NaN,
-      '2000-12-09',
-      'SI-DaPeT_1741839977613-926062704.pdf',
-      false,
-      'Fa9Rmdl5sYXhAkSYlq84C7PZ-4879Guwt5SS1Rg1mFk=',
-      'SI-DaPeT_1741839977624-918388456.pdf',
-      true,
-      'qOVNoKwfuIzoKy6K9eJYeCQC-YOaU2WB6O8Kx3OpeKU='
-    ]
-  },
-  original: error: sintaks masukan tidak valid untuk tipe integer : « NaN »
-      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
-      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
-      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
-      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
-      at Socket.emit (node:events:513:28)
-      at Socket.emit (node:domain:489:12)
-      at addChunk (node:internal/streams/readable:324:12)
-      at readableAddChunk (node:internal/streams/readable:297:9)
-      at Socket.Readable.push (node:internal/streams/readable:234:10)
-      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
-    length: 161,
-    severity: 'ERROR',
-    code: '22P02',
-    detail: undefined,
-    hint: undefined,
-    position: undefined,
-    internalPosition: undefined,
-    internalQuery: undefined,
-    where: "unnamed portal parameter $10 = '...'",
-    schema: undefined,
-    table: undefined,
-    column: undefined,
-    dataType: undefined,
-    constraint: undefined,
-    file: 'numutils.c',
-    line: '620',
-    routine: 'pg_strtoint32_safe',
-    sql: 'INSERT INTO "public"."ref_tenaga_ahli" ("kode_tenaga_ahli","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17) RETURNING "kode_tenaga_ahli","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
-    parameters: [
-      2,
-      'Kontak Hambala',
-      '2010',
-      'SI-DaPeT_1741839977604-726406876.pdf',
-      true,
-      'vAetfKUvs7FmGLutUuf4WUWDL_69DWtKUIcm6JHCR24=',
-      'false',
-      '2000-12-09 00:00:00.000 +00:00',
-      'Bawahan',
-      NaN,
-      '2000-12-09',
-      'SI-DaPeT_1741839977613-926062704.pdf',
-      false,
-      'Fa9Rmdl5sYXhAkSYlq84C7PZ-4879Guwt5SS1Rg1mFk=',
-      'SI-DaPeT_1741839977624-918388456.pdf',
-      true,
-      'qOVNoKwfuIzoKy6K9eJYeCQC-YOaU2WB6O8Kx3OpeKU='
-    ]
-  },
-  sql: 'INSERT INTO "public"."ref_tenaga_ahli" ("kode_tenaga_ahli","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17) RETURNING "kode_tenaga_ahli","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
-  parameters: [
-    2,
-    'Kontak Hambala',
-    '2010',
-    'SI-DaPeT_1741839977604-726406876.pdf',
-    true,
-    'vAetfKUvs7FmGLutUuf4WUWDL_69DWtKUIcm6JHCR24=',
-    'false',
-    '2000-12-09 00:00:00.000 +00:00',
-    'Bawahan',
-    NaN,
-    '2000-12-09',
-    'SI-DaPeT_1741839977613-926062704.pdf',
-    false,
-    'Fa9Rmdl5sYXhAkSYlq84C7PZ-4879Guwt5SS1Rg1mFk=',
-    'SI-DaPeT_1741839977624-918388456.pdf',
-    true,
-    'qOVNoKwfuIzoKy6K9eJYeCQC-YOaU2WB6O8Kx3OpeKU='
-  ]
+[2025-03-14T10:32:08.162] [DEBUG] default - TypeError: Cannot read properties of undefined (reading 'path')
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:220:56
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2025-03-14T11:43:35.740] [DEBUG] default - TypeError: Cannot read properties of undefined (reading 'path')
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:220:56
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2025-03-14T11:43:35.752] [DEBUG] default - TypeError: Cannot read properties of undefined (reading 'path')
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:220:56
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2025-03-14T11:44:24.028] [DEBUG] default - Error: ModuleNotFoundError: No module named 'face_recognition'
+    at PythonShell.parseError (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:376:21)
+    at terminateIfNeeded (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:239:32)
+    at ChildProcess.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:230:13)
+    at ChildProcess.emit (node:events:513:28)
+    at ChildProcess.emit (node:domain:489:12)
+    at Process.ChildProcess._handle.onexit (node:internal/child_process:291:12)
+    ----- Python Traceback -----
+    File "D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\python\facerecognitionpersonalid.py", line 1, in <module>
+      import face_recognition {
+  traceback: 'Traceback (most recent call last):\r\n' +
+    '  File "D:\\Dev SIPPP\\PMO\\sidapet-be-reb\\rebuild-sidapet-be\\src\\python\\facerecognitionpersonalid.py", line 1, in <module>\r\n' +
+    '    import face_recognition\r\n' +
+    "ModuleNotFoundError: No module named 'face_recognition'\r\n",
+  executable: 'python',
+  options: null,
+  script: 'src\\python\\facerecognitionpersonalid.py',
+  args: [
+    'D:\\Dev SIPPP\\PMO\\public\\sidapet\\images\\foto-ktp\\userphoto-1741927460624.png'
+  ],
+  exitCode: 1,
+  logs: []
 }
-[2025-03-13T11:26:18.190] [DEBUG] default - Error
-    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async PostgresQueryInterface.insert (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:795:21)
-    at async TenagaAhli.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4153:35)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
-  name: 'SequelizeDatabaseError',
-  parent: error: sintaks masukan tidak valid untuk tipe integer : « NaN »
-      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
-      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
-      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
-      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
-      at Socket.emit (node:events:513:28)
-      at Socket.emit (node:domain:489:12)
-      at addChunk (node:internal/streams/readable:324:12)
-      at readableAddChunk (node:internal/streams/readable:297:9)
-      at Socket.Readable.push (node:internal/streams/readable:234:10)
-      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
-    length: 161,
-    severity: 'ERROR',
-    code: '22P02',
-    detail: undefined,
-    hint: undefined,
-    position: undefined,
-    internalPosition: undefined,
-    internalQuery: undefined,
-    where: "unnamed portal parameter $10 = '...'",
-    schema: undefined,
-    table: undefined,
-    column: undefined,
-    dataType: undefined,
-    constraint: undefined,
-    file: 'numutils.c',
-    line: '620',
-    routine: 'pg_strtoint32_safe',
-    sql: 'INSERT INTO "public"."ref_tenaga_ahli" ("kode_tenaga_ahli","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17) RETURNING "kode_tenaga_ahli","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
-    parameters: [
-      2,
-      'Kontak Hambala',
-      '2010',
-      'SI-DaPeT_1741839977604-726406876.pdf',
-      true,
-      'vAetfKUvs7FmGLutUuf4WUWDL_69DWtKUIcm6JHCR24=',
-      'false',
-      '2000-12-09 00:00:00.000 +00:00',
-      'Bawahan',
-      NaN,
-      '2000-12-09',
-      'SI-DaPeT_1741839977613-926062704.pdf',
-      false,
-      'Fa9Rmdl5sYXhAkSYlq84C7PZ-4879Guwt5SS1Rg1mFk=',
-      'SI-DaPeT_1741839977624-918388456.pdf',
-      true,
-      'qOVNoKwfuIzoKy6K9eJYeCQC-YOaU2WB6O8Kx3OpeKU='
-    ]
-  },
-  original: error: sintaks masukan tidak valid untuk tipe integer : « NaN »
-      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
-      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
-      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
-      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
-      at Socket.emit (node:events:513:28)
-      at Socket.emit (node:domain:489:12)
-      at addChunk (node:internal/streams/readable:324:12)
-      at readableAddChunk (node:internal/streams/readable:297:9)
-      at Socket.Readable.push (node:internal/streams/readable:234:10)
-      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
-    length: 161,
-    severity: 'ERROR',
-    code: '22P02',
-    detail: undefined,
-    hint: undefined,
-    position: undefined,
-    internalPosition: undefined,
-    internalQuery: undefined,
-    where: "unnamed portal parameter $10 = '...'",
-    schema: undefined,
-    table: undefined,
-    column: undefined,
-    dataType: undefined,
-    constraint: undefined,
-    file: 'numutils.c',
-    line: '620',
-    routine: 'pg_strtoint32_safe',
-    sql: 'INSERT INTO "public"."ref_tenaga_ahli" ("kode_tenaga_ahli","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17) RETURNING "kode_tenaga_ahli","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
-    parameters: [
-      2,
-      'Kontak Hambala',
-      '2010',
-      'SI-DaPeT_1741839977604-726406876.pdf',
-      true,
-      'vAetfKUvs7FmGLutUuf4WUWDL_69DWtKUIcm6JHCR24=',
-      'false',
-      '2000-12-09 00:00:00.000 +00:00',
-      'Bawahan',
-      NaN,
-      '2000-12-09',
-      'SI-DaPeT_1741839977613-926062704.pdf',
-      false,
-      'Fa9Rmdl5sYXhAkSYlq84C7PZ-4879Guwt5SS1Rg1mFk=',
-      'SI-DaPeT_1741839977624-918388456.pdf',
-      true,
-      'qOVNoKwfuIzoKy6K9eJYeCQC-YOaU2WB6O8Kx3OpeKU='
-    ]
-  },
-  sql: 'INSERT INTO "public"."ref_tenaga_ahli" ("kode_tenaga_ahli","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17) RETURNING "kode_tenaga_ahli","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
-  parameters: [
-    2,
-    'Kontak Hambala',
-    '2010',
-    'SI-DaPeT_1741839977604-726406876.pdf',
-    true,
-    'vAetfKUvs7FmGLutUuf4WUWDL_69DWtKUIcm6JHCR24=',
-    'false',
-    '2000-12-09 00:00:00.000 +00:00',
-    'Bawahan',
-    NaN,
-    '2000-12-09',
-    'SI-DaPeT_1741839977613-926062704.pdf',
-    false,
-    'Fa9Rmdl5sYXhAkSYlq84C7PZ-4879Guwt5SS1Rg1mFk=',
-    'SI-DaPeT_1741839977624-918388456.pdf',
-    true,
-    'qOVNoKwfuIzoKy6K9eJYeCQC-YOaU2WB6O8Kx3OpeKU='
-  ]
-}
-[2025-03-13T11:26:45.832] [DEBUG] default - Error
-    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async PostgresQueryInterface.insert (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:795:21)
-    at async TenagaAhli.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4153:35)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
-  name: 'SequelizeDatabaseError',
-  parent: error: sintaks masukan tidak valid untuk tipe integer : « NaN »
-      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
-      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
-      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
-      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
-      at Socket.emit (node:events:513:28)
-      at Socket.emit (node:domain:489:12)
-      at addChunk (node:internal/streams/readable:324:12)
-      at readableAddChunk (node:internal/streams/readable:297:9)
-      at Socket.Readable.push (node:internal/streams/readable:234:10)
-      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
-    length: 161,
-    severity: 'ERROR',
-    code: '22P02',
-    detail: undefined,
-    hint: undefined,
-    position: undefined,
-    internalPosition: undefined,
-    internalQuery: undefined,
-    where: "unnamed portal parameter $10 = '...'",
-    schema: undefined,
-    table: undefined,
-    column: undefined,
-    dataType: undefined,
-    constraint: undefined,
-    file: 'numutils.c',
-    line: '620',
-    routine: 'pg_strtoint32_safe',
-    sql: 'INSERT INTO "public"."ref_tenaga_ahli" ("kode_tenaga_ahli","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17) RETURNING "kode_tenaga_ahli","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
-    parameters: [
-      2,
-      'Kontak Hambala',
-      '2010',
-      'SI-DaPeT_1741840005186-356971665.pdf',
-      true,
-      'DGr4DCoOw2ONqO3URZ0eApKsL7t_zJ74oxHX5lDz4sQ=',
-      'false',
-      '2000-12-09 00:00:00.000 +00:00',
-      'Bawahan',
-      NaN,
-      '2000-12-09',
-      'SI-DaPeT_1741840005204-152306150.pdf',
-      true,
-      'wFGFjLs2O6BfURNJuvJAShZyVwUwOqJGQXuhsCnw7u0=',
-      'SI-DaPeT_1741840005220-417526971.pdf',
-      true,
-      '8iN16clFyMDMKanrJgR0B6krcTmkvbclKBkC61wpeRs='
-    ]
-  },
-  original: error: sintaks masukan tidak valid untuk tipe integer : « NaN »
-      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
-      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
-      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
-      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
-      at Socket.emit (node:events:513:28)
-      at Socket.emit (node:domain:489:12)
-      at addChunk (node:internal/streams/readable:324:12)
-      at readableAddChunk (node:internal/streams/readable:297:9)
-      at Socket.Readable.push (node:internal/streams/readable:234:10)
-      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
-    length: 161,
-    severity: 'ERROR',
-    code: '22P02',
-    detail: undefined,
-    hint: undefined,
-    position: undefined,
-    internalPosition: undefined,
-    internalQuery: undefined,
-    where: "unnamed portal parameter $10 = '...'",
-    schema: undefined,
-    table: undefined,
-    column: undefined,
-    dataType: undefined,
-    constraint: undefined,
-    file: 'numutils.c',
-    line: '620',
-    routine: 'pg_strtoint32_safe',
-    sql: 'INSERT INTO "public"."ref_tenaga_ahli" ("kode_tenaga_ahli","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17) RETURNING "kode_tenaga_ahli","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
-    parameters: [
-      2,
-      'Kontak Hambala',
-      '2010',
-      'SI-DaPeT_1741840005186-356971665.pdf',
-      true,
-      'DGr4DCoOw2ONqO3URZ0eApKsL7t_zJ74oxHX5lDz4sQ=',
-      'false',
-      '2000-12-09 00:00:00.000 +00:00',
-      'Bawahan',
-      NaN,
-      '2000-12-09',
-      'SI-DaPeT_1741840005204-152306150.pdf',
-      true,
-      'wFGFjLs2O6BfURNJuvJAShZyVwUwOqJGQXuhsCnw7u0=',
-      'SI-DaPeT_1741840005220-417526971.pdf',
-      true,
-      '8iN16clFyMDMKanrJgR0B6krcTmkvbclKBkC61wpeRs='
-    ]
-  },
-  sql: 'INSERT INTO "public"."ref_tenaga_ahli" ("kode_tenaga_ahli","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17) RETURNING "kode_tenaga_ahli","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
-  parameters: [
-    2,
-    'Kontak Hambala',
-    '2010',
-    'SI-DaPeT_1741840005186-356971665.pdf',
-    true,
-    'DGr4DCoOw2ONqO3URZ0eApKsL7t_zJ74oxHX5lDz4sQ=',
-    'false',
-    '2000-12-09 00:00:00.000 +00:00',
-    'Bawahan',
-    NaN,
-    '2000-12-09',
-    'SI-DaPeT_1741840005204-152306150.pdf',
-    true,
-    'wFGFjLs2O6BfURNJuvJAShZyVwUwOqJGQXuhsCnw7u0=',
-    'SI-DaPeT_1741840005220-417526971.pdf',
-    true,
-    '8iN16clFyMDMKanrJgR0B6krcTmkvbclKBkC61wpeRs='
-  ]
-}
-[2025-03-13T11:26:45.834] [DEBUG] default - Error
-    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
-    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async PostgresQueryInterface.insert (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:795:21)
-    at async TenagaAhli.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4153:35)
-    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
-  name: 'SequelizeDatabaseError',
-  parent: error: sintaks masukan tidak valid untuk tipe integer : « NaN »
-      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
-      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
-      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
-      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
-      at Socket.emit (node:events:513:28)
-      at Socket.emit (node:domain:489:12)
-      at addChunk (node:internal/streams/readable:324:12)
-      at readableAddChunk (node:internal/streams/readable:297:9)
-      at Socket.Readable.push (node:internal/streams/readable:234:10)
-      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
-    length: 161,
-    severity: 'ERROR',
-    code: '22P02',
-    detail: undefined,
-    hint: undefined,
-    position: undefined,
-    internalPosition: undefined,
-    internalQuery: undefined,
-    where: "unnamed portal parameter $10 = '...'",
-    schema: undefined,
-    table: undefined,
-    column: undefined,
-    dataType: undefined,
-    constraint: undefined,
-    file: 'numutils.c',
-    line: '620',
-    routine: 'pg_strtoint32_safe',
-    sql: 'INSERT INTO "public"."ref_tenaga_ahli" ("kode_tenaga_ahli","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17) RETURNING "kode_tenaga_ahli","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
-    parameters: [
-      2,
-      'Kontak Hambala',
-      '2010',
-      'SI-DaPeT_1741840005186-356971665.pdf',
-      true,
-      'DGr4DCoOw2ONqO3URZ0eApKsL7t_zJ74oxHX5lDz4sQ=',
-      'false',
-      '2000-12-09 00:00:00.000 +00:00',
-      'Bawahan',
-      NaN,
-      '2000-12-09',
-      'SI-DaPeT_1741840005204-152306150.pdf',
-      true,
-      'wFGFjLs2O6BfURNJuvJAShZyVwUwOqJGQXuhsCnw7u0=',
-      'SI-DaPeT_1741840005220-417526971.pdf',
-      true,
-      '8iN16clFyMDMKanrJgR0B6krcTmkvbclKBkC61wpeRs='
-    ]
-  },
-  original: error: sintaks masukan tidak valid untuk tipe integer : « NaN »
-      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
-      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
-      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
-      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
-      at Socket.emit (node:events:513:28)
-      at Socket.emit (node:domain:489:12)
-      at addChunk (node:internal/streams/readable:324:12)
-      at readableAddChunk (node:internal/streams/readable:297:9)
-      at Socket.Readable.push (node:internal/streams/readable:234:10)
-      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
-    length: 161,
-    severity: 'ERROR',
-    code: '22P02',
-    detail: undefined,
-    hint: undefined,
-    position: undefined,
-    internalPosition: undefined,
-    internalQuery: undefined,
-    where: "unnamed portal parameter $10 = '...'",
-    schema: undefined,
-    table: undefined,
-    column: undefined,
-    dataType: undefined,
-    constraint: undefined,
-    file: 'numutils.c',
-    line: '620',
-    routine: 'pg_strtoint32_safe',
-    sql: 'INSERT INTO "public"."ref_tenaga_ahli" ("kode_tenaga_ahli","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17) RETURNING "kode_tenaga_ahli","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
-    parameters: [
-      2,
-      'Kontak Hambala',
-      '2010',
-      'SI-DaPeT_1741840005186-356971665.pdf',
-      true,
-      'DGr4DCoOw2ONqO3URZ0eApKsL7t_zJ74oxHX5lDz4sQ=',
-      'false',
-      '2000-12-09 00:00:00.000 +00:00',
-      'Bawahan',
-      NaN,
-      '2000-12-09',
-      'SI-DaPeT_1741840005204-152306150.pdf',
-      true,
-      'wFGFjLs2O6BfURNJuvJAShZyVwUwOqJGQXuhsCnw7u0=',
-      'SI-DaPeT_1741840005220-417526971.pdf',
-      true,
-      '8iN16clFyMDMKanrJgR0B6krcTmkvbclKBkC61wpeRs='
-    ]
-  },
-  sql: 'INSERT INTO "public"."ref_tenaga_ahli" ("kode_tenaga_ahli","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","encrypt_key_ijazah","file_cv","is_cv_selamanya","encrypt_key_cv") VALUES (DEFAULT,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17) RETURNING "kode_tenaga_ahli","kode_vendor","nama","no_ktp","file_ktp","is_ktp_selamanya","ktp_berlaku_awal","ktp_berlaku_akhir","encrypt_key_ktp","tempat_lahir","tgl_lahir","posisi","kode_jenjang_pendidikan","program_studi","file_ijazah","is_ijazah_selamanya","ijazah_berlaku_awal","ijazah_berlaku_akhir","encrypt_key_ijazah","file_cv","is_cv_selamanya","cv_berlaku_awal","cv_berlaku_akhir","encrypt_key_cv","custom";',
-  parameters: [
-    2,
-    'Kontak Hambala',
-    '2010',
-    'SI-DaPeT_1741840005186-356971665.pdf',
-    true,
-    'DGr4DCoOw2ONqO3URZ0eApKsL7t_zJ74oxHX5lDz4sQ=',
-    'false',
-    '2000-12-09 00:00:00.000 +00:00',
-    'Bawahan',
-    NaN,
-    '2000-12-09',
-    'SI-DaPeT_1741840005204-152306150.pdf',
-    true,
-    'wFGFjLs2O6BfURNJuvJAShZyVwUwOqJGQXuhsCnw7u0=',
-    'SI-DaPeT_1741840005220-417526971.pdf',
-    true,
-    '8iN16clFyMDMKanrJgR0B6krcTmkvbclKBkC61wpeRs='
-  ]
+[2025-03-14T11:44:24.028] [DEBUG] default - Error: ModuleNotFoundError: No module named 'face_recognition'
+    at PythonShell.parseError (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:376:21)
+    at terminateIfNeeded (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:239:32)
+    at ChildProcess.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:230:13)
+    at ChildProcess.emit (node:events:513:28)
+    at ChildProcess.emit (node:domain:489:12)
+    at Process.ChildProcess._handle.onexit (node:internal/child_process:291:12)
+    ----- Python Traceback -----
+    File "D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\python\facerecognitionpersonalid.py", line 1, in <module>
+      import face_recognition {
+  traceback: 'Traceback (most recent call last):\r\n' +
+    '  File "D:\\Dev SIPPP\\PMO\\sidapet-be-reb\\rebuild-sidapet-be\\src\\python\\facerecognitionpersonalid.py", line 1, in <module>\r\n' +
+    '    import face_recognition\r\n' +
+    "ModuleNotFoundError: No module named 'face_recognition'\r\n",
+  executable: 'python',
+  options: null,
+  script: 'src\\python\\facerecognitionpersonalid.py',
+  args: [
+    'D:\\Dev SIPPP\\PMO\\public\\sidapet\\images\\foto-ktp\\userphoto-1741927460624.png'
+  ],
+  exitCode: 1,
+  logs: []
 }
