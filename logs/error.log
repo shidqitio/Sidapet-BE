@@ -25,3 +25,72 @@
   code: 500,
   status: 'error'
 }
+[2025-03-14T15:00:25.135] [ERROR] error - Error: [2] Token Unauthorized
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:108:13
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\middleware\authorization.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 401,
+  status: 'error'
+}
+[2025-03-14T15:00:56.594] [ERROR] error - Error [MulterError]: Unexpected field
+    at wrappedFileFilter (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\multer\index.js:40:19)
+    at Multipart.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\multer\lib\make-middleware.js:107:7)
+    at Multipart.emit (node:events:513:28)
+    at Multipart.emit (node:domain:489:12)
+    at HeaderParser.cb (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\streamsearch\lib\sbmh.js:200:10)
+    at SBMH.push (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\streamsearch\lib\sbmh.js:104:16)
+    at Multipart._write (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\busboy\lib\types\multipart.js:567:19) {
+  code: 'LIMIT_UNEXPECTED_FILE',
+  field: 'file_bukti',
+  storageErrors: []
+}
+[2025-03-14T15:01:05.846] [ERROR] error - ERROR REMOVE FILE: Error: ENOENT: no such file or directory, unlink 'D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\D:\Dev SIPPP\PMO\public\sidapet\temporary\undefined-1741939265840.pdf'
+[2025-03-14T15:03:06.882] [ERROR] error - Testing Error Register Vendor Error: Internal server error.
+[2025-03-14T15:03:06.883] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:283:19
+    at Generator.throw (<anonymous>)
+    at rejected (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:29:65)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2025-03-14T15:04:33.634] [ERROR] error - Testing Error Update Status Vendor Error: Internal server error.
+[2025-03-14T15:04:33.634] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:539:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2025-03-14T15:06:09.085] [ERROR] error - Testing Error External To Usman Error: Internal server error.
+[2025-03-14T15:06:09.085] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:677:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2025-03-14T15:14:18.069] [ERROR] error - Testing Error Update Status Vendor Error: Internal server error.
+[2025-03-14T15:14:18.069] [ERROR] error - Error: Internal server error.
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:543:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 500,
+  status: 'error'
+}
+[2025-03-14T15:18:15.579] [ERROR] error - Testing Error Get PDF Upload  Error: Data Tidak Tersedia / Data Bukan Format PDF
+[2025-03-14T15:18:15.583] [ERROR] error - Error: Data Tidak Tersedia / Data Bukan Format PDF
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:1093:19
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\profilVendor-service.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 404,
+  status: 'error'
+}

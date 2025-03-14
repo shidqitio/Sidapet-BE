@@ -64,3 +64,289 @@
   exitCode: 1,
   logs: []
 }
+[2025-03-14T15:03:06.881] [DEBUG] default - Error: ModuleNotFoundError: No module named 'face_recognition'
+    at PythonShell.parseError (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:376:21)
+    at terminateIfNeeded (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:239:32)
+    at ChildProcess.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:230:13)
+    at ChildProcess.emit (node:events:513:28)
+    at ChildProcess.emit (node:domain:489:12)
+    at Process.ChildProcess._handle.onexit (node:internal/child_process:291:12)
+    ----- Python Traceback -----
+    File "D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\python\facerecognitionpersonalid.py", line 1, in <module>
+      import face_recognition {
+  traceback: 'Traceback (most recent call last):\r\n' +
+    '  File "D:\\Dev SIPPP\\PMO\\sidapet-be-reb\\rebuild-sidapet-be\\src\\python\\facerecognitionpersonalid.py", line 1, in <module>\r\n' +
+    '    import face_recognition\r\n' +
+    "ModuleNotFoundError: No module named 'face_recognition'\r\n",
+  executable: 'python',
+  options: null,
+  script: 'src\\python\\facerecognitionpersonalid.py',
+  args: [
+    'D:\\Dev SIPPP\\PMO\\public\\sidapet\\images\\foto-ktp\\userphoto-1741939384085.png'
+  ],
+  exitCode: 1,
+  logs: []
+}
+[2025-03-14T15:03:06.882] [DEBUG] default - Error: ModuleNotFoundError: No module named 'face_recognition'
+    at PythonShell.parseError (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:376:21)
+    at terminateIfNeeded (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:239:32)
+    at ChildProcess.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\python-shell\index.ts:230:13)
+    at ChildProcess.emit (node:events:513:28)
+    at ChildProcess.emit (node:domain:489:12)
+    at Process.ChildProcess._handle.onexit (node:internal/child_process:291:12)
+    ----- Python Traceback -----
+    File "D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\python\facerecognitionpersonalid.py", line 1, in <module>
+      import face_recognition {
+  traceback: 'Traceback (most recent call last):\r\n' +
+    '  File "D:\\Dev SIPPP\\PMO\\sidapet-be-reb\\rebuild-sidapet-be\\src\\python\\facerecognitionpersonalid.py", line 1, in <module>\r\n' +
+    '    import face_recognition\r\n' +
+    "ModuleNotFoundError: No module named 'face_recognition'\r\n",
+  executable: 'python',
+  options: null,
+  script: 'src\\python\\facerecognitionpersonalid.py',
+  args: [
+    'D:\\Dev SIPPP\\PMO\\public\\sidapet\\images\\foto-ktp\\userphoto-1741939384085.png'
+  ],
+  exitCode: 1,
+  logs: []
+}
+[2025-03-14T15:04:33.633] [DEBUG] default - Error: spawn /usr/sbin/sendmail ENOENT
+    at Process.ChildProcess._handle.onexit (node:internal/child_process:283:19)
+    at onErrorNT (node:internal/child_process:476:16)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'spawn /usr/sbin/sendmail',
+  path: '/usr/sbin/sendmail',
+  spawnargs: [ '-i', '-f', 'hallo.pmo.ut@gmail.com', 'yusufff@gmail.com' ]
+}
+[2025-03-14T15:06:09.084] [DEBUG] default - Error: error:1C80006B:Provider routines::wrong final block length
+    at Decipheriv.final (node:internal/crypto/cipher:199:29)
+    at decryptWithKey (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\utils\generate-encrypt-decrypt.ts:23:12)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:592:36
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  library: 'Provider routines',
+  reason: 'wrong final block length',
+  code: 'ERR_OSSL_WRONG_FINAL_BLOCK_LENGTH'
+}
+[2025-03-14T15:06:09.085] [DEBUG] default - Error: error:1C80006B:Provider routines::wrong final block length
+    at Decipheriv.final (node:internal/crypto/cipher:199:29)
+    at decryptWithKey (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\utils\generate-encrypt-decrypt.ts:23:12)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:592:36
+    at Generator.next (<anonymous>)
+    at fulfilled (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\src\services\api\v1\vendorRegister-service.ts:28:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  library: 'Provider routines',
+  reason: 'wrong final block length',
+  code: 'ERR_OSSL_WRONG_FINAL_BLOCK_LENGTH'
+}
+[2025-03-14T15:14:18.061] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.insert (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:795:21)
+    at async RegisterVendorHistory.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4153:35)
+    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
+  name: 'SequelizeUniqueConstraintError',
+  errors: [],
+  parent: error: nilai kunci ganda melanggar batasan unik « ref_vendor_reg_history_pkey »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 243,
+    severity: 'ERROR',
+    code: '23505',
+    detail: 'Kunci « (kode_register)=(8) » sudah ada.',
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: 'public',
+    table: 'ref_vendor_reg_history',
+    column: undefined,
+    dataType: undefined,
+    constraint: 'ref_vendor_reg_history_pkey',
+    file: 'nbtinsert.c',
+    line: '673',
+    routine: '_bt_check_unique',
+    sql: 'INSERT INTO "public"."ref_vendor_reg_history" ("kode_register","kode_jenis_vendor","nama_perusahaan","email","password","no_telp","swafoto","status_register","alasan_ditolak","user_verif","nama_narahubung","no_wa_narahubung","udcr","udch") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14) RETURNING "kode_register","kode_vendor","kode_jenis_vendor","nama_perusahaan","email","password","no_telp","swafoto","status_register","alasan_ditolak","message","user_verif","similarity","distance_percentage","distance_point","keypass","nama_narahubung","no_wa_narahubung","udcr","udch";',
+    parameters: [
+      8,
+      2,
+      'Tes Perusahaan',
+      'yusufff@gmail.com',
+      '$2b$12$dNwdp29z1HwtHU.CoSJ5MenHWze9g7fLTlLb6dzSDLSCDPzB0hKVW',
+      '0851231312321',
+      'userphoto-1741939384085.png',
+      'terima',
+      '',
+      'shidqitio@gmail.com',
+      null,
+      null,
+      '2025-03-14 08:14:18.009 +00:00',
+      '2025-03-14 08:14:18.009 +00:00'
+    ]
+  },
+  original: error: nilai kunci ganda melanggar batasan unik « ref_vendor_reg_history_pkey »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 243,
+    severity: 'ERROR',
+    code: '23505',
+    detail: 'Kunci « (kode_register)=(8) » sudah ada.',
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: 'public',
+    table: 'ref_vendor_reg_history',
+    column: undefined,
+    dataType: undefined,
+    constraint: 'ref_vendor_reg_history_pkey',
+    file: 'nbtinsert.c',
+    line: '673',
+    routine: '_bt_check_unique',
+    sql: 'INSERT INTO "public"."ref_vendor_reg_history" ("kode_register","kode_jenis_vendor","nama_perusahaan","email","password","no_telp","swafoto","status_register","alasan_ditolak","user_verif","nama_narahubung","no_wa_narahubung","udcr","udch") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14) RETURNING "kode_register","kode_vendor","kode_jenis_vendor","nama_perusahaan","email","password","no_telp","swafoto","status_register","alasan_ditolak","message","user_verif","similarity","distance_percentage","distance_point","keypass","nama_narahubung","no_wa_narahubung","udcr","udch";',
+    parameters: [
+      8,
+      2,
+      'Tes Perusahaan',
+      'yusufff@gmail.com',
+      '$2b$12$dNwdp29z1HwtHU.CoSJ5MenHWze9g7fLTlLb6dzSDLSCDPzB0hKVW',
+      '0851231312321',
+      'userphoto-1741939384085.png',
+      'terima',
+      '',
+      'shidqitio@gmail.com',
+      null,
+      null,
+      '2025-03-14 08:14:18.009 +00:00',
+      '2025-03-14 08:14:18.009 +00:00'
+    ]
+  },
+  fields: {},
+  sql: 'INSERT INTO "public"."ref_vendor_reg_history" ("kode_register","kode_jenis_vendor","nama_perusahaan","email","password","no_telp","swafoto","status_register","alasan_ditolak","user_verif","nama_narahubung","no_wa_narahubung","udcr","udch") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14) RETURNING "kode_register","kode_vendor","kode_jenis_vendor","nama_perusahaan","email","password","no_telp","swafoto","status_register","alasan_ditolak","message","user_verif","similarity","distance_percentage","distance_point","keypass","nama_narahubung","no_wa_narahubung","udcr","udch";'
+}
+[2025-03-14T15:14:18.068] [DEBUG] default - Error
+    at Query.run (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\postgres\query.js:76:25)
+    at D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\sequelize.js:650:28
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async PostgresQueryInterface.insert (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\dialects\abstract\query-interface.js:795:21)
+    at async RegisterVendorHistory.save (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:4153:35)
+    at async Function.create (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\sequelize\src\model.js:2305:12) {
+  name: 'SequelizeUniqueConstraintError',
+  errors: [],
+  parent: error: nilai kunci ganda melanggar batasan unik « ref_vendor_reg_history_pkey »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 243,
+    severity: 'ERROR',
+    code: '23505',
+    detail: 'Kunci « (kode_register)=(8) » sudah ada.',
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: 'public',
+    table: 'ref_vendor_reg_history',
+    column: undefined,
+    dataType: undefined,
+    constraint: 'ref_vendor_reg_history_pkey',
+    file: 'nbtinsert.c',
+    line: '673',
+    routine: '_bt_check_unique',
+    sql: 'INSERT INTO "public"."ref_vendor_reg_history" ("kode_register","kode_jenis_vendor","nama_perusahaan","email","password","no_telp","swafoto","status_register","alasan_ditolak","user_verif","nama_narahubung","no_wa_narahubung","udcr","udch") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14) RETURNING "kode_register","kode_vendor","kode_jenis_vendor","nama_perusahaan","email","password","no_telp","swafoto","status_register","alasan_ditolak","message","user_verif","similarity","distance_percentage","distance_point","keypass","nama_narahubung","no_wa_narahubung","udcr","udch";',
+    parameters: [
+      8,
+      2,
+      'Tes Perusahaan',
+      'yusufff@gmail.com',
+      '$2b$12$dNwdp29z1HwtHU.CoSJ5MenHWze9g7fLTlLb6dzSDLSCDPzB0hKVW',
+      '0851231312321',
+      'userphoto-1741939384085.png',
+      'terima',
+      '',
+      'shidqitio@gmail.com',
+      null,
+      null,
+      '2025-03-14 08:14:18.009 +00:00',
+      '2025-03-14 08:14:18.009 +00:00'
+    ]
+  },
+  original: error: nilai kunci ganda melanggar batasan unik « ref_vendor_reg_history_pkey »
+      at Parser.parseErrorMessage (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:368:69)
+      at Parser.handlePacket (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:187:21)
+      at Parser.parse (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\parser.ts:102:30)
+      at Socket.<anonymous> (D:\Dev SIPPP\PMO\sidapet-be-reb\rebuild-sidapet-be\node_modules\pg-protocol\src\index.ts:7:48)
+      at Socket.emit (node:events:513:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:324:12)
+      at readableAddChunk (node:internal/streams/readable:297:9)
+      at Socket.Readable.push (node:internal/streams/readable:234:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 243,
+    severity: 'ERROR',
+    code: '23505',
+    detail: 'Kunci « (kode_register)=(8) » sudah ada.',
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: 'public',
+    table: 'ref_vendor_reg_history',
+    column: undefined,
+    dataType: undefined,
+    constraint: 'ref_vendor_reg_history_pkey',
+    file: 'nbtinsert.c',
+    line: '673',
+    routine: '_bt_check_unique',
+    sql: 'INSERT INTO "public"."ref_vendor_reg_history" ("kode_register","kode_jenis_vendor","nama_perusahaan","email","password","no_telp","swafoto","status_register","alasan_ditolak","user_verif","nama_narahubung","no_wa_narahubung","udcr","udch") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14) RETURNING "kode_register","kode_vendor","kode_jenis_vendor","nama_perusahaan","email","password","no_telp","swafoto","status_register","alasan_ditolak","message","user_verif","similarity","distance_percentage","distance_point","keypass","nama_narahubung","no_wa_narahubung","udcr","udch";',
+    parameters: [
+      8,
+      2,
+      'Tes Perusahaan',
+      'yusufff@gmail.com',
+      '$2b$12$dNwdp29z1HwtHU.CoSJ5MenHWze9g7fLTlLb6dzSDLSCDPzB0hKVW',
+      '0851231312321',
+      'userphoto-1741939384085.png',
+      'terima',
+      '',
+      'shidqitio@gmail.com',
+      null,
+      null,
+      '2025-03-14 08:14:18.009 +00:00',
+      '2025-03-14 08:14:18.009 +00:00'
+    ]
+  },
+  fields: {},
+  sql: 'INSERT INTO "public"."ref_vendor_reg_history" ("kode_register","kode_jenis_vendor","nama_perusahaan","email","password","no_telp","swafoto","status_register","alasan_ditolak","user_verif","nama_narahubung","no_wa_narahubung","udcr","udch") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14) RETURNING "kode_register","kode_vendor","kode_jenis_vendor","nama_perusahaan","email","password","no_telp","swafoto","status_register","alasan_ditolak","message","user_verif","similarity","distance_percentage","distance_point","keypass","nama_narahubung","no_wa_narahubung","udcr","udch";'
+}

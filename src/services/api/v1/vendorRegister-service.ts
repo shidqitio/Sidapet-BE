@@ -499,6 +499,9 @@ const updateStatusVendor = async (
 
         let cipherText = encryptWithKey(idString, getConfig("SECRET_KEY"))
 
+        console.log(cipherText);
+        
+
         let tampil
 
         if(exRegisterVendor.kode_jenis_vendor === 1)  tampil = "Badan Usaha"
@@ -530,6 +533,7 @@ const updateStatusVendor = async (
         return updatedData
         
     } catch (error) {
+        debugLogger.debug(error)
         await t.rollback()
         if(error instanceof CustomError) {
             throw new CustomError(error.code, error.status,error.message)

@@ -58,6 +58,7 @@ import {
     PayloadTenagaPendukungUpdateSchema,
     PayloadPengalamanTaSchema,
     PayloadPengalamanTpSchema,
+    PayloadStoreUploadPengalamanPeroranganSchema,
 } from "@schema/api/profilVendor-schema"
 
 import { QueryTypes, Sequelize } from "sequelize";
@@ -935,6 +936,171 @@ const tesDomisili = async (id:ParameterSchema["params"]["id"]) => {
     }
 }
 
+
+
+//Get Pengalaman 
+const getPengalamanVendor = async (kode_vendor : number) : Promise<PengalamanPerorangan[]> => {
+    try {
+        const getPengalaman  : PengalamanPerorangan[]= await PengalamanPerorangan.findAll({
+            where : {
+                kode_vendor : kode_vendor
+            },
+            attributes : {exclude : ["custom", "encrypt_key"]}
+        })
+
+        return getPengalaman
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+//Pengalaman Perorangan
+//############# Upload Pengalaman Perorangan ###########################
+const uploadPengalamanOrang = async (
+    request:PayloadStoreUploadPengalamanPeroranganSchema["body"], file : Express.Multer.File, kode_vendor : number) : Promise<any> => {
+    try {
+        const formData = new FormData()
+
+        formData.append('nama_aplikasi','SI-DaPeT')
+        formData.append('file', fs.createReadStream(file.path))
+
+        const upload = await uploadPdf(formData)
+
+
+        if(upload[1] !== null || !upload[0]){
+            throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
+        }
+
+        const create = await PengalamanPerorangan.create({
+            kode_vendor : kode_vendor,
+            nama_pekerjaan : request.nama_pekerjaan,
+            posisi : request.posisi,
+            jangka_waktu : request.jangka_waktu,
+            nilai_pekerjaan : parseInt(request.nilai_pekerjaan),
+            file_bukti : upload[0].file_name,
+            encrypt_key : upload[0].keypass
+        }, 
+        {
+            returning : ["kode_vendor", "nama_pekerjaan","posisi","jangka_waktu", "nilai_pekerjaan", "file_bukti", "encrypt_key"]
+        })
+
+        const result = {
+            kode_vendor : kode_vendor, 
+            nomor : create.nama_pekerjaan,
+            posisi : create.posisi,
+            jangka_waktu : create.jangka_waktu,
+            nilai_pekerjaan : create.nilai_pekerjaan,
+            file_bukti : create.encrypt_key,
+        }
+
+
+        if(!create) {
+            await deleteFile(upload[0].file_name)
+            throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
+        }
+
+        if(create) {
+            fs.unlinkSync(file.path)
+        }
+
+        return result
+    } catch (error) {
+        console.log(error)
+        fs.unlinkSync(file.path)
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+//Hapus Pengalaman
+const hapusPengalaman = async (id:ParameterSchema["params"]["id"]) : Promise<PengalamanPerorangan> => {
+    try {
+        const exPengalaman = await PengalamanPerorangan.findOne({
+            where : {
+                kode_pengalaman_perorangan : id
+            }
+        })
+
+        if(!exPengalaman) throw new CustomError(httpCode.notFound, responseStatus.success, "Data Sertif Tidak Ada")
+            
+
+        const hapusFile = await deleteFile(exPengalaman.file_bukti as string)
+
+
+        if(hapusFile[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File")
+
+        const hapusData = await PengalamanPerorangan.destroy({
+            where : {
+                kode_pengalaman_perorangan : id
+            }
+        })
+
+        if(hapusData === 0 ) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus Data")
+
+        console.log(hapusFile);
+
+        return exPengalaman
+        
+    } catch (error) {
+        console.log(error)
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const getPdfUploadPengalamanPerorangan = async (id:ParameterSchema["params"]["id"], kode_vendor:number) : Promise<any> => {
+    try {
+        const getPengalaman = await PengalamanPerorangan.findOne({
+            where : {
+                kode_vendor : kode_vendor,
+                kode_pengalaman_perorangan : id,
+                encrypt_key : {
+                    [Op.not] : null
+                }
+            }
+        })        
+
+        if(!getPengalaman) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tidak Tersedia / Data Bukan Format PDF")
+
+        const data = {
+            nama_file : getPengalaman.file_bukti as string, 
+            keypass : getPengalaman.encrypt_key as string
+        }
+
+
+        const tampilGambar = await showFile(data)
+
+        return tampilGambar[0]
+
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+// #################################################################################################
+// ######################## SERTIFIKAT PERORANGAN ##################################################
 //Upload Sertifikat
 const storeUploadSertifikat = async (request:StoreUploadSertifikatSchema["body"], file : Express.Multer.File, kode_vendor : number) : Promise<any> => {
     try {
@@ -1014,85 +1180,6 @@ const getSertifikat = async ( kode_vendor : number) : Promise<SertifPerorangan[]
         }
     }
 }
-
-//Get Pengalaman 
-const getPengalamanVendor = async (kode_vendor : number) : Promise<PengalamanPerorangan[]> => {
-    try {
-        const getPengalaman  : PengalamanPerorangan[]= await PengalamanPerorangan.findAll({
-            where : {
-                kode_vendor : kode_vendor
-            },
-            attributes : {exclude : ["custom", "encrypt_key"]}
-        })
-
-        return getPengalaman
-    } catch (error) {
-        if(error instanceof CustomError) {
-            throw new CustomError(error.code,error.status, error.message)
-        } 
-        else {
-            debugLogger.debug(error)
-            throw new CustomError(500, responseStatus.error, "Internal server error.")
-        }
-    }
-}
-
-//Upload Pengalaman Perorangan
-const uploadPengalamanOrang = async (
-    request:StoreUploadPengalamanSchema["body"], file : Express.Multer.File, kode_vendor : number) : Promise<any> => {
-    try {
-        const formData = new FormData()
-
-        formData.append('nama_aplikasi','SI-DaPeT')
-        formData.append('file', fs.createReadStream(file.path))
-
-        const upload = await uploadPdf(formData)
-
-
-        if(upload[1] !== null || !upload[0]){
-            throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
-        }
-
-        const create = await PengalamanPerorangan.create({
-            kode_vendor : kode_vendor,
-            nm_pnglmn_org : request.nm_pnglmn_org,
-            path_pnglmn : upload[0].file_name,
-            encrypt_key : upload[0].keypass
-        }, 
-        {
-            returning : ["kode_vendor", "nm_pnglmn_org","path_pnglmn","kode_pengalaman"]
-        })
-
-        const result = {
-            kode_vendor : kode_vendor, 
-            nm_pengalaman_org : create.nm_pnglmn_org,
-            path_pnglmn : create.path_pnglmn, 
-        }
-
-
-        if(!create) {
-            await deleteFile(upload[0].file_name)
-            throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
-        }
-
-        if(create) {
-            fs.unlinkSync(file.path)
-        }
-
-        return result
-    } catch (error) {
-        console.log(error)
-        fs.unlinkSync(file.path)
-        if(error instanceof CustomError) {
-            throw new CustomError(error.code,error.status, error.message)
-        } 
-        else {
-            debugLogger.debug(error)
-            throw new CustomError(500, responseStatus.error, "Internal server error.")
-        }
-    }
-}
-
 //Hapus Sertifikat
 const hapusSertifikat = async (id:ParameterSchema["params"]["id"]) : Promise<SertifPerorangan> => {
     try {
@@ -1124,86 +1211,6 @@ const hapusSertifikat = async (id:ParameterSchema["params"]["id"]) : Promise<Ser
         
     } catch (error) {
         console.log(error)
-        if(error instanceof CustomError) {
-            throw new CustomError(error.code,error.status, error.message)
-        } 
-        else {
-            debugLogger.debug(error)
-            throw new CustomError(500, responseStatus.error, "Internal server error.")
-        }
-    }
-}
-
-//Hapus Pengalaman
-const hapusPengalaman = async (id:ParameterSchema["params"]["id"]) : Promise<PengalamanPerorangan> => {
-    try {
-        const exPengalaman = await PengalamanPerorangan.findOne({
-            where : {
-                kode_pengalaman : id
-            }
-        })
-
-        if(!exPengalaman) throw new CustomError(httpCode.notFound, responseStatus.success, "Data Sertif Tidak Ada")
-            
-
-        const hapusFile = await deleteFile(exPengalaman.path_pnglmn as string)
-
-
-        if(hapusFile[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File")
-
-        const hapusData = await PengalamanPerorangan.destroy({
-            where : {
-                kode_pengalaman : id
-            }
-        })
-
-        if(hapusData === 0 ) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus Data")
-
-        console.log(hapusFile);
-
-        return exPengalaman
-        
-    } catch (error) {
-        console.log(error)
-        if(error instanceof CustomError) {
-            throw new CustomError(error.code,error.status, error.message)
-        } 
-        else {
-            debugLogger.debug(error)
-            throw new CustomError(500, responseStatus.error, "Internal server error.")
-        }
-    }
-}
-
-//GET PDF 
-const getPdfUpload = async (id:ParameterSchema["params"]["id"], kode_vendor:number) : Promise<any> => {
-    try {
-        const exTrxProfil = await TrxJawabProfil.findOne({
-            where : {
-                kode_vendor : kode_vendor,
-                kode_jawab_profil : id,
-                encrypt_key : {
-                    [Op.not] : null
-                }
-            }
-        })
-
-        
-
-        if(!exTrxProfil) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Bukan Format PDF}")
-
-        const data = {
-            nama_file : exTrxProfil.isian as string, 
-            keypass : exTrxProfil.encrypt_key as string
-        }
-
-
-        const tampilGambar = await showFile(data)
-
-        console.log(tampilGambar)
-
-        return tampilGambar[0]
-    } catch (error) {
         if(error instanceof CustomError) {
             throw new CustomError(error.code,error.status, error.message)
         } 
@@ -1250,32 +1257,36 @@ const getPdfUploadSertifikat = async (id:ParameterSchema["params"]["id"], kode_v
     }
 }
 
+// ###############################################################################################
 
-//Get PDF SERTIFIKAT
-const getPdfUploadPengalamanPerorangan = async (id:ParameterSchema["params"]["id"], kode_vendor:number) : Promise<any> => {
+//GET PDF 
+const getPdfUpload = async (id:ParameterSchema["params"]["id"], kode_vendor:number) : Promise<any> => {
     try {
-        const getPengalaman = await PengalamanPerorangan.findOne({
+        const exTrxProfil = await TrxJawabProfil.findOne({
             where : {
                 kode_vendor : kode_vendor,
-                kode_pengalaman : id,
+                kode_jawab_profil : id,
                 encrypt_key : {
                     [Op.not] : null
                 }
             }
-        })        
+        })
 
-        if(!getPengalaman) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tidak Tersedia / Data Bukan Format PDF")
+        
+
+        if(!exTrxProfil) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Bukan Format PDF}")
 
         const data = {
-            nama_file : getPengalaman.path_pnglmn as string, 
-            keypass : getPengalaman.encrypt_key as string
+            nama_file : exTrxProfil.isian as string, 
+            keypass : exTrxProfil.encrypt_key as string
         }
 
 
         const tampilGambar = await showFile(data)
 
-        return tampilGambar[0]
+        console.log(tampilGambar)
 
+        return tampilGambar[0]
     } catch (error) {
         if(error instanceof CustomError) {
             throw new CustomError(error.code,error.status, error.message)
@@ -1286,6 +1297,7 @@ const getPdfUploadPengalamanPerorangan = async (id:ParameterSchema["params"]["id
         }
     }
 }
+
 
 
 

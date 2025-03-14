@@ -21,8 +21,8 @@ const payloadRegister = {
             invalid_type_error: "password harus string"
         }).min(8, "password minimal 8 karakter"),
         no_telp   : z.string({
-            required_error    : "nomor_handphone tidak boleh kosong",
-            invalid_type_error: "nomor_handphone harus string"
+            required_error    : "no_telp tidak boleh kosong",
+            invalid_type_error: "no_telp harus string"
         }),
         swafoto           : z.string({
             required_error    : "swafoto tidak boleh kosong",

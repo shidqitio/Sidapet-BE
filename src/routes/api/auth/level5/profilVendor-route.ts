@@ -29,7 +29,8 @@ import {
     payloadTenagaPendukungUpdateSchema,
     payloadKantorSchema,
     payloadKantorUpdateSchema,
-    payloadPengalamanTaSchema
+    payloadPengalamanTaSchema,
+    payloadStoreUploadPengalamanPeroranganSchema
 } from "@schema/api/profilVendor-schema"
 import vendorController from "@controllers/api/vendor-controller";
 import validate from "@schema/validate"
@@ -49,19 +50,26 @@ router.get("/domisili", profilVendorController.domisili)
 router.get("/get-pengalaman", profilVendorController.getPengalamanVendor)
 router.get("/get-sertifikat", profilVendorController.getSertifikat)
 router.get("/show/profil-upload/:id", profilVendorController.getPdfUpload);
-router.get("/perorang/profil-sertif/:id", profilVendorController.getPdfUploadSertifikat);
-router.get("/perorang/profil-pengalaman/:id",profilVendorController.getPdfUploadPengalamanPerorangan)
+
+
 
 router.post("/store-profil", validate(storeProfilVendorSchema), profilVendorController.storeProfilVendor)
 router.post("/upload", uploadPdf.single("isian"), profilVendorController.storeUpload)
 router.post("/get-profil", validate(getJawabProfilVendorSchema), profilVendorController.getProfilVendor)
-router.post("/upload/sertifikat", uploadPdf.single("file"),validate(storeUploadSertifikatSchema), profilVendorController.storeUploadSertifikat)
-router.post("/upload/pengalaman", uploadPdf.single("file"), validate(storeUploadPengalamanSchema), profilVendorController.storeUploadPengalamanOrang)
 
-router.delete("/hapus/sertifikat/:id", validate(parameterSchema), profilVendorController.hapusSertifikat)
-router.delete("/hapus/pengalaman/:id", validate(parameterSchema), profilVendorController.hapusPengalaman)
 router.delete("/hapus/profil/:id", validate(parameterSchema), profilVendorController.hapusProfilUpload)
 router.delete("/hapus/profil-vendor/:id", validate(parameterSchema), profilVendorController.hapusProfil)
+
+//Perorangan 
+//Pengalaman Perorangan
+router.post("/perorangan/upload/pengalaman", uploadPdf.single("file"), validate(payloadStoreUploadPengalamanPeroranganSchema), profilVendorController.storeUploadPengalamanOrang)
+router.delete("/perorangan/hapus/pengalaman/:id", validate(parameterSchema), profilVendorController.hapusPengalaman)
+router.get("/perorangan/profil-pengalaman/:id",validate(parameterSchema), profilVendorController.getPdfUploadPengalamanPerorangan)
+
+//Sertifikat Perorangan
+router.get("/perorang/profil-sertif/:id", profilVendorController.getPdfUploadSertifikat);
+router.delete("/hapus/sertifikat/:id", validate(parameterSchema), profilVendorController.hapusSertifikat)
+router.post("/upload/sertifikat", uploadPdf.single("file"),validate(storeUploadSertifikatSchema), profilVendorController.storeUploadSertifikat)
 
 
 //Badan Usaha

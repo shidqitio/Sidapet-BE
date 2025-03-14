@@ -57,6 +57,29 @@ const storeUploadPengalamanOrang = {
     })
 }
 
+//Perorangan
+//PENGALAMAN PERORANGAN BARU 
+const payloadStoreUploadPengalamanPerorangan = {
+    body : z.object({
+        nama_pekerjaan : z.string({
+            required_error : "nama_pekerjaan harus diisi",
+            invalid_type_error : "nama_pekerjaan harus string"
+        }),
+        posisi : z.string({
+            required_error : "posisi harus diisi",
+            invalid_type_error : "posisi harus string"
+        }),
+        jangka_waktu : z.string({
+            required_error : "jangka_waktu harus diisi",
+            invalid_type_error : "jangka_waktu harus string"
+        }),
+        nilai_pekerjaan : z.string({
+            required_error : "nilai_pekerjaan harus diisi",
+            invalid_type_error : "nilai_pekerjaan harus string"
+        }),
+    })
+}
+
 const getJawabProfilVendor = {
     body : z.object({
         kode_vendor : z.number({
@@ -71,6 +94,7 @@ const getJawabProfilVendor = {
 }
 
 
+//BADAN USAHA
 //Komisaris
 const storeUploadKomisaris = {
     body : z.object({
@@ -611,6 +635,10 @@ export const storeUploadPengalamanSchema = object({
     ...storeUploadPengalamanOrang
 })
 
+export const payloadStoreUploadPengalamanPeroranganSchema = object({
+    ...payloadStoreUploadPengalamanPerorangan
+})
+
 export const storeUploadKomisarisSchema = object({
     ...storeUploadKomisaris
 })
@@ -737,6 +765,8 @@ export type GetJawabProfilVendorSchema = z.TypeOf<typeof getJawabProfilVendorSch
 export type StoreUploadSertifikatSchema = z.TypeOf<typeof storeUploadSertifikatSchema>
 export type StoreUploadPengalamanSchema = z.TypeOf<typeof storeUploadPengalamanSchema>
 export type StoreUploadKomisarisSchema = z.TypeOf<typeof storeUploadKomisarisSchema>
+
+export type PayloadStoreUploadPengalamanPeroranganSchema = z.TypeOf<typeof payloadStoreUploadPengalamanPeroranganSchema>
 
 export type UpdateKomisarisSchema = z.TypeOf<typeof updateKomisarisSchema>
 
