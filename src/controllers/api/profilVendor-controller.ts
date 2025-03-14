@@ -33,7 +33,8 @@ PayloadTenagaPendukungUpdateSchema,
 PayloadKantorSchema,
 PayloadKantorUpdateSchema,
 PayloadPengalamanTaSchema,
-PayloadPengalamanTpSchema
+PayloadPengalamanTpSchema,
+PayloadStoreUploadPengalamanPeroranganSchema
 } from "@schema/api/profilVendor-schema"
 
 import profilVendorService from "@services/api/v1/profilVendor-service";
@@ -251,7 +252,7 @@ const storeUploadPengalamanOrang = async (
     res:Response,
     next:NextFunction) : Promise<void> => {
     try {
-        const request : StoreUploadPengalamanSchema["body"] = req.body
+        const request : PayloadStoreUploadPengalamanPeroranganSchema["body"] = req.body
 
         const kode_vendor = req.user.kode_vendor
 
@@ -259,7 +260,7 @@ const storeUploadPengalamanOrang = async (
 
         const response = await profilVendorService.uploadPengalamanOrang(request, req.file as Express.Multer.File, kode_vendor)
 
-        responseSuccess(res, httpCode.created, responseStatus.success, "Data Sertifikat Berhasil Di Upload", response)
+        responseSuccess(res, httpCode.created, responseStatus.success, "Data Pengalaman Perorangan Berhasil Di Upload", response)
     } catch (error) {
         errorLogger.error(`Testing Error Store Upload Pengalaman Orang ${error}`)
         next(error)
