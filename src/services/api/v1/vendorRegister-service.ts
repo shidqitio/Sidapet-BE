@@ -156,6 +156,7 @@ const registerVendor = async (request:PayloadRegisterSchema["body"], file : Expr
     try {
         
         const {valid, reason, validators} = await validate(request.email)
+        
 
         // console.log("TES VALID : ", valid)
         // console.log("REASON :" , reason)
@@ -188,6 +189,8 @@ const registerVendor = async (request:PayloadRegisterSchema["body"], file : Expr
             await t.rollback()
             throw new CustomError(httpCode.conflict, responseStatus.success, "Email Sudah Terdaftar")
         }
+
+        if(!file) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Harap Lampirkan File")
 
         const pw = await bcrypt.hash(request.password, 12)
 
