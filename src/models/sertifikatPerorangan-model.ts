@@ -4,66 +4,67 @@ import Vendor from "./vendor-model";
 
 
 
-
 interface ISertifPeroranganAttributes {
-	kode_sertif : number
-	kode_vendor : number
-	nm_sertif_orang : string | null | undefined,
-	path_sertif : string | null | undefined,
-	custom : string | null | undefined,
-    encrypt_key : string | null | undefined
+	kode_sertif_perorangan : number
+	kode_vendor : number | undefined | null
+	nm_sertifikat : string | undefined | null
+	file_bukti : string | undefined | null
+	encrypt_key : string | undefined | null
+	custom : string | undefined | null
 }
 
-export type SertifPeroranganOutput = Required<ISertifPeroranganAttributes>
+export type  SertifPeroranganOutput= Required<ISertifPeroranganAttributes>
 
 export type SertifPeroranganInput = Optional<
 ISertifPeroranganAttributes, 
-"kode_sertif" |
+"kode_sertif_perorangan" |
 "kode_vendor" |
-"encrypt_key"
+"nm_sertifikat" |
+"file_bukti" |
+"encrypt_key" |
+"custom" 
 >
 
 class SertifPerorangan 
     extends Model<ISertifPeroranganAttributes, SertifPeroranganInput>
     implements ISertifPeroranganAttributes
 {
-    declare kode_sertif : number;
-    declare kode_vendor : number;
-    declare nm_sertif_orang : string | null | undefined;
-    declare path_sertif : string | null | undefined;
-    declare custom : string | null | undefined;
-    declare encrypt_key: string | null | undefined;
-    
+    declare kode_sertif_perorangan : number
+    declare kode_vendor : number | undefined | null
+    declare nm_sertifikat : string | undefined | null
+    declare file_bukti : string | undefined | null
+    declare encrypt_key : string | undefined | null
+    declare custom : string | undefined | null
 }
 
 SertifPerorangan.init(
     {
-        kode_sertif : {
-            type : DataTypes.INTEGER, 
+        kode_sertif_perorangan : {
+            type : DataTypes.INTEGER ,
             allowNull : false,
             primaryKey : true,
             autoIncrement : true
         },
         kode_vendor : {
-            type : DataTypes.INTEGER, 
-            allowNull : false
-        },
-        nm_sertif_orang : {
-            type : DataTypes.STRING, 
+            type : DataTypes.STRING,
             allowNull : true
         },
-        path_sertif : {
-            type : DataTypes.STRING, 
+        nm_sertifikat : {
+            type : DataTypes.STRING,
             allowNull : true
         },
-        custom : {
-            type : DataTypes.STRING, 
+        file_bukti : {
+            type : DataTypes.STRING,
             allowNull : true
         },
         encrypt_key : {
-            type : DataTypes.STRING, 
+            type : DataTypes.STRING,
             allowNull : true
-        }
+        },
+        custom : {
+            type : DataTypes.JSONB,
+            allowNull : true
+        },
     },
     {
         sequelize : db, 
@@ -75,7 +76,7 @@ SertifPerorangan.init(
 )
 
 SertifPerorangan.belongsTo(Vendor, {
-    foreignKey : "kode_vendor", 
+    foreignKey : "kode_vendor",
     as : "Vendor"
 })
 
@@ -83,8 +84,6 @@ Vendor.hasMany(SertifPerorangan, {
     foreignKey : "kode_vendor",
     as : "SertifPerorangan"
 })
-
-
 
 
 export default SertifPerorangan

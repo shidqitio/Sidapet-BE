@@ -93,6 +93,16 @@ const getJawabProfilVendor = {
     })
 }
 
+//Sertifikat
+const payloadStoreUploadSertifikatPerorangan = {
+    body : z.object({
+        nm_sertif : z.string({
+            required_error : "nm_sertif tidak boleh kosong",
+            invalid_type_error : "nm_sertif harus string"
+        })
+    })
+}
+
 
 //BADAN USAHA
 //Komisaris
@@ -576,6 +586,19 @@ const payloadPengalamanTa = {
     })
 }
 
+const payloadPengalamanTaSatuan = {
+    body : z.object({
+        kode_tenaga_ahli : z.string({
+            required_error : "kode_tenaga_ahli tidak boleh kosong",
+            invalid_type_error : "kode_tenaga_ahli harus string"
+        }),
+        pengalaman : z.string({
+            required_error : "pengalaman tidak boleh kosong",
+            invalid_type_error : "pengalaman harus string"
+        })
+    })
+}
+
 //PengalamanTP
 const payloadPengalamanTp = {
     body : z.object({
@@ -591,6 +614,76 @@ const payloadPengalamanTp = {
     })
 }
 
+const payloadPengalamanTpSatuan = {
+    body : z.object({
+        kode_tenaga_pendukung : z.string({
+            required_error : "kode_tenaga_ahli tidak boleh kosong",
+            invalid_type_error : "kode_tenaga_ahli harus string"
+        }),
+        pengalaman : z.string({
+            required_error : "pengalaman tidak boleh kosong",
+            invalid_type_error : "pengalaman harus string"
+        })
+    })
+}
+
+// Sertifikat TA
+const payloadSertifikatTA = {
+    body : z.object({
+        kode_tenaga_ahli : z.string({
+            required_error : "Kode Tenaga Ahli harus string",
+            invalid_type_error : "kode_tenaga_ahli harus string"
+        }),
+        sertifikat_data : z.array(z.object({
+            sertifikat : z.string({
+                required_error : "sertifikat Tidak Boleh Kosong",
+                invalid_type_error : "sertifikat harus string"
+            }),
+        }))
+    })
+}
+
+const payloadSertifikatTASatuan = {
+    body : z.object({
+        kode_tenaga_ahli : z.string({
+            required_error : "Kode Tenaga Ahli harus diisi",
+            invalid_type_error : "kode_tenaga_ahli harus string"
+        }),
+        sertifikat : z.string({
+            required_error : "sertifikat harus diisi",
+            invalid_type_error : "sertifikat harus string"
+        })
+    })
+}
+
+// Sertifikat TP
+const payloadSertifikatTP = {
+    body : z.object({
+        kode_tenaga_pendukung : z.string({
+            required_error : "Kode Tenaga Ahli harus string",
+            invalid_type_error : "kode_tenaga_ahli harus string"
+        }),
+        sertifikat_data : z.array(z.object({
+            sertifikat : z.string({
+                required_error : "sertifikat Tidak Boleh Kosong",
+                invalid_type_error : "sertifikat harus string"
+            }),
+        }))
+    })
+}
+
+const payloadSertifikatTPSatuan = {
+    body : z.object({
+        kode_tenaga_pendukung : z.string({
+            required_error : "Kode Tenaga Ahli harus diisi",
+            invalid_type_error : "kode_tenaga_ahli harus string"
+        }),
+        sertifikat : z.string({
+            required_error : "sertifikat harus diisi",
+            invalid_type_error : "sertifikat harus string"
+        })
+    })
+}
 //Reusable
 const query = {
     query : z.object({
@@ -637,6 +730,10 @@ export const storeUploadPengalamanSchema = object({
 
 export const payloadStoreUploadPengalamanPeroranganSchema = object({
     ...payloadStoreUploadPengalamanPerorangan
+})
+
+export const payloadStoreUploadSertifikatPeroranganSchema = object({
+    ...payloadStoreUploadSertifikatPerorangan
 })
 
 export const storeUploadKomisarisSchema = object({
@@ -742,11 +839,30 @@ export const payloadTenagaPendukungUpdateSchema = object({
 export const payloadPengalamanTaSchema = object({
     ...payloadPengalamanTa
 })
+export const payloadPengalamanTaSatuanScehma = object({
+    ...payloadPengalamanTaSatuan
+})
 
 export const payloadPengalamanTpSchema = object({
     ...payloadPengalamanTp
 })
+export const payloadPengalamanTpSatuanScehma = object({
+    ...payloadPengalamanTpSatuan
+})
 
+export const payloadSertifikatTASchema = object({
+    ...payloadSertifikatTA
+})
+export const payloadSertifikatTASatuanSchema = object({
+    ...payloadSertifikatTASatuan
+})
+
+export const payloadSertifikatTPSchema = object({
+    ...payloadSertifikatTP
+})
+export const payloadSertifikatTPSatuanSchema = object({
+    ...payloadSertifikatTPSatuan
+})
 
 //Reusable
 export const querySchema = object({
@@ -767,6 +883,7 @@ export type StoreUploadPengalamanSchema = z.TypeOf<typeof storeUploadPengalamanS
 export type StoreUploadKomisarisSchema = z.TypeOf<typeof storeUploadKomisarisSchema>
 
 export type PayloadStoreUploadPengalamanPeroranganSchema = z.TypeOf<typeof payloadStoreUploadPengalamanPeroranganSchema>
+export type PayloadStoreUploadSertifikatPeroranganSchema = z.TypeOf<typeof payloadStoreUploadSertifikatPeroranganSchema>
 
 export type UpdateKomisarisSchema = z.TypeOf<typeof updateKomisarisSchema>
 
@@ -801,9 +918,21 @@ export type PayloadTenagaPendukungSchema = z.TypeOf<typeof payloadTenagaPendukun
 export type PayloadTenagaPendukungUpdateSchema = z.TypeOf<typeof payloadTenagaPendukungUpdateSchema>
 
 export type PayloadPengalamanTaSchema = z.TypeOf<typeof payloadPengalamanTaSchema>
-
+export type PayloadPengalamanTaSatuanSchema = z.TypeOf<typeof payloadPengalamanTaSatuanScehma>
 
 export type PayloadPengalamanTpSchema = z.TypeOf<typeof payloadPengalamanTpSchema>
+export type PayloadPengalamaTpSatuanSchema = z.TypeOf<typeof payloadPengalamanTpSatuanScehma>
+
+
+export type PayloadSertifikatTASchema = z.TypeOf<typeof payloadSertifikatTASchema>
+export type PayloadSertifikatTASatuanSchema = z.TypeOf<typeof payloadSertifikatTASatuanSchema>
+
+
+
+export type PayloadSertifikatTPSchema = z.TypeOf<typeof payloadSertifikatTPSchema>
+export type PayloadSertifikatTPSatuanSchema = z.TypeOf<typeof payloadSertifikatTPSatuanSchema>
+
+
 
 
 //Reusable
