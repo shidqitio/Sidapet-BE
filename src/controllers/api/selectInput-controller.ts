@@ -96,11 +96,30 @@ const kepemilikan = async (
     }
 }
 
+const getAllKabkot = async (
+    req : Request,
+    res : Response,
+    next : NextFunction
+) : Promise<void> => {
+    try {
+        const response = await selectInputService.getAllKabkot()
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response)
+
+    } catch (error) {
+        errorLogger.error(`Testing Error Jenjang Pendidikan ${error}`)
+        next(error)
+    }
+}
+
+
+
 export default {
     domisiliInput,
     bankInput,
     kbli,
     jenisPengadaan,
     jenjangPendidikan,
-    kepemilikan
+    kepemilikan,
+    getAllKabkot
 }

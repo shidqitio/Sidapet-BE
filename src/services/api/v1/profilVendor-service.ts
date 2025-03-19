@@ -13,7 +13,7 @@ import KatItemTanya from "@models/katItemTanya-model";
 import ItemTanya from "@models/itemTanya-model";
 import Domisili from "@models/domisili-model";
 import TrxKatDokKomplit from "@models/trxKatDokKomplit-model";
-import SertifPerorangan from "@models/sertifPerorangan-model";
+import SertifPerorangan from "@models/sertifikatPerorangan-model";
 import PengalamanPerorangan from "@models/pengalamanPerorangan-model";
 import RegisterVendor from "@models/registerVendor-model";
 import KomisarisPerusahaan from "@models/komisarisPerusahaan-model";
@@ -59,6 +59,13 @@ import {
     PayloadPengalamanTaSchema,
     PayloadPengalamanTpSchema,
     PayloadStoreUploadPengalamanPeroranganSchema,
+    PayloadStoreUploadSertifikatPeroranganSchema,
+    PayloadSertifikatTASchema,
+    PayloadSertifikatTPSchema,
+    PayloadPengalamanTaSatuanSchema,
+    PayloadPengalamaTpSatuanSchema,
+    PayloadSertifikatTASatuanSchema,
+    PayloadSertifikatTPSatuanSchema,
 } from "@schema/api/profilVendor-schema"
 
 import { QueryTypes, Sequelize } from "sequelize";
@@ -77,6 +84,8 @@ import TenagaAhli from "@models/tenagaAhli-model";
 import TenagaPendukung from "@models/tenagaPendukung-model";
 import PengalamanTa from "@models/pengalamanTa-model";
 import PengalamanTp from "@models/pengalamanTp-model";
+import SertifTA from "@models/sertifTA-model";
+import SertifTP from "@models/sertifTP-model";
 
 
 //GET MENU 
@@ -1102,7 +1111,7 @@ const getPdfUploadPengalamanPerorangan = async (id:ParameterSchema["params"]["id
 // #################################################################################################
 // ######################## SERTIFIKAT PERORANGAN ##################################################
 //Upload Sertifikat
-const storeUploadSertifikat = async (request:StoreUploadSertifikatSchema["body"], file : Express.Multer.File, kode_vendor : number) : Promise<any> => {
+const storeUploadSertifikat = async (request:PayloadStoreUploadSertifikatPeroranganSchema["body"], file : Express.Multer.File, kode_vendor : number) : Promise<any> => {
     try {
          
         const formData = new FormData()
@@ -1120,18 +1129,18 @@ const storeUploadSertifikat = async (request:StoreUploadSertifikatSchema["body"]
 
         const create = await SertifPerorangan.create({
             kode_vendor : kode_vendor,
-            nm_sertif_orang : request.nm_sertif_orang,
-            path_sertif : upload[0].file_name,
+            nm_sertifikat: request.nm_sertif,
+            file_bukti : upload[0].file_name,
             encrypt_key : upload[0].keypass
         },
         {
-            returning : ["kode_vendor", "nm_sertif_orang", "path_sertif","kode_sertif"]
+            returning : ["kode_vendor", "nm_sertifikat", "file_bukti"]
         })
 
         const result = {
             kode_vendor : kode_vendor,
-            nm_sertif_orang : create.nm_sertif_orang,
-            path_sertif : create.path_sertif
+            nm_sertifikat : create.nm_sertifikat,
+            file_bukti : create.file_bukti
         }
 
 
@@ -1185,21 +1194,21 @@ const hapusSertifikat = async (id:ParameterSchema["params"]["id"]) : Promise<Ser
     try {
         const exSertif = await SertifPerorangan.findOne({
             where : {
-                kode_sertif : id
+                kode_sertif_perorangan : id
             }
         })
 
         if(!exSertif) throw new CustomError(httpCode.notFound, responseStatus.success, "Data Sertif Tidak Ada")
             
 
-        const hapusFile = await deleteFile(exSertif.path_sertif as string)
+        const hapusFile = await deleteFile(exSertif.file_bukti as string)
 
 
         if(hapusFile[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File")
 
         const hapusData = await SertifPerorangan.destroy({
             where : {
-                kode_sertif : id
+                kode_sertif_perorangan : id
             }
         })
 
@@ -1227,7 +1236,7 @@ const getPdfUploadSertifikat = async (id:ParameterSchema["params"]["id"], kode_v
         const getSertifikat = await SertifPerorangan.findOne({
             where : {
                 kode_vendor : kode_vendor,
-                kode_sertif : id,
+                kode_sertif_perorangan : id,
                 encrypt_key : {
                     [Op.not] : null
                 }
@@ -1237,7 +1246,7 @@ const getPdfUploadSertifikat = async (id:ParameterSchema["params"]["id"], kode_v
         if(!getSertifikat) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tidak Tersedia / Data Bukan Format PDF")
 
         const data = {
-            nama_file : getSertifikat.path_sertif as string, 
+            nama_file : getSertifikat.file_bukti as string, 
             keypass : getSertifikat.encrypt_key as string
         }
 
@@ -3952,14 +3961,10 @@ const storeTenagaAhli = async (request:PayloadTenagaAhliSchema["body"], kode_ven
             throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Store Data Gagal")
         }
 
-        if(create) {
-            if(file_ktp.path) {
-                fs.unlinkSync(file_ktp.path)
-            }
-            else if(file_cv.path) {
-                fs.unlinkSync(file_cv.path)
-            }
-            else fs.unlinkSync(file_ijazah.path)
+        if(create) {            
+            fs.unlinkSync(file_ktp.path)
+            fs.unlinkSync(file_cv.path)
+            fs.unlinkSync(file_ijazah.path)
         }
 
         return result
@@ -3970,10 +3975,10 @@ const storeTenagaAhli = async (request:PayloadTenagaAhliSchema["body"], kode_ven
         if(file_ktp.path) {
             fs.unlinkSync(file_ktp.path)
         }
-        else if(file_cv.path) {
+        if(file_cv.path) {
             fs.unlinkSync(file_cv.path)
         }
-        else fs.unlinkSync(file_ijazah.path)
+        if(file_ijazah.path)  fs.unlinkSync(file_ijazah.path)
         if(error instanceof CustomError) {
             throw new CustomError(error.code,error.status, error.message)
         } 
@@ -3985,43 +3990,101 @@ const storeTenagaAhli = async (request:PayloadTenagaAhliSchema["body"], kode_ven
 }
 
 const hapusTenagaAhli = async (id:ParameterSchema["params"]["id"]) : Promise<TenagaAhli> => {
+    const t = await db.transaction()
     try {
         const exTenagaAhli = await TenagaAhli.findOne({
             where : {
                 kode_tenaga_ahli : id
             },
-            attributes : {exclude : ["encrypt_key"]}
+            attributes : {exclude : ["encrypt_key"]},
+            transaction : t
         })
 
-        if(!exTenagaAhli) throw new CustomError(httpCode.notFound, responseStatus.success, "Data Pengalaman Perusahaan Tidak Ada")
-            
+        if(!exTenagaAhli) throw new CustomError(httpCode.notFound, responseStatus.success, "Data Tenaga Ahli Tidak Ada")
 
-        if(exTenagaAhli.file_ktp) {
-            const hapusFile = await deleteFile(exTenagaAhli.file_ktp as string)
-            if(hapusFile[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File")
+        const exPengalamanTa = await PengalamanTa.findAll({
+            where : {
+                kode_tenaga_ahli : id
+            },
+            transaction : t
+        })
 
+
+
+        if(exPengalamanTa.length > 0) {
+            for(const pengalamanTa of exPengalamanTa) {
+                if(pengalamanTa.file_bukti) {
+                    const hapusFile = await deleteFile(pengalamanTa.file_bukti as string)
+                    if(hapusFile[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File Pengalaman TA")
+                    console.log(hapusFile);
+
+                }
+            }
+            const deleteTa = await PengalamanTa.destroy({
+                where : {
+                    kode_tenaga_ahli : id
+                },
+                transaction : t
+            })
+            if(deleteTa === 0) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Terjadi Kesalahan pada Hapus Pengalaman TA")
         }
 
-        if(exTenagaAhli.file_cv) {
-            const hapusFile2 = await deleteFile(exTenagaAhli.file_cv as string)
-            if(hapusFile2[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File")
-        }
-
-        if(exTenagaAhli.file_ijazah) {
-            const hapusFile3 = await deleteFile(exTenagaAhli.file_ijazah as string)
-            if(hapusFile3[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File")
-        }
-
-        const hapusData = await TenagaAhli.destroy({
+        const exSertifTa = await SertifTA.findAll({
             where : {
                 kode_tenaga_ahli : id
             }
         })
+            
+        if(exSertifTa.length > 0) {
+            for(const sertifTa of exSertifTa) {
+                console.log("TES SERTIF TA")
+                if(sertifTa.file_bukti) {
+                    const hapusFile = await deleteFile(sertifTa.file_bukti as string)
+                    console.log(hapusFile);
+                    
+                    if(hapusFile[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File Pengalaman TP")
+                }
+            }
+            const deleteTa = await SertifTA.destroy({
+                where : {
+                    kode_tenaga_ahli : id
+                },
+                transaction : t
+            })
+            if(deleteTa === 0) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Terjadi Kesalahan pada Hapus Sertifikat TA")
+        }
+
+        if(exTenagaAhli.file_ktp) {
+            const hapusFile3 = await deleteFile(exTenagaAhli.file_ktp as string)
+            if(hapusFile3[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File KTP")
+        }
+
+        if(exTenagaAhli.file_cv) {
+            const hapusFile2 = await deleteFile(exTenagaAhli.file_cv as string)            
+            if(hapusFile2[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File CV")
+        }
+
+        if(exTenagaAhli.file_ijazah) {
+            const hapusFile3 = await deleteFile(exTenagaAhli.file_ijazah as string)
+            if(hapusFile3[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File IJAZAH")
+        }
+
+   
+
+        const hapusData = await TenagaAhli.destroy({
+            where : {
+                kode_tenaga_ahli : id
+            },
+            transaction : t
+        })
 
         if(hapusData === 0 ) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus Data")
 
+        await t.commit()
+
         return exTenagaAhli
     } catch (error) {
+        await t.rollback()
         if(error instanceof CustomError) {
             throw new CustomError(error.code,error.status, error.message)
         } 
@@ -4409,43 +4472,102 @@ const storeTenagaPendukung = async (request:PayloadTenagaPendukungSchema["body"]
 }
 
 const hapusTenagaPendukung = async (id:ParameterSchema["params"]["id"]) : Promise<TenagaPendukung> => {
+    const t = await db.transaction()
     try {
         const exTenagaPendukung = await TenagaPendukung.findOne({
             where : {
                 kode_tenaga_pendukung : id
             },
-            attributes : {exclude : ["encrypt_key"]}
+            attributes : {exclude : ["encrypt_key"]},
+            transaction : t
         })
 
-        if(!exTenagaPendukung) throw new CustomError(httpCode.notFound, responseStatus.success, "Data Pengalaman Perusahaan Tidak Ada")
+        if(!exTenagaPendukung) throw new CustomError(httpCode.notFound, responseStatus.success, "Data Tenaga Ahli Tidak Ada")
+
+        const exPengalamanTp = await PengalamanTp.findAll({
+            where : {
+                kode_tenaga_pendukung : id
+            },
+            transaction : t
+        })
+
+
+
+        if(exPengalamanTp.length > 0) {
+            for(const pengalamanTp of exPengalamanTp) {
+                if(pengalamanTp.file_bukti) {
+                    const hapusFile = await deleteFile(pengalamanTp.file_bukti as string)
+                    if(hapusFile[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File Pengalaman TA")
+                    console.log(hapusFile);
+
+                }
+            }
+            const deleteTp = await PengalamanTp.destroy({
+                where : {
+                    kode_tenaga_pendukung : id
+                },
+                transaction : t
+            })
+            if(deleteTp === 0) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Terjadi Kesalahan pada Hapus Pengalaman TA")
+        }
+
+        const exSertifTp = await SertifTP.findAll({
+            where : {
+                kode_sertif_tp : id
+            }
+        })
             
+        if(exSertifTp.length > 0) {
+            for(const sertifTp of exSertifTp) {
+                console.log("TES SERTIF TA")
+                if(sertifTp.file_bukti) {
+                    const hapusFile = await deleteFile(sertifTp.file_bukti as string)
+                    console.log(hapusFile);
+                    
+                    if(hapusFile[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File Pengalaman TP")
+                }
+            }
+            const deleteTa = await SertifTP.destroy({
+                where : {
+                    kode_tenaga_pendukung : id
+                },
+                transaction : t
+            })
+            if(deleteTa === 0) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Terjadi Kesalahan pada Hapus Sertifikat TA")
+        }
+
 
         if(exTenagaPendukung.file_ktp) {
-            const hapusFile = await deleteFile(exTenagaPendukung.file_ktp as string)
-            if(hapusFile[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File")
-
+            const hapusFile3 = await deleteFile(exTenagaPendukung.file_ktp as string)
+            if(hapusFile3[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File KTP")
         }
 
         if(exTenagaPendukung.file_cv) {
-            const hapusFile2 = await deleteFile(exTenagaPendukung.file_cv as string)
-            if(hapusFile2[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File")
+            const hapusFile2 = await deleteFile(exTenagaPendukung.file_cv as string)            
+            if(hapusFile2[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File CV")
         }
 
         if(exTenagaPendukung.file_ijazah) {
             const hapusFile3 = await deleteFile(exTenagaPendukung.file_ijazah as string)
-            if(hapusFile3[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File")
+            if(hapusFile3[1] !== null) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus File IJAZAH")
         }
 
-        const hapusData = await TenagaPendukung.destroy({
+   
+
+        const hapusData = await TenagaAhli.destroy({
             where : {
-                kode_tenaga_pendukung : id
-            }
+                kode_tenaga_ahli : id
+            },
+            transaction : t
         })
 
         if(hapusData === 0 ) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Gagal Hapus Data")
 
+        await t.commit()
+
         return exTenagaPendukung
     } catch (error) {
+        await t.rollback()
         if(error instanceof CustomError) {
             throw new CustomError(error.code,error.status, error.message)
         } 
@@ -4781,14 +4903,67 @@ const storePengalamanTA = async (request:PayloadPengalamanTaSchema["body"], file
         }
 
         if(arr_pengalaman.length > 0) {
-            file.map(item => fs.unlinkSync(item.path))
+            file.forEach(item => fs.unlinkSync(item.path))
         }
 
         return arr_pengalaman
 
     } catch (error) {
         debugLogger.debug(error)
-        file.map(files => fs.unlinkSync(files.path))
+        if(file.length > 0)
+            file.forEach((files) => {
+                if(files.path) fs.unlinkSync(files.path)
+            })
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const storePengalamanTASatuan = async (request:PayloadPengalamanTaSatuanSchema["body"], file : Express.Multer.File) => {
+    try {
+        const formData = new FormData()
+
+        formData.append('nama_aplikasi','SI-DaPeT')
+        formData.append('file', fs.createReadStream(file.path))
+
+        const upload = await uploadPdf(formData)
+
+
+        if(upload[1] !== null || !upload[0]){
+            throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
+        }
+
+        const create = await PengalamanTa.create({
+            kode_tenaga_ahli : parseInt(request.kode_tenaga_ahli),
+            pengalaman : request.pengalaman,
+            file_bukti : upload[0].file_name,
+            encrypt_key : upload[0].keypass
+        })
+
+        const result = {
+            kode_tenaga_ahli : create.kode_tenaga_ahli,
+            pengalaman : create.pengalaman,
+            file_bukti : create.file_bukti,
+        }
+
+        if(!create) {
+            await deleteFile(upload[0].file_name)
+            throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
+        }
+
+        if(create) {
+            fs.unlinkSync(file.path)
+        }
+
+        return result
+    } catch (error) {
+        debugLogger.debug(error)
+        fs.unlinkSync(file.path)
         if(error instanceof CustomError) {
             throw new CustomError(error.code,error.status, error.message)
         } 
@@ -4874,9 +5049,6 @@ const storePengalamanTP = async (request:PayloadPengalamanTpSchema["body"], file
         file.map(files => formData.append('file', fs.createReadStream(files.path))) 
         const upload = await uploadPdfArray(formData)
 
-
-        const panjangArray = request.pengalaman_data.length
-
         console.log("TES : ", file)
 
         if(upload[1] !== null || !upload[0]){
@@ -4918,7 +5090,7 @@ const storePengalamanTP = async (request:PayloadPengalamanTpSchema["body"], file
         }
 
         if(arr_pengalaman.length > 0) {
-            file.map(item => fs.unlinkSync(item.path))
+            file.forEach(item => fs.unlinkSync(item.path))
         }
 
         return arr_pengalaman
@@ -4930,6 +5102,56 @@ const storePengalamanTP = async (request:PayloadPengalamanTpSchema["body"], file
                 if(files.path) fs.unlinkSync(files.path)
             })
         // file.map(files => fs.unlinkSync(files.path))
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const storePengalamanTPSatuan = async (request:PayloadPengalamaTpSatuanSchema["body"], file : Express.Multer.File) => {
+    try {
+        const formData = new FormData()
+
+        formData.append('nama_aplikasi','SI-DaPeT')
+        formData.append('file', fs.createReadStream(file.path))
+
+        const upload = await uploadPdf(formData)
+
+
+        if(upload[1] !== null || !upload[0]){
+            throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
+        }
+
+        const create = await PengalamanTp.create({
+            kode_tenaga_pendukung : parseInt(request.kode_tenaga_pendukung),
+            pengalaman : request.pengalaman,
+            file_bukti : upload[0].file_name,
+            encrypt_key : upload[0].keypass
+        })
+
+        const result = {
+            kode_tenaga_pendukung : create.kode_tenaga_pendukung,
+            pengalaman : create.pengalaman,
+            file_bukti : create.file_bukti,
+        }
+
+        if(!create) {
+            await deleteFile(upload[0].file_name)
+            throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
+        }
+
+        if(create) {
+            fs.unlinkSync(file.path)
+        }
+
+        return result
+    } catch (error) {
+        debugLogger.debug(error)
+        fs.unlinkSync(file.path)
         if(error instanceof CustomError) {
             throw new CustomError(error.code,error.status, error.message)
         } 
@@ -4973,6 +5195,366 @@ const getPdfUploadPengalamanTp = async (id:ParameterSchema["params"]["id"], kode
 }
 
 // #####################################################################
+
+// ################################# SERTIFIKAT TA ########################
+const getAllSertifikatTa = async (id:ParameterSchema["params"]["id"]) : Promise<SertifTA[]> => {
+    try {
+        const getSertifikat : SertifTA[] = await SertifTA.findAll({
+            where : {
+                kode_tenaga_ahli : id
+            },
+            attributes : {exclude : ["encrypt_key"]}
+        })
+
+        return getSertifikat
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const storeSertifTa = async (request:PayloadSertifikatTASchema["body"], file : Express.Multer.File[]) : Promise<any> => {
+    try {
+        const arr_sertifikat = []
+
+        const exTenagaAhli = await TenagaAhli.findOne({
+            where : {
+                kode_tenaga_ahli : request.kode_tenaga_ahli
+            }
+        })
+
+        if(!exTenagaAhli) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tenaga Ahli Tidak Ditemukan")
+
+        const formData = new FormData()
+
+        formData.append('nama_aplikasi','SI-DaPeT')
+        file.map(files => formData.append('file', fs.createReadStream(files.path))) 
+        const upload = await uploadPdfArray(formData)
+
+        const panjangArray = request.sertifikat_data.length
+
+        console.log(panjangArray)
+
+        if(upload[1] !== null || !upload[0]){
+            throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
+        }
+
+        for(const [index, sertifikat_dat] of request.sertifikat_data.entries()) {
+                
+
+            const createSertifTA = await SertifTA.create({
+                kode_tenaga_ahli : parseInt(request.kode_tenaga_ahli),
+                sertifikat : sertifikat_dat.sertifikat,
+                file_bukti : upload[0][index].file_name,
+                encrypt_key : upload[0][index].keypass
+            })
+
+
+            if(!createSertifTA) {
+            await deleteFile(upload[0].file_name)
+            throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Terjadi Kesalahan Saat Store Data")
+            }
+
+
+            arr_sertifikat.push({
+                "kode_tenaga_ahli" : createSertifTA.kode_tenaga_ahli,
+                "pengalaman" : createSertifTA.sertifikat,
+                "file_bukti" : createSertifTA.file_bukti
+            })
+        }
+
+        if(arr_sertifikat.length > 0) {
+            file.forEach(item => fs.unlinkSync(item.path))
+        }
+
+        return arr_sertifikat
+
+    } catch (error) {
+        debugLogger.debug(error)
+        if(file.length > 0)
+            console.log("TES KAH")
+            file.map((files) => {
+                if(files.path) fs.unlinkSync(files.path)
+            })
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const storeSertifikatTASatuan = async (request:PayloadSertifikatTASatuanSchema["body"], file : Express.Multer.File) => {
+    try {
+        const formData = new FormData()
+
+        formData.append('nama_aplikasi','SI-DaPeT')
+        formData.append('file', fs.createReadStream(file.path))
+
+        const upload = await uploadPdf(formData)
+
+
+        if(upload[1] !== null || !upload[0]){
+            throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
+        }
+
+        const create = await SertifTA.create({
+            kode_tenaga_ahli : parseInt(request.kode_tenaga_ahli),
+            sertifikat : request.sertifikat,
+            file_bukti : upload[0].file_name,
+            encrypt_key : upload[0].keypass
+        })
+
+        const result = {
+            kode_tenaga_ahli : create.kode_tenaga_ahli,
+            sertifikat : create.sertifikat,
+            file_bukti : create.file_bukti,
+        }
+
+        if(!create) {
+            await deleteFile(upload[0].file_name)
+            throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
+        }
+
+        if(create) {
+            fs.unlinkSync(file.path)
+        }
+
+        return result
+    } catch (error) {
+        debugLogger.debug(error)
+        fs.unlinkSync(file.path)
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const getPdfUploadSertifikatTa = async (id:ParameterSchema["params"]["id"], kode_vendor:number) : Promise<any> => {
+    try {
+        const getSertifikat : SertifTA | null = await SertifTA.findOne({
+            where : {
+                kode_sertif_ta : id,       
+            }
+        })
+
+
+        if(!getSertifikat) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tidak Tersedia / Data Bukan Format PDF")
+
+        const data = {
+            nama_file : getSertifikat?.file_bukti as string, 
+            keypass : getSertifikat.encrypt_key as string
+        }
+
+
+        const tampilGambar = await showFile(data)
+
+        return tampilGambar[0]
+
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+// ########################################################################
+
+
+// ################################# Sertifikat TP #########################
+const getAllSertifikatTp = async (id:ParameterSchema["params"]["id"]) : Promise<SertifTP[]> => {
+    try {
+        const getSertifikat : SertifTP[] = await SertifTP.findAll({
+            where : {
+                kode_tenaga_pendukung : id
+            },
+            attributes : {exclude : ["encrypt_key"]}
+        })
+
+        return getSertifikat
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const storeSertifTP = async (request:PayloadSertifikatTPSchema["body"], file : Express.Multer.File[]) : Promise<any> => {
+    try {
+        const arr_sertifikat = []
+
+        const exTenagaPendukung = await TenagaPendukung.findOne({
+            where : {
+                kode_tenaga_pendukung : request.kode_tenaga_pendukung
+            }
+        })
+
+        if(!exTenagaPendukung) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tenaga Pendukung Tidak Ditemukan")
+
+        const formData = new FormData()
+
+        formData.append('nama_aplikasi','SI-DaPeT')
+        file.map(files => formData.append('file', fs.createReadStream(files.path))) 
+        const upload = await uploadPdfArray(formData)
+
+        const panjangArray = request.sertifikat_data.length
+
+        console.log(panjangArray)
+
+        if(upload[1] !== null || !upload[0]){
+            throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
+        }
+
+        for(const [index, sertifikat_dat] of request.sertifikat_data.entries()) {
+                
+
+            const createSertifTP = await SertifTP.create({
+                kode_tenaga_pendukung : parseInt(request.kode_tenaga_pendukung),
+                sertifikat : sertifikat_dat.sertifikat,
+                file_bukti : upload[0][index].file_name,
+                encrypt_key : upload[0][index].keypass
+            })
+
+
+            if(!createSertifTP) {
+            await deleteFile(upload[0].file_name)
+            throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Terjadi Kesalahan Saat Store Data")
+            }
+
+
+            // if(createSertifTA) {
+            //     // fs.unlinkSync(file.path)
+            // }
+
+
+            arr_sertifikat.push({
+                "kode_tenaga_pendukung" : createSertifTP.kode_tenaga_pendukung,
+                "pengalaman" : createSertifTP.sertifikat,
+                "file_bukti" : createSertifTP.file_bukti
+            })
+        }
+
+        if(arr_sertifikat.length > 0) {
+            file.forEach(item => fs.unlinkSync(item.path))
+        }
+
+        return arr_sertifikat
+
+    } catch (error) {
+        debugLogger.debug(error)
+        file.map(files => fs.unlinkSync(files.path))
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const storeSertifikatTPSatuan = async (request:PayloadSertifikatTPSatuanSchema["body"], file : Express.Multer.File) => {
+    try {
+        const formData = new FormData()
+
+        formData.append('nama_aplikasi','SI-DaPeT')
+        formData.append('file', fs.createReadStream(file.path))
+
+        const upload = await uploadPdf(formData)
+
+
+        if(upload[1] !== null || !upload[0]){
+            throw new CustomError(httpCode.badRequest, responseStatus.error, "Upload Gagal")
+        }
+
+        const create = await SertifTP.create({
+            kode_tenaga_pendukung : parseInt(request.kode_tenaga_pendukung),
+            sertifikat : request.sertifikat,
+            file_bukti : upload[0].file_name,
+            encrypt_key : upload[0].keypass
+        })
+
+        const result = {
+            kode_tenaga_pendukung : create.kode_tenaga_pendukung,
+            sertifikat : create.sertifikat,
+            file_bukti : create.file_bukti,
+        }
+
+        if(!create) {
+            await deleteFile(upload[0].file_name)
+            throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Upload Gagal")
+        }
+
+        if(create) {
+            fs.unlinkSync(file.path)
+        }
+
+        return result
+    } catch (error) {
+        debugLogger.debug(error)
+        fs.unlinkSync(file.path)
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+const getPdfUploadSertifikatTp = async (id:ParameterSchema["params"]["id"], kode_vendor:number) : Promise<any> => {
+    try {
+        const getSertifikat : SertifTP | null = await SertifTP.findOne({
+            where : {
+                kode_sertif_tp : id,       
+            }
+        })
+
+
+        if(!getSertifikat) throw new CustomError(httpCode.notFound, responseStatus.error, "Data Tidak Tersedia / Data Bukan Format PDF")
+
+        const data = {
+            nama_file : getSertifikat?.file_bukti as string, 
+            keypass : getSertifikat.encrypt_key as string
+        }
+
+
+        const tampilGambar = await showFile(data)
+
+        return tampilGambar[0]
+
+    } catch (error) {
+        if(error instanceof CustomError) {
+            throw new CustomError(error.code,error.status, error.message)
+        } 
+        else {
+            debugLogger.debug(error)
+            throw new CustomError(500, responseStatus.error, "Internal server error.")
+        }
+    }
+}
+
+// #######################################################################
 
 // ################################ Badan Usaha ##########################
 
@@ -5105,14 +5687,27 @@ export default {
 
     //Pengalaman TA
     storePengalamanTA,
+    storePengalamanTASatuan,
     getPdfUploadPengalamanTa,
     getAllPengalamanTa,
 
     //Pengalaman TP
     getAllPengalamanTp,
+    storePengalamanTPSatuan,
     storePengalamanTP,
     getPdfUploadPengalamanTp,
 
-    
+    //Sertifikat TA
+    getAllSertifikatTa,
+    storeSertifikatTASatuan,
+    storeSertifTa,
+    getPdfUploadSertifikatTa,
+
+    //Sertifikat TP
+    getAllSertifikatTp,
+    storeSertifTP,
+    getPdfUploadSertifikatTp,
+    storeSertifikatTPSatuan
+
 
 }

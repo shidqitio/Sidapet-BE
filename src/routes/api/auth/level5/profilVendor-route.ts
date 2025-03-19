@@ -30,7 +30,12 @@ import {
     payloadKantorSchema,
     payloadKantorUpdateSchema,
     payloadPengalamanTaSchema,
-    payloadStoreUploadPengalamanPeroranganSchema
+    payloadStoreUploadPengalamanPeroranganSchema,
+    payloadStoreUploadSertifikatPeroranganSchema,
+    payloadPengalamanTaSatuanScehma,
+    payloadPengalamanTpSatuanScehma,
+    payloadSertifikatTASatuanSchema,
+    payloadSertifikatTPSatuanSchema
 } from "@schema/api/profilVendor-schema"
 import vendorController from "@controllers/api/vendor-controller";
 import validate from "@schema/validate"
@@ -47,7 +52,6 @@ router.get("/tanya-perorangan/:id", validate(parameterSchema), profilVendorContr
 router.get("/tes-domisili/:id", validate(parameterSchema), profilVendorController.tesDomisili)
 router.get("/domisili", profilVendorController.domisili)
 
-router.get("/get-sertifikat", profilVendorController.getSertifikat)
 router.get("/show/profil-upload/:id", profilVendorController.getPdfUpload);
 
 
@@ -68,8 +72,9 @@ router.get("/get-pengalaman", profilVendorController.getPengalamanVendor)
 
 //Sertifikat Perorangan
 router.get("/perorang/profil-sertif/:id", profilVendorController.getPdfUploadSertifikat);
-router.delete("/hapus/sertifikat/:id", validate(parameterSchema), profilVendorController.hapusSertifikat)
-router.post("/upload/sertifikat", uploadPdf.single("file"),validate(storeUploadSertifikatSchema), profilVendorController.storeUploadSertifikat)
+router.delete("/perorangan/hapus/sertifikat/:id", validate(parameterSchema), profilVendorController.hapusSertifikat)
+router.post("/perorangan/upload/sertifikat", uploadPdf.single("file"),validate(payloadStoreUploadSertifikatPeroranganSchema), profilVendorController.storeUploadSertifikat)
+router.get("/get-sertifikat", profilVendorController.getSertifikat)
 
 
 //Badan Usaha
@@ -164,13 +169,33 @@ router.get("/badan-usaha/pengalaman-ta/:id",validate(parameterSchema), profilVen
 router.post("/badan-usaha/pengalaman-ta",  
     uploadPdf.array("file", 10),
     profilVendorController.storePengalamanTA)
+router.post("/badan-usaha/pengalaman-ta/satuan", uploadPdf.single("file"), validate(payloadPengalamanTaSatuanScehma), profilVendorController.storePengalamanTASatuan)
 router.get("/badan-usaha/pengalaman-ta/get-upload/:id", validate(parameterSchema),profilVendorController.getPdfUploadPengalamanTa)
+
 
 //Pengalaman TP
 router.get("/badan-usaha/pengalaman-tp/:id", validate(parameterSchema), profilVendorController.getPengalamanTp)
 router.post("/badan-usaha/pengalaman-tp",  
     uploadPdf.array("file", 10),
     profilVendorController.storePengalamanTP)
+router.post("/badan-usaha/pengalaman-tp/satuan", uploadPdf.single("file"), validate(payloadPengalamanTpSatuanScehma), profilVendorController.storePengalamanTPSatuan)
 router.get("/badan-usaha/pengalaman-tp/get-upload/:id", validate(parameterSchema),profilVendorController.getPdfUploadPengalamanTp)
+
+
+//Sertifikat TA
+router.get("/badan-usaha/sertifikat-ta/:id",validate(parameterSchema), profilVendorController.getSertifikatTA)
+router.post("/badan-usaha/sertifikat-ta",  
+    uploadPdf.array("file", 10),
+    profilVendorController.storeSertifikatTA)
+router.post("/badan-usaha/sertifikat-ta/satuan", uploadPdf.single("file"), validate(payloadSertifikatTASatuanSchema), profilVendorController.storeSertifikatTASatuan)
+router.get("/badan-usaha/sertifikat-ta/get-upload/:id", validate(parameterSchema),profilVendorController.getPdfUploadSertifikatTa)
+
+//SERTIFIKAT TP
+router.get("/badan-usaha/sertifikat-tp/:id",validate(parameterSchema), profilVendorController.getSertifikatTP)
+router.post("/badan-usaha/sertifikat-tp",  
+    uploadPdf.array("file", 10),
+    profilVendorController.storeSertifikatTP)
+router.post("/badan-usaha/sertifikat-tp/satuan", uploadPdf.single("file"), validate(payloadSertifikatTPSatuanSchema), profilVendorController.storeSertifikatTPSatuan)
+router.get("/badan-usaha/sertifikat-tp/get-upload/:id", validate(parameterSchema),profilVendorController.getPdfUploadSertifikatTP)
 
 export default router

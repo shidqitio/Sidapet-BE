@@ -34,7 +34,14 @@ PayloadKantorSchema,
 PayloadKantorUpdateSchema,
 PayloadPengalamanTaSchema,
 PayloadPengalamanTpSchema,
-PayloadStoreUploadPengalamanPeroranganSchema
+PayloadStoreUploadPengalamanPeroranganSchema,
+PayloadStoreUploadSertifikatPeroranganSchema,
+PayloadSertifikatTASchema,
+PayloadSertifikatTPSchema,
+PayloadPengalamanTaSatuanSchema,
+PayloadPengalamaTpSatuanSchema,
+PayloadSertifikatTASatuanSchema,
+PayloadSertifikatTPSatuanSchema
 } from "@schema/api/profilVendor-schema"
 
 import profilVendorService from "@services/api/v1/profilVendor-service";
@@ -226,118 +233,6 @@ const getProfilVendor = async (
     }
 }
 
-const storeUploadSertifikat = async (
-    req:Request,
-    res:Response,
-    next:NextFunction) : Promise<void> => {
-    try {
-        const request : StoreUploadSertifikatSchema["body"] = req.body
-
-        const kode_vendor = req.user.kode_vendor
-
-        if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
-
-        const response = await profilVendorService.storeUploadSertifikat(request, req.file as Express.Multer.File, kode_vendor)
-
-        responseSuccess(res, httpCode.created, responseStatus.success, "Data Sertifikat Berhasil Di Upload", response)
-
-    } catch (error) {
-        errorLogger.error(`Testing Error Store Upload Sertifikat ${error}`)
-        next(error)
-    }
-}
-
-const storeUploadPengalamanOrang = async (
-    req:Request,
-    res:Response,
-    next:NextFunction) : Promise<void> => {
-    try {
-        const request : PayloadStoreUploadPengalamanPeroranganSchema["body"] = req.body
-
-        const kode_vendor = req.user.kode_vendor
-
-        if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
-
-        const response = await profilVendorService.uploadPengalamanOrang(request, req.file as Express.Multer.File, kode_vendor)
-
-        responseSuccess(res, httpCode.created, responseStatus.success, "Data Pengalaman Perorangan Berhasil Di Upload", response)
-    } catch (error) {
-        errorLogger.error(`Testing Error Store Upload Pengalaman Orang ${error}`)
-        next(error)
-    }
-}
-
-const getSertifikat = async (
-    req:Request,
-    res:Response,
-    next:NextFunction) : Promise<void> => {
-    try {
-        const kode_vendor = req.user.kode_vendor
-
-        if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
-
-        const response = await profilVendorService.getSertifikat(kode_vendor)
-
-        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response)
-    } catch (error) {
-        errorLogger.error(`Testing Error Get Sertifikat  ${error}`)
-        next(error)
-    }
-}
-const getPengalamanVendor = async (
-    req:Request,
-    res:Response,
-    next:NextFunction) : Promise<void> => {
-    try {
-        const kode_vendor = req.user.kode_vendor
-
-        if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
-
-        const response = await profilVendorService.getPengalamanVendor(kode_vendor)
-
-        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response)
-    } catch (error) {
-        errorLogger.error(`Testing Error Get Pengalaman Vendor ${error}`)
-        next(error)
-    }
-}
-
-const hapusSertifikat = async (
-    req:Request,
-    res:Response,
-    next:NextFunction) : Promise<void> => {
-    try {
-        const id : ParameterSchema["params"]["id"] = req.params.id
-
-        const response = await profilVendorService.hapusSertifikat(id)
-
-        responseSuccess(res, httpCode.ok, responseStatus.success, "Data Sertifikat Berhasil Di Hapus", response)
-
-
-    } catch (error) {
-        errorLogger.error(`Testing Error Hapus Sertifikat Orang ${error}`)
-        next(error)
-    }
-}
-
-const hapusPengalaman = async (
-    req:Request,
-    res:Response,
-    next:NextFunction) : Promise<void> => {
-    try {
-        const id : ParameterSchema["params"]["id"] = req.params.id
-
-        const response = await profilVendorService.hapusPengalaman(id)
-
-        responseSuccess(res, httpCode.ok, responseStatus.success, "Data Sertifikat Berhasil Di Hapus", response)
-
-
-    } catch (error) {
-        errorLogger.error(`Testing Error Hapus Pengalaman Orang ${error}`)
-        next(error)
-    }
-}
-
 const hapusProfilUpload = async (
     req:Request,
     res:Response,
@@ -388,7 +283,29 @@ const getPdfUpload = async (
     }
 }
 
-const getPdfUploadSertifikat = async (
+//Pengalaman
+
+const storeUploadPengalamanOrang = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const request : PayloadStoreUploadPengalamanPeroranganSchema["body"] = req.body
+
+        const kode_vendor = req.user.kode_vendor
+
+        if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
+
+        const response = await profilVendorService.uploadPengalamanOrang(request, req.file as Express.Multer.File, kode_vendor)
+
+        responseSuccess(res, httpCode.created, responseStatus.success, "Data Pengalaman Perorangan Berhasil Di Upload", response)
+    } catch (error) {
+        errorLogger.error(`Testing Error Store Upload Pengalaman Orang ${error}`)
+        next(error)
+    }
+}
+
+const getPengalamanVendor = async (
     req:Request,
     res:Response,
     next:NextFunction) : Promise<void> => {
@@ -397,13 +314,29 @@ const getPdfUploadSertifikat = async (
 
         if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
 
+        const response = await profilVendorService.getPengalamanVendor(kode_vendor)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response)
+    } catch (error) {
+        errorLogger.error(`Testing Error Get Pengalaman Vendor ${error}`)
+        next(error)
+    }
+}
+
+const hapusPengalaman = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
         const id : ParameterSchema["params"]["id"] = req.params.id
 
-        const response = await profilVendorService.getPdfUploadSertifikat(id, kode_vendor)
+        const response = await profilVendorService.hapusPengalaman(id)
 
-        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response.data)
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Data Sertifikat Berhasil Di Hapus", response)
+
+
     } catch (error) {
-        errorLogger.error(`Testing Error Get PDF Upload  ${error}`)
+        errorLogger.error(`Testing Error Hapus Pengalaman Orang ${error}`)
         next(error)
     }
 }
@@ -427,6 +360,92 @@ const getPdfUploadPengalamanPerorangan = async (
         next(error)
     }
 }
+
+//SERTIFIKAT PERORANGAN
+
+const getSertifikat = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode_vendor = req.user.kode_vendor
+
+        if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
+
+        const response = await profilVendorService.getSertifikat(kode_vendor)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response)
+    } catch (error) {
+        errorLogger.error(`Testing Error Get Sertifikat  ${error}`)
+        next(error)
+    }
+}
+
+
+const hapusSertifikat = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const id : ParameterSchema["params"]["id"] = req.params.id
+
+        const response = await profilVendorService.hapusSertifikat(id)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Data Sertifikat Berhasil Di Hapus", response)
+
+
+    } catch (error) {
+        errorLogger.error(`Testing Error Hapus Sertifikat Orang ${error}`)
+        next(error)
+    }
+}
+
+const storeUploadSertifikat = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const request : PayloadStoreUploadSertifikatPeroranganSchema["body"] = req.body
+
+        const kode_vendor = req.user.kode_vendor
+
+        if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
+
+        const response = await profilVendorService.storeUploadSertifikat(request, req.file as Express.Multer.File, kode_vendor)
+
+        responseSuccess(res, httpCode.created, responseStatus.success, "Data Sertifikat Berhasil Di Upload", response)
+
+    } catch (error) {
+        errorLogger.error(`Testing Error Store Upload Sertifikat ${error}`)
+        next(error)
+    }
+}
+
+const getPdfUploadSertifikat = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode_vendor = req.user.kode_vendor
+
+        if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
+
+        const id : ParameterSchema["params"]["id"] = req.params.id
+
+        const response = await profilVendorService.getPdfUploadSertifikat(id, kode_vendor)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response.data)
+    } catch (error) {
+        errorLogger.error(`Testing Error Get PDF Upload  ${error}`)
+        next(error)
+    }
+}
+
+
+
+
+
+
 
 
 // ################ BADAN USAHA ##########################
@@ -1819,7 +1838,24 @@ const storePengalamanTA = async (
     }
 }
 
+const storePengalamanTASatuan = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const request : PayloadPengalamanTaSatuanSchema["body"] = req.body
 
+        const file = req.file
+
+        const response = await profilVendorService.storePengalamanTASatuan(request, file as Express.Multer.File)
+
+        responseSuccess(res, httpCode.created, responseStatus.success, "Berhasil Menambah Pengalaman TA", response)
+
+    } catch (error) {
+        errorLogger.error(`Testing Error Store Pengalaman TA  ${error}`)
+        next(error)
+    }
+}
 
 const getPdfUploadPengalamanTa = async (
     req:Request,
@@ -1881,6 +1917,25 @@ const storePengalamanTP = async (
     }
 }
 
+const storePengalamanTPSatuan = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const request : PayloadPengalamaTpSatuanSchema["body"] = req.body
+
+        const file = req.file
+
+        const response = await profilVendorService.storePengalamanTPSatuan(request, file as Express.Multer.File)
+
+        responseSuccess(res, httpCode.created, responseStatus.success, "Berhasil Menambah Pengalaman TP", response)
+
+    } catch (error) {
+        errorLogger.error(`Testing Error Store Pengalaman TA  ${error}`)
+        next(error)
+    }
+}
+
 
 
 const getPdfUploadPengalamanTp = async (
@@ -1903,6 +1958,166 @@ const getPdfUploadPengalamanTp = async (
     }
 }
 
+//Sertifikat TA
+const getSertifikatTA = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const id : ParameterSchema["params"]["id"] = req.params.id
+
+        const response = await profilVendorService.getAllSertifikatTa(id)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response)
+
+    } catch (error) {
+        errorLogger.error(`Testing Error Get Kantor  ${error}`)
+        next(error)
+    }
+}
+
+const storeSertifikatTA = async (
+    req:Request,
+    res:Response,
+    next:NextFunction ) : Promise<void> => {
+    try {
+
+        const request : PayloadSertifikatTASchema["body"] = req.body
+
+        
+
+        const file = req.files
+
+        const response = await profilVendorService.storeSertifTa(request, file as Express.Multer.File[])
+
+        responseSuccess(res, httpCode.created, responseStatus.success, "Berhasil Menambah Sertifikat TA", response)
+
+    } catch (error) {
+        errorLogger.error(`Testing Error Store Pengalaman TA  ${error}`)
+        next(error)
+    }
+}
+
+const storeSertifikatTASatuan = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const request : PayloadSertifikatTASatuanSchema["body"] = req.body
+
+        const file = req.file
+
+        const response = await profilVendorService.storeSertifikatTASatuan(request, file as Express.Multer.File)
+
+        responseSuccess(res, httpCode.created, responseStatus.success, "Berhasil Menambah Sertifikat TA", response)
+
+    } catch (error) {
+        errorLogger.error(`Testing Error Store Pengalaman TA  ${error}`)
+        next(error)
+    }
+}
+
+
+const getPdfUploadSertifikatTa = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode_vendor = req.user.kode_vendor
+
+        if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
+
+        const id : ParameterSchema["params"]["id"] = req.params.id
+
+        const response = await profilVendorService.getPdfUploadSertifikatTa(id, kode_vendor)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response.data)
+    } catch (error) {
+        errorLogger.error(`Testing Error Get PDF Tenaga Pendukung CV  ${error}`)
+        next(error)
+    }
+}
+
+
+//SERTIFIKAT TP
+
+const getSertifikatTP = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const id : ParameterSchema["params"]["id"] = req.params.id
+
+        const response = await profilVendorService.getAllSertifikatTp(id)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response)
+
+    } catch (error) {
+        errorLogger.error(`Testing Error Get Kantor  ${error}`)
+        next(error)
+    }
+}
+
+const storeSertifikatTP = async (
+    req:Request,
+    res:Response,
+    next:NextFunction ) : Promise<void> => {
+    try {
+
+        const request : PayloadSertifikatTPSchema["body"] = req.body
+
+        
+
+        const file = req.files
+
+        const response = await profilVendorService.storeSertifTP(request, file as Express.Multer.File[])
+
+        responseSuccess(res, httpCode.created, responseStatus.success, "Berhasil Menambah Sertifikat TP", response)
+
+    } catch (error) {
+        errorLogger.error(`Testing Error Store Sertifikat TP  ${error}`)
+        next(error)
+    }
+}
+
+const storeSertifikatTPSatuan = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const request : PayloadSertifikatTPSatuanSchema["body"] = req.body
+
+        const file = req.file
+
+        const response = await profilVendorService.storeSertifikatTPSatuan(request, file as Express.Multer.File)
+
+        responseSuccess(res, httpCode.created, responseStatus.success, "Berhasil Menambah Sertifikat TP", response)
+
+    } catch (error) {
+        errorLogger.error(`Testing Error Store Pengalaman TA  ${error}`)
+        next(error)
+    }
+}
+
+const getPdfUploadSertifikatTP = async (
+    req:Request,
+    res:Response,
+    next:NextFunction) : Promise<void> => {
+    try {
+        const kode_vendor = req.user.kode_vendor
+
+        if(!kode_vendor) throw new CustomError(httpCode.unauthorized, responseStatus.error, "Belum Terdaftar Sebagai Vendor")
+
+        const id : ParameterSchema["params"]["id"] = req.params.id
+
+        const response = await profilVendorService.getPdfUploadSertifikatTp(id, kode_vendor)
+
+        responseSuccess(res, httpCode.ok, responseStatus.success, "Berhasil Menampilkan Data", response.data)
+    } catch (error) {
+        errorLogger.error(`Testing Error Get PDF Sertifikat TP  ${error}`)
+        next(error)
+    }
+}
 
 export default{
     getMenuAll,
@@ -2019,13 +2234,30 @@ export default{
     storePengalamanTA,
     getPdfUploadPengalamanTa,
     getPengalamanTa,
+    storePengalamanTASatuan,
 
     //Pengalaman TP
     storePengalamanTP,
     getPdfUploadPengalamanTp,
     getPengalamanTp,
+    storePengalamanTPSatuan,
 
+
+    //SERTIFIKAT TA
+    getSertifikatTA,
+    storeSertifikatTA,
+    getPdfUploadSertifikatTa,
+    storeSertifikatTASatuan,
+
+    //SERTIFIKAT TP 
+    getSertifikatTP,
+    storeSertifikatTP,
+    getPdfUploadSertifikatTP,
+    storeSertifikatTPSatuan,
 
     
+
+
+
 
 }

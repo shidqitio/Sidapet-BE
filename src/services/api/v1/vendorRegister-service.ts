@@ -38,6 +38,7 @@ import {encryptWithKey, decryptWithKey} from "@utils/generate-encrypt-decrypt"
 import validate from "deep-email-validator";
 
 
+
 //Get All Vendor 
 const getAllVendor = async (
     page:QuerySchema["query"]["page"],
@@ -93,7 +94,27 @@ const getVendorbyStatusVerifikasi = async (
                 status_register : id,
 
             },
-            attributes : {exclude : ["password", "udcr", "udch", "ucr", "uch","keypass" ]},
+            attributes : [
+                "kode_register",
+                "kode_vendor",
+                "kode_jenis_vendor",
+                "nama_perusahaan",
+                "email",
+                [literal(`
+                    CASE 
+                      WHEN "JenisVendor"."kode_jenis_vendor" = 2 THEN "no_telp" 
+                      ELSE "no_wa_narahubung" 
+                    END
+                  `), 'no_telp'], // Alias the result for easier access
+                "swafoto",
+                "status_register",
+                "alasan_ditolak",
+                "message",
+                "user_verif",
+                "similarity",
+                "distance_percentage",
+                "distance_point",
+            ],
             include : [
                 {
                     model : JenisVendor,
@@ -156,6 +177,7 @@ const registerVendor = async (request:PayloadRegisterSchema["body"], file : Expr
     try {
         
         const {valid, reason, validators} = await validate(request.email)
+        
 
         // console.log("TES VALID : ", valid)
         // console.log("REASON :" , reason)
@@ -188,6 +210,8 @@ const registerVendor = async (request:PayloadRegisterSchema["body"], file : Expr
             await t.rollback()
             throw new CustomError(httpCode.conflict, responseStatus.success, "Email Sudah Terdaftar")
         }
+
+        if(!file) throw new CustomError(httpCode.unprocessableEntity, responseStatus.error, "Harap Lampirkan File")
 
         const pw = await bcrypt.hash(request.password, 12)
 
@@ -304,11 +328,15 @@ const getRegisterVendorDetail = async (id:ParameterSchema["params"]["id"]) => {
                 "kode_jenis_vendor",
                 "nama_perusahaan",
                 "email",
-                "no_telp",
+                [literal(`
+                    CASE 
+                      WHEN "JenisVendor"."kode_jenis_vendor" = 2 THEN "no_telp" 
+                      ELSE "no_wa_narahubung" 
+                    END
+                  `), 'no_telp'], // Alias the result for easier access
                 "status_register",
                 "alasan_ditolak",
                 "nama_narahubung",
-                "no_wa_narahubung",
                 "message",
                 "user_verif",
                 "similarity",
@@ -356,9 +384,13 @@ const getRegisterVendorDetail = async (id:ParameterSchema["params"]["id"]) => {
                 "kode_jenis_vendor",
                 "nama_perusahaan",
                 "email",
-                "no_telp",
+                [literal(`
+                    CASE 
+                      WHEN "JenisVendor"."kode_jenis_vendor" = 2 THEN "no_telp" 
+                      ELSE "no_wa_narahubung" 
+                    END
+                  `), 'no_telp'], // Alias the result for easier access
                 "nama_narahubung",
-                "no_wa_narahubung",
                 "status_register",
                 "alasan_ditolak",
                 "message",

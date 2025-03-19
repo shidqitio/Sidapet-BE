@@ -102,7 +102,6 @@ const authorization = async (
       token
     )
 
-    
 
     if(errorSipuser) {
       throw new CustomError(httpCode.unauthorized, responseStatus.error,  errorSipuser)
@@ -132,7 +131,7 @@ const authorization = async (
     else {
       idVendor = exRegisterVendor.kode_vendor
     }
-
+    
     
 
     const userData : UserData = {
