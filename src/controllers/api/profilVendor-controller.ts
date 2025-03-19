@@ -108,7 +108,7 @@ const getMenuStatus = async (
     }
 }
 
-
+//TES
 
 const katItemTanya = async (
     req :Request,
@@ -2254,10 +2254,5 @@ export default{
     storeSertifikatTP,
     getPdfUploadSertifikatTP,
     storeSertifikatTPSatuan,
-
-    
-
-
-
 
 }
